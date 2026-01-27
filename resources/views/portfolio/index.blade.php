@@ -31,13 +31,18 @@
         animation: fadeInUp 0.8s ease-out;
     }
 
-    /* Hero Section Enhancements */
+    /* ============================================
+       PROFESSIONAL HERO SECTION STYLES
+    ============================================ */
+    
+    /* Hero Section - Professional Design */
     .hero-section {
         position: relative;
         overflow: hidden;
         min-height: 100vh;
         display: flex;
         align-items: center;
+        background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
     }
 
     .hero-section::before {
@@ -47,40 +52,470 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background: linear-gradient(135deg, rgba(58, 134, 255, 0.1), rgba(138, 43, 226, 0.1));
-        z-index: -1;
+        background: 
+            radial-gradient(circle at 20% 30%, rgba(58, 134, 255, 0.05) 0%, transparent 50%),
+            radial-gradient(circle at 80% 70%, rgba(138, 43, 226, 0.05) 0%, transparent 50%);
+        pointer-events: none;
     }
 
-    .hero-section .display-4 {
-        font-size: clamp(2rem, 5vw, 3.5rem);
+    /* Status Badge */
+    .status-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 20px;
+        background: rgba(16, 185, 129, 0.1);
+        border: 1px solid rgba(16, 185, 129, 0.3);
+        border-radius: 50px;
+        font-size: 0.85rem;
+        font-weight: 500;
+        color: #10b981;
+        letter-spacing: 0.02em;
+    }
+
+    .status-dot {
+        width: 8px;
+        height: 8px;
+        background: #10b981;
+        border-radius: 50%;
+        animation: pulse-dot 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse-dot {
+        0%, 100% { 
+            opacity: 1;
+            transform: scale(1);
+        }
+        50% { 
+            opacity: 0.5;
+            transform: scale(1.1);
+        }
+    }
+
+    /* Main Title */
+    .hero-main-title {
+        font-size: clamp(2.5rem, 6vw, 5rem);
+        font-weight: 700;
+        color: #f8fafc;
+        line-height: 1.1;
+        letter-spacing: -0.02em;
+        margin-bottom: 1.5rem;
+    }
+
+    /* Role Container */
+    .hero-role-container {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .hero-role-label {
+        font-family: 'Source Code Pro', monospace;
+        font-size: 1.5rem;
+        color: #3b82f6;
+        font-weight: 500;
+    }
+
+    .hero-role-text {
+        font-size: clamp(1.5rem, 3vw, 2.5rem);
+        font-weight: 600;
+        color: #94a3b8;
+        margin: 0;
         line-height: 1.2;
     }
 
-    .hero-section .lead {
-        font-size: clamp(1rem, 2vw, 1.25rem);
-        color: rgba(255, 255, 255, 0.9);
+    #typed-role {
+        background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
     }
 
-    .profile-image-wrapper {
+    /* Description */
+    .hero-description {
+        font-size: 1.125rem;
+        line-height: 1.8;
+        color: #cbd5e1;
+        max-width: 600px;
+    }
+
+    /* Tech Stack Container */
+    .tech-stack-container {
+        margin-top: 2rem;
+    }
+
+    .tech-stack-label {
+        font-family: 'Source Code Pro', monospace;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: #64748b;
+        margin-bottom: 1rem;
+        font-weight: 500;
+    }
+
+    .tech-pills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+    }
+
+    .tech-pill {
+        padding: 8px 16px;
+        background: rgba(51, 65, 85, 0.5);
+        border: 1px solid rgba(148, 163, 184, 0.2);
+        border-radius: 8px;
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: #e2e8f0;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(10px);
+    }
+
+    .tech-pill:hover {
+        background: rgba(59, 130, 246, 0.15);
+        border-color: rgba(59, 130, 246, 0.5);
+        color: #60a5fa;
+        transform: translateY(-2px);
+    }
+
+    /* CTA Buttons */
+    .hero-cta-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .btn-hero-primary {
+        padding: 14px 32px;
+        background: linear-gradient(135deg, #3b82f6, #2563eb);
+        color: white;
+        border: none;
+        border-radius: 10px;
+        font-weight: 600;
+        font-size: 1rem;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+    }
+
+    .btn-hero-primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(59, 130, 246, 0.5);
+        color: white;
+    }
+
+    .btn-hero-secondary {
+        padding: 14px 32px;
+        background: transparent;
+        color: #e2e8f0;
+        border: 2px solid rgba(226, 232, 240, 0.2);
+        border-radius: 10px;
+        font-weight: 600;
+        font-size: 1rem;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        transition: all 0.3s ease;
+    }
+
+    .btn-hero-secondary:hover {
+        background: rgba(226, 232, 240, 0.05);
+        border-color: rgba(226, 232, 240, 0.4);
+        color: white;
+        transform: translateY(-3px);
+    }
+
+    /* Social Links */
+    .hero-social-container {
+        margin-top: 2rem;
+    }
+
+    .social-links-grid {
+        display: flex;
+        gap: 1rem;
+    }
+
+    .social-link-modern {
+        width: 44px;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(51, 65, 85, 0.5);
+        border: 1px solid rgba(148, 163, 184, 0.2);
+        border-radius: 10px;
+        color: #94a3b8;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        font-size: 1.1rem;
+    }
+
+    .social-link-modern:hover {
+        background: rgba(59, 130, 246, 0.15);
+        border-color: rgba(59, 130, 246, 0.5);
+        color: #60a5fa;
+        transform: translateY(-3px);
+    }
+
+    /* Visual Container */
+    .hero-visual-container {
         position: relative;
+        width: 100%;
+        max-width: 500px;
+        margin: 0 auto;
+        height: 600px;
+    }
+
+    /* Profile Card */
+    .profile-card-modern {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .profile-image-container {
+        position: relative;
+        width: 400px;
+        height: 400px;
+        margin: 0 auto;
+    }
+
+    .profile-image-modern {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 20px;
+        position: relative;
+        z-index: 1;
+    }
+
+    .profile-image-border {
+        position: absolute;
+        top: -8px;
+        left: -8px;
+        right: -8px;
+        bottom: -8px;
+        border: 2px solid rgba(59, 130, 246, 0.3);
+        border-radius: 24px;
+        z-index: 0;
+    }
+
+    .profile-image-border::before {
+        content: '';
+        position: absolute;
+        top: -20px;
+        left: -20px;
+        right: -20px;
+        bottom: -20px;
+        background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1));
+        border-radius: 30px;
+        filter: blur(30px);
+        z-index: -1;
+    }
+
+    /* Floating Stat Cards */
+    .floating-stat-card {
+        position: absolute;
+        background: rgba(15, 23, 42, 0.9);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(148, 163, 184, 0.2);
+        border-radius: 16px;
+        padding: 1.25rem;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        transition: all 0.3s ease;
+        z-index: 3;
+    }
+
+    .floating-stat-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        border-color: rgba(59, 130, 246, 0.5);
+    }
+
+    .stat-card-1 {
+        top: 50px;
+        right: -20px;
         animation: float 6s ease-in-out infinite;
     }
 
-    .profile-image-wrapper::before {
-        content: '';
-        position: absolute;
-        top: -10px;
-        left: -10px;
-        right: -10px;
-        bottom: -10px;
-        background: linear-gradient(45deg, var(--primary-color), var(--secondary-color), #ff6b9d);
-        background-size: 400% 400%;
-        animation: gradient 15s ease infinite;
-        border-radius: 50%;
-        z-index: -1;
-        filter: blur(20px);
-        opacity: 0.7;
+    .stat-card-2 {
+        top: 200px;
+        left: -40px;
+        animation: float 6s ease-in-out infinite;
+        animation-delay: 1s;
     }
+
+    .stat-card-3 {
+        bottom: 80px;
+        right: -30px;
+        animation: float 6s ease-in-out infinite;
+        animation-delay: 2s;
+    }
+
+    .stat-icon {
+        width: 44px;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(139, 92, 246, 0.2));
+        border-radius: 12px;
+        color: #60a5fa;
+        font-size: 1.25rem;
+    }
+
+    .stat-content {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .stat-number {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #f8fafc;
+        line-height: 1;
+        margin-bottom: 4px;
+    }
+
+    .stat-label {
+        font-size: 0.75rem;
+        color: #94a3b8;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        font-weight: 600;
+    }
+
+    .stat-label-only {
+        font-size: 0.875rem;
+        color: #f8fafc;
+        font-weight: 600;
+    }
+
+    /* Background Elements */
+    .hero-bg-element {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(80px);
+        opacity: 0.3;
+        z-index: 0;
+    }
+
+    .element-1 {
+        width: 300px;
+        height: 300px;
+        background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+        top: -100px;
+        right: -50px;
+        animation: pulse-bg 8s ease-in-out infinite;
+    }
+
+    .element-2 {
+        width: 250px;
+        height: 250px;
+        background: linear-gradient(135deg, #8b5cf6, #ec4899);
+        bottom: -50px;
+        left: -80px;
+        animation: pulse-bg 10s ease-in-out infinite;
+        animation-delay: 2s;
+    }
+
+    @keyframes pulse-bg {
+        0%, 100% { 
+            opacity: 0.2;
+            transform: scale(1);
+        }
+        50% { 
+            opacity: 0.4;
+            transform: scale(1.1);
+        }
+    }
+
+    /* Hero Section Responsive */
+    @media (max-width: 991px) {
+        .hero-section {
+            padding: 100px 0 80px;
+        }
+
+        .hero-visual-container {
+            height: 500px;
+            margin-top: 4rem;
+        }
+
+        .profile-image-container {
+            width: 320px;
+            height: 320px;
+        }
+
+        .stat-card-1,
+        .stat-card-2,
+        .stat-card-3 {
+            padding: 1rem;
+        }
+
+        .stat-card-2 {
+            left: -20px;
+        }
+    }
+
+    @media (max-width: 767px) {
+        .hero-main-title {
+            font-size: 2.5rem;
+        }
+
+        .hero-role-text {
+            font-size: 1.5rem;
+        }
+
+        .tech-pills {
+            gap: 0.5rem;
+        }
+
+        .tech-pill {
+            padding: 6px 12px;
+            font-size: 0.8rem;
+        }
+
+        .hero-cta-container {
+            flex-direction: column;
+        }
+
+        .btn-hero-primary,
+        .btn-hero-secondary {
+            width: 100%;
+            justify-content: center;
+        }
+
+        .profile-image-container {
+            width: 280px;
+            height: 280px;
+        }
+
+        .floating-stat-card {
+            padding: 0.875rem;
+        }
+
+        .stat-icon {
+            width: 36px;
+            height: 36px;
+            font-size: 1rem;
+        }
+
+        .stat-number {
+            font-size: 1.25rem;
+        }
+    }
+
+    /* ============================================
+       OTHER SECTIONS STYLES
+    ============================================ */
 
     /* Button Enhancements */
     .btn-primary, .btn-outline-light {
@@ -201,36 +636,16 @@
     }
 
     /* Technology Icon Colors */
-    .tech-dotnet {
-        color: #512BD4;
-    }
-    .tech-aspnet {
-        color: #512BD4;
-    }
-    .tech-csharp {
-        color: #239120;
-    }
-    .tech-sqlserver {
-        color: #CC2927;
-    }
-    .tech-mysql {
-        color: #00758F;
-    }
-    .tech-laravel {
-        color: #FF2D20;
-    }
-    .tech-php {
-        color: #777BB4;
-    }
-    .tech-flutter {
-        color: #02569B;
-    }
-    .tech-restapi {
-        color: #6DB33F;
-    }
-    .tech-javascript {
-        color: #F7DF1E;
-    }
+    .tech-dotnet { color: #512BD4; }
+    .tech-aspnet { color: #512BD4; }
+    .tech-csharp { color: #239120; }
+    .tech-sqlserver { color: #CC2927; }
+    .tech-mysql { color: #00758F; }
+    .tech-laravel { color: #FF2D20; }
+    .tech-php { color: #777BB4; }
+    .tech-flutter { color: #02569B; }
+    .tech-restapi { color: #6DB33F; }
+    .tech-javascript { color: #F7DF1E; }
 
     /* Timeline Enhancement */
     .timeline-item {
@@ -341,35 +756,13 @@
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     }
 
-    .stat-number {
+    .stat-card .stat-number {
         font-size: 2.5rem;
         font-weight: 700;
         background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
-    }
-
-    /* Social Icon Styles */
-    .social-icon {
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.1);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        text-decoration: none;
-        transition: all 0.3s ease;
-        border: 1px solid rgba(255, 255, 255, 0.2);
-    }
-
-    .social-icon:hover {
-        background: var(--primary-color);
-        transform: translateY(-3px);
-        box-shadow: 0 5px 15px rgba(58, 134, 255, 0.3);
-        color: white;
     }
 
     /* Projects Section Header */
@@ -384,14 +777,6 @@
         max-width: 700px;
         margin: 0 auto;
         line-height: 1.6;
-    }
-
-    /* Animated Role Text */
-    .role-text {
-        display: inline-block;
-        min-width: 170px;
-        text-align: center;
-        transition: all 0.5s ease-in-out;
     }
 
     /* Skills by Category Styles */
@@ -462,50 +847,6 @@
     .skill-badge.tools i { color: #FF9800; }
     .skill-badge.other i { color: #795548; }
 
-    /* Skills Grid Alternative */
-    .skills-grid-category {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-        gap: 15px;
-    }
-
-    .skill-card-category {
-        background: #f8f9fa;
-        border-radius: 12px;
-        padding: 15px;
-        transition: all 0.3s ease;
-        border: 2px solid transparent;
-        text-align: center;
-    }
-
-    .skill-card-category:hover {
-        background: white;
-        border-color: var(--primary-color);
-        transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    }
-
-    .skill-card-category .skill-icon {
-        font-size: 2rem;
-        margin-bottom: 10px;
-        color: var(--primary-color);
-    }
-
-    .skill-card-category .skill-name {
-        font-weight: 600;
-        color: #333;
-        margin-bottom: 5px;
-    }
-
-    .skill-card-category .skill-category {
-        font-size: 0.8rem;
-        color: #6c757d;
-        background: rgba(58, 134, 255, 0.1);
-        padding: 3px 10px;
-        border-radius: 10px;
-        display: inline-block;
-    }
-
     /* Skills Tabs Navigation */
     .skills-tabs {
         display: flex;
@@ -564,111 +905,122 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6 fade-in-up">
-                    <div class="mb-3">
-                        <span class="badge px-4 py-2" style="background: rgba(58, 134, 255, 0.15); color: var(--primary-color); border: 2px solid rgba(58, 134, 255, 0.3); border-radius: 30px; font-size: 0.9rem; font-weight: 600; letter-spacing: 1px;">
-                            👋 WELCOME TO MY PAGE
+                    <!-- Status Badge -->
+                    <div class="mb-4">
+                        <span class="status-badge">
+                            <span class="status-dot"></span>
+                            Available for opportunities
                         </span>
                     </div>
-                    <h1 class="display-4 fw-bold mb-3" style="line-height: 1.1;">
-                        Hello, I'm
-                        <br>
-                        <span style="background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-size: 1.2em;">
-                            Dozer Napitupulu
-                        </span>
+
+                    <!-- Main Heading -->
+                    <h1 class="hero-main-title">
+                        Dozer Napitupulu
                     </h1>
-                    <h2 class="h3 mb-4" style="color: rgba(255, 255, 255, 0.95); font-weight: 600;">
-                        <span id="typed-role" style="color: var(--primary-color);"></span>
-                    </h2>
-                    <p class="lead mb-4" style="font-size: 1.15rem; line-height: 1.7; color: rgba(255, 255, 255, 0.85);">
-                        Full-stack expertise across <strong>Web & Mobile platforms</strong>. Building scalable applications with <strong>.NET, Laravel, Flutter</strong> and modern tech stacks.
+
+                    <!-- Role with animation -->
+                    <div class="hero-role-container mb-4">
+                        <span class="hero-role-label">—</span>
+                        <h2 class="hero-role-text">
+                            <span id="typed-role">Full Stack Developer</span>
+                        </h2>
+                    </div>
+
+                    <!-- Description -->
+                    <p class="hero-description mb-5">
+                        Specialized in building scalable web and mobile applications using modern technologies. 
+                        Passionate about clean code, user experience, and solving complex problems.
                     </p>
-                    <div class="d-flex flex-wrap gap-2 mb-4">
-                        <span class="badge px-3 py-2" style="background: rgba(103, 58, 183, 0.2); color: #B39DDB; font-size: 0.85rem; font-weight: 600; border-radius: 20px; backdrop-filter: blur(10px); border: 1px solid rgba(179, 157, 219, 0.3);">
-                            <i class="fas fa-laptop-code me-1"></i>.NET Core
-                        </span>
-                        <span class="badge px-3 py-2" style="background: rgba(103, 58, 183, 0.2); color: #B39DDB; font-size: 0.85rem; font-weight: 600; border-radius: 20px; backdrop-filter: blur(10px); border: 1px solid rgba(179, 157, 219, 0.3);">
-                            <i class="fas fa-laptop-code me-1"></i>.NET
-                        </span>
-                        <span class="badge px-3 py-2" style="background: rgba(244, 67, 54, 0.2); color: #EF9A9A; font-size: 0.85rem; font-weight: 600; border-radius: 20px; backdrop-filter: blur(10px); border: 1px solid rgba(239, 154, 154, 0.3);">
-                            <i class="fab fa-laravel me-1"></i>Laravel
-                        </span>
-                        <span class="badge px-3 py-2" style="background: rgba(33, 150, 243, 0.2); color: #90CAF9; font-size: 0.85rem; font-weight: 600; border-radius: 20px; backdrop-filter: blur(10px); border: 1px solid rgba(144, 202, 249, 0.3);">
-                            <i class="fas fa-mobile-alt me-1"></i>Flutter
-                        </span>
-                        <span class="badge px-3 py-2" style="background: rgba(76, 175, 80, 0.2); color: #A5D6A7; font-size: 0.85rem; font-weight: 600; border-radius: 20px; backdrop-filter: blur(10px); border: 1px solid rgba(165, 214, 167, 0.3);">
-                            <i class="fab fa-php me-1"></i>PHP
-                        </span>
-                        <span class="badge px-3 py-2" style="background: rgba(255, 152, 0, 0.2); color: #FFCC80; font-size: 0.85rem; font-weight: 600; border-radius: 20px; backdrop-filter: blur(10px); border: 1px solid rgba(255, 204, 128, 0.3);">
-                            <i class="fab fa-js-square me-1"></i>JavaScript
-                        </span>
-                        <span class="badge px-3 py-2" style="background: rgba(156, 39, 176, 0.2); color: #CE93D8; font-size: 0.85rem; font-weight: 600; border-radius: 20px; backdrop-filter: blur(10px); border: 1px solid rgba(206, 147, 216, 0.3);">
-                            <i class="fas fa-database me-1"></i>MySQL / SQL Server
-                        </span>
+
+                    <!-- Tech Stack Pills -->
+                    <div class="tech-stack-container mb-5">
+                        <div class="tech-stack-label">Core Technologies</div>
+                        <div class="tech-pills">
+                            <span class="tech-pill">.NET Core</span>
+                            <span class="tech-pill">Laravel</span>
+                            <span class="tech-pill">Flutter</span>
+                            <span class="tech-pill">C#</span>
+                            <span class="tech-pill">PHP</span>
+                            <span class="tech-pill">JavaScript</span>
+                        </div>
                     </div>
-                    <div class="d-flex flex-wrap gap-3 mb-4">
-                        <a href="#projects" class="btn btn-primary btn-lg px-5 py-3" style="border-radius: 50px; font-weight: 600; box-shadow: 0 10px 30px rgba(58, 134, 255, 0.3);">
-                            <i class="fas fa-briefcase me-2"></i>View Portfolio
+
+                    <!-- CTA Buttons -->
+                    <div class="hero-cta-container mb-5">
+                        <a href="#projects" class="btn-hero-primary">
+                            View Work
+                            <i class="fas fa-arrow-right ms-2"></i>
                         </a>
-                        <a href="#contact" class="btn btn-outline-light btn-lg px-5 py-3" style="border-radius: 50px; font-weight: 600; border-width: 2px;">
-                            <i class="fas fa-paper-plane me-2"></i>Let's Talk
+                        <a href="#contact" class="btn-hero-secondary">
+                            Get in Touch
                         </a>
                     </div>
-                    <div class="d-flex align-items-center gap-3 mt-4">
-                        <span style="color: rgba(255, 255, 255, 0.7); font-weight: 600; font-size: 0.9rem;">FOLLOW ME</span>
-                        <div class="d-flex gap-3">
-                            <a href="https://github.com/dozernapitupulu" target="_blank" class="social-icon">
+
+                    <!-- Social Links -->
+                    <div class="hero-social-container">
+                        <div class="social-links-grid">
+                            <a href="https://github.com/dozernapitupulu" target="_blank" class="social-link-modern" aria-label="GitHub">
                                 <i class="fab fa-github"></i>
                             </a>
-                            <!-- LINKEDIN -->
-                            <a href="https://www.linkedin.com/in/dozernapitupulu/" target="_blank" class="social-icon">
-                                <i class="fab fa-linkedin"></i>
+                            <a href="https://www.linkedin.com/in/dozernapitupulu/" target="_blank" class="social-link-modern" aria-label="LinkedIn">
+                                <i class="fab fa-linkedin-in"></i>
                             </a>
-                            <a href="https://twitter.com/dozernapitupulu" target="_blank" class="social-icon">
-                                <i class="fab fa-twitter"></i>
-                            </a>
-                            <!-- INSTAGRAM -->
-                            <a href="https://www.instagram.com/dozerfrnd/" target="_blank" class="social-icon">
+                            <a href="https://www.instagram.com/dozerfrnd/" target="_blank" class="social-link-modern" aria-label="Instagram">
                                 <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://twitter.com/dozernapitupulu" target="_blank" class="social-link-modern" aria-label="Twitter">
+                                <i class="fab fa-twitter"></i>
                             </a>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6 text-center mt-5 mt-lg-0">
-                    <div class="profile-image-wrapper">
-                        <div class="profile-image-wrapper">
-        <div class="rounded-circle overflow-hidden mx-auto position-relative" style="width: 400px; height: 400px; border: 8px solid rgba(255,255,255,0.1); box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);">
-            <!-- FOTO PROFIL -->
-            <img src="{{ asset('images/profile/dozer.png') }}" 
-                 alt="Dozer Napitu - Full Stack Developer"
-                 class="w-100 h-100 object-fit-cover"
-                 style="object-fit: cover;">
-            <div class="position-absolute" style="bottom: 20px; left: 50%; transform: translateX(-50%); background: rgba(255, 255, 255, 0.95); padding: 12px 30px; border-radius: 30px; backdrop-filter: blur(10px); min-width: 200px;">
-                <span style="color: #1a1a2e; font-weight: 700; font-size: 0.9rem;">
-                    <i class="fas fa-layer-group me-2" style="color: var(--primary-color);"></i>
-                    <span class="role-text">Full-Stack Developer</span>
-                </span>
-            </div>
-        </div>
-                        <div class="floating-badge" style="position: absolute; top: 30px; right: 30px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 15px 25px; border-radius: 20px; box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4); animation: float 3s ease-in-out infinite;">
-                            <div style="color: white; font-weight: 700; font-size: 1.3rem;">
-                                <i class="fas fa-mobile-alt"></i>
+
+                <!-- Profile Image Side -->
+                <div class="col-lg-6 mt-5 mt-lg-0">
+                    <div class="hero-visual-container">
+                        <!-- Main Profile Card -->
+                        <div class="profile-card-modern">
+                            <div class="profile-image-container">
+                                <img src="{{ asset('images/profile/dozer.png') }}" 
+                                     alt="Dozer Napitu - Full Stack Developer"
+                                     class="profile-image-modern">
+                                <div class="profile-image-border"></div>
                             </div>
-                            <div style="color: rgba(255,255,255,0.9); font-size: 0.75rem; font-weight: 600; margin-top: 5px;">Mobile</div>
                         </div>
-                        <div class="floating-badge" style="position: absolute; top: 120px; left: 10px; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); padding: 15px 25px; border-radius: 20px; box-shadow: 0 10px 30px rgba(240, 147, 251, 0.4); animation: float 3s ease-in-out infinite; animation-delay: 0.5s;">
-                            <div style="color: white; font-weight: 700; font-size: 1.3rem;">
+
+                        <!-- Floating Stats Cards -->
+                        <div class="floating-stat-card stat-card-1">
+                            <div class="stat-icon">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <div class="stat-content">
+                                <div class="stat-number">3+</div>
+                                <div class="stat-label">Years</div>
+                            </div>
+                        </div>
+
+                        <div class="floating-stat-card stat-card-2">
+                            <div class="stat-icon">
+                                <i class="fas fa-project-diagram"></i>
+                            </div>
+                            <div class="stat-content">
+                                <div class="stat-number">20+</div>
+                                <div class="stat-label">Projects</div>
+                            </div>
+                        </div>
+
+                        <div class="floating-stat-card stat-card-3">
+                            <div class="stat-icon">
                                 <i class="fas fa-laptop-code"></i>
                             </div>
-                            <div style="color: rgba(255,255,255,0.9); font-size: 0.75rem; font-weight: 600; margin-top: 5px;">Web</div>
+                            <div class="stat-content">
+                                <div class="stat-label-only">Full Stack</div>
+                            </div>
                         </div>
-                        <div class="floating-badge" style="position: absolute; bottom: 60px; right: 40px; background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); padding: 18px 28px; border-radius: 20px; box-shadow: 0 10px 30px rgba(79, 172, 254, 0.4); animation: float 3s ease-in-out infinite; animation-delay: 1s;">
-                            <div style="color: white; font-weight: 700; font-size: 1.5rem;">3+</div>
-                            <div style="color: rgba(255,255,255,0.9); font-size: 0.8rem; font-weight: 600;">Years</div>
-                        </div>
-                        <div class="floating-badge" style="position: absolute; bottom: 140px; left: 30px; background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); padding: 18px 28px; border-radius: 20px; box-shadow: 0 10px 30px rgba(250, 112, 154, 0.4); animation: float 3s ease-in-out infinite; animation-delay: 1.5s;">
-                            <div style="color: white; font-weight: 700; font-size: 1.5rem;">20+</div>
-                            <div style="color: rgba(255,255,255,0.9); font-size: 0.8rem; font-weight: 600;">Projects</div>
-                        </div>
+
+                        <!-- Background Elements -->
+                        <div class="hero-bg-element element-1"></div>
+                        <div class="hero-bg-element element-2"></div>
                     </div>
                 </div>
             </div>
@@ -1070,96 +1422,96 @@
     </section>
 
     <!-- Personal Projects Section -->
-<section id="personal-projects" class="py-5 bg-light">
-    <div class="container">
-        <div class="row mb-5">
-            <div class="col-12 text-center">
-                <h2 class="section-title">Personal Projects</h2>
-                <p class="projects-subtitle">
-                    My side projects and experiments<br>
-                    <strong>Learning • Open Source • Passion Projects</strong>
-                </p>
+    <section id="personal-projects" class="py-5 bg-light">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-12 text-center">
+                    <h2 class="section-title">Personal Projects</h2>
+                    <p class="projects-subtitle">
+                        My side projects and experiments<br>
+                        <strong>Learning • Open Source • Passion Projects</strong>
+                    </p>
+                </div>
             </div>
-        </div>
-        
-        @if($personalProjects->count() > 0)
-            <div class="row">
-                @foreach($personalProjects as $project)
-                <div class="col-lg-4 col-md-6 mb-4 scroll-animate" style="transition-delay: {{ $loop->index * 0.1 }}s">
-                    <div class="project-card card">
-                        @if($project->image)
-                        <div style="overflow: hidden; height: 200px;">
-                            <img src="{{ asset('storage/' . $project->image) }}" 
-                                 alt="{{ $project->title }}" 
-                                 class="project-img w-100">
-                        </div>
-                        @else
-                        <div style="overflow: hidden;">
-                            <div class="project-img" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); display: flex; align-items: center; justify-content: center;">
-                                <div style="text-align: center; color: white; padding: 20px;">
-                                    <i class="fas fa-code fa-4x mb-3" style="opacity: 0.9;"></i>
-                                    <h4 style="font-weight: 700;">{{ strtoupper(substr($project->title, 0, 2)) }}</h4>
-                                </div>
+            
+            @if($personalProjects->count() > 0)
+                <div class="row">
+                    @foreach($personalProjects as $project)
+                    <div class="col-lg-4 col-md-6 mb-4 scroll-animate" style="transition-delay: {{ $loop->index * 0.1 }}s">
+                        <div class="project-card card">
+                            @if($project->image)
+                            <div style="overflow: hidden; height: 200px;">
+                                <img src="{{ asset('storage/' . $project->image) }}" 
+                                     alt="{{ $project->title }}" 
+                                     class="project-img w-100">
                             </div>
-                        </div>
-                        @endif
-                        
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold">{{ $project->title }}</h5>
-                            <p class="card-text text-muted">{{ Str::limit($project->description, 100) }}</p>
-                            
-                            @if($project->technologies)
-                            <div class="mb-3">
-                                @foreach(array_slice($project->technologies, 0, 3) as $tech)
-                                <span class="tech-badge">
-                                    @if($tech == 'Laravel')
-                                        <i class="fab fa-laravel tech-laravel"></i>
-                                    @elseif($tech == 'PHP')
-                                        <i class="fab fa-php tech-php"></i>
-                                    @elseif($tech == 'JavaScript')
-                                        <i class="fab fa-js-square tech-javascript"></i>
-                                    @elseif($tech == 'Flutter')
-                                        <i class="fab fa-flutter tech-flutter"></i>
-                                    @else
-                                        <i class="fas fa-code"></i>
-                                    @endif
-                                    {{ $tech }}
-                                </span>
-                                @endforeach
+                            @else
+                            <div style="overflow: hidden;">
+                                <div class="project-img" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); display: flex; align-items: center; justify-content: center;">
+                                    <div style="text-align: center; color: white; padding: 20px;">
+                                        <i class="fas fa-code fa-4x mb-3" style="opacity: 0.9;"></i>
+                                        <h4 style="font-weight: 700;">{{ strtoupper(substr($project->title, 0, 2)) }}</h4>
+                                    </div>
+                                </div>
                             </div>
                             @endif
                             
-                            <div class="d-flex gap-2">
-                                @if($project->github_url)
-                                <a href="{{ $project->github_url }}" target="_blank" class="btn btn-outline-dark flex-fill">
-                                    <i class="fab fa-github me-2"></i>GitHub
-                                </a>
+                            <div class="card-body">
+                                <h5 class="card-title fw-bold">{{ $project->title }}</h5>
+                                <p class="card-text text-muted">{{ Str::limit($project->description, 100) }}</p>
+                                
+                                @if($project->technologies)
+                                <div class="mb-3">
+                                    @foreach(array_slice($project->technologies, 0, 3) as $tech)
+                                    <span class="tech-badge">
+                                        @if($tech == 'Laravel')
+                                            <i class="fab fa-laravel tech-laravel"></i>
+                                        @elseif($tech == 'PHP')
+                                            <i class="fab fa-php tech-php"></i>
+                                        @elseif($tech == 'JavaScript')
+                                            <i class="fab fa-js-square tech-javascript"></i>
+                                        @elseif($tech == 'Flutter')
+                                            <i class="fab fa-flutter tech-flutter"></i>
+                                        @else
+                                            <i class="fas fa-code"></i>
+                                        @endif
+                                        {{ $tech }}
+                                    </span>
+                                    @endforeach
+                                </div>
                                 @endif
                                 
-                                <a href="{{ route('personal.project.show', $project->slug) }}" class="btn btn-primary flex-fill">
-                                    <i class="fas fa-arrow-right me-2"></i>View Details
-                                </a>
+                                <div class="d-flex gap-2">
+                                    @if($project->github_url)
+                                    <a href="{{ $project->github_url }}" target="_blank" class="btn btn-outline-dark flex-fill">
+                                        <i class="fab fa-github me-2"></i>GitHub
+                                    </a>
+                                    @endif
+                                    
+                                    <a href="{{ route('personal.project.show', $project->slug) }}" class="btn btn-primary flex-fill">
+                                        <i class="fas fa-arrow-right me-2"></i>View Details
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    @endforeach
                 </div>
-                @endforeach
-            </div>
-            
-            <div class="text-center mt-4">
-                <a href="{{ route('personal.projects.all') }}" class="btn btn-outline-primary btn-lg px-5">
-                    <i class="fas fa-code-branch me-2"></i>View All Personal Projects
-                </a>
-            </div>
-        @else
-            <div class="text-center py-5">
-                <i class="fas fa-code-branch fa-4x text-muted mb-3"></i>
-                <h4 class="text-muted">No personal projects available</h4>
-                <p class="text-muted">Check back soon for updates!</p>
-            </div>
-        @endif
-    </div>
-</section>
+                
+                <div class="text-center mt-4">
+                    <a href="{{ route('personal.projects.all') }}" class="btn btn-outline-primary btn-lg px-5">
+                        <i class="fas fa-code-branch me-2"></i>View All Personal Projects
+                    </a>
+                </div>
+            @else
+                <div class="text-center py-5">
+                    <i class="fas fa-code-branch fa-4x text-muted mb-3"></i>
+                    <h4 class="text-muted">No personal projects available</h4>
+                    <p class="text-muted">Check back soon for updates!</p>
+                </div>
+            @endif
+        </div>
+    </section>
 
     <!-- Experience Section -->
     <section id="experience" class="py-5 bg-light">
@@ -1345,36 +1697,29 @@
         });
     });
 
-    // Role text animation
+    // Hero Role Text Animation
     document.addEventListener('DOMContentLoaded', function() {
-        const roleElement = document.querySelector('.role-text');
-        const roles = ['Full-Stack Developer', 'Software Engineer'];
-        let currentRoleIndex = 0;
+        const roles = ['Full Stack Developer', 'Software Engineer', 'Web Developer', 'Mobile Developer'];
+        let currentIndex = 0;
+        const typedElement = document.getElementById('typed-role');
         
         function changeRole() {
-            // Fade out
-            roleElement.style.opacity = '0';
-            roleElement.style.transform = 'translateY(10px)';
+            typedElement.style.opacity = '0';
+            typedElement.style.transform = 'translateY(-10px)';
             
             setTimeout(() => {
-                // Change text
-                currentRoleIndex = (currentRoleIndex + 1) % roles.length;
-                roleElement.textContent = roles[currentRoleIndex];
-                
-                // Fade in
-                roleElement.style.opacity = '1';
-                roleElement.style.transform = 'translateY(0)';
-            }, 500);
+                currentIndex = (currentIndex + 1) % roles.length;
+                typedElement.textContent = roles[currentIndex];
+                typedElement.style.opacity = '1';
+                typedElement.style.transform = 'translateY(0)';
+            }, 300);
         }
         
-        // Start animation after 2 seconds, then every 4 seconds
-        setTimeout(() => {
-            changeRole();
-            setInterval(changeRole, 4000);
-        }, 2000);
+        // Change role every 3 seconds
+        setInterval(changeRole, 3000);
         
-        // Add CSS transition for smooth animation
-        roleElement.style.transition = 'all 0.5s ease-in-out';
+        // Add transition
+        typedElement.style.transition = 'all 0.3s ease';
     });
 
     // Skills Tabs Functionality
