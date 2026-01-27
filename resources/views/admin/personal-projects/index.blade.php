@@ -29,29 +29,33 @@
                 <tr>
                     <td>{{ $project->order }}</td>
                     <td>
-                        @if($project->image)
-                            <img src="{{ asset('storage/' . $project->image) }}" alt="{{ $project->title }}" style="width: 50px; height: 50px; object-fit: cover; border-radius: 5px;">
-                        @else
-                            <div style="width: 50px; height: 50px; background: #f0f0f0; border-radius: 5px; display: flex; align-items: center; justify-content: center;">
-                                <i class="fas fa-image text-muted"></i>
-                            </div>
-                        @endif
-                    </td>
+    @if($project->image)
+        <img src="{{ asset($project->image) }}" 
+             alt="{{ $project->title }}" 
+             style="width: 50px; height: 50px; object-fit: cover; border-radius: 5px;">
+    @else
+        <div style="width: 50px; height: 50px; background: #f0f0f0; border-radius: 5px; display: flex; align-items: center; justify-content: center;">
+            <i class="fas fa-image text-muted"></i>
+        </div>
+    @endif
+</td>
                     <td>
                         <strong>{{ $project->title }}</strong>
                         <br>
                         <small class="text-muted">{{ Str::limit($project->description, 50) }}</small>
                     </td>
-                    <td>
-                        @if($project->technologies)
-                            @foreach(array_slice($project->technologies, 0, 3) as $tech)
-                                <span class="badge bg-secondary mb-1">{{ $tech }}</span>
-                            @endforeach
-                            @if(count($project->technologies) > 3)
-                                <span class="badge bg-info">+{{ count($project->technologies) - 3 }}</span>
-                            @endif
-                        @endif
-                    </td>
+                  <td>
+    @if(!empty($project->technologies) && is_array($project->technologies))
+        @foreach(array_slice($project->technologies, 0, 3) as $tech)
+            <span class="badge bg-secondary mb-1">{{ $tech }}</span>
+        @endforeach
+        @if(count($project->technologies) > 3)
+            <span class="badge bg-info">+{{ count($project->technologies) - 3 }}</span>
+        @endif
+    @else
+        <span class="text-muted">-</span>
+    @endif
+</td>
                     <td>{{ $project->project_date->format('M Y') }}</td>
                     <td>
                         @if($project->featured)

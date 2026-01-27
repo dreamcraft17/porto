@@ -155,11 +155,11 @@
                                 <tr>
                                     <td>{{ $project->title }}</td>
                                     <td>
-                                        @if($project->technologies)
-                                            @foreach(array_slice($project->technologies, 0, 2) as $tech)
-                                                <span class="badge bg-secondary">{{ $tech }}</span>
-                                            @endforeach
-                                        @endif
+                                       @if($project->technologies && is_array($project->technologies))
+    @foreach(array_slice($project->technologies, 0, 2) as $tech)
+        <span class="badge bg-secondary">{{ $tech }}</span>
+    @endforeach
+@endif
                                     </td>
                                     <td>
                                         @if($project->featured)

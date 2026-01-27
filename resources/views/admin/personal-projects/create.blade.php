@@ -114,11 +114,15 @@
                     
                     <div class="mb-3">
                         <label for="image" class="form-label">Project Image</label>
-                        @if(isset($personalProject) && $personalProject->image)
-                            <div class="mb-2">
-                                <img src="{{ asset('storage/' . $personalProject->image) }}" alt="{{ $personalProject->title }}" class="img-fluid rounded" style="max-height: 200px;">
-                            </div>
-                        @endif
+                        
+@if(isset($personalProject) && $personalProject->image)
+    <div class="mb-3">
+        <label>Current Image:</label><br>
+        <img src="{{ asset($personalProject->image) }}" 
+             alt="{{ $personalProject->title }}" 
+             style="max-width: 200px; max-height: 200px; object-fit: cover;">
+    </div>
+@endif
                         <input type="file" class="form-control" id="image" name="image" accept="image/*">
                         <small class="text-muted">Recommended size: 800x450px</small>
                     </div>

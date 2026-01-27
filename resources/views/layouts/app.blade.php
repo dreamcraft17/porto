@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'Dozer Napitu - Full Stack Developer')</title>
+    <title>@yield('title', 'Dozer Napitupulu — Full Stack Developer')</title>
     
     <!-- Meta tags for SEO and professionalism -->
-    <meta name="description" content="Professional portfolio of Dozer Napitu - Full Stack Developer specializing in .NET, Laravel, and Flutter">
+    <meta name="description" content="Professional portfolio of Dozer Napitupulu - Full Stack Developer specializing in .NET, Laravel, and Flutter">
     <meta name="keywords" content="full stack developer, .NET developer, Laravel, Flutter, web development">
-    <meta name="author" content="Dozer Napitu">
+    <meta name="author" content="Dozer Napitupulu">
     
     <!-- Open Graph meta tags for social sharing -->
-    <meta property="og:title" content="Dozer Napitu - Full Stack Developer">
+    <meta property="og:title" content="Dozer Napitupulu — Full Stack Developer">
     <meta property="og:description" content="Professional portfolio showcasing projects and skills in web and mobile development">
     <meta property="og:type" content="website">
     
@@ -28,14 +28,14 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
     
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=Source+Code+Pro:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Syne:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Custom CSS -->
     <style>
         :root {
-            --primary-color: #2563eb;
-            --primary-dark: #1d4ed8;
-            --secondary-color: #7c3aed;
+            --primary-color: #3b82f6;
+            --primary-dark: #2563eb;
+            --secondary-color: #8b5cf6;
             --dark-color: #0f172a;
             --dark-light: #1e293b;
             --light-color: #f8fafc;
@@ -54,7 +54,7 @@
         }
         
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
             color: var(--dark-color);
             line-height: 1.7;
             background-color: var(--light-color);
@@ -62,434 +62,736 @@
         }
         
         h1, h2, h3, h4, h5 {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-            line-height: 1.3;
-        }
-        
-        .mono-font {
-            font-family: 'Source Code Pro', monospace;
-        }
-        
-        /* Navigation */
-        .navbar {
-            backdrop-filter: blur(10px);
-            background-color: rgba(255, 255, 255, 0.95);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-            padding: 1rem 0;
-            transition: var(--transition);
-        }
-        
-        .navbar.scrolled {
-            padding: 0.7rem 0;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-        }
-        
-        .navbar-brand {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Syne', sans-serif;
             font-weight: 700;
-            font-size: 1.8rem;
-            color: var(--dark-color) !important;
+            line-height: 1.2;
         }
+
+        /* ============================================
+           BOLD DISTINCTIVE NAVIGATION
+        ============================================ */
         
-        .navbar-brand span {
-            color: var(--primary-color);
-        }
-        
-        .nav-link {
-            font-weight: 500;
-            color: var(--dark-color) !important;
-            margin: 0 0.3rem;
-            padding: 0.5rem 1rem !important;
-            border-radius: 8px;
-            transition: var(--transition);
-        }
-        
-        .nav-link:hover, .nav-link.active {
-            color: var(--primary-color) !important;
-            background-color: rgba(37, 99, 235, 0.05);
-        }
-        
-        /* Hero Section */
-        .hero-section {
-            background: linear-gradient(135deg, var(--dark-color) 0%, var(--dark-light) 100%);
-            color: white;
-            padding: 160px 0 100px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero-section::before {
-            content: '';
-            position: absolute;
+        .navbar-bold {
+            position: fixed;
             top: 0;
             left: 0;
             right: 0;
-            bottom: 0;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            opacity: 0.3;
+            z-index: 1000;
+            padding: 1.25rem 0;
+            background: rgba(15, 23, 42, 0.98);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(59, 130, 246, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        
-        .hero-title {
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            line-height: 1.1;
+
+        .navbar-bold.scrolled {
+            padding: 1rem 0;
+            background: rgba(15, 23, 42, 1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            border-bottom-color: rgba(59, 130, 246, 0.2);
         }
-        
-        .hero-subtitle {
-            font-size: 1.25rem;
-            color: var(--gray-light);
-            margin-bottom: 2rem;
-            max-width: 600px;
-        }
-        
-        .highlight {
-            color: var(--primary-color);
-            position: relative;
-        }
-        
-        .highlight::after {
-            content: '';
-            position: absolute;
-            bottom: 5px;
-            left: 0;
-            width: 100%;
-            height: 8px;
-            background-color: rgba(37, 99, 235, 0.2);
-            z-index: -1;
-        }
-        
-        /* Section Styling */
-        section {
-            padding: 100px 0;
-        }
-        
-        .section-title {
-            position: relative;
-            padding-bottom: 15px;
-            margin-bottom: 50px;
-            font-size: 2.5rem;
-        }
-        
-        .section-title:after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 70px;
-            height: 5px;
-            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-            border-radius: 3px;
-        }
-        
-        .text-center .section-title:after {
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        
-        .section-subtitle {
-            color: var(--gray-color);
-            font-size: 1.1rem;
-            max-width: 700px;
-            margin-bottom: 3rem;
-        }
-        
-        /* Cards */
-        .card {
-            border: none;
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            transition: var(--transition);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            height: 100%;
-            background-color: white;
-        }
-        
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--box-shadow);
-        }
-        
-        /* Skill Bars */
-        .skill-item {
-            margin-bottom: 1.5rem;
-        }
-        
-        .skill-name {
+
+        .navbar-container {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-        
-        .skill-bar {
-            height: 10px;
-            background-color: var(--gray-light);
-            border-radius: 5px;
-            overflow: hidden;
-        }
-        
-        .skill-level {
-            height: 100%;
-            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-            border-radius: 5px;
-            width: 0;
-            transition: width 1.5s cubic-bezier(0.22, 0.61, 0.36, 1);
-        }
-        
-        /* Project Cards */
-        .project-card {
-            border: none;
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            transition: var(--transition);
-            height: 100%;
-            background-color: white;
-        }
-        
-        .project-img-container {
-            height: 220px;
-            overflow: hidden;
+            align-items: center;
             position: relative;
         }
+
+        /* Brand Logo Options - Bold & Distinctive */
         
-        .project-img {
+        /* Option 1: Geometric Badge Style */
+        .brand-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            position: relative;
+        }
+
+        .brand-icon-badge {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            font-size: 1.25rem;
+            color: white;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .brand-icon-badge::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            transform: rotate(45deg);
+            transition: all 0.6s ease;
+        }
+
+        .brand-badge:hover .brand-icon-badge::before {
+            left: 100%;
+        }
+
+        .brand-icon-badge::after {
+            content: '';
+            position: absolute;
+            top: 4px;
+            right: 4px;
+            width: 6px;
+            height: 6px;
+            background: #10b981;
+            border-radius: 50%;
+            animation: pulse-status 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-status {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.3); }
+        }
+
+        .brand-text-badge {
+            display: flex;
+            flex-direction: column;
+            line-height: 1;
+        }
+
+        .brand-name-badge {
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            font-size: 1.125rem;
+            color: white;
+            letter-spacing: -0.02em;
+        }
+
+        .brand-title-badge {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.7rem;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-top: 2px;
+        }
+
+        /* Option 2: Brutalist/Bold Text */
+        .brand-brutalist {
+            text-decoration: none;
+            position: relative;
+            display: inline-block;
+        }
+
+        .brand-brutalist-text {
+            font-family: 'Syne', sans-serif;
+            font-weight: 900;
+            font-size: 1.5rem;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: -0.03em;
+            position: relative;
+            display: inline-block;
+        }
+
+        .brand-brutalist-text::before {
+            content: attr(data-text);
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            z-index: -1;
+        }
+
+        .brand-brutalist-subtitle {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.65rem;
+            color: #3b82f6;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-top: -4px;
+        }
+
+        /* Option 3: Terminal/Hacker Style */
+        .brand-terminal {
+            font-family: 'IBM Plex Mono', monospace;
+            font-weight: 600;
+            font-size: 1rem;
+            color: #10b981;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(16, 185, 129, 0.05);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            position: relative;
+        }
+
+        .terminal-prompt {
+            color: #3b82f6;
+            font-weight: 700;
+        }
+
+        .terminal-cursor {
+            display: inline-block;
+            width: 8px;
+            height: 18px;
+            background: #10b981;
+            animation: blink 1s step-end infinite;
+        }
+
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+
+        /* Navigation Menu - Bold Style */
+        .nav-menu-bold {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-item-bold {
+            position: relative;
+        }
+
+        .nav-link-bold {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            padding: 0.625rem 1.25rem;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            position: relative;
+            display: block;
+        }
+
+        .nav-link-bold::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 8px;
+            width: 4px;
+            height: 4px;
+            background: #3b82f6;
+            border-radius: 50%;
+            opacity: 0;
+            transform: translateY(-50%) scale(0);
+            transition: all 0.3s ease;
+        }
+
+        .nav-link-bold:hover,
+        .nav-link-bold.active {
+            color: white;
+            background: rgba(59, 130, 246, 0.15);
+        }
+
+        .nav-link-bold.active::before {
+            opacity: 1;
+            transform: translateY(-50%) scale(1);
+        }
+
+        /* CTA Button - Bold Design */
+        .nav-cta-bold {
+            padding: 0.75rem 1.75rem !important;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            color: white !important;
+            border-radius: 10px;
+            font-weight: 700;
+            margin-left: 1rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+        }
+
+        .nav-cta-bold::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
         }
-        
-        .project-card:hover .project-img {
-            transform: scale(1.05);
+
+        .nav-cta-bold:hover::before {
+            left: 100%;
         }
+
+        .nav-cta-bold:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.5);
+        }
+
+        /* Mobile Menu Toggle */
+        .mobile-toggle-bold {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: rgba(59, 130, 246, 0.1);
+            border: 2px solid rgba(59, 130, 246, 0.3);
+            padding: 0.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-toggle-bold:hover {
+            background: rgba(59, 130, 246, 0.2);
+            border-color: rgba(59, 130, 246, 0.5);
+        }
+
+        .toggle-line {
+            width: 24px;
+            height: 3px;
+            background: white;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        /* ============================================
+           BOLD DISTINCTIVE FOOTER
+        ============================================ */
         
-        .project-overlay {
+        .footer-bold {
+            background: linear-gradient(180deg, #0a0f1e 0%, #050810 100%);
+            color: #cbd5e1;
+            padding: 100px 0 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-bold::before {
+            content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
-            bottom: 0;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            display: flex;
-            align-items: flex-end;
-            padding: 1.5rem;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #3b82f6, #8b5cf6, transparent);
         }
-        
-        .project-card:hover .project-overlay {
-            opacity: 1;
-        }
-        
-        .badge-tech {
-            background-color: var(--gray-light);
-            color: var(--dark-color);
-            font-weight: 500;
-            padding: 0.4rem 0.8rem;
-            margin-right: 0.5rem;
-            margin-bottom: 0.5rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-        }
-        
-        /* Timeline */
-        .timeline {
-            position: relative;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        
-        .timeline::after {
+
+        .footer-bold::after {
             content: '';
             position: absolute;
-            width: 4px;
-            background-color: var(--gray-light);
             top: 0;
-            bottom: 0;
             left: 50%;
-            margin-left: -2px;
-            border-radius: 2px;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.03) 0%, transparent 70%);
+            pointer-events: none;
         }
-        
-        .timeline-item {
-            padding: 10px 40px;
+
+        .footer-content-bold {
             position: relative;
-            width: 50%;
-            box-sizing: border-box;
-        }
-        
-        .timeline-item:nth-child(odd) {
-            left: 0;
-        }
-        
-        .timeline-item:nth-child(even) {
-            left: 50%;
-        }
-        
-        .timeline-item::after {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background-color: white;
-            border: 4px solid var(--primary-color);
-            border-radius: 50%;
-            top: 15px;
             z-index: 1;
         }
-        
-        .timeline-item:nth-child(odd)::after {
-            right: -10px;
+
+        /* Footer Brand - Bold Style */
+        .footer-brand-bold {
+            margin-bottom: 3rem;
         }
-        
-        .timeline-item:nth-child(even)::after {
-            left: -10px;
-        }
-        
-        .timeline-content {
-            padding: 20px;
-            background-color: white;
-            border-radius: var(--border-radius);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-        
-        /* Buttons */
-        .btn-primary {
-            background-color: var(--primary-color);
-            border-color: var(--primary-color);
-            padding: 0.75rem 1.5rem;
-            font-weight: 500;
-            border-radius: 8px;
-            transition: var(--transition);
-        }
-        
-        .btn-primary:hover {
-            background-color: var(--primary-dark);
-            border-color: var(--primary-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
-        }
-        
-        .btn-outline-primary {
-            color: var(--primary-color);
-            border-color: var(--primary-color);
-            padding: 0.75rem 1.5rem;
-            font-weight: 500;
-            border-radius: 8px;
-            transition: var(--transition);
-        }
-        
-        .btn-outline-primary:hover {
-            background-color: var(--primary-color);
-            border-color: var(--primary-color);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(37, 99, 235, 0.2);
-        }
-        
-        /* Footer */
-        .footer {
-            background-color: var(--dark-color);
-            color: white;
-            padding: 80px 0 40px;
-        }
-        
-        .footer-title {
-            color: white;
-            margin-bottom: 1.5rem;
-            font-size: 1.3rem;
-        }
-        
-        .footer-links a {
-            color: var(--gray-light);
-            text-decoration: none;
-            transition: color 0.3s ease;
-            display: block;
-            margin-bottom: 0.8rem;
-        }
-        
-        .footer-links a:hover {
-            color: white;
-        }
-        
-        .social-icons a {
+
+        .footer-logo-bold {
             display: inline-flex;
             align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-logo-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
             justify-content: center;
-            width: 44px;
-            height: 44px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            text-align: center;
-            line-height: 44px;
-            margin-right: 12px;
+            font-family: 'Syne', sans-serif;
+            font-weight: 900;
+            font-size: 1.75rem;
             color: white;
-            transition: var(--transition);
+            position: relative;
         }
-        
-        .social-icons a:hover {
-            background-color: var(--primary-color);
-            transform: translateY(-3px);
+
+        .footer-logo-icon::after {
+            content: '';
+            position: absolute;
+            top: 6px;
+            right: 6px;
+            width: 8px;
+            height: 8px;
+            background: #10b981;
+            border-radius: 50%;
+            border: 2px solid #0a0f1e;
         }
-        
-        .copyright {
-            color: var(--gray-color);
-            font-size: 0.9rem;
-            padding-top: 2rem;
-            margin-top: 3rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+
+        .footer-logo-text {
+            display: flex;
+            flex-direction: column;
         }
-        
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .hero-title {
-                font-size: 2.5rem;
-            }
-            
-            section {
-                padding: 70px 0;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-            
-            .timeline::after {
-                left: 31px;
-            }
-            
-            .timeline-item {
-                width: 100%;
-                padding-left: 70px;
-                padding-right: 25px;
-            }
-            
-            .timeline-item:nth-child(even) {
-                left: 0;
-            }
-            
-            .timeline-item::after {
-                left: 21px;
-            }
-            
-            .timeline-item:nth-child(even)::after {
-                left: 21px;
-            }
+
+        .footer-logo-name {
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            font-size: 1.75rem;
+            color: white;
+            line-height: 1;
+            letter-spacing: -0.02em;
         }
-        
-        /* Animation classes */
-        .fade-in {
+
+        .footer-logo-tagline-bold {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.75rem;
+            color: #3b82f6;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-top: 4px;
+        }
+
+        .footer-description-bold {
+            color: #94a3b8;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            max-width: 400px;
+            margin-bottom: 2rem;
+        }
+
+        /* Social Links - Bold Design */
+        .footer-social-bold {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link-bold {
+            width: 52px;
+            height: 52px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(59, 130, 246, 0.08);
+            border: 2px solid rgba(59, 130, 246, 0.2);
+            border-radius: 12px;
+            color: #94a3b8;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.25rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-link-bold::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            transition: left 0.3s ease;
+        }
+
+        .social-link-bold:hover::before {
+            left: 0;
+        }
+
+        .social-link-bold i {
+            position: relative;
+            z-index: 1;
+        }
+
+        .social-link-bold:hover {
+            border-color: #3b82f6;
+            color: white;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(59, 130, 246, 0.3);
+        }
+
+        /* Footer Sections - Bold Typography */
+        .footer-section-bold {
+            margin-bottom: 2rem;
+        }
+
+        .footer-title-bold {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 1.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-title-bold::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 50%;
+            height: 3px;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            border-radius: 2px;
+        }
+
+        .footer-links-bold {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-link-item-bold {
+            margin-bottom: 1rem;
+        }
+
+        .footer-link-bold {
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            position: relative;
+        }
+
+        .footer-link-bold::before {
+            content: '▸';
+            color: #3b82f6;
             opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
+            transform: translateX(-10px);
+            transition: all 0.3s ease;
         }
-        
-        .fade-in.visible {
+
+        .footer-link-bold:hover {
+            color: white;
+            transform: translateX(8px);
+        }
+
+        .footer-link-bold:hover::before {
             opacity: 1;
-            transform: translateY(0);
+            transform: translateX(0);
         }
-        
+
+        /* Newsletter/CTA Box */
+        .footer-cta-box {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1));
+            border: 2px solid rgba(59, 130, 246, 0.2);
+            border-radius: 16px;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-cta-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .cta-box-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-box-title {
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: white;
+            margin-bottom: 0.75rem;
+        }
+
+        .cta-box-text {
+            color: #cbd5e1;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-box-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+        }
+
+        .cta-box-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.5);
+            color: white;
+        }
+
+        /* Footer Bottom - Bold */
+        .footer-bottom-bold {
+            margin-top: 5rem;
+            padding: 2.5rem 0;
+            border-top: 2px solid rgba(59, 130, 246, 0.1);
+            position: relative;
+        }
+
+        .footer-credits {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .footer-copyright-bold {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+
+        .footer-copyright-bold a {
+            color: #3b82f6;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .footer-copyright-bold a:hover {
+            color: #8b5cf6;
+        }
+
+        .footer-tech-stack {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .tech-badge-footer {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(59, 130, 246, 0.08);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 8px;
+            color: #94a3b8;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .tech-badge-footer:hover {
+            background: rgba(59, 130, 246, 0.15);
+            border-color: rgba(59, 130, 246, 0.4);
+            color: #cbd5e1;
+            transform: translateY(-2px);
+        }
+
+        .made-with-love {
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+
+        .love-icon {
+            color: #ef4444;
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            25% { transform: scale(1.2); }
+            50% { transform: scale(1); }
+        }
+
+        /* Responsive */
+        @media (max-width: 991px) {
+            .mobile-toggle-bold {
+                display: flex;
+            }
+
+            .nav-menu-bold {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(15, 23, 42, 0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                padding: 2rem;
+                margin-top: 1rem;
+                border-radius: 16px;
+                border: 2px solid rgba(59, 130, 246, 0.2);
+                box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            }
+
+            .nav-menu-bold.show {
+                display: flex;
+            }
+
+            .nav-cta-bold {
+                margin-left: 0;
+                margin-top: 1rem;
+                text-align: center;
+            }
+
+            .footer-credits {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-tech-stack {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .brand-text-badge,
+            .brand-brutalist-subtitle,
+            .brand-title-badge {
+                display: none;
+            }
+
+            .footer-bold {
+                padding: 60px 0 0;
+            }
+
+            .footer-logo-bold {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
         /* Utility classes */
         .rounded-lg {
             border-radius: var(--border-radius);
@@ -498,111 +800,187 @@
         .shadow-sm {
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
         }
-        
-        .text-gradient {
-            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
     </style>
     
     @yield('styles')
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <!-- Bold Distinctive Navigation -->
+    <nav class="navbar-bold">
         <div class="container">
-            <a class="navbar-brand" href="{{ url('/') }}">
-                <span>Dozer</span> Napitupulu
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="{{ url('/') }}#home">Home</a>
+            <div class="navbar-container">
+                <!-- Brand Logo - Choose one of these bold options -->
+                
+                <!-- Option 1: Geometric Badge Style (Recommended for Bold Look) -->
+                <a href="{{ url('/') }}" class="brand-badge">
+                    <div class="brand-icon-badge">DN</div>
+                    <div class="brand-text-badge">
+                        <div class="brand-name-badge">Dozer Napitupulu</div>
+                        <div class="brand-title-badge">Full Stack Dev</div>
+                    </div>
+                </a>
+                
+                <!-- Option 2: Brutalist/Bold Text Style 
+                <a href="{{ url('/') }}" class="brand-brutalist">
+                    <div class="brand-brutalist-text" data-text="DOZER">DOZER</div>
+                    <div class="brand-brutalist-subtitle">// Full Stack Developer</div>
+                </a>
+                -->
+                
+                <!-- Option 3: Terminal/Hacker Style 
+                <a href="{{ url('/') }}" class="brand-terminal">
+                    <span class="terminal-prompt">$</span>
+                    <span>dozer.napitupulu</span>
+                    <span class="terminal-cursor"></span>
+                </a>
+                -->
+
+                <!-- Mobile Toggle -->
+                <div class="mobile-toggle-bold" onclick="toggleMenu()">
+                    <span class="toggle-line"></span>
+                    <span class="toggle-line"></span>
+                    <span class="toggle-line"></span>
+                </div>
+
+                <!-- Navigation Menu -->
+                <ul class="nav-menu-bold" id="navMenu">
+                    <li class="nav-item-bold">
+                        <a href="{{ url('/') }}#home" class="nav-link-bold active">Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/') }}#about">About</a>
+                    <li class="nav-item-bold">
+                        <a href="{{ url('/') }}#about" class="nav-link-bold">About</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/') }}#certifications">Certifications</a>
+                    <li class="nav-item-bold">
+                        <a href="{{ url('/') }}#projects" class="nav-link-bold">Projects</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/') }}#projects">Projects</a>
+                    <li class="nav-item-bold">
+                        <a href="{{ url('/') }}#experience" class="nav-link-bold">Experience</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/') }}#experience">Experience</a>
+                    <li class="nav-item-bold">
+                        <a href="{{ url('/') }}#certifications" class="nav-link-bold">Certifications</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/projects') }}">Portfolio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/') }}#contact">Contact</a>
-                    </li>
-                    <li class="nav-item ms-2">
-                        <a href="{{ url('/') }}#contact" class="btn btn-primary">Get In Touch</a>
+                    <li class="nav-item-bold">
+                        <a href="{{ url('/') }}#contact" class="nav-link-bold nav-cta-bold">Let's Connect</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <main>
+    <main style="padding-top: 100px;">
         @yield('content')
     </main>
 
-    <!-- Footer -->
-    <footer class="footer">
+    <!-- Bold Distinctive Footer -->
+    <footer class="footer-bold">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-4 mb-5 mb-lg-0">
-                    <h4 class="footer-title">Dozer Napitu</h4>
-                    <p class="text-white-50 mb-4">Full Stack Developer specializing in modern web and mobile technologies, creating efficient and scalable digital solutions.</p>
-                    <div class="social-icons">
-                        <a href="https://github.com/dozernapitupulu" target="_blank" aria-label="GitHub">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="https://www.linkedin.com/in/dozernapitupulu/" target="_blank" aria-label="LinkedIn">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="https://twitter.com/dozernapitupulu" target="_blank" aria-label="Twitter">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="mailto:dozernapitupulu@gmail.com" aria-label="Email">
-                            <i class="fas fa-envelope"></i>
-                        </a>
+            <div class="footer-content-bold">
+                <div class="row">
+                    <!-- Brand & Social -->
+                    <div class="col-lg-4 col-md-6 mb-5">
+                        <div class="footer-brand-bold">
+                            <div class="footer-logo-bold">
+                                <div class="footer-logo-icon">DN</div>
+                                <div class="footer-logo-text">
+                                    <div class="footer-logo-name">Dozer Napitupulu</div>
+                                    <div class="footer-logo-tagline-bold">Full Stack Developer</div>
+                                </div>
+                            </div>
+                            <p class="footer-description-bold">
+                                Crafting scalable digital experiences with modern web and mobile technologies. 
+                                Passionate about clean code and innovative solutions.
+                            </p>
+                            <div class="footer-social-bold">
+                                <a href="https://github.com/dozernapitupulu" target="_blank" class="social-link-bold" aria-label="GitHub">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="https://www.linkedin.com/in/dozernapitupulu/" target="_blank" class="social-link-bold" aria-label="LinkedIn">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a href="https://twitter.com/dozernapitupulu" target="_blank" class="social-link-bold" aria-label="Twitter">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="mailto:dozernapitupulu@gmail.com" class="social-link-bold" aria-label="Email">
+                                    <i class="fas fa-envelope"></i>
+                                </a>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
-                    <h4 class="footer-title">Navigation</h4>
-                    <div class="footer-links">
-                        <a href="{{ url('/') }}#home">Home</a>
-                        <a href="{{ url('/') }}#about">About</a>
-                        <a href="{{ url('/') }}#skills">Skills</a>
-                        <a href="{{ url('/') }}#projects">Projects</a>
+
+                    <!-- Quick Links -->
+                    <div class="col-lg-2 col-md-6 mb-5">
+                        <div class="footer-section-bold">
+                            <h5 class="footer-title-bold">Navigate</h5>
+                            <ul class="footer-links-bold">
+                                <li class="footer-link-item-bold">
+                                    <a href="{{ url('/') }}#home" class="footer-link-bold">Home</a>
+                                </li>
+                                <li class="footer-link-item-bold">
+                                    <a href="{{ url('/') }}#about" class="footer-link-bold">About</a>
+                                </li>
+                                <li class="footer-link-item-bold">
+                                    <a href="{{ url('/') }}#projects" class="footer-link-bold">Projects</a>
+                                </li>
+                                <li class="footer-link-item-bold">
+                                    <a href="{{ url('/') }}#experience" class="footer-link-bold">Experience</a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
-                    <h4 class="footer-title">Resources</h4>
-                    <div class="footer-links">
-                        <a href="{{ url('/') }}#experience">Experience</a>
-                        <a href="{{ url('/projects') }}">Portfolio</a>
-                        <a href="{{ url('/') }}#contact">Contact</a>
+
+                    <!-- Resources -->
+                    <div class="col-lg-2 col-md-6 mb-5">
+                        <div class="footer-section-bold">
+                            <h5 class="footer-title-bold">Resources</h5>
+                            <ul class="footer-links-bold">
+                                <li class="footer-link-item-bold">
+                                    <a href="{{ url('/') }}#certifications" class="footer-link-bold">Certifications</a>
+                                </li>
+                                <li class="footer-link-item-bold">
+                                    <a href="{{ url('/projects') }}" class="footer-link-bold">Portfolio</a>
+                                </li>
+                                <li class="footer-link-item-bold">
+                                    <a href="{{ url('/') }}#contact" class="footer-link-bold">Contact</a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-4">
-                    <h4 class="footer-title">Get In Touch</h4>
-                    <p class="text-white-50 mb-3">Interested in collaborating on a project? Feel free to reach out.</p>
-                    <a href="mailto:dozernapitupulu@gmail.com" class="btn btn-outline-light">dozernapitupulu@gmail.com</a>
+
+                    <!-- CTA Box -->
+                    <div class="col-lg-4 col-md-6 mb-5">
+                        <div class="footer-cta-box">
+                            <div class="cta-box-content">
+                                <h5 class="cta-box-title">Let's Build Something Great</h5>
+                                <p class="cta-box-text">Have a project in mind? Let's turn your ideas into reality.</p>
+                                <a href="{{ url('/') }}#contact" class="cta-box-button">
+                                    <i class="fas fa-paper-plane"></i>
+                                    Start a Project
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-12">
-                    <div class="copyright text-center">
-                        <p class="mb-0">&copy; {{ date('Y') }} Dozer Napitu. All rights reserved. | Built with <i class="fas fa-heart text-danger mx-1"></i> and modern web technologies</p>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom-bold">
+                <div class="footer-credits">
+                    <div class="footer-copyright-bold">
+                        © {{ date('Y') }} <a href="{{ url('/') }}">Dozer Napitupulu</a>. All rights reserved.
+                        <span class="made-with-love d-block d-md-inline ms-md-2 mt-2 mt-md-0">
+                            Built with <span class="love-icon">♥</span> using modern tech
+                        </span>
+                    </div>
+                    <div class="footer-tech-stack">
+                        <span class="tech-badge-footer">
+                            <i class="fab fa-laravel"></i> Laravel
+                        </span>
+                        <span class="tech-badge-footer">
+                            <i class="fab fa-bootstrap"></i> Bootstrap
+                        </span>
+                        <span class="tech-badge-footer">
+                            <i class="fab fa-js"></i> JavaScript
+                        </span>
                     </div>
                 </div>
             </div>
@@ -616,12 +994,51 @@
     <script>
         // Navbar scroll effect
         window.addEventListener('scroll', function() {
-            const navbar = document.querySelector('.navbar');
+            const navbar = document.querySelector('.navbar-bold');
             if (window.scrollY > 50) {
                 navbar.classList.add('scrolled');
             } else {
                 navbar.classList.remove('scrolled');
             }
+        });
+        
+        // Mobile menu toggle
+        function toggleMenu() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('show');
+        }
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const navMenu = document.getElementById('navMenu');
+            const toggler = document.querySelector('.mobile-toggle-bold');
+            
+            if (!navMenu.contains(event.target) && !toggler.contains(event.target)) {
+                navMenu.classList.remove('show');
+            }
+        });
+
+        // Active nav link on scroll
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-link-bold');
+            
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - 150)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current) && current !== '') {
+                    link.classList.add('active');
+                }
+            });
         });
         
         // Smooth scrolling for anchor links
@@ -634,52 +1051,17 @@
                 
                 const targetElement = document.querySelector(targetId);
                 if(targetElement) {
-                    // Update active nav link
-                    document.querySelectorAll('.nav-link').forEach(link => {
-                        link.classList.remove('active');
-                    });
-                    this.classList.add('active');
+                    // Close mobile menu if open
+                    document.getElementById('navMenu').classList.remove('show');
                     
                     // Scroll to target
                     window.scrollTo({
-                        top: targetElement.offsetTop - 80,
+                        top: targetElement.offsetTop - 100,
                         behavior: 'smooth'
                     });
                 }
             });
         });
-        
-        // Animate skill bars on scroll
-        function animateSkillBars() {
-            const skillBars = document.querySelectorAll('.skill-level');
-            skillBars.forEach(bar => {
-                const width = bar.getAttribute('data-width');
-                bar.style.width = width + '%';
-            });
-        }
-        
-        // Scroll animation for elements
-        function animateOnScroll() {
-            const elements = document.querySelectorAll('.fade-in');
-            elements.forEach(element => {
-                const elementTop = element.getBoundingClientRect().top;
-                const windowHeight = window.innerHeight;
-                
-                if (elementTop < windowHeight - 100) {
-                    element.classList.add('visible');
-                }
-            });
-        }
-        
-        // Initialize animations
-        window.addEventListener('scroll', animateOnScroll);
-        window.addEventListener('load', () => {
-            animateOnScroll();
-            animateSkillBars();
-        });
-        
-        // Set current year in footer
-        document.getElementById('current-year').textContent = new Date().getFullYear();
     </script>
     
     @yield('scripts')

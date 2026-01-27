@@ -9,7 +9,6 @@ use Illuminate\Support\Str;
 
 class PersonalProjectController extends Controller
 {
-
     
     public function index()
     {
@@ -39,9 +38,16 @@ class PersonalProjectController extends Controller
 
         $validated['slug'] = Str::slug($validated['title']);
         
+        // UPLOAD GAMBAR KE PUBLIC FOLDER
         if ($request->hasFile('image')) {
-            $path = $request->file('image')->store('personal-projects', 'public');
-            $validated['image'] = $path;
+            $file = $request->file('image');
+            $fileName = time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
+            
+            // Simpan ke public/personal-projects
+            $file->move(public_path('personal-projects'), $fileName);
+            
+            // Simpan path relatif ke database
+            $validated['image'] = 'personal-projects/' . $fileName;
         }
 
         if (isset($validated['technologies'])) {
@@ -75,13 +81,19 @@ class PersonalProjectController extends Controller
 
         $validated['slug'] = Str::slug($validated['title']);
         
+        // UPDATE GAMBAR DI PUBLIC FOLDER
         if ($request->hasFile('image')) {
-            if ($personalProject->image) {
-                \Storage::disk('public')->delete($personalProject->image);
+            // Hapus gambar lama jika ada
+            if ($personalProject->image && file_exists(public_path($personalProject->image))) {
+                unlink(public_path($personalProject->image));
             }
             
-            $path = $request->file('image')->store('personal-projects', 'public');
-            $validated['image'] = $path;
+            $file = $request->file('image');
+            $fileName = time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
+            
+            // Simpan gambar baru
+            $file->move(public_path('personal-projects'), $fileName);
+            $validated['image'] = 'personal-projects/' . $fileName;
         }
 
         if (isset($validated['technologies'])) {
@@ -94,9 +106,10 @@ class PersonalProjectController extends Controller
     }
 
     public function destroy(PersonalProject $personalProject)
-    {
-        if ($personalProject->image) {
-            \Storage::disk('public')->delete($personalProject->image);
+    {   
+        // Hapus gambar fisik dari public folder
+        if ($personalProject->image && file_exists(public_path($personalProject->image))) {
+            unlink(public_path($personalProject->image));
         }
         
         $personalProject->delete();
