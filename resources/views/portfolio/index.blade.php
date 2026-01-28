@@ -1694,97 +1694,76 @@
         </div>
     </section>
 
-    <!-- Personal Projects Section -->
-    <section id="personal-projects" class="py-5 bg-light">
-        <div class="container">
-            <div class="row mb-5">
-                <div class="col-12 text-center">
-                    <h2 class="section-title">Personal Projects</h2>
-                    <p class="projects-subtitle">
-                        My side projects and experiments<br>
-                        <strong>Learning • Open Source • Passion Projects</strong>
-                    </p>
-                </div>
-            </div>
-            
-            @if($personalProjects->count() > 0)
-                <div class="row">
-                    @foreach($personalProjects as $project)
-                    <div class="col-lg-4 col-md-6 mb-4 scroll-animate" style="transition-delay: {{ $loop->index * 0.1 }}s">
-                        <div class="project-card card">
-                            @if($project->image)
-                            <div style="overflow: hidden; height: 200px;">
-                                <img src="{{ asset('storage/' . $project->image) }}" 
-                                     alt="{{ $project->title }}" 
-                                     class="project-img w-100">
-                            </div>
-                            @else
-                            <div style="overflow: hidden;">
-                                <div class="project-img" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); display: flex; align-items: center; justify-content: center;">
-                                    <div style="text-align: center; color: white; padding: 20px;">
-                                        <i class="fas fa-code fa-4x mb-3" style="opacity: 0.9;"></i>
-                                        <h4 style="font-weight: 700;">{{ strtoupper(substr($project->title, 0, 2)) }}</h4>
-                                    </div>
-                                </div>
-                            </div>
-                            @endif
-                            
-                            <div class="card-body">
-                                <h5 class="card-title fw-bold">{{ $project->title }}</h5>
-                                <p class="card-text text-muted">{{ Str::limit($project->description, 100) }}</p>
-                                
-                                @if($project->technologies)
-                                <div class="mb-3">
-                                    @foreach(array_slice($project->technologies, 0, 3) as $tech)
-                                    <span class="tech-badge">
-                                        @if($tech == 'Laravel')
-                                            <i class="fab fa-laravel tech-laravel"></i>
-                                        @elseif($tech == 'PHP')
-                                            <i class="fab fa-php tech-php"></i>
-                                        @elseif($tech == 'JavaScript')
-                                            <i class="fab fa-js-square tech-javascript"></i>
-                                        @elseif($tech == 'Flutter')
-                                            <i class="fab fa-flutter tech-flutter"></i>
-                                        @else
-                                            <i class="fas fa-code"></i>
-                                        @endif
-                                        {{ $tech }}
-                                    </span>
-                                    @endforeach
-                                </div>
-                                @endif
-                                
-                                <div class="d-flex gap-2">
-                                    @if($project->github_url)
-                                    <a href="{{ $project->github_url }}" target="_blank" class="btn btn-outline-dark flex-fill">
-                                        <i class="fab fa-github me-2"></i>GitHub
-                                    </a>
-                                    @endif
-                                    
-                                    <a href="{{ route('personal.project.show', $project->slug) }}" class="btn btn-primary flex-fill">
-                                        <i class="fas fa-arrow-right me-2"></i>View Details
-                                    </a>
-                                </div>
-                            </div>
+
+<section id="personal-projects" class="section-modern" style="background: #f8fafc;">
+    <div class="container">
+        <div class="section-header-modern scroll-animate">
+            <div class="section-eyebrow-modern">Personal Work</div>
+            <h2 class="section-title-modern">Personal Projects</h2>
+            <p class="section-description-modern">
+                Side projects and experiments showcasing my passion for learning and innovation
+            </p>
+        </div>
+
+        <div class="row g-4 mt-2">
+            @foreach($personalProjects as $project)
+            <div class="col-lg-4 col-md-6 scroll-animate" style="transition-delay: {{ $loop->index * 0.1 }}s">
+                <div class="project-card-modern">
+                    <div class="project-image-modern">
+                        <img src="{{ asset($project->image) }}" alt="{{ $project->title }}">
+                        <div class="project-overlay-modern">
+                            <a href="{{ route('personal.project.show', $project->slug) }}" class="btn-project-view-modern">
+                                <i class="fas fa-eye"></i>
+                                View Details
+                            </a>
                         </div>
                     </div>
-                    @endforeach
+                    <div class="project-content-modern">
+                        <h3 class="project-title-modern">{{ $project->title }}</h3>
+                        <p class="project-description-modern">{{ Str::limit($project->description, 100) }}</p>
+                        
+                        <div class="project-tech-modern">
+                            @if(!empty($project->technologies) && is_array($project->technologies))
+                                @foreach(array_slice($project->technologies, 0, 3) as $tech)
+                                <span class="tech-tag-modern">{{ $tech }}</span>
+                                @endforeach
+                                @if(count($project->technologies) > 3)
+                                <span class="tech-tag-modern">+{{ count($project->technologies) - 3 }}</span>
+                                @endif
+                            @endif
+                        </div>
+
+                        <div class="project-links-modern">
+                            @if($project->github_url)
+                            <a href="{{ $project->github_url }}" target="_blank" class="project-link-modern" title="View on GitHub">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            @endif
+                            @if($project->live_url)
+                            <a href="{{ $project->live_url }}" target="_blank" class="project-link-modern" title="View Live Demo">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                            @endif
+                            <a href="{{ route('personal.project.show', $project->slug) }}" class="project-link-modern" title="View Details">
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                
-                <div class="text-center mt-4">
-                    <a href="{{ route('personal.projects.all') }}" class="btn btn-outline-primary btn-lg px-5">
-                        <i class="fas fa-code-branch me-2"></i>View All Personal Projects
-                    </a>
-                </div>
-            @else
-                <div class="text-center py-5">
-                    <i class="fas fa-code-branch fa-4x text-muted mb-3"></i>
-                    <h4 class="text-muted">No personal projects available</h4>
-                    <p class="text-muted">Check back soon for updates!</p>
-                </div>
-            @endif
+            </div>
+            @endforeach
         </div>
-    </section>
+
+        @if($personalProjects->count() >= 3)
+        <div class="text-center mt-5 scroll-animate">
+            <a href="{{ route('personal.projects.all') }}" class="btn-view-all-modern">
+                <span>View All Personal Projects</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+        @endif
+    </div>
+</section>
 
     <!-- Experience Section -->
     <section id="experience" class="section-modern section-modern-light">
@@ -1940,26 +1919,60 @@
     });
 
     // Form submission
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        const btn = this.querySelector('button[type="submit"]');
-        const originalText = btn.innerHTML;
-        
-        btn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Sending...';
-        btn.disabled = true;
-        
-        setTimeout(() => {
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const btn = this.querySelector('button[type="submit"]');
+    const originalText = btn.innerHTML;
+    
+    // Ambil data form
+    const formData = new FormData();
+    formData.append('name', document.getElementById('name').value);
+    formData.append('email', document.getElementById('email').value);
+    formData.append('subject', document.getElementById('subject').value);
+    formData.append('message', document.getElementById('message').value);
+    formData.append('_token', document.querySelector('input[name="_token"]').value);
+    
+    // Tampilkan loading
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Sending...';
+    btn.disabled = true;
+    
+    // Kirim data ke server
+    fetch('/contact', {
+        method: 'POST',
+        body: formData,
+        headers: {
+            'X-Requested-With': 'XMLHttpRequest'
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            // Success
             btn.innerHTML = '<i class="fas fa-check me-2"></i>Message Sent!';
             
             setTimeout(() => {
-                alert('Thank you! Your message has been sent successfully.');
-                this.reset();
+                alert(data.message);
+                document.getElementById('contactForm').reset();
                 btn.innerHTML = originalText;
                 btn.disabled = false;
             }, 1500);
-        }, 1500);
+        } else {
+            // Error
+            throw new Error(data.message || 'Failed to send message');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        btn.innerHTML = '<i class="fas fa-times me-2"></i>Failed!';
+        
+        setTimeout(() => {
+            alert('Sorry, there was an error sending your message. Please try again or contact directly via email.');
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+        }, 2000);
     });
+});
 
     // Smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {

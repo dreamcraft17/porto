@@ -62,7 +62,7 @@
                         <textarea class="form-control" id="content" name="content" rows="10">{{ old('content', $personalProject->content ?? '') }}</textarea>
                     </div>
                     
-                    <div class="row">
+                    <!-- <div class="row">
                         <div class="col-md-6 mb-3">
                             <label for="github_url" class="form-label">GitHub URL</label>
                             <input type="url" class="form-control" id="github_url" name="github_url" value="{{ old('github_url', $personalProject->github_url ?? '') }}" placeholder="https://github.com/username/project">
@@ -72,7 +72,23 @@
                             <label for="live_url" class="form-label">Live Demo URL</label>
                             <input type="url" class="form-control" id="live_url" name="live_url" value="{{ old('live_url', $personalProject->live_url ?? '') }}" placeholder="https://project-demo.com">
                         </div>
-                    </div>
+                    </div> -->
+                    <div class="row">
+    <div class="col-md-6 mb-3">
+        <label for="github_url" class="form-label">GitHub / Source Code</label>
+        <input type="text" class="form-control" id="github_url" name="github_url"
+               value="{{ old('github_url', $personalProject->github_url ?? '') }}"
+               placeholder="Source code will be given when requested">
+    </div>
+    
+    <div class="col-md-6 mb-3">
+        <label for="live_url" class="form-label">Live Demo</label>
+        <input type="text" class="form-control" id="live_url" name="live_url"
+               value="{{ old('live_url', $personalProject->live_url ?? '') }}"
+               placeholder="Demo not available yet">
+    </div>
+</div>
+
                     
                     <div class="mb-3">
                         <label for="technologies" class="form-label">Technologies</label>
