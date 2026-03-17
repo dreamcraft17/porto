@@ -12,61 +12,61 @@
     <div class="row mb-4">
         <div class="col-md-2 col-sm-6 mb-3">
             <div class="stat-card">
-                <div class="stat-icon" style="background: linear-gradient(135deg, #667eea, #764ba2);">
+                <div class="stat-icon" style="background: var(--accent-gradient);">
                     <i class="fas fa-briefcase"></i>
                 </div>
                 <h3 class="fw-bold mb-2">{{ $stats['projects'] }}</h3>
-                <p class="text-muted mb-0">Projects</p>
+                <p class="mb-0">Projects</p>
             </div>
         </div>
         
         <div class="col-md-2 col-sm-6 mb-3">
             <div class="stat-card">
-                <div class="stat-icon" style="background: linear-gradient(135deg, #f093fb, #f5576c);">
+                <div class="stat-icon" style="background: linear-gradient(135deg, var(--neon-purple), var(--neon-pink));">
                     <i class="fas fa-code"></i>
                 </div>
                 <h3 class="fw-bold mb-2">{{ $stats['personal_projects'] }}</h3>
-                <p class="text-muted mb-0">Personal Projects</p>
+                <p class="mb-0">Personal Projects</p>
             </div>
         </div>
         
         <div class="col-md-2 col-sm-6 mb-3">
             <div class="stat-card">
-                <div class="stat-icon" style="background: linear-gradient(135deg, #4facfe, #00f2fe);">
+                <div class="stat-icon" style="background: linear-gradient(135deg, var(--neon-cyan), var(--primary-color));">
                     <i class="fas fa-history"></i>
                 </div>
                 <h3 class="fw-bold mb-2">{{ $stats['experiences'] }}</h3>
-                <p class="text-muted mb-0">Experiences</p>
+                <p class="mb-0">Experiences</p>
             </div>
         </div>
         
         <div class="col-md-2 col-sm-6 mb-3">
             <div class="stat-card">
-                <div class="stat-icon" style="background: linear-gradient(135deg, #43e97b, #38f9d7);">
+                <div class="stat-icon" style="background: linear-gradient(135deg, var(--success-color), #00ff88);">
                     <i class="fas fa-tools"></i>
                 </div>
                 <h3 class="fw-bold mb-2">{{ $stats['skills'] }}</h3>
-                <p class="text-muted mb-0">Skills</p>
+                <p class="mb-0">Skills</p>
             </div>
         </div>
         
         <div class="col-md-2 col-sm-6 mb-3">
             <div class="stat-card">
-                <div class="stat-icon" style="background: linear-gradient(135deg, #fa709a, #fee140);">
+                <div class="stat-icon" style="background: linear-gradient(135deg, var(--neon-pink), #ffff00);">
                     <i class="fas fa-graduation-cap"></i>
                 </div>
                 <h3 class="fw-bold mb-2">{{ $stats['education'] }}</h3>
-                <p class="text-muted mb-0">Education</p>
+                <p class="mb-0">Education</p>
             </div>
         </div>
         
         <div class="col-md-2 col-sm-6 mb-3">
             <div class="stat-card">
-                <div class="stat-icon" style="background: linear-gradient(135deg, #a18cd1, #fbc2eb);">
+                <div class="stat-icon" style="background: linear-gradient(135deg, var(--neon-purple), #ff69b4);">
                     <i class="fas fa-award"></i>
                 </div>
                 <h3 class="fw-bold mb-2">{{ $stats['certifications'] }}</h3>
-                <p class="text-muted mb-0">Certifications</p>
+                <p class="mb-0">Certifications</p>
             </div>
         </div>
     </div>
@@ -75,11 +75,11 @@
     <div class="row">
         <div class="col-md-6 mb-4">
             <div class="table-responsive">
-                <div class="card border-0 shadow-sm">
-                    <div class="card-header bg-white border-bottom-0 py-3">
+                <div class="card border-0">
+                    <div class="card-header py-3">
                         <h5 class="mb-0">
                             <i class="fas fa-briefcase me-2"></i>Recent Projects
-                            <a href="{{ route('admin.projects.create') }}" class="btn btn-sm btn-primary float-end">
+                            <a href="{{ route('admin.projects.create') }}" class="btn btn-sm float-end">
                                 <i class="fas fa-plus me-1"></i> Add New
                             </a>
                         </h5>
@@ -108,7 +108,7 @@
                                     </td>
                                     <td>
                                         <div class="btn-group btn-group-sm">
-                                            <a href="{{ route('admin.projects.edit', $project) }}" class="btn btn-outline-primary">
+                                            <a href="{{ route('admin.projects.edit', $project) }}" class="btn" style="border: 1px solid var(--neon-cyan); color: var(--neon-cyan);">
                                                 <i class="fas fa-edit"></i>
                                             </a>
                                             <form action="{{ route('admin.projects.destroy', $project) }}" method="POST" class="d-inline">
@@ -131,11 +131,11 @@
         
         <div class="col-md-6 mb-4">
             <div class="table-responsive">
-                <div class="card border-0 shadow-sm">
-                    <div class="card-header bg-white border-bottom-0 py-3">
+                <div class="card border-0">
+                    <div class="card-header py-3">
                         <h5 class="mb-0">
                             <i class="fas fa-code me-2"></i>Recent Personal Projects
-                            <a href="{{ route('admin.personal-projects.create') }}" class="btn btn-sm btn-primary float-end">
+                            <a href="{{ route('admin.personal-projects.create') }}" class="btn btn-sm float-end">
                                 <i class="fas fa-plus me-1"></i> Add New
                             </a>
                         </h5>

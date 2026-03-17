@@ -28,20 +28,30 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
     
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Syne:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Custom CSS -->
     <style>
         :root {
-            --primary-color: #3b82f6;
-            --primary-dark: #2563eb;
-            --secondary-color: #8b5cf6;
-            --dark-color: #0f172a;
-            --dark-light: #1e293b;
-            --light-color: #f8fafc;
-            --gray-color: #64748b;
+            --neon-cyan: #00ffff;
+            --neon-purple: #a855f7;
+            --neon-pink: #ec4899;
+            --dark-bg: #0a0a0f;
+            --dark-surface: #1a1a2e;
+            --dark-card: #16213e;
+            --text-primary: #ffffff;
+            --text-secondary: #94a3b8;
+            --accent-gradient: linear-gradient(135deg, #00ffff, #a855f7, #ec4899);
+            --border-glow: rgba(0, 255, 255, 0.3);
+            --primary-color: #00ffff;
+            --primary-dark: #00cccc;
+            --secondary-color: #a855f7;
+            --dark-color: #0a0a0f;
+            --dark-light: #1a1a2e;
+            --light-color: #ffffff;
+            --gray-color: #94a3b8;
             --gray-light: #e2e8f0;
-            --success-color: #10b981;
+            --success-color: #00ff00;
             --border-radius: 12px;
             --box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
             --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -54,15 +64,15 @@
         }
         
         body {
-            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            color: var(--dark-color);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-primary);
             line-height: 1.7;
-            background-color: var(--light-color);
+            background-color: var(--dark-bg);
             overflow-x: hidden;
         }
         
         h1, h2, h3, h4, h5 {
-            font-family: 'Syne', sans-serif;
+            font-family: 'Space Grotesk', sans-serif;
             font-weight: 700;
             line-height: 1.2;
         }
@@ -77,18 +87,18 @@
             left: 0;
             right: 0;
             z-index: 1000;
-            padding: 1.25rem 0;
-            background: rgba(15, 23, 42, 0.98);
+            padding: 1.5rem 2rem;
+            background: rgba(10, 10, 15, 0.8);
             backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(59, 130, 246, 0.1);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border-bottom: 1px solid var(--border-glow);
+            transition: all 0.3s ease;
         }
 
         .navbar-bold.scrolled {
-            padding: 1rem 0;
-            background: rgba(15, 23, 42, 1);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-            border-bottom-color: rgba(59, 130, 246, 0.2);
+            padding: 1rem 2rem;
+            background: rgba(10, 10, 15, 0.95);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            border-bottom-color: var(--border-glow);
         }
 
         .navbar-container {
@@ -112,12 +122,12 @@
         .brand-icon-badge {
             width: 48px;
             height: 48px;
-            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            background: var(--accent-gradient);
             border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-family: 'Syne', sans-serif;
+            font-family: 'Space Grotesk', sans-serif;
             font-weight: 800;
             font-size: 1.25rem;
             color: white;
@@ -149,7 +159,7 @@
             right: 4px;
             width: 6px;
             height: 6px;
-            background: #10b981;
+            background: var(--success-color);
             border-radius: 50%;
             animation: pulse-status 2s ease-in-out infinite;
         }
@@ -166,7 +176,7 @@
         }
 
         .brand-name-badge {
-            font-family: 'Syne', sans-serif;
+            font-family: 'Space Grotesk', sans-serif;
             font-weight: 700;
             font-size: 1.125rem;
             color: white;
@@ -174,9 +184,9 @@
         }
 
         .brand-title-badge {
-            font-family: 'IBM Plex Mono', monospace;
+            font-family: 'JetBrains Mono', monospace;
             font-size: 0.7rem;
-            color: #94a3b8;
+            color: var(--text-secondary);
             text-transform: uppercase;
             letter-spacing: 0.1em;
             margin-top: 2px;
@@ -190,7 +200,7 @@
         }
 
         .brand-brutalist-text {
-            font-family: 'Syne', sans-serif;
+            font-family: 'Space Grotesk', sans-serif;
             font-weight: 900;
             font-size: 1.5rem;
             color: white;
@@ -205,7 +215,7 @@
             position: absolute;
             top: 3px;
             left: 3px;
-            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            background: var(--accent-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -213,9 +223,9 @@
         }
 
         .brand-brutalist-subtitle {
-            font-family: 'IBM Plex Mono', monospace;
+            font-family: 'JetBrains Mono', monospace;
             font-size: 0.65rem;
-            color: #3b82f6;
+            color: var(--neon-cyan);
             text-transform: uppercase;
             letter-spacing: 0.2em;
             margin-top: -4px;
@@ -223,23 +233,23 @@
 
         /* Option 3: Terminal/Hacker Style */
         .brand-terminal {
-            font-family: 'IBM Plex Mono', monospace;
+            font-family: 'JetBrains Mono', monospace;
             font-weight: 600;
             font-size: 1rem;
-            color: #10b981;
+            color: var(--success-color);
             text-decoration: none;
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            background: rgba(16, 185, 129, 0.05);
+            background: rgba(0, 255, 0, 0.05);
             padding: 0.5rem 1rem;
             border-radius: 8px;
-            border: 1px solid rgba(16, 185, 129, 0.2);
+            border: 1px solid rgba(0, 255, 0, 0.2);
             position: relative;
         }
 
         .terminal-prompt {
-            color: #3b82f6;
+            color: var(--neon-cyan);
             font-weight: 700;
         }
 
@@ -247,7 +257,7 @@
             display: inline-block;
             width: 8px;
             height: 18px;
-            background: #10b981;
+            background: var(--success-color);
             animation: blink 1s step-end infinite;
         }
 
@@ -270,10 +280,10 @@
         }
 
         .nav-link-bold {
-            font-family: 'Outfit', sans-serif;
+            font-family: 'Inter', sans-serif;
             font-weight: 600;
             font-size: 0.95rem;
-            color: rgba(255, 255, 255, 0.7);
+            color: var(--text-secondary);
             text-decoration: none;
             padding: 0.625rem 1.25rem;
             border-radius: 10px;
@@ -289,7 +299,7 @@
             left: 8px;
             width: 4px;
             height: 4px;
-            background: #3b82f6;
+            background: var(--neon-cyan);
             border-radius: 50%;
             opacity: 0;
             transform: translateY(-50%) scale(0);
@@ -298,8 +308,8 @@
 
         .nav-link-bold:hover,
         .nav-link-bold.active {
-            color: white;
-            background: rgba(59, 130, 246, 0.15);
+            color: var(--text-primary);
+            background: rgba(0, 255, 255, 0.15);
         }
 
         .nav-link-bold.active::before {
@@ -310,14 +320,14 @@
         /* CTA Button - Bold Design */
         .nav-cta-bold {
             padding: 0.75rem 1.75rem !important;
-            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            background: var(--accent-gradient);
             color: white !important;
             border-radius: 10px;
             font-weight: 700;
             margin-left: 1rem;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+            box-shadow: 0 4px 15px rgba(0, 255, 255, 0.4);
         }
 
         .nav-cta-bold::before {
@@ -337,7 +347,7 @@
 
         .nav-cta-bold:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.5);
+            box-shadow: 0 6px 20px rgba(0, 255, 255, 0.5);
         }
 
         /* Mobile Menu Toggle */
@@ -345,8 +355,8 @@
             display: none;
             flex-direction: column;
             gap: 5px;
-            background: rgba(59, 130, 246, 0.1);
-            border: 2px solid rgba(59, 130, 246, 0.3);
+            background: rgba(0, 255, 255, 0.1);
+            border: 2px solid rgba(0, 255, 255, 0.3);
             padding: 0.5rem;
             border-radius: 8px;
             cursor: pointer;
@@ -354,8 +364,8 @@
         }
 
         .mobile-toggle-bold:hover {
-            background: rgba(59, 130, 246, 0.2);
-            border-color: rgba(59, 130, 246, 0.5);
+            background: rgba(0, 255, 255, 0.2);
+            border-color: rgba(0, 255, 255, 0.5);
         }
 
         .toggle-line {
@@ -371,8 +381,8 @@
         ============================================ */
         
         .footer-bold {
-            background: linear-gradient(180deg, #0a0f1e 0%, #050810 100%);
-            color: #cbd5e1;
+            background: linear-gradient(180deg, var(--dark-surface) 0%, var(--dark-bg) 100%);
+            color: var(--text-secondary);
             padding: 100px 0 0;
             position: relative;
             overflow: hidden;
@@ -385,7 +395,7 @@
             left: 0;
             right: 0;
             height: 2px;
-            background: linear-gradient(90deg, transparent, #3b82f6, #8b5cf6, transparent);
+            background: linear-gradient(90deg, transparent, var(--neon-cyan), var(--neon-purple), transparent);
         }
 
         .footer-bold::after {
@@ -396,7 +406,7 @@
             transform: translateX(-50%);
             width: 600px;
             height: 600px;
-            background: radial-gradient(circle, rgba(59, 130, 246, 0.03) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(0, 255, 255, 0.03) 0%, transparent 70%);
             pointer-events: none;
         }
 
@@ -420,12 +430,12 @@
         .footer-logo-icon {
             width: 60px;
             height: 60px;
-            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            background: var(--accent-gradient);
             border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-family: 'Syne', sans-serif;
+            font-family: 'Space Grotesk', sans-serif;
             font-weight: 900;
             font-size: 1.75rem;
             color: white;
@@ -439,7 +449,7 @@
             right: 6px;
             width: 8px;
             height: 8px;
-            background: #10b981;
+            background: var(--success-color);
             border-radius: 50%;
             border: 2px solid #0a0f1e;
         }
@@ -450,7 +460,7 @@
         }
 
         .footer-logo-name {
-            font-family: 'Syne', sans-serif;
+            font-family: 'Space Grotesk', sans-serif;
             font-weight: 800;
             font-size: 1.75rem;
             color: white;
@@ -459,9 +469,9 @@
         }
 
         .footer-logo-tagline-bold {
-            font-family: 'IBM Plex Mono', monospace;
+            font-family: 'JetBrains Mono', monospace;
             font-size: 0.75rem;
-            color: #3b82f6;
+            color: var(--neon-cyan);
             text-transform: uppercase;
             letter-spacing: 0.15em;
             margin-top: 4px;
@@ -505,7 +515,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            background: var(--accent-gradient);
             transition: left 0.3s ease;
         }
 
@@ -519,10 +529,10 @@
         }
 
         .social-link-bold:hover {
-            border-color: #3b82f6;
+            border-color: var(--neon-cyan);
             color: white;
             transform: translateY(-4px);
-            box-shadow: 0 8px 24px rgba(59, 130, 246, 0.3);
+            box-shadow: 0 8px 24px rgba(0, 255, 255, 0.3);
         }
 
         /* Footer Sections - Bold Typography */
@@ -531,7 +541,7 @@
         }
 
         .footer-title-bold {
-            font-family: 'Syne', sans-serif;
+            font-family: 'Space Grotesk', sans-serif;
             font-size: 1.25rem;
             font-weight: 800;
             color: white;
@@ -577,7 +587,7 @@
 
         .footer-link-bold::before {
             content: '▸';
-            color: #3b82f6;
+            color: var(--neon-cyan);
             opacity: 0;
             transform: translateX(-10px);
             transition: all 0.3s ease;
@@ -625,7 +635,7 @@
         }
 
         .cta-box-title {
-            font-family: 'Syne', sans-serif;
+            font-family: 'Space Grotesk', sans-serif;
             font-weight: 800;
             font-size: 1.5rem;
             color: white;
@@ -642,18 +652,18 @@
             align-items: center;
             gap: 0.75rem;
             padding: 1rem 2rem;
-            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            background: var(--accent-gradient);
             color: white;
             text-decoration: none;
             border-radius: 10px;
             font-weight: 700;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+            box-shadow: 0 4px 15px rgba(0, 255, 255, 0.4);
         }
 
         .cta-box-button:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.5);
+            box-shadow: 0 8px 25px rgba(0, 255, 255, 0.5);
             color: white;
         }
 
@@ -661,7 +671,7 @@
         .footer-bottom-bold {
             margin-top: 5rem;
             padding: 2.5rem 0;
-            border-top: 2px solid rgba(59, 130, 246, 0.1);
+            border-top: 2px solid rgba(0, 255, 255, 0.1);
             position: relative;
         }
 
@@ -674,20 +684,20 @@
         }
 
         .footer-copyright-bold {
-            font-family: 'IBM Plex Mono', monospace;
+            font-family: 'JetBrains Mono', monospace;
             font-size: 0.9rem;
             color: #64748b;
         }
 
         .footer-copyright-bold a {
-            color: #3b82f6;
+            color: var(--neon-cyan);
             text-decoration: none;
             font-weight: 600;
             transition: color 0.3s ease;
         }
 
         .footer-copyright-bold a:hover {
-            color: #8b5cf6;
+            color: var(--neon-purple);
         }
 
         .footer-tech-stack {

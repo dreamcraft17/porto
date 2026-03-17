@@ -29,9 +29,9 @@ class ExperienceController extends Controller
             'description' => 'required|string',
             'start_date' => 'required|date',
             'end_date' => 'nullable|date|after:start_date',
-            'current' => 'boolean',
             'order' => 'nullable|integer',
         ]);
+        $validated['current'] = $request->boolean('current');
 
         Experience::create($validated);
 
@@ -51,9 +51,9 @@ class ExperienceController extends Controller
             'description' => 'required|string',
             'start_date' => 'required|date',
             'end_date' => 'nullable|date|after:start_date',
-            'current' => 'boolean',
             'order' => 'nullable|integer',
         ]);
+        $validated['current'] = $request->boolean('current');
 
         $experience->update($validated);
 

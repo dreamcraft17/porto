@@ -12,10 +12,23 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
     <!-- Custom Admin CSS -->
     <style>
         :root {
-            --primary-color: #3a86ff;
+            --neon-cyan: #00ffff;
+            --neon-purple: #a855f7;
+            --neon-pink: #ec4899;
+            --dark-bg: #0a0a0f;
+            --dark-surface: #1a1a2e;
+            --dark-card: #16213e;
+            --text-primary: #ffffff;
+            --text-secondary: #94a3b8;
+            --accent-gradient: linear-gradient(135deg, #00ffff, #a855f7, #ec4899);
+            --border-glow: rgba(0, 255, 255, 0.3);
+            --primary-color: #00ffff;
             --sidebar-width: 250px;
         }
         
@@ -26,16 +39,17 @@
         }
         
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f5f7fb;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--dark-bg);
             min-height: 100vh;
             overflow-x: hidden;
+            color: var(--text-primary);
         }
         
         .sidebar {
             width: var(--sidebar-width);
-            background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
-            color: white;
+            background: linear-gradient(180deg, var(--dark-surface) 0%, var(--dark-card) 100%);
+            color: var(--text-primary);
             position: fixed;
             height: 100vh;
             top: 0;
@@ -45,23 +59,42 @@
             display: flex;
             flex-direction: column;
             overflow-y: auto;
+            border-right: 1px solid var(--border-glow);
         }
         
         .sidebar .nav-link {
-            color: rgba(255, 255, 255, 0.8);
+            color: var(--text-secondary);
             padding: 12px 20px;
             border-left: 3px solid transparent;
             transition: all 0.3s;
             margin-bottom: 5px;
             text-decoration: none;
             display: block;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .sidebar .nav-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .sidebar .nav-link:hover::before {
+            left: 100%;
         }
         
         .sidebar .nav-link:hover,
         .sidebar .nav-link.active {
-            color: white;
-            background: rgba(255, 255, 255, 0.1);
-            border-left-color: var(--primary-color);
+            color: var(--text-primary);
+            background: rgba(0, 255, 255, 0.1);
+            border-left-color: var(--neon-cyan);
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
         }
         
         .sidebar .nav-link i {
@@ -74,32 +107,53 @@
             padding: 20px;
             transition: all 0.3s;
             min-height: 100vh;
+            background: var(--dark-bg);
         }
         
         .navbar-top {
-            background: white;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            background: var(--dark-surface);
+            box-shadow: 0 2px 10px rgba(0, 255, 255, 0.1);
             padding: 15px 20px;
             position: sticky;
             top: 0;
             z-index: 999;
             margin-left: var(--sidebar-width);
             transition: all 0.3s;
+            border-bottom: 1px solid var(--border-glow);
         }
         
         .stat-card {
-            background: white;
-            border-radius: 10px;
+            background: var(--dark-surface);
+            border-radius: 12px;
             padding: 20px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s;
-            border: 1px solid #e9ecef;
+            box-shadow: 0 4px 20px rgba(0, 255, 255, 0.1);
+            transition: all 0.3s;
+            border: 1px solid var(--border-glow);
             height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, var(--neon-cyan), transparent, var(--neon-purple), transparent);
+            animation: rotate 15s linear infinite;
+            opacity: 0.05;
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
         
         .stat-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 6px 12px rgba(0, 255, 255, 0.2);
         }
         
         .stat-icon {
@@ -115,40 +169,90 @@
         }
         
         .table-responsive {
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            background: var(--dark-surface);
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 255, 255, 0.1);
             overflow: hidden;
+            border: 1px solid var(--border-glow);
         }
         
         .btn-primary {
-            background-color: var(--primary-color);
-            border-color: var(--primary-color);
+            background: var(--accent-gradient);
+            border: none;
+            color: white;
             transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .btn-primary:hover::before {
+            left: 100%;
         }
         
         .btn-primary:hover {
-            background-color: #2a75ff;
-            border-color: #2a75ff;
             transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 255, 255, 0.4);
+        }
+        
+        .form-control {
+            background: var(--dark-surface);
+            border: 1px solid var(--border-glow);
+            color: var(--text-primary);
         }
         
         .form-control:focus {
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 0.2rem rgba(58, 134, 255, 0.25);
+            border-color: var(--neon-cyan);
+            box-shadow: 0 0 0 0.2rem rgba(0, 255, 255, 0.25);
+            background: var(--dark-surface);
+            color: var(--text-primary);
         }
         
         .alert {
-            border-radius: 10px;
-            border: none;
+            border-radius: 12px;
+            border: 1px solid var(--border-glow);
+            background: var(--dark-surface);
+            color: var(--text-primary);
         }
         
         .sidebar-header {
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid var(--border-glow);
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .sidebar-header h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin: 0;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         
         .sidebar-footer {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid var(--border-glow);
+            padding: 20px;
+            text-align: center;
+            margin-top: auto;
+        }
+        
+        .sidebar-footer p {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            margin: 0;
         }
         
         /* Mobile styles */
@@ -161,7 +265,7 @@
             
             .sidebar.active {
                 transform: translateX(0);
-                box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+                box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
             }
             
             .main-content,
@@ -218,8 +322,18 @@
         .table th {
             border-top: none;
             font-weight: 600;
-            color: #495057;
-            background-color: #f8f9fa;
+            color: var(--text-primary);
+            background-color: var(--dark-card);
+            border-bottom: 1px solid var(--border-glow);
+        }
+        
+        .table td {
+            border-bottom: 1px solid rgba(0, 255, 255, 0.1);
+            color: var(--text-secondary);
+        }
+        
+        .table tbody tr:hover {
+            background: rgba(0, 255, 255, 0.05);
         }
         
         .table td {
@@ -228,10 +342,11 @@
         
         /* Form container */
         .form-container {
-            background: white;
-            border-radius: 10px;
+            background: var(--dark-surface);
+            border-radius: 12px;
             padding: 30px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 20px rgba(0, 255, 255, 0.1);
+            border: 1px solid var(--border-glow);
         }
         
         /* Loading overlay */
@@ -241,7 +356,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(255, 255, 255, 0.8);
+            background: rgba(10, 10, 15, 0.9);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -252,8 +367,8 @@
         .loading-spinner {
             width: 50px;
             height: 50px;
-            border: 5px solid #f3f3f3;
-            border-top: 5px solid var(--primary-color);
+            border: 5px solid var(--dark-card);
+            border-top: 5px solid var(--neon-cyan);
             border-radius: 50%;
             animation: spin 1s linear infinite;
         }
@@ -284,10 +399,10 @@
     <!-- Sidebar -->
     <nav class="sidebar" id="sidebar">
         <div class="sidebar-header p-4">
-            <h4 class="fw-bold mb-0">
+            <h3 class="mb-0">
                 <i class="fas fa-terminal me-2"></i>Portfolio Admin
-            </h4>
-            <p class="text-muted small mb-0">Dashboard Management</p>
+            </h3>
+            <p class="small mb-0">Dashboard Management</p>
         </div>
         
         <ul class="nav flex-column flex-grow-1">
@@ -341,7 +456,7 @@
                 </div>
                 <div class="flex-grow-1 ms-3">
                     <h6 class="mb-0">{{ Auth::user()->name ?? 'Admin' }}</h6>
-                    <small class="text-muted">Administrator</small>
+                    <small>Administrator</small>
                 </div>
             </div>
             
@@ -363,9 +478,9 @@
                 </button>
             </div>
             <div class="d-flex align-items-center">
-                <span class="me-3 text-muted d-none d-md-block">Welcome, {{ Auth::user()->name ?? 'Admin' }}</span>
+                <span class="me-3 d-none d-md-block">Welcome, {{ Auth::user()->name ?? 'Admin' }}</span>
                 <div class="dropdown">
-                    <button class="btn btn-link text-dark dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    <button class="btn btn-link dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fas fa-user-circle fa-2x"></i>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
