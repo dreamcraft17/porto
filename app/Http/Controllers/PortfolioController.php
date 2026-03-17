@@ -7,7 +7,7 @@ use App\Models\Experience;
 use App\Models\Skill;
 use App\Models\Education;
 use App\Models\Certification;
-use App\Models\PersonalProject; // Tambah ini
+use App\Models\PersonalProject;
 use Illuminate\Http\Request;
 
 class PortfolioController extends Controller
