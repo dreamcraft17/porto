@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\DashboardController;
@@ -16,8 +17,11 @@ use App\Http\Controllers\Admin\CertificationController;
 |--------------------------------------------------------------------------
 */
 
-// Redirect /admin to /admin/login
+// Redirect /admin: kalau sudah login → dashboard, kalau belum → login
 Route::get('/', function () {
+    if (Auth::check()) {
+        return redirect()->route('admin.dashboard');
+    }
     return redirect()->route('admin.login');
 });
 

@@ -11,8 +11,10 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        // Redirect tamu (belum login) ke halaman login admin, bukan route('login') yang default
+        // Tamu akses route auth → ke login admin
         $middleware->redirectGuestsTo(fn () => route('admin.login'));
+        // User sudah login akses halaman guest (login/register) → ke dashboard admin, jangan ke homepage
+        $middleware->redirectUsersTo(fn () => route('admin.dashboard'));
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //
