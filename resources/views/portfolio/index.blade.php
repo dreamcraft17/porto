@@ -1,2116 +1,1403 @@
 @extends('layouts.app')
 
-@section('title', 'Portfolio - Home')
+@section('title', 'Dozer Napitupulu - Fullstack Engineer')
 
 @section('styles')
 <style>
     :root {
-        --neon-cyan: #00ffff;
-        --neon-purple: #a855f7;
-        --neon-pink: #ec4899;
-        --dark-bg: #0a0a0f;
-        --dark-surface: #1a1a2e;
-        --dark-card: #16213e;
-        --text-primary: #ffffff;
-        --text-secondary: #94a3b8;
-        --accent-gradient: linear-gradient(135deg, #00ffff, #a855f7, #ec4899);
-        --border-glow: rgba(0, 255, 255, 0.3);
-        --success-color: #00ff00;
-    }
-    
-    /* ============================================
-       BASE & ANIMATIONS
-    ============================================ */
-    
-    @keyframes fadeInUp {
-        from {
-            opacity: 0;
-            transform: translateY(30px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    @keyframes float {
-        0%, 100% { transform: translateY(0px); }
-        50% { transform: translateY(-15px); }
-    }
-
-    @keyframes slideInLeft {
-        from {
-            opacity: 0;
-            transform: translateX(-50px);
-        }
-        to {
-            opacity: 1;
-            transform: translateX(0);
-        }
-    }
-
-    @keyframes slideInRight {
-        from {
-            opacity: 0;
-            transform: translateX(50px);
-        }
-        to {
-            opacity: 1;
-            transform: translateX(0);
-        }
-    }
-
-    .fade-in-up {
-        animation: fadeInUp 0.8s ease-out;
-    }
-
-    /* ============================================
-       HERO SECTION - PROFESSIONAL DESIGN
-    ============================================ */
-    
-    .hero-section {
-        position: relative;
-        overflow: hidden;
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        background: var(--dark-bg);
-    }
-
-    .hero-section::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: 
-            radial-gradient(circle at 20% 30%, rgba(0, 255, 255, 0.08) 0%, transparent 50%),
-            radial-gradient(circle at 80% 70%, rgba(168, 85, 247, 0.08) 0%, transparent 50%);
-        pointer-events: none;
-    }
-
-    /* Status Badge */
-    .status-badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        padding: 8px 20px;
-        background: rgba(0, 255, 0, 0.1);
-        border: 1px solid rgba(0, 255, 0, 0.3);
-        border-radius: 50px;
-        font-size: 0.85rem;
-        font-weight: 500;
-        color: var(--success-color);
-        letter-spacing: 0.02em;
-    }
-
-    .status-dot {
-        width: 8px;
-        height: 8px;
-        background: var(--success-color);
-        border-radius: 50%;
-        animation: pulse-dot 2s ease-in-out infinite;
-    }
-
-    @keyframes pulse-dot {
-        0%, 100% { 
-            opacity: 1;
-            transform: scale(1);
-        }
-        50% { 
-            opacity: 0.5;
-            transform: scale(1.1);
-        }
-    }
-
-    .hero-main-title {
-        font-size: clamp(2.5rem, 6vw, 5rem);
-        font-weight: 700;
-        color: var(--text-primary);
-        line-height: 1.1;
-        letter-spacing: -0.02em;
-        margin-bottom: 1.5rem;
-        background: var(--accent-gradient);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-    }
-
-    .hero-role-container {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-    }
-
-    .hero-role-label {
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 1.5rem;
-        color: var(--neon-cyan);
-        font-weight: 500;
-    }
-
-    .hero-role-text {
-        font-size: clamp(1.5rem, 3vw, 2.5rem);
-        font-weight: 600;
-        color: var(--text-secondary);
-        margin: 0;
-        line-height: 1.2;
-    }
-
-    #typed-role {
-        background: var(--accent-gradient);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-    }
-
-    .hero-description {
-        font-size: 1.125rem;
-        line-height: 1.8;
-        color: var(--text-secondary);
-        max-width: 600px;
-    }
-
-    .tech-stack-container {
-        margin-top: 2rem;
-    }
-
-    .tech-stack-label {
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 0.75rem;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        color: var(--text-secondary);
-        margin-bottom: 1rem;
-        font-weight: 500;
-    }
-
-    .tech-pills {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.75rem;
-    }
-
-    .tech-pill {
-        padding: 8px 16px;
-        background: rgba(0, 255, 255, 0.1);
-        border: 1px solid var(--border-glow);
-        border-radius: 8px;
-        font-size: 0.875rem;
-        font-weight: 500;
-        color: var(--text-primary);
-        transition: all 0.3s ease;
-        backdrop-filter: blur(10px);
-    }
-
-    .tech-pill:hover {
-        background: rgba(0, 255, 255, 0.2);
-        border-color: var(--neon-cyan);
-        color: var(--text-primary);
-        transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(0, 255, 255, 0.3);
-    }
-
-    .hero-cta-container {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 1rem;
-    }
-
-    .btn-hero-primary {
-        padding: 14px 32px;
-        background: var(--accent-gradient);
-        color: white;
-        border: none;
-        border-radius: 10px;
-        font-weight: 600;
-        font-size: 1rem;
-        text-decoration: none;
-        display: inline-flex;
-        align-items: center;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 15px rgba(0, 255, 255, 0.4);
-        position: relative;
-        overflow: hidden;
-    }
-    
-    .btn-hero-primary::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-        transition: left 0.5s ease;
-    }
-    
-    .btn-hero-primary:hover::before {
-        left: 100%;
-    }
-
-    .btn-hero-primary:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 8px 25px rgba(0, 255, 255, 0.5);
-        color: white;
-    }
-
-    .btn-hero-secondary {
-        padding: 14px 32px;
-        background: transparent;
-        color: var(--text-primary);
-        border: 2px solid var(--border-glow);
-        border-radius: 10px;
-        font-weight: 600;
-        font-size: 1rem;
-        text-decoration: none;
-        display: inline-flex;
-        align-items: center;
-        transition: all 0.3s ease;
-    }
-
-    .btn-hero-secondary:hover {
-        background: rgba(0, 255, 255, 0.1);
-        border-color: var(--neon-cyan);
-        color: var(--text-primary);
-        transform: translateY(-3px);
-        box-shadow: 0 4px 15px rgba(0, 255, 255, 0.3);
-    }
-
-    .hero-social-container {
-        margin-top: 2rem;
-    }
-
-    .social-links-grid {
-        display: flex;
-        gap: 1rem;
-    }
-
-    .social-link-modern {
-        width: 44px;
-        height: 44px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: rgba(0, 255, 255, 0.1);
-        border: 1px solid var(--border-glow);
-        border-radius: 10px;
-        color: var(--text-secondary);
-        text-decoration: none;
-        transition: all 0.3s ease;
-        font-size: 1.1rem;
-    }
-
-    .social-link-modern:hover {
-        background: var(--accent-gradient);
-        border-color: var(--neon-cyan);
-        color: white;
-        transform: translateY(-3px);
-        box-shadow: 0 8px 20px rgba(0, 255, 255, 0.4);
-    }
-
-    .hero-visual-container {
-        position: relative;
-        width: 100%;
-        max-width: 500px;
-        margin: 0 auto;
-        height: 600px;
-    }
-
-    .profile-card-modern {
-        position: relative;
-        z-index: 2;
-        width: 100%;
-        max-width: 400px;
-        margin: 0 auto;
-    }
-
-    .profile-image-container {
-        position: relative;
-        width: 400px;
-        height: 400px;
-        margin: 0 auto;
-    }
-
-    .profile-image-modern {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        border-radius: 20px;
-        position: relative;
-        z-index: 1;
-    }
-
-    .profile-image-border {
-        position: absolute;
-        top: -8px;
-        left: -8px;
-        right: -8px;
-        bottom: -8px;
-        border: 2px solid var(--border-glow);
-        border-radius: 24px;
-        z-index: 0;
-    }
-
-    .profile-image-border::before {
-        content: '';
-        position: absolute;
-        top: -20px;
-        left: -20px;
-        right: -20px;
-        bottom: -20px;
-        background: var(--accent-gradient);
-        border-radius: 30px;
-        filter: blur(30px);
-        z-index: -1;
-        opacity: 0.1;
-    }
-
-    .floating-stat-card {
-        position: absolute;
-        background: var(--dark-surface);
-        backdrop-filter: blur(20px);
-        border: 1px solid var(--border-glow);
-        border-radius: 16px;
-        padding: 1.25rem;
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        box-shadow: 0 10px 30px rgba(0, 255, 255, 0.2);
-        transition: all 0.3s ease;
-        z-index: 3;
-    }
-
-    .floating-stat-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 15px 40px rgba(0, 255, 255, 0.3);
-        border-color: var(--neon-cyan);
-    }
-
-    .stat-card-1 {
-        top: 50px;
-        right: -20px;
-        animation: float 6s ease-in-out infinite;
-    }
-
-    .stat-card-2 {
-        top: 200px;
-        left: -40px;
-        animation: float 6s ease-in-out infinite;
-        animation-delay: 1s;
-    }
-
-    .stat-card-3 {
-        bottom: 80px;
-        right: -30px;
-        animation: float 6s ease-in-out infinite;
-        animation-delay: 2s;
-    }
-
-    .stat-icon {
-        width: 44px;
-        height: 44px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: var(--accent-gradient);
-        border-radius: 12px;
-        color: var(--text-primary);
-        font-size: 1.25rem;
-    }
-
-    .stat-content {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .stat-number {
-        font-size: 1.5rem;
-        font-weight: 700;
-        color: var(--text-primary);
-        line-height: 1;
-        margin-bottom: 4px;
-    }
-
-    .stat-label {
-        font-size: 0.75rem;
-        color: var(--text-secondary);
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        font-weight: 600;
-    }
-
-    .stat-label-only {
-        font-size: 0.875rem;
-        color: var(--text-primary);
-        font-weight: 600;
-    }
-
-    .hero-bg-element {
-        position: absolute;
-        border-radius: 50%;
-        filter: blur(80px);
-        opacity: 0.3;
-        z-index: 0;
-    }
-
-    .element-1 {
-        width: 300px;
-        height: 300px;
-        background: var(--accent-gradient);
-        top: -100px;
-        right: -50px;
-        animation: pulse-bg 8s ease-in-out infinite;
-    }
-
-    .element-2 {
-        width: 250px;
-        height: 250px;
-        background: linear-gradient(135deg, var(--neon-purple), var(--neon-pink));
-        bottom: -50px;
-        left: -80px;
-        animation: pulse-bg 10s ease-in-out infinite;
-        animation-delay: 2s;
-    }
-
-    @keyframes pulse-bg {
-        0%, 100% { 
-            opacity: 0.2;
-            transform: scale(1);
-        }
-        50% { 
-            opacity: 0.4;
-            transform: scale(1.1);
-        }
-    }
-
-    /* ============================================
-       PROFESSIONAL SECTION STYLES
-    ============================================ */
-
-    /* Base Section Styling */
-    .section-modern {
-        padding: 120px 0;
-        position: relative;
-    }
-
-    .section-modern-light {
-        background: var(--dark-surface);
-    }
-
-    .section-modern-dark {
-        background: var(--dark-bg);
-        color: var(--text-primary);
-    }
-
-    /* Section Headers */
-    .section-header-modern {
-        text-align: center;
-        margin-bottom: 5rem;
-    }
-
-    .section-eyebrow-modern {
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 0.875rem;
-        text-transform: uppercase;
-        letter-spacing: 0.15em;
-        color: var(--neon-cyan);
-        margin-bottom: 1rem;
-        font-weight: 500;
-    }
-
-    .section-title-modern {
-        font-size: clamp(2rem, 5vw, 3.5rem);
-        font-weight: 700;
-        margin-bottom: 1.5rem;
-        line-height: 1.2;
-        letter-spacing: -0.02em;
-        color: var(--text-primary);
-        background: var(--accent-gradient);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-    }
-
-    .section-description-modern {
-        font-size: 1.125rem;
-        line-height: 1.8;
-        color: var(--text-secondary);
-        max-width: 700px;
-        margin: 0 auto;
-    }
-
-    .section-modern-dark .section-description-modern {
-        color: var(--text-secondary);
-    }
-
-    /* Stats Cards - Modern Design */
-    .stats-grid-modern {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 2rem;
-        margin-bottom: 5rem;
-    }
-
-    .stat-card-modern {
-        background: var(--dark-surface);
-        border-radius: 20px;
-        padding: 2.5rem 2rem;
-        text-align: center;
-        transition: all 0.3s ease;
-        border: 2px solid var(--border-glow);
-        position: relative;
-        overflow: hidden;
-    }
-
-    .stat-card-modern::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 4px;
-        background: var(--accent-gradient);
-        opacity: 0;
-        transition: opacity 0.3s ease;
-    }
-
-    .stat-card-modern:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 20px 40px rgba(0, 255, 255, 0.2);
-        border-color: var(--neon-cyan);
-    }
-
-    .stat-card-modern:hover::before {
-        opacity: 1;
-    }
-
-    .stat-card-modern .stat-number {
-        font-size: 3rem;
-        font-weight: 800;
-        background: var(--accent-gradient);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        line-height: 1;
-        margin-bottom: 0.5rem;
-    }
-
-    .stat-card-modern .stat-label {
-        font-size: 1rem;
-        color: var(--text-secondary);
-        font-weight: 600;
-    }
-
-    /* Content Grid - Two Column Layout */
-    .content-grid-modern {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 4rem;
-        align-items: start;
-    }
-
-    .content-block-modern {
-        font-size: 1.125rem;
-        line-height: 1.8;
-        color: var(--text-secondary);
-    }
-
-    .content-block-modern strong {
-        color: var(--text-primary);
-    }
-
-    .feature-list-modern {
-        list-style: none;
-        padding: 0;
-        display: grid;
-        gap: 1rem;
-    }
-
-    .feature-item-modern {
-        display: flex;
-        align-items: start;
-        gap: 1rem;
-        padding: 1rem;
-        background: var(--dark-surface);
-        border-radius: 12px;
-        transition: all 0.3s ease;
-        border-left: 3px solid transparent;
-        border: 1px solid var(--border-glow);
-    }
-
-    .feature-item-modern:hover {
-        background: rgba(0, 255, 255, 0.05);
-        border-left-color: var(--neon-cyan);
-        transform: translateX(5px);
-        box-shadow: 0 4px 15px rgba(0, 255, 255, 0.2);
-    }
-
-    .feature-icon-modern {
-        width: 24px;
-        height: 24px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: var(--neon-cyan);
-        font-size: 1.25rem;
-        flex-shrink: 0;
-    }
-
-    /* Skills Section - Modern Tabs */
-    .skills-container-modern {
-        background: var(--dark-surface);
-        border-radius: 24px;
-        padding: 3rem;
-        box-shadow: 0 10px 40px rgba(0, 255, 255, 0.1);
-        border: 1px solid var(--border-glow);
-    }
-
-    .skills-tabs-modern {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.75rem;
-        margin-bottom: 3rem;
-        padding-bottom: 2rem;
-        border-bottom: 2px solid var(--border-glow);
-    }
-
-    .skill-tab-modern {
-        padding: 12px 24px;
-        background: rgba(0, 255, 255, 0.05);
-        border: 2px solid transparent;
-        border-radius: 12px;
-        font-size: 0.95rem;
-        font-weight: 600;
-        color: var(--text-secondary);
-        cursor: pointer;
-        transition: all 0.3s ease;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-    }
-
-    .skill-tab-modern:hover {
-        background: rgba(0, 255, 255, 0.1);
-        color: var(--text-primary);
-    }
-
-    .skill-tab-modern.active {
-        background: var(--accent-gradient);
-        color: white;
-        border-color: var(--neon-cyan);
-        box-shadow: 0 4px 12px rgba(0, 255, 255, 0.3);
-    }
-
-    .skills-content-modern {
+        --page-bg: #f5f7f9;
+        --surface: #ffffff;
+        --ink: #172033;
+        --muted: #687386;
+        --line: #dce3ea;
+        --accent: #0f766e;
+        --accent-2: #24527a;
+        --navy: #10243e;
+        --soft: #eef5f4;
+    }
+
+    body {
+        background: var(--page-bg);
+        color: var(--ink);
+    }
+
+    .navbar-bold,
+    .footer-bold {
         display: none;
     }
 
-    .skills-content-modern.active {
-        display: block;
-        animation: fadeInUp 0.5s ease;
+    main {
+        padding-top: 0 !important;
     }
 
-    .skill-category-modern {
-        margin-bottom: 2.5rem;
-    }
-
-    .skill-category-modern:last-child {
-        margin-bottom: 0;
-    }
-
-    .skill-category-title-modern {
-        font-size: 1.25rem;
-        font-weight: 700;
-        color: var(--text-primary);
-        margin-bottom: 1.5rem;
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-    }
-
-    .skill-category-title-modern i {
-        color: var(--neon-cyan);
-    }
-
-    .skills-grid-modern {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.75rem;
-    }
-
-    .skill-badge-modern {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        padding: 10px 18px;
-        background: rgba(0, 255, 255, 0.08);
-        border: 2px solid var(--border-glow);
-        border-radius: 10px;
-        font-size: 0.95rem;
-        font-weight: 600;
-        color: var(--text-primary);
-        transition: all 0.3s ease;
-    }
-
-    .skill-badge-modern:hover {
-        background: var(--accent-gradient);
-        color: white;
-        transform: translateY(-3px);
-        box-shadow: 0 8px 20px rgba(0, 255, 255, 0.3);
-    }
-
-    .skill-badge-modern i {
-        font-size: 1.1rem;
-    }
-
-    /* Projects Grid - Modern Cards */
-    .projects-grid-modern {
+    .portfolio-shell {
+        min-height: 100vh;
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-        gap: 2rem;
+        grid-template-columns: 300px minmax(0, 1fr);
     }
 
-    .project-card-modern {
-        background: var(--dark-surface);
-        border-radius: 20px;
-        overflow: hidden;
-        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        border: 2px solid var(--border-glow);
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-    }
-
-    .project-card-modern:hover {
-        transform: translateY(-12px);
-        box-shadow: 0 25px 50px rgba(0, 255, 255, 0.2);
-        border-color: var(--neon-cyan);
-    }
-
-    .project-image-modern {
-        height: 220px;
-        background: var(--accent-gradient);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-        overflow: hidden;
-    }
-
-    .project-image-modern::after {
-        content: '';
-        position: absolute;
+    .site-rail {
+        position: sticky;
         top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: linear-gradient(to bottom, transparent, rgba(0, 255, 255, 0.3));
-    }
-
-    .project-icon-modern {
-        color: white;
-        font-size: 4rem;
-        opacity: 0.9;
-        z-index: 1;
-        transition: transform 0.3s ease;
-    }
-
-    .project-card-modern:hover .project-icon-modern {
-        transform: scale(1.1);
-    }
-
-    .project-content-modern {
-        padding: 2rem;
-        flex: 1;
+        height: 100vh;
+        padding: 34px 30px;
+        background: var(--navy);
+        color: #e8eef5;
         display: flex;
         flex-direction: column;
+        border-right: 1px solid rgba(255, 255, 255, 0.08);
     }
 
-    .project-title-modern {
-        font-size: 1.375rem;
-        font-weight: 700;
-        color: var(--text-primary);
-        margin-bottom: 1rem;
-        line-height: 1.3;
-    }
-
-    .project-description-modern {
-        color: var(--text-secondary);
-        line-height: 1.7;
-        margin-bottom: 1.5rem;
-        flex: 1;
-    }
-
-    .project-tech-modern {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-        margin-bottom: 1.5rem;
-    }
-
-    .tech-tag-modern {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        padding: 6px 12px;
-        background: rgba(0, 255, 255, 0.05);
+    .rail-mark {
+        width: 46px;
+        height: 46px;
+        display: grid;
+        place-items: center;
+        border: 1px solid rgba(255, 255, 255, 0.18);
         border-radius: 8px;
-        font-size: 0.85rem;
-        font-weight: 500;
-        color: var(--text-primary);
-        transition: all 0.3s ease;
+        font-weight: 800;
+        margin-bottom: 18px;
     }
 
-    .tech-tag-modern:hover {
-        background: var(--accent-gradient);
-        color: white;
-        transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(0, 255, 255, 0.3);
+    .rail-name {
+        font-size: 1.3rem;
+        line-height: 1.15;
+        font-weight: 800;
+        margin-bottom: 8px;
     }
 
-    .project-link-modern {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
-        padding: 12px 24px;
-        background: var(--accent-gradient);
-        color: white;
-        border-radius: 10px;
-        font-weight: 600;
-        text-decoration: none;
-        transition: all 0.3s ease;
-        position: relative;
-        overflow: hidden;
-    }
-    
-    .project-link-modern::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-        transition: left 0.5s ease;
-    }
-    
-    .project-link-modern:hover::before {
-        left: 100%;
+    .rail-role {
+        color: #9fb1c6;
+        font-size: 0.9rem;
     }
 
-    .project-link-modern:hover {
-        background: var(--accent-gradient);
-        transform: translateY(-2px);
-        box-shadow: 0 8px 20px rgba(0, 255, 255, 0.4);
-        color: white;
-    }
-
-    /* Timeline - Modern Design */
-    .timeline-modern {
-        position: relative;
-        max-width: 900px;
-        margin: 0 auto;
-    }
-
-    .timeline-item-modern {
-        position: relative;
-        padding-left: 3rem;
-        padding-bottom: 3rem;
-        border-left: 2px solid var(--border-glow);
-    }
-
-    .timeline-item-modern:last-child {
-        border-left-color: transparent;
-        padding-bottom: 0;
-    }
-
-    .timeline-item-modern::before {
-        content: '';
-        position: absolute;
-        left: -9px;
-        top: 0;
-        width: 16px;
-        height: 16px;
-        border-radius: 50%;
-        background: var(--dark-surface);
-        border: 4px solid var(--neon-cyan);
-        box-shadow: 0 0 0 4px rgba(0, 255, 255, 0.1);
-        transition: all 0.3s ease;
-    }
-
-    .timeline-item-modern:hover::before {
-        transform: scale(1.3);
-        box-shadow: 0 0 0 8px rgba(0, 255, 255, 0.15);
-    }
-
-    .timeline-content-modern {
-        background: var(--dark-surface);
-        padding: 2rem;
-        border-radius: 16px;
-        box-shadow: 0 4px 12px rgba(0, 255, 255, 0.1);
-        transition: all 0.3s ease;
-        border: 2px solid var(--border-glow);
-    }
-
-    .timeline-content-modern:hover {
-        box-shadow: 0 12px 30px rgba(0, 255, 255, 0.2);
-        border-color: var(--neon-cyan);
-        transform: translateX(5px);
-    }
-
-    .timeline-position-modern {
-        font-size: 1.5rem;
-        font-weight: 700;
-        color: var(--text-primary);
-        margin-bottom: 0.5rem;
-    }
-
-    .timeline-company-modern {
-        font-size: 1.125rem;
-        font-weight: 600;
-        color: var(--neon-cyan);
-        margin-bottom: 1rem;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-    }
-
-    .timeline-date-modern {
-        font-size: 0.95rem;
-        color: var(--text-secondary);
-        margin-bottom: 1rem;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-    }
-
-    .timeline-description-modern {
-        color: var(--text-secondary);
-        line-height: 1.8;
-    }
-
-    /* Certifications Grid */
-    .certifications-grid-modern {
+    .rail-nav {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-        gap: 2rem;
+        gap: 10px;
+        margin: 48px 0;
     }
 
-    .certification-card-modern {
-        background: var(--dark-surface);
-        border-radius: 20px;
-        padding: 2.5rem;
-        transition: all 0.3s ease;
-        border: 2px solid var(--border-glow);
-        position: relative;
-        overflow: hidden;
-    }
-
-    .certification-card-modern::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 4px;
-        height: 100%;
-        background: var(--accent-gradient);
-        opacity: 0;
-        transition: opacity 0.3s ease;
-    }
-
-    .certification-card-modern:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 20px 40px rgba(0, 255, 255, 0.2);
-        border-color: var(--neon-cyan);
-    }
-
-    .certification-card-modern:hover::before {
-        opacity: 1;
-    }
-
-    .certification-icon-modern {
-        width: 60px;
-        height: 60px;
-        background: var(--accent-gradient);
-        border-radius: 16px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        font-size: 1.75rem;
-        margin-bottom: 1.5rem;
-    }
-
-    .certification-name-modern {
-        font-size: 1.375rem;
-        font-weight: 700;
-        color: var(--text-primary);
-        margin-bottom: 0.75rem;
-    }
-
-    .certification-issuer-modern {
-        font-size: 1.125rem;
-        font-weight: 600;
-        color: var(--neon-cyan);
-        margin-bottom: 1rem;
-    }
-
-    .certification-date-modern {
-        font-size: 0.95rem;
-        color: var(--text-secondary);
-        margin-bottom: 1.5rem;
-    }
-
-    .certification-link-modern {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        padding: 10px 20px;
-        background: rgba(0, 255, 255, 0.05);
-        border-radius: 10px;
-        font-weight: 600;
-        color: var(--text-primary);
+    .rail-nav a {
+        color: #c9d6e4;
         text-decoration: none;
-        transition: all 0.3s ease;
+        font-weight: 650;
+        font-size: 0.95rem;
+        padding: 8px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.09);
     }
 
-    .certification-link-modern:hover {
-        background: var(--accent-gradient);
-        color: white;
-        transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(0, 255, 255, 0.3);
+    .rail-nav a:hover {
+        color: #ffffff;
     }
 
-    /* Contact Form - Modern Design */
-    .contact-form-modern {
-        max-width: 700px;
-        margin: 0 auto;
+    .rail-contact {
+        margin-top: auto;
+        font-size: 0.9rem;
+        color: #aebed0;
+        line-height: 1.7;
     }
 
-    .form-group-modern {
-        margin-bottom: 2rem;
+    .rail-contact a {
+        color: #ffffff;
+        text-decoration: none;
     }
 
-    .form-label-modern {
-        font-size: 1rem;
-        font-weight: 600;
-        color: var(--text-primary);
-        margin-bottom: 0.75rem;
-        display: flex;
+    .page-main {
+        min-width: 0;
+    }
+
+    .section-wrap {
+        padding: 72px clamp(28px, 5vw, 76px);
+        border-bottom: 1px solid var(--line);
+    }
+
+    .intro-section {
+        min-height: 720px;
+        display: grid;
+        grid-template-columns: minmax(0, 1.25fr) minmax(320px, 0.75fr);
         align-items: center;
-        gap: 0.5rem;
+        gap: 56px;
+        background: #ffffff;
     }
 
-    .form-control-modern {
-        width: 100%;
-        padding: 14px 20px;
-        background: rgba(0, 255, 255, 0.05);
-        border: 2px solid var(--border-glow);
-        border-radius: 12px;
-        color: var(--text-primary);
-        font-size: 1rem;
-        transition: all 0.3s ease;
-        backdrop-filter: blur(10px);
+    .eyebrow {
+        margin-bottom: 18px;
+        color: var(--accent);
+        font-size: 0.76rem;
+        font-weight: 800;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
     }
 
-    .form-control-modern:focus {
-        outline: none;
-        background: rgba(0, 255, 255, 0.1);
-        border-color: var(--neon-cyan);
-        box-shadow: 0 0 0 4px rgba(0, 255, 255, 0.1);
+    .intro-title {
+        max-width: 820px;
+        margin: 0 0 26px;
+        font-size: clamp(3.2rem, 7vw, 7.4rem);
+        line-height: 0.92;
+        letter-spacing: 0;
+        font-weight: 900;
+        color: var(--ink);
     }
 
-    .form-control-modern::placeholder {
-        color: var(--text-secondary);
+    .intro-copy {
+        max-width: 720px;
+        color: #536071;
+        font-size: 1.16rem;
+        line-height: 1.82;
+        margin-bottom: 34px;
     }
 
-    textarea.form-control-modern {
-        resize: vertical;
-        min-height: 150px;
+    .intro-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
     }
 
-    .btn-submit-modern {
-        width: 100%;
-        padding: 16px 32px;
-        background: var(--accent-gradient);
-        color: white;
-        border: none;
-        border-radius: 12px;
-        font-weight: 600;
-        font-size: 1.125rem;
-        cursor: pointer;
-        transition: all 0.3s ease;
+    .action-primary,
+    .action-secondary {
         display: inline-flex;
         align-items: center;
         justify-content: center;
         gap: 10px;
+        min-height: 46px;
+        padding: 0 18px;
+        border-radius: 8px;
+        font-weight: 750;
+        text-decoration: none;
+    }
+
+    .action-primary {
+        color: #ffffff;
+        background: var(--navy);
+        border: 1px solid var(--navy);
+    }
+
+    .action-secondary {
+        color: var(--ink);
+        background: #ffffff;
+        border: 1px solid var(--line);
+    }
+
+    .intro-panel {
+        align-self: stretch;
+        display: grid;
+        align-content: end;
+        gap: 18px;
+    }
+
+    .portrait-block {
+        background: #dfe8e6;
+        border: 1px solid #c8d6d3;
+        border-radius: 10px;
+        overflow: hidden;
+        aspect-ratio: 4 / 5;
+    }
+
+    .portrait-block img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center top;
+        display: block;
+    }
+
+    .proof-strip {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        background: var(--surface);
+        overflow: hidden;
+    }
+
+    .proof-item {
+        padding: 18px;
+        border-right: 1px solid var(--line);
+    }
+
+    .proof-item:last-child {
+        border-right: 0;
+    }
+
+    .proof-value {
+        display: block;
+        font-size: 1.6rem;
+        font-weight: 850;
+        color: var(--ink);
+        line-height: 1;
+        margin-bottom: 6px;
+    }
+
+    .proof-label {
+        color: var(--muted);
+        font-size: 0.82rem;
+        font-weight: 650;
+    }
+
+    .section-head {
+        display: grid;
+        grid-template-columns: 220px minmax(0, 1fr);
+        gap: 40px;
+        margin-bottom: 34px;
+    }
+
+    .section-kicker {
+        color: var(--accent);
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        font-size: 0.74rem;
+        font-weight: 850;
+        padding-top: 10px;
+    }
+
+    .section-title {
+        margin: 0;
+        max-width: 880px;
+        font-size: clamp(2rem, 4vw, 3.8rem);
+        line-height: 1.05;
+        font-weight: 850;
+        color: var(--ink);
+    }
+
+    .capability-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+    }
+
+    .capability-card {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        padding: 24px;
+    }
+
+    .capability-card i {
+        color: var(--accent);
+        font-size: 1.5rem;
+        margin-bottom: 22px;
+    }
+
+    .capability-card h3 {
+        font-size: 1.15rem;
+        margin-bottom: 12px;
+    }
+
+    .capability-card p {
+        color: var(--muted);
+        line-height: 1.72;
+        margin: 0;
+    }
+
+    .about-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+        gap: 34px;
+    }
+
+    .about-copy {
+        color: #536071;
+        font-size: 1.05rem;
+        line-height: 1.84;
+    }
+
+    .skill-board {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+    }
+
+    .skill-group {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        padding: 18px;
+    }
+
+    .skill-group h3 {
+        font-size: 0.95rem;
+        margin-bottom: 12px;
+        color: var(--ink);
+        text-transform: capitalize;
+    }
+
+    .skill-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .skill-list span,
+    .tech-list span {
+        display: inline-flex;
+        align-items: center;
+        min-height: 30px;
+        padding: 0 10px;
+        border-radius: 999px;
+        background: var(--soft);
+        color: #2e5f5a;
+        font-size: 0.82rem;
+        font-weight: 700;
+    }
+
+    .work-list {
+        display: grid;
+        gap: 16px;
+    }
+
+    .work-item {
+        display: grid;
+        grid-template-columns: 170px minmax(0, 1fr) 150px;
+        gap: 24px;
+        align-items: start;
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        padding: 22px;
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .work-item:hover {
+        border-color: #b9c6d2;
+    }
+
+    .work-meta {
+        color: var(--muted);
+        font-size: 0.86rem;
+        font-weight: 700;
+    }
+
+    .work-title {
+        margin: 0 0 10px;
+        color: var(--ink);
+        font-size: 1.22rem;
+    }
+
+    .work-desc {
+        color: var(--muted);
+        line-height: 1.7;
+        margin-bottom: 14px;
+    }
+
+    .tech-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .work-link {
+        justify-self: end;
+        color: var(--accent);
+        font-weight: 800;
+        font-size: 0.92rem;
+    }
+
+    .timeline-list {
+        display: grid;
+        gap: 18px;
+        position: relative;
+    }
+
+    .timeline-entry {
+        display: grid;
+        grid-template-columns: 190px minmax(0, 1fr);
+        gap: 0;
+        padding: 0;
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        overflow: hidden;
+    }
+
+    .timeline-date {
+        min-height: 100%;
+        padding: 24px;
+        color: #ffffff;
+        font-weight: 850;
+        font-size: 0.92rem;
+        background:
+            radial-gradient(circle at 80% 20%, rgba(255,255,255,0.18), transparent 30%),
+            linear-gradient(160deg, #24527a, #0f766e);
+    }
+
+    .timeline-body {
+        padding: 24px;
+    }
+
+    .timeline-entry h3 {
+        margin-bottom: 8px;
+        font-size: 1.28rem;
+        line-height: 1.3;
+    }
+
+    .timeline-company {
+        display: inline-flex;
+        align-items: center;
+        min-height: 30px;
+        padding: 0 10px;
+        border-radius: 999px;
+        background: var(--soft);
+        color: var(--accent-2);
+        font-weight: 800;
+        margin-bottom: 14px;
+        font-size: 0.86rem;
+    }
+
+    .timeline-entry p {
+        color: var(--muted);
+        line-height: 1.72;
+        margin: 0;
+    }
+
+    .credential-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 16px;
+    }
+
+    .credential-card {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        padding: 20px;
+    }
+
+    .credential-card h3 {
+        font-size: 1rem;
+        margin-bottom: 8px;
+    }
+
+    .credential-card p {
+        margin: 0;
+        color: var(--muted);
+    }
+
+    .contact-section {
+        background: var(--navy);
+        color: #ffffff;
+    }
+
+    .contact-section .section-kicker {
+        color: #7bd7c9;
+    }
+
+    .contact-section .section-title {
+        color: #ffffff;
+    }
+
+    .contact-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+        gap: 42px;
+        align-items: start;
+    }
+
+    .contact-note {
+        color: #c7d4e2;
+        line-height: 1.8;
+        font-size: 1.05rem;
+    }
+
+    .contact-links {
+        display: grid;
+        gap: 12px;
+        margin-top: 24px;
+    }
+
+    .contact-links a {
+        color: #ffffff;
+        text-decoration: none;
+        font-weight: 750;
+    }
+
+    .contact-form {
+        display: grid;
+        gap: 16px;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        border-radius: 10px;
+        padding: 22px;
+    }
+
+    .form-row {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+    }
+
+    .contact-form label {
+        color: #dce7f1;
+        font-weight: 750;
+        font-size: 0.9rem;
+        margin-bottom: 8px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        width: 100%;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.08);
+        color: #ffffff;
+        padding: 13px 14px;
+        outline: none;
+    }
+
+    .contact-form textarea {
+        min-height: 150px;
+        resize: vertical;
+    }
+
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder {
+        color: #9fb1c6;
+    }
+
+    .submit-btn {
+        border: 0;
+        border-radius: 8px;
+        background: #ffffff;
+        color: var(--navy);
+        min-height: 46px;
+        padding: 0 18px;
+        font-weight: 850;
+    }
+
+    @media (max-width: 1100px) {
+        .portfolio-shell {
+            grid-template-columns: 1fr;
+        }
+
+        .site-rail {
+            position: static;
+            height: auto;
+            padding: 22px 28px;
+        }
+
+        .rail-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+            margin: 24px 0 0;
+        }
+
+        .rail-nav a {
+            border-bottom: 0;
+            padding: 0;
+        }
+
+        .rail-contact {
+            display: none;
+        }
+
+        .intro-section,
+        .about-grid,
+        .contact-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .intro-panel {
+            max-width: 440px;
+        }
+    }
+
+    @media (max-width: 800px) {
+        .section-wrap {
+            padding: 54px 22px;
+        }
+
+        .section-head,
+        .work-item,
+        .timeline-entry {
+            grid-template-columns: 1fr;
+            gap: 14px;
+        }
+
+        .capability-grid,
+        .skill-board,
+        .form-row {
+            grid-template-columns: 1fr;
+        }
+
+        .proof-strip {
+            grid-template-columns: 1fr;
+        }
+
+        .proof-item {
+            border-right: 0;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .proof-item:last-child {
+            border-bottom: 0;
+        }
+
+        .work-link {
+            justify-self: start;
+        }
+    }
+
+    /* Visual lift: stronger compro-style presentation */
+    .portfolio-shell {
+        background:
+            linear-gradient(180deg, #f7f9fb 0%, #edf3f6 42%, #f7f9fb 100%);
+    }
+
+    .site-rail {
+        background:
+            linear-gradient(180deg, #0b1b30 0%, #10243e 58%, #0f312f 100%);
+    }
+
+    .rail-mark {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: rgba(255, 255, 255, 0.26);
+    }
+
+    .rail-nav a {
+        position: relative;
+        padding-left: 18px;
+    }
+
+    .rail-nav a::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 50%;
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: #7bd7c9;
+        transform: translateY(-50%);
+        opacity: 0.55;
+    }
+
+    .intro-section {
+        min-height: 760px;
+        background:
+            radial-gradient(circle at 85% 15%, rgba(15, 118, 110, 0.14), transparent 30%),
+            linear-gradient(135deg, #ffffff 0%, #f1f6f8 100%);
         position: relative;
         overflow: hidden;
     }
-    
-    .btn-submit-modern::before {
-        content: '';
+
+    .intro-section::after {
+        content: "";
         position: absolute;
+        right: clamp(22px, 5vw, 76px);
+        top: 72px;
+        bottom: 72px;
+        width: min(34vw, 420px);
+        background: #dcebe8;
+        border: 1px solid #c8dad6;
+        border-radius: 18px;
+        z-index: 0;
+    }
+
+    .intro-section > * {
+        position: relative;
+        z-index: 1;
+    }
+
+    .intro-section > div:first-child {
+        background: #0d2239;
+        color: #ffffff;
+        border-radius: 18px;
+        padding: clamp(28px, 4vw, 52px);
+        box-shadow: 0 28px 70px rgba(16, 36, 62, 0.22);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .intro-section .eyebrow {
+        color: #7bd7c9;
+    }
+
+    .intro-title {
+        color: #ffffff;
+        font-size: clamp(3rem, 6.5vw, 6.8rem);
+    }
+
+    .intro-copy {
+        color: #cad7e4;
+    }
+
+    .intro-actions {
+        margin-bottom: 24px;
+    }
+
+    .intro-section .action-primary {
+        background: #ffffff;
+        border-color: #ffffff;
+        color: #10243e;
+    }
+
+    .intro-section .action-secondary {
+        background: transparent;
+        border-color: rgba(255, 255, 255, 0.28);
+        color: #ffffff;
+    }
+
+    .hero-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 12px;
+    }
+
+    .hero-tags span {
+        display: inline-flex;
+        align-items: center;
+        min-height: 34px;
+        padding: 0 12px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.09);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        color: #d8e5f1;
+        font-size: 0.84rem;
+        font-weight: 700;
+    }
+
+    .intro-panel {
+        align-self: center;
+    }
+
+    .portrait-block {
+        border-radius: 18px;
+        border: 8px solid #ffffff;
+        box-shadow: 0 28px 58px rgba(16, 36, 62, 0.2);
+        background: #e6efed;
+    }
+
+    .proof-strip {
+        border: 0;
+        box-shadow: 0 22px 44px rgba(16, 36, 62, 0.12);
+    }
+
+    .proof-item {
+        background: #ffffff;
+    }
+
+    .section-wrap {
+        background: transparent;
+    }
+
+    .capability-card,
+    .skill-group,
+    .work-item,
+    .timeline-entry,
+    .credential-card {
+        box-shadow: 0 16px 40px rgba(16, 36, 62, 0.07);
+        transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+    }
+
+    .capability-card {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .capability-card::before {
+        content: "";
+        position: absolute;
+        left: 0;
         top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-        transition: left 0.5s ease;
-    }
-    
-    .btn-submit-modern:hover::before {
-        left: 100%;
+        right: 0;
+        height: 5px;
+        background: linear-gradient(90deg, #0f766e, #24527a);
     }
 
-    .btn-submit-modern:hover {
-        background: var(--accent-gradient);
-        transform: translateY(-3px);
-        box-shadow: 0 12px 30px rgba(0, 255, 255, 0.4);
+    .capability-card:hover,
+    .skill-group:hover,
+    .work-item:hover,
+    .timeline-entry:hover,
+    .credential-card:hover {
+        transform: translateY(-4px);
+        border-color: #b9c9d5;
+        box-shadow: 0 24px 58px rgba(16, 36, 62, 0.11);
     }
 
-    /* Scroll Animation */
-    .scroll-animate {
-        opacity: 0;
-        transform: translateY(50px);
-        transition: all 0.8s ease-out;
+    .work-list {
+        counter-reset: work;
     }
 
-    .scroll-animate.active {
-        opacity: 1;
-        transform: translateY(0);
+    .work-item {
+        counter-increment: work;
+        position: relative;
+        overflow: hidden;
     }
 
-    /* Responsive */
-    @media (max-width: 991px) {
-        .hero-section {
-            padding: 100px 0 80px;
-        }
+    .work-item::before {
+        content: "0" counter(work);
+        position: absolute;
+        right: 22px;
+        bottom: -10px;
+        color: rgba(16, 36, 62, 0.06);
+        font-size: 5rem;
+        font-weight: 900;
+        line-height: 1;
+    }
 
-        .hero-visual-container {
-            height: 500px;
-            margin-top: 4rem;
-        }
+    .work-title {
+        font-size: 1.32rem;
+    }
 
-        .profile-image-container {
-            width: 320px;
-            height: 320px;
-        }
+    .work-link {
+        background: var(--soft);
+        color: var(--accent);
+        padding: 9px 12px;
+        border-radius: 999px;
+        align-self: start;
+    }
 
-        .content-grid-modern {
-            grid-template-columns: 1fr;
-            gap: 2rem;
-        }
+    .contact-section {
+        background:
+            radial-gradient(circle at 88% 18%, rgba(123, 215, 201, 0.2), transparent 32%),
+            linear-gradient(135deg, #0b1b30, #10243e 58%, #0f312f);
+    }
 
-        .stat-card-1, .stat-card-2, .stat-card-3 {
-            padding: 1rem;
-        }
+    .submit-btn:hover,
+    .action-primary:hover,
+    .action-secondary:hover {
+        transform: translateY(-1px);
+    }
 
-        .stat-card-2 {
-            left: -20px;
-        }
-
-        .section-modern {
-            padding: 80px 0;
+    @media (max-width: 1100px) {
+        .intro-section::after {
+            display: none;
         }
     }
 
-    @media (max-width: 767px) {
-        .hero-main-title {
-            font-size: 2.5rem;
+    @media (max-width: 800px) {
+        .intro-section > div:first-child {
+            padding: 28px;
         }
 
-        .hero-role-text {
-            font-size: 1.5rem;
+        .intro-title {
+            font-size: clamp(2.7rem, 14vw, 4.3rem);
         }
 
-        .tech-pills {
-            gap: 0.5rem;
+        .hero-tags {
+            display: grid;
         }
+    }
 
-        .tech-pill {
-            padding: 6px 12px;
-            font-size: 0.8rem;
-        }
+    /* Headbar layout override */
+    .portfolio-shell {
+        display: block;
+    }
 
-        .hero-cta-container {
+    .site-headbar {
+        position: sticky;
+        top: 0;
+        z-index: 80;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        padding: 16px clamp(22px, 5vw, 76px);
+        background: rgba(255, 255, 255, 0.92);
+        border-bottom: 1px solid var(--line);
+        backdrop-filter: blur(14px);
+    }
+
+    .head-brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        color: var(--ink);
+        text-decoration: none;
+        min-width: fit-content;
+    }
+
+    .brand-mark {
+        width: 44px;
+        height: 44px;
+        display: grid;
+        place-items: center;
+        border-radius: 8px;
+        background: var(--navy);
+        color: #ffffff;
+        font-weight: 850;
+    }
+
+    .brand-name,
+    .brand-role {
+        display: block;
+    }
+
+    .brand-name {
+        color: var(--ink);
+        font-size: 1rem;
+        font-weight: 850;
+        line-height: 1.1;
+    }
+
+    .brand-role {
+        margin-top: 3px;
+        color: var(--muted);
+        font-size: 0.78rem;
+        font-weight: 750;
+    }
+
+    .head-nav {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .head-nav a {
+        display: inline-flex;
+        align-items: center;
+        min-height: 40px;
+        padding: 0 11px;
+        border-radius: 8px;
+        color: #526071;
+        text-decoration: none;
+        font-size: 0.92rem;
+        font-weight: 700;
+        white-space: nowrap;
+    }
+
+    .head-nav a:hover {
+        background: #eef4f6;
+        color: var(--ink);
+    }
+
+    .head-nav .head-cta {
+        margin-left: 4px;
+        background: var(--navy);
+        color: #ffffff;
+        padding: 0 15px;
+    }
+
+    .head-nav .head-cta:hover {
+        background: var(--accent);
+        color: #ffffff;
+    }
+
+    @media (max-width: 900px) {
+        .site-headbar {
+            align-items: flex-start;
             flex-direction: column;
+            gap: 13px;
         }
 
-        .btn-hero-primary, .btn-hero-secondary {
+        .head-nav {
             width: 100%;
-            justify-content: center;
+            overflow-x: auto;
+            padding-bottom: 2px;
         }
+    }
 
-        .profile-image-container {
-            width: 280px;
-            height: 280px;
-        }
+    /* Project cards upgrade */
+    .work-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px;
+    }
 
-        .floating-stat-card {
-            padding: 0.875rem;
-        }
+    .work-item {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 1fr auto;
+        gap: 0;
+        padding: 0;
+        border-radius: 18px;
+        overflow: hidden;
+        background: #ffffff;
+    }
 
-        .stat-icon {
-            width: 36px;
-            height: 36px;
-            font-size: 1rem;
-        }
+    .work-item::before {
+        display: none;
+    }
 
-        .stat-number {
-            font-size: 1.25rem;
-        }
+    .work-visual {
+        min-height: 138px;
+        padding: 20px;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        background:
+            radial-gradient(circle at 85% 20%, rgba(255,255,255,0.22), transparent 28%),
+            linear-gradient(135deg, #0f766e, #24527a);
+        color: #ffffff;
+    }
 
-        .section-title-modern {
-            font-size: 2rem;
-        }
+    .work-visual-icon {
+        width: 54px;
+        height: 54px;
+        display: grid;
+        place-items: center;
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.14);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        font-size: 1.4rem;
+    }
 
-        .projects-grid-modern {
+    .work-index {
+        color: rgba(255, 255, 255, 0.74);
+        font-size: 0.78rem;
+        font-weight: 900;
+        letter-spacing: 0.14em;
+    }
+
+    .work-body {
+        padding: 22px 22px 10px;
+    }
+
+    .work-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 14px;
+    }
+
+    .work-meta span {
+        display: inline-flex;
+        align-items: center;
+        min-height: 30px;
+        padding: 0 10px;
+        border-radius: 999px;
+        background: #f1f5f7;
+        color: #536071;
+        font-size: 0.8rem;
+    }
+
+    .work-title {
+        font-size: 1.35rem;
+        line-height: 1.25;
+    }
+
+    .work-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 0 22px 22px;
+    }
+
+    .work-link {
+        justify-self: auto;
+        white-space: nowrap;
+    }
+
+    @media (max-width: 900px) {
+        .work-list {
             grid-template-columns: 1fr;
         }
 
-        .certifications-grid-modern {
+        .timeline-entry {
             grid-template-columns: 1fr;
         }
 
-        .skills-container-modern {
-            padding: 2rem 1.5rem;
+        .timeline-date {
+            min-height: auto;
         }
     }
 </style>
 @endsection
 
 @section('content')
-    <!-- Hero Section -->
-    <section id="home" class="hero-section">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6 fade-in-up">
-                    <div class="mb-4">
-                        <span class="status-badge">
-                            <span class="status-dot"></span>
-                            Available for opportunities
-                        </span>
+<div class="portfolio-shell">
+    <header class="site-headbar">
+        <a class="head-brand" href="#overview">
+            <span class="brand-mark">DN</span>
+            <span>
+                <span class="brand-name">Dozer Napitupulu</span>
+                <span class="brand-role">Fullstack Engineer</span>
+            </span>
+        </a>
+
+        <nav class="head-nav" aria-label="Primary navigation">
+            <a href="#overview">Home</a>
+            <a href="#about">About</a>
+            <a href="#work">Projects</a>
+            <a href="#experience">Experience</a>
+            <a href="#certifications">Certifications</a>
+            <a class="head-cta" href="#contact">Let's Connect</a>
+        </nav>
+    </header>
+
+    <main class="page-main">
+        <section id="overview" class="section-wrap intro-section">
+            <div>
+                <div class="eyebrow">Portfolio and software profile</div>
+                <h1 class="intro-title">Building web and mobile systems for real operations.</h1>
+                <p class="intro-copy">
+                    I am Dozer Napitupulu, a Fullstack Engineer focused on practical application development across .NET, Laravel, Flutter, and relational databases. I build tools for teams, operations, reporting, and customer-facing workflows.
+                </p>
+                <div class="intro-actions">
+                    <a class="action-primary" href="#work">View Selected Work <i class="fas fa-arrow-right"></i></a>
+                    <a class="action-secondary" href="#contact">Start a Conversation</a>
+                </div>
+                <div class="hero-tags" aria-label="Core service areas">
+                    <span>Business web apps</span>
+                    <span>Mobile operations</span>
+                    <span>API integration</span>
+                    <span>Reporting systems</span>
+                </div>
+            </div>
+
+            <div class="intro-panel">
+                <div class="portrait-block">
+                    <img src="{{ asset('images/profile/dozer.png') }}" alt="Dozer Napitupulu">
+                </div>
+                <div class="proof-strip" aria-label="Portfolio summary">
+                    <div class="proof-item">
+                        <span class="proof-value">3+</span>
+                        <span class="proof-label">Years experience</span>
                     </div>
-
-                    <h1 class="hero-main-title">
-                        Dozer Napitupulu
-                    </h1>
-
-                    <div class="hero-role-container mb-4">
-                        <span class="hero-role-label">—</span>
-                        <h2 class="hero-role-text">
-                            <span id="typed-role">Full Stack Developer</span>
-                        </h2>
+                    <div class="proof-item">
+                        <span class="proof-value">20+</span>
+                        <span class="proof-label">Projects delivered</span>
                     </div>
+                    <div class="proof-item">
+                        <span class="proof-value">4</span>
+                        <span class="proof-label">Core stacks</span>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-                    <p class="hero-description mb-5">
-                        Specialized in building scalable web and mobile applications using modern technologies. 
-                        Passionate about clean code, user experience, and solving complex problems.
+        <section id="capabilities" class="section-wrap">
+            <div class="section-head">
+                <div class="section-kicker">Capabilities</div>
+                <h2 class="section-title">Development services for internal teams, product workflows, and business platforms.</h2>
+            </div>
+
+            <div class="capability-grid">
+                <article class="capability-card">
+                    <i class="fas fa-layer-group"></i>
+                    <h3>Web Applications</h3>
+                    <p>Operational dashboards, admin systems, CMS workflows, and line-of-business applications using Laravel and ASP.NET MVC.</p>
+                </article>
+                <article class="capability-card">
+                    <i class="fas fa-mobile-screen-button"></i>
+                    <h3>Mobile Workflows</h3>
+                    <p>Flutter-based mobile applications for ordering, employee operations, task handling, and backend-connected workflows.</p>
+                </article>
+                <article class="capability-card">
+                    <i class="fas fa-database"></i>
+                    <h3>Data and Integration</h3>
+                    <p>REST APIs, database design, SQL Server/MySQL maintenance, reporting logic, and integration between business systems.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="about" class="section-wrap">
+            <div class="section-head">
+                <div class="section-kicker">Profile</div>
+                <h2 class="section-title">A software engineer with a bias for systems that are usable, maintainable, and tied to business flow.</h2>
+            </div>
+
+            <div class="about-grid">
+                <div class="about-copy">
+                    <p>
+                        I work across backend, frontend, mobile, and database layers, with experience supporting real company operations in cafe systems, banking modules, internal employee tools, reporting, and product development workflows.
                     </p>
-
-                    <div class="tech-stack-container mb-5">
-                        <div class="tech-stack-label">Core Technologies</div>
-                        <div class="tech-pills">
-                            <span class="tech-pill">.NET Core</span>
-                            <span class="tech-pill">Laravel</span>
-                            <span class="tech-pill">Flutter</span>
-                            <span class="tech-pill">C#</span>
-                            <span class="tech-pill">PHP</span>
-                            <span class="tech-pill">JavaScript</span>
-                        </div>
-                    </div>
-
-                    <div class="hero-cta-container mb-5">
-                        <a href="#projects" class="btn-hero-primary">
-                            View Work
-                            <i class="fas fa-arrow-right ms-2"></i>
-                        </a>
-                        <a href="#contact" class="btn-hero-secondary">
-                            Get in Touch
-                        </a>
-                    </div>
-
-                    <div class="hero-social-container">
-                        <div class="social-links-grid">
-                            <a href="https://github.com/dreamcraft17" target="_blank" class="social-link-modern" aria-label="GitHub">
-                                <i class="fab fa-github"></i>
-                            </a>
-                            <a href="https://www.linkedin.com/in/dozernapitupulu/" target="_blank" class="social-link-modern" aria-label="LinkedIn">
-                                <i class="fab fa-linkedin-in"></i>
-                            </a>
-                            <a href="https://www.instagram.com/dozerfrnd/" target="_blank" class="social-link-modern" aria-label="Instagram">
-                                <i class="fab fa-instagram"></i>
-                            </a>
-                            <a href="https://twitter.com/dozernapitupulu" target="_blank" class="social-link-modern" aria-label="Twitter">
-                                <i class="fab fa-twitter"></i>
-                            </a>
-                        </div>
-                    </div>
+                    <p>
+                        My focus is not only making screens work, but shaping the data model, integration points, and daily user flow behind them.
+                    </p>
                 </div>
 
-                <div class="col-lg-6 mt-5 mt-lg-0">
-                    <div class="hero-visual-container">
-                        <div class="profile-card-modern">
-                            <div class="profile-image-container">
-                                <img src="{{ asset('images/profile/dozer.png') }}" 
-                                     alt="Dozer Napitu - Full Stack Developer"
-                                     class="profile-image-modern">
-                                <div class="profile-image-border"></div>
-                            </div>
+                <div class="skill-board">
+                    @foreach($skills->groupBy('category') as $category => $categorySkills)
+                    <div class="skill-group">
+                        <h3>{{ ucfirst($category) }}</h3>
+                        <div class="skill-list">
+                            @foreach($categorySkills->take(8) as $skill)
+                            <span>{{ $skill->name }}</span>
+                            @endforeach
                         </div>
-
-                        <div class="floating-stat-card stat-card-1">
-                            <div class="stat-icon">
-                                <i class="fas fa-code"></i>
-                            </div>
-                            <div class="stat-content">
-                                <div class="stat-number">3+</div>
-                                <div class="stat-label">Years</div>
-                            </div>
-                        </div>
-
-                        <div class="floating-stat-card stat-card-2">
-                            <div class="stat-icon">
-                                <i class="fas fa-project-diagram"></i>
-                            </div>
-                            <div class="stat-content">
-                                <div class="stat-number">20+</div>
-                                <div class="stat-label">Projects</div>
-                            </div>
-                        </div>
-
-                        <div class="floating-stat-card stat-card-3">
-                            <div class="stat-icon">
-                                <i class="fas fa-laptop-code"></i>
-                            </div>
-                            <div class="stat-content">
-                                <div class="stat-label-only">Full Stack</div>
-                            </div>
-                        </div>
-
-                        <div class="hero-bg-element element-1"></div>
-                        <div class="hero-bg-element element-2"></div>
                     </div>
+                    @endforeach
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- About Section -->
-    <section id="about" class="section-modern section-modern-light">
-        <div class="container">
-            <div class="section-header-modern scroll-animate">
-                <div class="section-eyebrow-modern">Get to know me</div>
-                <h2 class="section-title-modern">About Me</h2>
-                <p class="section-description-modern">
-                    Full-stack developer with a passion for creating elegant solutions to complex problems
-                </p>
+        <section id="work" class="section-wrap">
+            <div class="section-head">
+                <div class="section-kicker">Selected work</div>
+                <h2 class="section-title">Projects shaped around transactions, reporting, operations, and multi-platform access.</h2>
             </div>
 
-            <div class="stats-grid-modern">
-                <div class="stat-card-modern scroll-animate">
-                    <div class="stat-number">3+</div>
-                    <div class="stat-label">Years Experience</div>
-                </div>
-                <div class="stat-card-modern scroll-animate" style="transition-delay: 0.1s">
-                    <div class="stat-number">20+</div>
-                    <div class="stat-label">Completed Projects</div>
-                </div>
-                <div class="stat-card-modern scroll-animate" style="transition-delay: 0.2s">
-                    <div class="stat-number">10+</div>
-                    <div class="stat-label">Technologies</div>
-                </div>
-                <div class="stat-card-modern scroll-animate" style="transition-delay: 0.3s">
-                    <div class="stat-number">100%</div>
-                    <div class="stat-label">Commitment</div>
-                </div>
-            </div>
-
-            <div class="content-grid-modern">
-                <div class="scroll-animate">
-                    <div class="content-block-modern mb-4">
-                        <p class="mb-4">
-                            I am an enthusiastic <strong>Full-Stack Developer</strong> specializing in <strong>.NET, Laravel,</strong> and <strong>Flutter</strong> technologies. With a passion for building user-friendly and engaging applications, I focus on creating secure and scalable solutions.
-                        </p>
-                        <p>
-                            I'm eager to expand my skill set and contribute to innovative development projects. Currently seeking opportunities to develop skills and gain more practical experience in <strong>Full-Stack Development, Back-End Programming,</strong> and <strong>Web Security</strong>.
-                        </p>
-                    </div>
-
-                    <ul class="feature-list-modern">
-                        <li class="feature-item-modern">
-                            <div class="feature-icon-modern">
-                                <i class="fas fa-laptop-code"></i>
-                            </div>
-                            <strong>Full-Stack Development</strong>
-                        </li>
-                        <li class="feature-item-modern">
-                            <div class="feature-icon-modern">
-                                <i class="fas fa-mobile-alt"></i>
-                            </div>
-                            <strong>Mobile App Development</strong>
-                        </li>
-                        <li class="feature-item-modern">
-                            <div class="feature-icon-modern">
-                                <i class="fas fa-plug"></i>
-                            </div>
-                            <strong>API Development</strong>
-                        </li>
-                        <li class="feature-item-modern">
-                            <div class="feature-icon-modern">
-                                <i class="fas fa-database"></i>
-                            </div>
-                            <strong>Database Design</strong>
-                        </li>
-                        <li class="feature-item-modern">
-                            <div class="feature-icon-modern">
-                                <i class="fas fa-shield-alt"></i>
-                            </div>
-                            <strong>Web Security</strong>
-                        </li>
-                        <li class="feature-item-modern">
-                            <div class="feature-icon-modern">
-                                <i class="fas fa-paint-brush"></i>
-                            </div>
-                            <strong>Responsive Design</strong>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="scroll-animate" style="transition-delay: 0.2s">
-                    <div class="skills-container-modern">
-                        <h3 class="mb-4" style="font-size: 1.75rem; font-weight: 700;">Technical Skills</h3>
-                        
-                        <div class="skills-tabs-modern">
-                            <div class="skill-tab-modern active" data-tab="all">
-                                <i class="fas fa-star"></i> All Skills
-                            </div>
+            <div class="work-list">
+                @foreach($projects->take(6) as $project)
+                <a class="work-item" href="{{ route('project.show', $project->slug) }}">
+                    <div class="work-visual">
+                        <div class="work-visual-icon">
                             @php
-                                $categories = $skills->pluck('category')->unique();
-                                $categoryIcons = [
-                                    'frontend' => 'fas fa-code',
-                                    'backend' => 'fas fa-server',
-                                    'database' => 'fas fa-database',
-                                    'mobile' => 'fas fa-mobile-alt',
-                                    'tools' => 'fas fa-tools',
-                                    'framework' => 'fas fa-layer-group',
-                                    'language' => 'fas fa-file-code'
-                                ];
+                                $icons = ['fa-cash-register', 'fa-mobile-screen-button', 'fa-chart-line', 'fa-users-gear', 'fa-building-columns', 'fa-chart-pie'];
                             @endphp
-                            @foreach($categories as $category)
-                            <div class="skill-tab-modern" data-tab="{{ $category }}">
-                                <i class="{{ $categoryIcons[$category] ?? 'fas fa-cog' }}"></i>
-                                {{ ucfirst($category) }}
-                            </div>
+                            <i class="fas {{ $icons[$loop->index % count($icons)] }}"></i>
+                        </div>
+                        <div class="work-index">PROJECT {{ str_pad($loop->iteration, 2, '0', STR_PAD_LEFT) }}</div>
+                    </div>
+
+                    <div class="work-body">
+                        <div class="work-meta">
+                            <span>{{ $project->company ?: 'Project' }}</span>
+                            @if($project->project_date)
+                            <span>{{ \Carbon\Carbon::parse($project->project_date)->format('M Y') }}</span>
+                            @endif
+                        </div>
+                        <h3 class="work-title">{{ $project->title }}</h3>
+                        <p class="work-desc">{{ Str::limit($project->description, 150) }}</p>
+                    </div>
+
+                    <div class="work-footer">
+                        @if($project->technologies)
+                        <div class="tech-list">
+                            @foreach(array_slice(json_decode($project->technologies, true) ?? [], 0, 4) as $tech)
+                            <span>{{ $tech }}</span>
                             @endforeach
                         </div>
-
-                        <div class="skills-content-modern active" id="tab-all">
-                            @foreach($skills->groupBy('category') as $category => $categorySkills)
-                            <div class="skill-category-modern">
-                                <h5 class="skill-category-title-modern">
-                                    <i class="{{ $categoryIcons[$category] ?? 'fas fa-cog' }}"></i>
-                                    {{ ucfirst($category) }}
-                                </h5>
-                                <div class="skills-grid-modern">
-                                    @foreach($categorySkills as $skill)
-                                    <div class="skill-badge-modern">
-                                        @if($skill->name == 'ASP.NET')
-                                            <i class="fab fa-microsoft"></i>
-                                        @elseif($skill->name == 'C#')
-                                            <i class="fas fa-code"></i>
-                                        @elseif($skill->name == 'Laravel')
-                                            <i class="fab fa-laravel"></i>
-                                        @elseif($skill->name == 'PHP')
-                                            <i class="fab fa-php"></i>
-                                        @elseif($skill->name == 'Flutter')
-                                            <i class="fab fa-flutter"></i>
-                                        @elseif($skill->name == 'JavaScript')
-                                            <i class="fab fa-js-square"></i>
-                                        @elseif($skill->name == 'MySQL' || $skill->name == 'SQL Server')
-                                            <i class="fas fa-database"></i>
-                                        @elseif($skill->name == 'REST API')
-                                            <i class="fas fa-plug"></i>
-                                        @elseif($skill->name == 'Git')
-                                            <i class="fab fa-git-alt"></i>
-                                        @elseif($skill->name == 'Docker')
-                                            <i class="fab fa-docker"></i>
-                                        @else
-                                            <i class="fas fa-code"></i>
-                                        @endif
-                                        {{ $skill->name }}
-                                    </div>
-                                    @endforeach
-                                </div>
-                            </div>
-                            @endforeach
-                        </div>
-
-                        @foreach($categories as $category)
-                        <div class="skills-content-modern" id="tab-{{ $category }}">
-                            <div class="skill-category-modern">
-                                <h5 class="skill-category-title-modern">
-                                    <i class="{{ $categoryIcons[$category] ?? 'fas fa-cog' }}"></i>
-                                    {{ ucfirst($category) }} Skills
-                                </h5>
-                                <div class="skills-grid-modern">
-                                    @foreach($skills->where('category', $category) as $skill)
-                                    <div class="skill-badge-modern">
-                                        @if($skill->name == 'ASP.NET')
-                                            <i class="fab fa-microsoft"></i>
-                                        @elseif($skill->name == 'C#')
-                                            <i class="fas fa-code"></i>
-                                        @elseif($skill->name == 'Laravel')
-                                            <i class="fab fa-laravel"></i>
-                                        @elseif($skill->name == 'PHP')
-                                            <i class="fab fa-php"></i>
-                                        @elseif($skill->name == 'Flutter')
-                                            <i class="fab fa-flutter"></i>
-                                        @elseif($skill->name == 'JavaScript')
-                                            <i class="fab fa-js-square"></i>
-                                        @elseif($skill->name == 'MySQL' || $skill->name == 'SQL Server')
-                                            <i class="fas fa-database"></i>
-                                        @elseif($skill->name == 'REST API')
-                                            <i class="fas fa-plug"></i>
-                                        @elseif($skill->name == 'Git')
-                                            <i class="fab fa-git-alt"></i>
-                                        @elseif($skill->name == 'Docker')
-                                            <i class="fab fa-docker"></i>
-                                        @else
-                                            <i class="fas fa-code"></i>
-                                        @endif
-                                        {{ $skill->name }}
-                                    </div>
-                                    @endforeach
-                                </div>
-                            </div>
-                        </div>
-                        @endforeach
+                        @endif
+                        <div class="work-link">View case</div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="section-modern" style="background: var(--dark-surface);">
-        <div class="container">
-            <div class="section-header-modern scroll-animate">
-                <div class="section-eyebrow-modern">Portfolio</div>
-                <h2 class="section-title-modern">Featured Projects</h2>
-                <p class="section-description-modern">
-                    Professional experience building real-world solutions across web and mobile platforms
-                </p>
-            </div>
-
-            <div class="projects-grid-modern">
-                <div class="project-card-modern scroll-animate">
-                    <div class="project-image-modern" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
-                        <i class="fas fa-cash-register project-icon-modern"></i>
-                    </div>
-                    <div class="project-content-modern">
-                        <h3 class="project-title-modern">POS System for Café Operations</h3>
-                        <p class="project-description-modern">
-                            Developed a comprehensive Point of Sale system handling transactions, inventory, and sales reporting for café operations.
-                        </p>
-                        <div class="project-tech-modern">
-                            <span class="tech-tag-modern">
-                                <i class="fab fa-microsoft"></i> ASP.NET MVC
-                            </span>
-                            <span class="tech-tag-modern">
-                                <i class="fas fa-database"></i> SQL Server
-                            </span>
-                            <span class="tech-tag-modern">
-                                <i class="fas fa-database"></i> MySQL
-                            </span>
-                        </div>
-                        <a href="{{ route('project.show', 'pos-system-cafe') }}" class="project-link-modern">
-                            View Details
-                            <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="project-card-modern scroll-animate" style="transition-delay: 0.1s">
-                    <div class="project-image-modern" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
-                        <i class="fas fa-mobile-alt project-icon-modern"></i>
-                    </div>
-                    <div class="project-content-modern">
-                        <h3 class="project-title-modern">Online Ordering Mobile App</h3>
-                        <p class="project-description-modern">
-                            Built a mobile ordering platform enabling customers to browse menus, place orders, and make secure payments.
-                        </p>
-                        <div class="project-tech-modern">
-                            <span class="tech-tag-modern">
-                                <i class="fab fa-flutter"></i> Flutter
-                            </span>
-                            <span class="tech-tag-modern">
-                                <i class="fab fa-microsoft"></i> ASP.NET
-                            </span>
-                            <span class="tech-tag-modern">
-                                <i class="fas fa-plug"></i> REST API
-                            </span>
-                        </div>
-                        <a href="{{ route('project.show', 'online-ordering-app') }}" class="project-link-modern">
-                            View Details
-                            <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="project-card-modern scroll-animate" style="transition-delay: 0.2s">
-                    <div class="project-image-modern" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
-                        <i class="fas fa-chart-line project-icon-modern"></i>
-                    </div>
-                    <div class="project-content-modern">
-                        <h3 class="project-title-modern">Back-Office Web Application</h3>
-                        <p class="project-description-modern">
-                            Developed administrative platform for operational management, reporting, and business intelligence.
-                        </p>
-                        <div class="project-tech-modern">
-                            <span class="tech-tag-modern">
-                                <i class="fab fa-laravel"></i> Laravel
-                            </span>
-                            <span class="tech-tag-modern">
-                                <i class="fab fa-php"></i> PHP
-                            </span>
-                            <span class="tech-tag-modern">
-                                <i class="fas fa-database"></i> MySQL
-                            </span>
-                        </div>
-                        <a href="{{ route('project.show', 'back-office-web') }}" class="project-link-modern">
-                            View Details
-                            <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="project-card-modern scroll-animate" style="transition-delay: 0.3s">
-                    <div class="project-image-modern" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
-                        <i class="fas fa-users project-icon-modern"></i>
-                    </div>
-                    <div class="project-content-modern">
-                        <h3 class="project-title-modern">Employee Mobile Application</h3>
-                        <p class="project-description-modern">
-                            Created internal mobile app for employee task management, communication, and operational workflows.
-                        </p>
-                        <div class="project-tech-modern">
-                            <span class="tech-tag-modern">
-                                <i class="fab fa-flutter"></i> Flutter
-                            </span>
-                            <span class="tech-tag-modern">
-                                <i class="fab fa-laravel"></i> Laravel
-                            </span>
-                            <span class="tech-tag-modern">
-                                <i class="fas fa-plug"></i> REST API
-                            </span>
-                        </div>
-                        <a href="{{ route('project.show', 'employee-mobile-app') }}" class="project-link-modern">
-                            View Details
-                            <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="project-card-modern scroll-animate" style="transition-delay: 0.4s">
-                    <div class="project-image-modern" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
-                        <i class="fas fa-university project-icon-modern"></i>
-                    </div>
-                    <div class="project-content-modern">
-                        <h3 class="project-title-modern">Core Banking System</h3>
-                        <p class="project-description-modern">
-                            Contributed to enterprise banking application implementation supporting multi-branch operations.
-                        </p>
-                        <div class="project-tech-modern">
-                            <span class="tech-tag-modern">
-                                <i class="fab fa-microsoft"></i> ASP.NET
-                            </span>
-                            <span class="tech-tag-modern">
-                                <i class="fas fa-code"></i> C#
-                            </span>
-                            <span class="tech-tag-modern">
-                                <i class="fas fa-database"></i> SQL Server
-                            </span>
-                        </div>
-                        <a href="{{ route('project.show', 'core-banking-web') }}" class="project-link-modern">
-                            View Details
-                            <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="project-card-modern scroll-animate" style="transition-delay: 0.5s">
-                    <div class="project-image-modern" style="background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);">
-                        <i class="fas fa-chart-pie project-icon-modern"></i>
-                    </div>
-                    <div class="project-content-modern">
-                        <h3 class="project-title-modern">Finance Module Development</h3>
-                        <p class="project-description-modern">
-                            Maintained and enhanced financial modules ensuring system stability and performance optimization.
-                        </p>
-                        <div class="project-tech-modern">
-                            <span class="tech-tag-modern">
-                                <i class="fab fa-microsoft"></i> ASP.NET
-                            </span>
-                            <span class="tech-tag-modern">
-                                <i class="fas fa-code"></i> C#
-                            </span>
-                            <span class="tech-tag-modern">
-                                <i class="fas fa-database"></i> SQL Server
-                            </span>
-                        </div>
-                        <a href="{{ route('project.show', 'finance-module') }}" class="project-link-modern">
-                            View Details
-                            <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="text-center mt-5 scroll-animate">
-                <a href="{{ url('/projects') }}" class="btn-hero-primary" style="display: inline-flex;">
-                    <i class="fas fa-th me-2"></i>View All Projects
                 </a>
-            </div>
-        </div>
-    </section>
-
-
-<section id="personal-projects" class="section-modern" style="background: var(--dark-bg);">
-    <div class="container">
-        <div class="section-header-modern scroll-animate">
-            <div class="section-eyebrow-modern">Personal Work</div>
-            <h2 class="section-title-modern">Personal Projects</h2>
-            <p class="section-description-modern">
-                Side projects and experiments showcasing my passion for learning and innovation
-            </p>
-        </div>
-
-        <div class="row g-4 mt-2">
-            @foreach($personalProjects as $project)
-            <div class="col-lg-4 col-md-6 scroll-animate" style="transition-delay: {{ $loop->index * 0.1 }}s">
-                <div class="project-card-modern">
-                    <div class="project-image-modern">
-                        <img src="{{ asset($project->image) }}" alt="{{ $project->title }}">
-                        <div class="project-overlay-modern">
-                            <a href="{{ route('personal.project.show', $project->slug) }}" class="btn-project-view-modern">
-                                <i class="fas fa-eye"></i>
-                                View Details
-                            </a>
-                        </div>
-                    </div>
-                    <div class="project-content-modern">
-                        <h3 class="project-title-modern">{{ $project->title }}</h3>
-                        <p class="project-description-modern">{{ Str::limit($project->description, 100) }}</p>
-                        
-                        <div class="project-tech-modern">
-                            @if(!empty($project->technologies) && is_array($project->technologies))
-                                @foreach(array_slice($project->technologies, 0, 3) as $tech)
-                                <span class="tech-tag-modern">{{ $tech }}</span>
-                                @endforeach
-                                @if(count($project->technologies) > 3)
-                                <span class="tech-tag-modern">+{{ count($project->technologies) - 3 }}</span>
-                                @endif
-                            @endif
-                        </div>
-
-                        <div class="project-links-modern">
-                            @if($project->github_url)
-                            <a href="{{ $project->github_url }}" target="_blank" class="project-link-modern" title="View on GitHub">
-                                <i class="fab fa-github"></i>
-                            </a>
-                            @endif
-                            @if($project->live_url)
-                            <a href="{{ $project->live_url }}" target="_blank" class="project-link-modern" title="View Live Demo">
-                                <i class="fas fa-external-link-alt"></i>
-                            </a>
-                            @endif
-                            <a href="{{ route('personal.project.show', $project->slug) }}" class="project-link-modern" title="View Details">
-                                <i class="fas fa-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            @endforeach
-        </div>
-
-        @if($personalProjects->count() >= 3)
-        <div class="text-center mt-5 scroll-animate">
-            <a href="{{ route('personal.projects.all') }}" class="btn-view-all-modern">
-                <span>View All Personal Projects</span>
-                <i class="fas fa-arrow-right"></i>
-            </a>
-        </div>
-        @endif
-    </div>
-</section>
-
-    <!-- Experience Section -->
-    <section id="experience" class="section-modern section-modern-light">
-        <div class="container">
-            <div class="section-header-modern scroll-animate">
-                <div class="section-eyebrow-modern">Career Journey</div>
-                <h2 class="section-title-modern">Work Experience</h2>
-                <p class="section-description-modern">
-                    Professional experience building enterprise solutions and leading development projects
-                </p>
+                @endforeach
             </div>
 
-            <div class="timeline-modern">
+            <div class="mt-4">
+                <a class="action-secondary" href="{{ route('projects.all') }}">Browse all projects</a>
+            </div>
+        </section>
+
+        <section id="experience" class="section-wrap">
+            <div class="section-head">
+                <div class="section-kicker">Experience</div>
+                <h2 class="section-title">Professional work across consulting, enterprise systems, and product development teams.</h2>
+            </div>
+
+            <div class="timeline-list">
                 @foreach($experiences as $experience)
-                <div class="timeline-item-modern scroll-animate">
-                    <div class="timeline-content-modern">
-                        <h3 class="timeline-position-modern">{{ $experience->position }}</h3>
-                        <div class="timeline-company-modern">
-                            <i class="fas fa-building"></i>
-                            {{ $experience->company }}
-                        </div>
-                        <div class="timeline-date-modern">
-                            <i class="fas fa-calendar-alt"></i>
-                            {{ \Carbon\Carbon::parse($experience->start_date)->format('M Y') }} - 
-                            @if($experience->current)
-                                <span style="color: #10b981; font-weight: 600;">Present</span>
-                            @else
-                                {{ \Carbon\Carbon::parse($experience->end_date)->format('M Y') }}
-                            @endif
-                        </div>
-                        <p class="timeline-description-modern">{{ $experience->description }}</p>
+                <article class="timeline-entry">
+                    <div class="timeline-date">
+                        {{ \Carbon\Carbon::parse($experience->start_date)->format('M Y') }} -
+                        @if($experience->current)
+                            Present
+                        @else
+                            {{ \Carbon\Carbon::parse($experience->end_date)->format('M Y') }}
+                        @endif
                     </div>
-                </div>
+                    <div class="timeline-body">
+                        <h3>{{ $experience->position }}</h3>
+                        <div class="timeline-company">{{ $experience->company }}</div>
+                        <p>{{ $experience->description }}</p>
+                    </div>
+                </article>
                 @endforeach
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Certifications Section -->
-    <section id="certifications" class="section-modern" style="background: white;">
-        <div class="container">
-            <div class="section-header-modern scroll-animate">
-                <div class="section-eyebrow-modern">Achievements</div>
-                <h2 class="section-title-modern">Certifications</h2>
-                <p class="section-description-modern">
-                    Professional certifications and continuous learning achievements
-                </p>
+        @if($certifications->count())
+        <section id="certifications" class="section-wrap">
+            <div class="section-head">
+                <div class="section-kicker">Credentials</div>
+                <h2 class="section-title">Certifications and learning records that support the work.</h2>
             </div>
 
-            <div class="certifications-grid-modern">
+            <div class="credential-grid">
                 @foreach($certifications as $certification)
-                <div class="certification-card-modern scroll-animate" style="transition-delay: {{ $loop->index * 0.1 }}s">
-                    <div class="certification-icon-modern">
-                        <i class="fas fa-award"></i>
-                    </div>
-                    <h3 class="certification-name-modern">{{ $certification->name }}</h3>
-                    <div class="certification-issuer-modern">
-                        <i class="fas fa-building me-2"></i>{{ $certification->issuer }}
-                    </div>
+                <article class="credential-card">
+                    <h3>{{ $certification->name }}</h3>
+                    <p>{{ $certification->issuer }}</p>
                     @if($certification->issued_date)
-                    <div class="certification-date-modern">
-                        <i class="fas fa-calendar me-2"></i>{{ \Carbon\Carbon::parse($certification->issued_date)->format('M Y') }}
-                    </div>
+                    <p>{{ \Carbon\Carbon::parse($certification->issued_date)->format('M Y') }}</p>
                     @endif
-                    @if($certification->url)
-                    <a href="{{ $certification->url }}" target="_blank" class="certification-link-modern">
-                        <i class="fas fa-external-link-alt"></i>
-                        View Certificate
-                    </a>
-                    @endif
-                </div>
+                </article>
                 @endforeach
             </div>
-        </div>
-    </section>
+        </section>
+        @endif
 
-    <!-- Contact Section -->
-    <section id="contact" class="section-modern section-modern-dark">
-        <div class="container">
-            <div class="section-header-modern scroll-animate">
-                <div class="section-eyebrow-modern" style="color: #60a5fa;">Get in Touch</div>
-                <h2 class="section-title-modern" style="color: #f8fafc;">Let's Work Together</h2>
-                <p class="section-description-modern" style="color: #cbd5e1;">
-                    Have a project in mind? Let's discuss how I can help bring your ideas to life
-                </p>
+        <section id="contact" class="section-wrap contact-section">
+            <div class="section-head">
+                <div class="section-kicker">Contact</div>
+                <h2 class="section-title">Need a system, dashboard, mobile workflow, or integration built properly?</h2>
             </div>
 
-            <div class="contact-form-modern scroll-animate">
-                <form id="contactForm">
+            <div class="contact-grid">
+                <div>
+                    <p class="contact-note">
+                        Share the business flow, the users, and the problem you want to solve. I can help turn it into a web or mobile application with a practical technical foundation.
+                    </p>
+                    <div class="contact-links">
+                        <a href="mailto:dozernapitupulu@gmail.com"><i class="fas fa-envelope me-2"></i>dozernapitupulu@gmail.com</a>
+                        <a href="https://github.com/dreamcraft17" target="_blank"><i class="fab fa-github me-2"></i>GitHub</a>
+                        <a href="https://www.linkedin.com/in/dozernapitupulu/" target="_blank"><i class="fab fa-linkedin me-2"></i>LinkedIn</a>
+                    </div>
+                </div>
+
+                <form class="contact-form" id="contactForm">
                     @csrf
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group-modern">
-                                <label for="name" class="form-label-modern">
-                                    <i class="fas fa-user"></i>
-                                    Full Name
-                                </label>
-                                <input type="text" class="form-control-modern" id="name" placeholder="John Doe" required>
-                            </div>
+                    <div class="form-row">
+                        <div>
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" placeholder="Your name" required>
                         </div>
-                        <div class="col-md-6">
-                            <div class="form-group-modern">
-                                <label for="email" class="form-label-modern">
-                                    <i class="fas fa-envelope"></i>
-                                    Email Address
-                                </label>
-                                <input type="email" class="form-control-modern" id="email" placeholder="john@example.com" required>
-                            </div>
+                        <div>
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" placeholder="you@example.com" required>
                         </div>
                     </div>
-                    <div class="form-group-modern">
-                        <label for="subject" class="form-label-modern">
-                            <i class="fas fa-tag"></i>
-                            Subject
-                        </label>
-                        <input type="text" class="form-control-modern" id="subject" placeholder="Project Discussion" required>
+                    <div>
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" placeholder="Project discussion" required>
                     </div>
-                    <div class="form-group-modern">
-                        <label for="message" class="form-label-modern">
-                            <i class="fas fa-comment-dots"></i>
-                            Message
-                        </label>
-                        <textarea class="form-control-modern" id="message" placeholder="Tell me about your project..." required></textarea>
+                    <div>
+                        <label for="message">Message</label>
+                        <textarea id="message" placeholder="Tell me about your project..." required></textarea>
                     </div>
-                    <button type="submit" class="btn-submit-modern">
-                        <i class="fas fa-paper-plane"></i>
-                        Send Message
-                    </button>
+                    <button class="submit-btn" type="submit">Send Message</button>
                 </form>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
+</div>
 @endsection
 
 @section('scripts')
 <script>
-    // Scroll Animation
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver(function(entries) {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('active');
-            }
-        });
-    }, observerOptions);
-
-    document.querySelectorAll('.scroll-animate').forEach(el => {
-        observer.observe(el);
-    });
-
-    // Form submission
 document.getElementById('contactForm').addEventListener('submit', function(e) {
     e.preventDefault();
-    
+
     const btn = this.querySelector('button[type="submit"]');
-    const originalText = btn.innerHTML;
-    
-    // Ambil data form
-    const formData = new FormData();
-    formData.append('name', document.getElementById('name').value);
-    formData.append('email', document.getElementById('email').value);
-    formData.append('subject', document.getElementById('subject').value);
-    formData.append('message', document.getElementById('message').value);
-    formData.append('_token', document.querySelector('input[name="_token"]').value);
-    
-    // Tampilkan loading
-    btn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Sending...';
+    const originalText = btn.textContent;
+    btn.textContent = 'Sending...';
     btn.disabled = true;
-    
-    // Kirim data ke server
+
+    const formData = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        subject: document.getElementById('subject').value,
+        message: document.getElementById('message').value,
+        _token: document.querySelector('input[name="_token"]').value
+    };
+
     fetch('/contact', {
         method: 'POST',
-        body: formData,
         headers: {
-            'X-Requested-With': 'XMLHttpRequest'
-        }
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': formData._token
+        },
+        body: JSON.stringify(formData)
     })
     .then(response => response.json())
     .then(data => {
         if (data.success) {
-            // Success
-            btn.innerHTML = '<i class="fas fa-check me-2"></i>Message Sent!';
-            
-            setTimeout(() => {
-                alert(data.message);
-                document.getElementById('contactForm').reset();
-                btn.innerHTML = originalText;
-                btn.disabled = false;
-            }, 1500);
+            alert('Message sent successfully.');
+            document.getElementById('contactForm').reset();
         } else {
-            // Error
-            throw new Error(data.message || 'Failed to send message');
+            alert('Sorry, there was an error sending your message.');
         }
     })
-    .catch(error => {
-        console.error('Error:', error);
-        btn.innerHTML = '<i class="fas fa-times me-2"></i>Failed!';
-        
-        setTimeout(() => {
-            alert('Sorry, there was an error sending your message. Please try again or contact directly via email.');
-            btn.innerHTML = originalText;
-            btn.disabled = false;
-        }, 2000);
+    .catch(() => {
+        alert('Sorry, there was an error sending your message. Please try again or contact directly via email.');
+    })
+    .finally(() => {
+        btn.textContent = originalText;
+        btn.disabled = false;
     });
 });
-
-    // Smooth scroll
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        });
-    });
-
-    // Hero Role Text Animation
-    document.addEventListener('DOMContentLoaded', function() {
-        const roles = ['Full Stack Developer', 'Software Engineer', 'Web Developer', 'Mobile Developer'];
-        let currentIndex = 0;
-        const typedElement = document.getElementById('typed-role');
-        
-        function changeRole() {
-            typedElement.style.opacity = '0';
-            typedElement.style.transform = 'translateY(-10px)';
-            
-            setTimeout(() => {
-                currentIndex = (currentIndex + 1) % roles.length;
-                typedElement.textContent = roles[currentIndex];
-                typedElement.style.opacity = '1';
-                typedElement.style.transform = 'translateY(0)';
-            }, 300);
-        }
-        
-        setInterval(changeRole, 3000);
-        typedElement.style.transition = 'all 0.3s ease';
-    });
-
-    // Skills Tabs Functionality
-    document.addEventListener('DOMContentLoaded', function() {
-        const skillTabs = document.querySelectorAll('.skill-tab-modern');
-        const tabContents = document.querySelectorAll('.skills-content-modern');
-        
-        skillTabs.forEach(tab => {
-            tab.addEventListener('click', function() {
-                const tabId = this.getAttribute('data-tab');
-                
-                skillTabs.forEach(t => t.classList.remove('active'));
-                this.classList.add('active');
-                
-                tabContents.forEach(content => content.classList.remove('active'));
-                document.getElementById(`tab-${tabId}`).classList.add('active');
-            });
-        });
-    });
 </script>
 @endsection

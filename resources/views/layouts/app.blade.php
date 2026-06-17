@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'Dozer Napitupulu — Full Stack Developer')</title>
+    <title>@yield('title', 'Dozer Napitupulu — Fullstack Engineer')</title>
     
     <!-- Meta tags for SEO and professionalism -->
-    <meta name="description" content="Professional portfolio of Dozer Napitupulu - Full Stack Developer specializing in .NET, Laravel, and Flutter">
+    <meta name="description" content="Professional portfolio of Dozer Napitupulu - Fullstack Engineer specializing in .NET, Laravel, and Flutter">
     <meta name="keywords" content="full stack developer, .NET developer, Laravel, Flutter, web development">
     <meta name="author" content="Dozer Napitupulu">
     
     <!-- Open Graph meta tags for social sharing -->
-    <meta property="og:title" content="Dozer Napitupulu — Full Stack Developer">
+    <meta property="og:title" content="Dozer Napitupulu — Fullstack Engineer">
     <meta property="og:description" content="Professional portfolio showcasing projects and skills in web and mobile development">
     <meta property="og:type" content="website">
     
@@ -810,6 +810,639 @@
         .shadow-sm {
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
         }
+
+        /* Human-first portfolio refresh */
+        :root {
+            --ink: #15181d;
+            --paper: #f6f5f1;
+            --paper-soft: #ebe8df;
+            --panel: #ffffff;
+            --muted: #667085;
+            --line: #d8d4ca;
+            --accent: #0f766e;
+            --accent-dark: #0b4f4a;
+            --accent-warm: #b7791f;
+            --dark-bg: var(--paper);
+            --dark-surface: var(--panel);
+            --dark-card: var(--panel);
+            --text-primary: var(--ink);
+            --text-secondary: var(--muted);
+            --neon-cyan: var(--accent);
+            --neon-purple: var(--accent-warm);
+            --neon-pink: var(--accent-dark);
+            --accent-gradient: none;
+            --border-glow: var(--line);
+            --success-color: #15803d;
+            --border-radius: 8px;
+        }
+
+        body {
+            background: var(--paper);
+            color: var(--ink);
+            font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            line-height: 1.65;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            letter-spacing: 0;
+        }
+
+        .navbar-bold {
+            padding: 1rem 2rem;
+            background: rgba(246, 245, 241, 0.92);
+            border-bottom: 1px solid var(--line);
+            backdrop-filter: blur(16px);
+        }
+
+        .navbar-bold.scrolled {
+            padding: 0.75rem 2rem;
+            background: rgba(246, 245, 241, 0.97);
+            border-bottom-color: var(--line);
+            box-shadow: 0 10px 30px rgba(21, 24, 29, 0.07);
+        }
+
+        .brand-icon-badge {
+            width: 42px;
+            height: 42px;
+            background: var(--ink);
+            border-radius: 8px;
+            box-shadow: none;
+            font-size: 1rem;
+        }
+
+        .brand-icon-badge::before,
+        .brand-icon-badge::after {
+            display: none;
+        }
+
+        .brand-name-badge {
+            color: var(--ink);
+            font-size: 1rem;
+            font-weight: 750;
+        }
+
+        .brand-title-badge {
+            color: var(--muted);
+            font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            font-size: 0.68rem;
+            letter-spacing: 0.14em;
+        }
+
+        .nav-menu-bold {
+            gap: 0.25rem;
+        }
+
+        .nav-link-bold {
+            color: #5f6673;
+            border-radius: 8px;
+            font-size: 0.92rem;
+            padding: 0.55rem 0.95rem;
+        }
+
+        .nav-link-bold::before {
+            display: none;
+        }
+
+        .nav-link-bold:hover,
+        .nav-link-bold.active {
+            color: var(--ink);
+            background: #e7e4dc;
+        }
+
+        .nav-cta-bold {
+            margin-left: 0.75rem;
+            background: var(--ink);
+            box-shadow: none;
+            border-radius: 8px;
+            padding: 0.7rem 1.25rem !important;
+        }
+
+        .nav-cta-bold::before {
+            display: none;
+        }
+
+        .nav-cta-bold:hover {
+            background: var(--accent-dark);
+            box-shadow: none;
+            transform: translateY(-1px);
+        }
+
+        .mobile-toggle-bold {
+            background: var(--panel);
+            border: 1px solid var(--line);
+            border-radius: 8px;
+        }
+
+        .toggle-line {
+            background: var(--ink);
+        }
+
+        .footer-bold {
+            background: var(--ink);
+            color: #c4c8cf;
+            padding: 72px 0 0;
+        }
+
+        .footer-bold::before,
+        .footer-bold::after,
+        .footer-logo-icon::after,
+        .footer-cta-box::before {
+            display: none;
+        }
+
+        .footer-logo-icon,
+        .social-link-bold::before,
+        .cta-box-button {
+            background: #ffffff;
+            color: var(--ink);
+        }
+
+        .footer-logo-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 8px;
+            font-size: 1.25rem;
+        }
+
+        .footer-logo-name,
+        .footer-title-bold,
+        .cta-box-title {
+            color: #ffffff;
+        }
+
+        .footer-logo-tagline-bold,
+        .footer-link-bold::before,
+        .footer-copyright-bold a {
+            color: #7dd3c7;
+        }
+
+        .footer-title-bold {
+            text-transform: none;
+            letter-spacing: 0;
+            font-weight: 750;
+        }
+
+        .footer-title-bold::after {
+            background: #7dd3c7;
+            height: 2px;
+        }
+
+        .social-link-bold,
+        .tech-badge-footer,
+        .footer-cta-box {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 8px;
+            box-shadow: none;
+        }
+
+        .social-link-bold:hover,
+        .tech-badge-footer:hover,
+        .cta-box-button:hover {
+            transform: translateY(-2px);
+            box-shadow: none;
+        }
+
+        @media (max-width: 991px) {
+            .nav-menu-bold {
+                background: rgba(246, 245, 241, 0.98);
+                border: 1px solid var(--line);
+                border-radius: 8px;
+                box-shadow: 0 20px 60px rgba(21, 24, 29, 0.12);
+            }
+        }
+
+        /* Public portfolio subpages */
+        .projects-hero,
+        .project-detail-hero,
+        .project-hero-modern {
+            background: var(--paper) !important;
+            color: var(--ink) !important;
+            padding-top: 76px !important;
+            padding-bottom: 56px !important;
+        }
+
+        .project-hero-modern::before {
+            display: none !important;
+        }
+
+        .projects-hero .text-white,
+        .project-detail-hero .text-white,
+        .project-hero-modern .text-white,
+        .project-hero-modern .hero-title-modern,
+        .project-detail-hero h1,
+        .projects-hero h1,
+        .projects-hero .lead,
+        .project-hero-modern .hero-description-modern {
+            color: var(--ink) !important;
+        }
+
+        .projects-hero .lead,
+        .project-hero-modern .hero-description-modern {
+            color: #586171 !important;
+        }
+
+        .projects-hero .badge,
+        .project-detail-hero .badge,
+        .tech-badge,
+        .mini-tech-badge,
+        .tech-pill-modern,
+        .project-card .badge {
+            background: rgba(255, 255, 255, 0.78) !important;
+            border: 1px solid var(--line) !important;
+            border-radius: 8px !important;
+            color: #2f3946 !important;
+            box-shadow: none !important;
+        }
+
+        .breadcrumb-modern,
+        .project-detail-hero .breadcrumb {
+            background: rgba(255, 255, 255, 0.72) !important;
+            border: 1px solid var(--line);
+            border-radius: 8px !important;
+            backdrop-filter: none !important;
+        }
+
+        .breadcrumb-modern .breadcrumb-item,
+        .breadcrumb-modern .breadcrumb-item.active,
+        .breadcrumb-modern .breadcrumb-item a,
+        .project-detail-hero .breadcrumb-item,
+        .project-detail-hero .breadcrumb-item.active,
+        .project-detail-hero .breadcrumb-item a,
+        .breadcrumb-item + .breadcrumb-item::before {
+            color: #4f5967 !important;
+        }
+
+        .project-card,
+        .tech-banner,
+        .content-card,
+        .company-role-highlight,
+        .tech-stack-modern,
+        .project-content-modern,
+        .info-card-modern,
+        .other-projects-card,
+        .project-image-hero,
+        .card {
+            background: rgba(255, 255, 255, 0.82) !important;
+            border: 1px solid var(--line) !important;
+            border-radius: 8px !important;
+            box-shadow: none !important;
+            animation: none !important;
+        }
+
+        .project-card:hover,
+        .tech-banner:hover,
+        .content-card:hover,
+        .company-role-highlight:hover {
+            transform: translateY(-2px) !important;
+            box-shadow: 0 16px 40px rgba(21, 24, 29, 0.08) !important;
+        }
+
+        .project-card .position-relative[style*="linear-gradient"],
+        .project-detail-hero .icon-wrapper,
+        .project-img[style*="linear-gradient"] {
+            background: #dde8e2 !important;
+            box-shadow: none !important;
+            transform: none !important;
+        }
+
+        .project-card .text-white,
+        .project-card .position-relative i,
+        .project-img .text-white,
+        .project-detail-hero .icon-wrapper i {
+            color: var(--accent-dark) !important;
+        }
+
+        .card-title,
+        .content-card h4,
+        .tech-banner h5,
+        .tech-stack-title,
+        .content-title-modern,
+        .info-card-title,
+        .section-title,
+        .project-content-modern .content h1,
+        .project-content-modern .content h2,
+        .project-content-modern .content h3 {
+            color: var(--ink) !important;
+        }
+
+        .card-text,
+        .project-content,
+        .project-content-modern .content,
+        .projects-subtitle,
+        .info-label-modern,
+        .project-item-mini p {
+            color: #586171 !important;
+        }
+
+        .btn-primary,
+        .btn-hero-modern.btn-hero-primary,
+        .btn-view-all-projects,
+        .project-card .btn,
+        .content-card + .d-flex .btn:first-child {
+            background: var(--ink) !important;
+            border: 1px solid var(--ink) !important;
+            border-radius: 8px !important;
+            color: #ffffff !important;
+            box-shadow: none !important;
+        }
+
+        .btn-primary:hover,
+        .btn-hero-modern.btn-hero-primary:hover,
+        .btn-view-all-projects:hover,
+        .project-card .btn:hover {
+            background: var(--accent-dark) !important;
+            border-color: var(--accent-dark) !important;
+            color: #ffffff !important;
+            transform: translateY(-1px) !important;
+            box-shadow: none !important;
+        }
+
+        .btn-outline-dark,
+        .btn-hero-modern.btn-hero-secondary,
+        .content-card + .d-flex .btn,
+        .info-link-modern {
+            background: transparent !important;
+            border: 1px solid #9c978e !important;
+            border-radius: 8px !important;
+            color: var(--ink) !important;
+            box-shadow: none !important;
+        }
+
+        .btn-outline-dark:hover,
+        .btn-hero-modern.btn-hero-secondary:hover,
+        .content-card + .d-flex .btn:hover,
+        .info-link-modern:hover {
+            background: #ffffff !important;
+            border-color: var(--ink) !important;
+            color: var(--ink) !important;
+            transform: translateY(-1px) !important;
+        }
+
+        .content-section-modern,
+        section.py-5 {
+            background: var(--paper) !important;
+        }
+
+        .project-image-hero {
+            overflow: hidden;
+        }
+
+        .pagination .page-link {
+            border: 1px solid var(--line) !important;
+            border-radius: 8px !important;
+            color: var(--ink) !important;
+            box-shadow: none !important;
+        }
+
+        .pagination .page-link:hover,
+        .pagination .page-item.active .page-link {
+            background: var(--ink) !important;
+            border-color: var(--ink) !important;
+            color: #ffffff !important;
+            transform: none !important;
+        }
+
+        @media (max-width: 767px) {
+            .projects-hero,
+            .project-detail-hero,
+            .project-hero-modern {
+                padding-top: 56px !important;
+                padding-bottom: 44px !important;
+            }
+        }
+
+        /* Final editorial layout pass */
+        body {
+            background: #f4f1ea;
+            color: #1d1f22;
+        }
+
+        .navbar-bold {
+            position: sticky;
+            padding: 1.15rem 0;
+            background: #f4f1ea;
+            border-bottom: 1px solid #d6d0c5;
+            backdrop-filter: none;
+        }
+
+        .navbar-bold.scrolled {
+            padding: 1.15rem 0;
+            background: #f4f1ea;
+            box-shadow: none;
+        }
+
+        .brand-badge {
+            gap: 0;
+        }
+
+        .brand-icon-badge {
+            display: none;
+        }
+
+        .brand-name-badge {
+            font-size: 1.05rem;
+            font-weight: 800;
+        }
+
+        .brand-title-badge {
+            margin-top: 0.25rem;
+            color: #7c7469;
+            font-size: 0.66rem;
+        }
+
+        .nav-link-bold,
+        .nav-cta-bold {
+            background: transparent !important;
+            color: #5d5d5d !important;
+            border: 0 !important;
+            box-shadow: none !important;
+            padding: 0.45rem 0.55rem !important;
+            font-size: 0.9rem;
+        }
+
+        .nav-link-bold:hover,
+        .nav-link-bold.active,
+        .nav-cta-bold:hover {
+            color: #151515 !important;
+            text-decoration: underline;
+            text-underline-offset: 4px;
+            transform: none;
+        }
+
+        main {
+            padding-top: 0 !important;
+        }
+
+        .footer-bold {
+            background: #1d1f22;
+            padding: 0;
+        }
+
+        .footer-content-bold {
+            display: none;
+        }
+
+        .footer-bottom-bold {
+            margin-top: 0;
+            padding: 1.5rem 0;
+            border-top: 0;
+        }
+
+        .footer-credits {
+            display: block;
+        }
+
+        .footer-copyright-bold {
+            font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            color: #a9a59d;
+        }
+
+        .footer-copyright-bold a {
+            color: #f4f1ea;
+        }
+
+        @media (max-width: 991px) {
+            .nav-menu-bold {
+                top: calc(100% + 0.75rem);
+                background: #f4f1ea;
+                border: 1px solid #d6d0c5;
+                box-shadow: none;
+            }
+        }
+
+        /* Corporate portfolio direction */
+        :root {
+            --corp-ink: #172033;
+            --corp-muted: #687386;
+            --corp-bg: #f7f9fb;
+            --corp-panel: #ffffff;
+            --corp-line: #dfe5ec;
+            --corp-accent: #0f766e;
+            --corp-accent-soft: #e4f3f0;
+            --corp-navy: #10243e;
+        }
+
+        body {
+            background: var(--corp-bg);
+            color: var(--corp-ink);
+        }
+
+        .navbar-bold,
+        .navbar-bold.scrolled {
+            position: sticky;
+            padding: 0.9rem 0;
+            background: rgba(255, 255, 255, 0.94);
+            border-bottom: 1px solid var(--corp-line);
+            backdrop-filter: blur(14px);
+            box-shadow: none;
+        }
+
+        .brand-icon-badge {
+            display: flex;
+            width: 42px;
+            height: 42px;
+            border-radius: 8px;
+            background: var(--corp-navy);
+            color: #ffffff;
+        }
+
+        .brand-badge {
+            gap: 0.75rem;
+        }
+
+        .brand-name-badge {
+            color: var(--corp-ink);
+            font-size: 1rem;
+        }
+
+        .brand-title-badge {
+            color: var(--corp-muted);
+        }
+
+        .nav-link-bold {
+            color: #5b6678 !important;
+            border-radius: 8px !important;
+            padding: 0.55rem 0.85rem !important;
+            text-decoration: none !important;
+        }
+
+        .nav-link-bold:hover,
+        .nav-link-bold.active {
+            background: #eef3f7 !important;
+            color: var(--corp-ink) !important;
+            text-decoration: none !important;
+        }
+
+        .nav-cta-bold {
+            margin-left: 0.5rem;
+            background: var(--corp-navy) !important;
+            color: #ffffff !important;
+            padding: 0.65rem 1rem !important;
+        }
+
+        .nav-cta-bold:hover {
+            background: var(--corp-accent) !important;
+            color: #ffffff !important;
+        }
+
+        .footer-bold {
+            background: var(--corp-navy);
+            padding: 56px 0 0;
+            color: #c9d3df;
+        }
+
+        .footer-content-bold {
+            display: block;
+        }
+
+        .footer-logo-icon {
+            background: #ffffff;
+            color: var(--corp-navy);
+        }
+
+        .footer-logo-name,
+        .footer-title-bold,
+        .cta-box-title {
+            color: #ffffff;
+        }
+
+        .footer-logo-tagline-bold,
+        .footer-copyright-bold a {
+            color: #7bd7c9;
+        }
+
+        .footer-description-bold,
+        .footer-link-bold,
+        .cta-box-text {
+            color: #c9d3df;
+        }
+
+        .footer-cta-box,
+        .social-link-bold {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.14);
+        }
+
+        .cta-box-button {
+            background: #ffffff;
+            color: var(--corp-navy);
+        }
+
+        .footer-bottom-bold {
+            margin-top: 2rem;
+            padding: 1.25rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        @media (max-width: 991px) {
+            .nav-menu-bold {
+                background: #ffffff;
+                border: 1px solid var(--corp-line);
+                box-shadow: 0 18px 50px rgba(16, 36, 62, 0.12);
+            }
+        }
     </style>
     
     @yield('styles')
@@ -826,14 +1459,14 @@
                     <div class="brand-icon-badge">DN</div>
                     <div class="brand-text-badge">
                         <div class="brand-name-badge">Dozer Napitupulu</div>
-                        <div class="brand-title-badge">Full Stack Dev</div>
+                        <div class="brand-title-badge">Fullstack Engineer</div>
                     </div>
                 </a>
                 
                 <!-- Option 2: Brutalist/Bold Text Style 
                 <a href="{{ url('/') }}" class="brand-brutalist">
                     <div class="brand-brutalist-text" data-text="DOZER">DOZER</div>
-                    <div class="brand-brutalist-subtitle">// Full Stack Developer</div>
+                    <div class="brand-brutalist-subtitle">// Fullstack Engineer</div>
                 </a>
                 -->
                 
@@ -877,7 +1510,7 @@
         </div>
     </nav>
 
-    <main style="padding-top: 100px;">
+    <main style="padding-top: 74px;">
         @yield('content')
     </main>
 
@@ -893,7 +1526,7 @@
                                 <div class="footer-logo-icon">DN</div>
                                 <div class="footer-logo-text">
                                     <div class="footer-logo-name">Dozer Napitupulu</div>
-                                    <div class="footer-logo-tagline-bold">Full Stack Developer</div>
+                                    <div class="footer-logo-tagline-bold">Fullstack Engineer</div>
                                 </div>
                             </div>
                             <p class="footer-description-bold">
@@ -976,21 +1609,7 @@
             <div class="footer-bottom-bold">
                 <div class="footer-credits">
                     <div class="footer-copyright-bold">
-                        © {{ date('Y') }} <a href="{{ url('/') }}">Dozer Napitupulu</a>. All rights reserved.
-                        <span class="made-with-love d-block d-md-inline ms-md-2 mt-2 mt-md-0">
-                            Built with <span class="love-icon">♥</span> using modern tech
-                        </span>
-                    </div>
-                    <div class="footer-tech-stack">
-                        <span class="tech-badge-footer">
-                            <i class="fab fa-laravel"></i> Laravel
-                        </span>
-                        <span class="tech-badge-footer">
-                            <i class="fab fa-bootstrap"></i> Bootstrap
-                        </span>
-                        <span class="tech-badge-footer">
-                            <i class="fab fa-js"></i> JavaScript
-                        </span>
+                        © {{ date('Y') }} <a href="{{ url('/') }}">Dozer Napitupulu</a>.
                     </div>
                 </div>
             </div>

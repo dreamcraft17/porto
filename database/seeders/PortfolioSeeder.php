@@ -71,7 +71,7 @@ class PortfolioSeeder extends Seeder
                 'order' => 2,
             ],
             [
-                'position' => 'Product Development Software Engineer Intern',
+                'position' => 'Product Development Fullstack Developer',
                 'company' => 'PT. Mattel Indonesia',
                 'description' => 'Developing the software and Website of the ProdDev Department in Asp.Net MVC. Maintaining the Website (Asp.Net). Full Stack Web Developer. Digitalize all the data of the department. Responsible for making and maintaining the database using Microsoft SQL Server. Responsible for Website publishing and deploying. Migrating and transforming the authentication of the website using SSO and JWT.',
                 'start_date' => Carbon::parse('2023-07-01'),
