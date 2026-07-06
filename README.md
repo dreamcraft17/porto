@@ -1,59 +1,95 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Porto — Laravel Portfolio CMS
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Personal portfolio website with a protected admin panel for managing projects, experience, skills, and contact form submissions.
 
-## About Laravel
+**Stack:** Laravel 12, PHP 8.2+, Blade, Vite, SQLite/MySQL
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Requirements
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- PHP 8.2+
+- Composer
+- Node.js 20+
+- SQLite (local) or MySQL (production)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Local Setup
 
-## Learning Laravel
+```bash
+composer install
+cp .env.example .env
+php artisan key:generate
+php artisan migrate
+npm install
+npm run build
+php artisan serve
+```
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+Or use the combined setup script:
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+```bash
+composer setup
+```
 
-## Laravel Sponsors
+Create the first admin user (registration is disabled by default):
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+```bash
+php artisan tinker
+>>> \App\Models\User::create(['name' => 'Admin', 'email' => 'you@example.com', 'password' => 'your-secure-password']);
+```
 
-### Premium Partners
+Visit:
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+- Portfolio: `http://localhost:8000`
+- Admin: `http://localhost:8000/admin/login`
 
-## Contributing
+## Environment Variables
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+| Variable | Description |
+|----------|-------------|
+| `ALLOW_ADMIN_REGISTRATION` | Must stay `false` in production |
+| `CONTACT_MAIL_TO` | Email address for contact form submissions |
+| `CONTACT_MAIL_TO_NAME` | Display name for contact recipient |
+| `APP_DEBUG` | Must be `false` in production |
+| `SESSION_ENCRYPT` | Set `true` in production |
 
-## Code of Conduct
+See `.env.example` for the full list.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## Development
 
-## Security Vulnerabilities
+```bash
+composer dev          # serve + queue + logs + vite
+composer test         # run PHPUnit
+composer lint         # check code style (Pint)
+composer lint:fix     # fix code style
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Deployment
+
+See [DEPLOYMENT.md](DEPLOYMENT.md) for cPanel + GitHub Actions workflow.
+
+## Security
+
+See [SECURITY.md](SECURITY.md) for vulnerability reporting and production checklist.
+
+## Documentation
+
+- [AUDIT.md](AUDIT.md) — Security audit findings
+- [DEPLOYMENT.md](DEPLOYMENT.md) — Production deploy guide
+- [SECURITY.md](SECURITY.md) — Security policy
+- [docs/STAGING.md](docs/STAGING.md) — Staging environment
+- [docs/INFRASTRUCTURE.md](docs/INFRASTRUCTURE.md) — Docker, Ansible, CI/CD
+- [docs/01_PRD_Portfolio_Security_Improvements.md](docs/01_PRD_Portfolio_Security_Improvements.md)
+- [docs/02_SRS_Detailed_Requirements.md](docs/02_SRS_Detailed_Requirements.md)
+- [docs/03_SDD_Design_Architecture.md](docs/03_SDD_Design_Architecture.md)
+
+### Phase 3 additions
+
+- Portfolio homepage refactored into Blade components + Vite assets
+- Personal project page split into components + Vite CSS
+- HTML Purifier (`mews/purifier`) for rich admin content
+- Services displayed on homepage from database
+- Integration tests for admin CRUD
+- `docker-compose.yml`, Ansible playbook, staging workflow
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+MIT

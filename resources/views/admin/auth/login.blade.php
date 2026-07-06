@@ -135,13 +135,6 @@
                         <i class="fas fa-sign-in-alt me-2"></i>Sign In
                     </button>
                 </div>
-                
-                <div class="login-footer">
-                    <p class="mb-0">
-                        Don't have an account? 
-                        <a href="{{ route('admin.register') }}" class="text-decoration-none">Register here</a>
-                    </p>
-                </div>
             </form>
         </div>
     </div>

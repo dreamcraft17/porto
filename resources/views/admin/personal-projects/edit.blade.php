@@ -72,6 +72,7 @@
                     <div class="mb-3">
                         <label for="content" class="form-label">Content</label>
                         <textarea class="form-control" id="content" name="content" rows="10">{{ old('content', $personalProject->content) }}</textarea>
+                        <div class="form-text">Basic HTML is supported (headings, lists, links). Scripts and unsafe tags are removed automatically.</div>
                         @error('content')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror

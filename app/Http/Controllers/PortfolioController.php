@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Project;
-use App\Models\Experience;
-use App\Models\Skill;
-use App\Models\Education;
 use App\Models\Certification;
+use App\Models\Education;
+use App\Models\Experience;
 use App\Models\PersonalProject;
-use Illuminate\Http\Request;
+use App\Models\Project;
+use App\Models\Service;
+use App\Models\Skill;
 
 class PortfolioController extends Controller
 {
@@ -34,6 +34,9 @@ class PortfolioController extends Controller
                 ->get(),
             'certifications' => Certification::orderBy('order', 'asc')
                 ->orderBy('issued_date', 'desc')
+                ->get(),
+            'services' => Service::where('active', true)
+                ->orderBy('order')
                 ->get(),
         ];
 
@@ -65,12 +68,14 @@ class PortfolioController extends Controller
     public function allProjects()
     {
         $projects = Project::orderBy('order', 'asc')->paginate(9);
+
         return view('portfolio.projects', compact('projects'));
     }
 
     public function allPersonalProjects() // Tambah method baru
     {
         $projects = PersonalProject::orderBy('order', 'asc')->paginate(9);
+
         return view('portfolio.personal-projects', compact('projects'));
     }
 }

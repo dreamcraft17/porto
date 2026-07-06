@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\PortfolioController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,7 +18,9 @@ Route::get('/personal-projects', [PortfolioController::class, 'allPersonalProjec
 Route::get('/personal-project/{slug}', [PortfolioController::class, 'showPersonalProject'])->name('personal.project.show');
 
 // Contact Form Route
-Route::post('/contact', [ContactController::class, 'send'])->name('contact.send');
+Route::post('/contact', [ContactController::class, 'send'])
+    ->middleware('throttle:5,1')
+    ->name('contact.send');
 
 // Admin Routes
 Route::prefix('admin')->group(function () {
@@ -27,5 +29,5 @@ Route::prefix('admin')->group(function () {
 
 // Fallback
 Route::fallback(function () {
-    return view('errors.404');
+    return response()->view('errors.404', [], 404);
 });

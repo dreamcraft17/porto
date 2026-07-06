@@ -2,17 +2,18 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\SlugHelper;
 use App\Http\Controllers\Controller;
 use App\Models\PersonalProject;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class PersonalProjectController extends Controller
 {
-    
     public function index()
     {
         $projects = PersonalProject::orderBy('order')->get();
+
         return view('admin.personal-projects.index', compact('projects'));
     }
 
@@ -36,22 +37,10 @@ class PersonalProjectController extends Controller
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        $validated['slug'] = Str::slug($validated['title']);
-        
-        // UPLOAD GAMBAR KE PUBLIC FOLDER
-        if ($request->hasFile('image')) {
-            $file = $request->file('image');
-            $fileName = time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
-            
-            // Simpan ke public/personal-projects
-            $file->move(public_path('personal-projects'), $fileName);
-            
-            // Simpan path relatif ke database
-            $validated['image'] = 'personal-projects/' . $fileName;
-        }
+        $validated['slug'] = SlugHelper::generateUniqueSlug($validated['title'], PersonalProject::class);
 
-        if (isset($validated['technologies'])) {
-            $validated['technologies'] = json_encode($validated['technologies']);
+        if ($request->hasFile('image')) {
+            $validated['image'] = $request->file('image')->store('personal-projects', 'public');
         }
 
         PersonalProject::create($validated);
@@ -79,25 +68,18 @@ class PersonalProjectController extends Controller
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        $validated['slug'] = Str::slug($validated['title']);
-        
-        // UPDATE GAMBAR DI PUBLIC FOLDER
-        if ($request->hasFile('image')) {
-            // Hapus gambar lama jika ada
-            if ($personalProject->image && file_exists(public_path($personalProject->image))) {
-                unlink(public_path($personalProject->image));
-            }
-            
-            $file = $request->file('image');
-            $fileName = time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
-            
-            // Simpan gambar baru
-            $file->move(public_path('personal-projects'), $fileName);
-            $validated['image'] = 'personal-projects/' . $fileName;
-        }
+        $validated['slug'] = SlugHelper::generateUniqueSlug(
+            $validated['title'],
+            PersonalProject::class,
+            $personalProject->id
+        );
 
-        if (isset($validated['technologies'])) {
-            $validated['technologies'] = json_encode($validated['technologies']);
+        if ($request->hasFile('image')) {
+            if ($personalProject->image) {
+                Storage::disk('public')->delete($personalProject->image);
+            }
+
+            $validated['image'] = $request->file('image')->store('personal-projects', 'public');
         }
 
         $personalProject->update($validated);
@@ -106,12 +88,11 @@ class PersonalProjectController extends Controller
     }
 
     public function destroy(PersonalProject $personalProject)
-    {   
-        // Hapus gambar fisik dari public folder
-        if ($personalProject->image && file_exists(public_path($personalProject->image))) {
-            unlink(public_path($personalProject->image));
+    {
+        if ($personalProject->image) {
+            Storage::disk('public')->delete($personalProject->image);
         }
-        
+
         $personalProject->delete();
 
         return redirect()->route('admin.personal-projects.index')->with('success', 'Personal project deleted successfully.');

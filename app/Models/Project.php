@@ -27,4 +27,17 @@ class Project extends Model
         'project_date' => 'date',
         'featured' => 'boolean',
     ];
+
+    public function getImageUrlAttribute(): ?string
+    {
+        if (! $this->image) {
+            return null;
+        }
+
+        if (file_exists(public_path($this->image))) {
+            return asset($this->image);
+        }
+
+        return asset('storage/'.$this->image);
+    }
 }

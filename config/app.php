@@ -123,4 +123,16 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Admin Registration
+    |--------------------------------------------------------------------------
+    |
+    | When false, public /admin/register routes are disabled. Create admin
+    | accounts via `php artisan tinker` or a one-time seeder instead.
+    |
+    */
+
+    'allow_admin_registration' => (bool) env('ALLOW_ADMIN_REGISTRATION', false),
+
 ];

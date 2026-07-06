@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\SlugHelper;
 use App\Http\Controllers\Controller;
 use App\Models\Project;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
-
-    
     public function index()
     {
         $projects = Project::orderBy('order')->get();
+
         return view('admin.projects.index', compact('projects'));
     }
 
@@ -39,15 +39,10 @@ class ProjectController extends Controller
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        $validated['slug'] = Str::slug($validated['title']);
-        
-        if ($request->hasFile('image')) {
-            $path = $request->file('image')->store('projects', 'public');
-            $validated['image'] = $path;
-        }
+        $validated['slug'] = SlugHelper::generateUniqueSlug($validated['title'], Project::class);
 
-        if (isset($validated['technologies'])) {
-            $validated['technologies'] = json_encode($validated['technologies']);
+        if ($request->hasFile('image')) {
+            $validated['image'] = $request->file('image')->store('projects', 'public');
         }
 
         Project::create($validated);
@@ -77,20 +72,18 @@ class ProjectController extends Controller
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        $validated['slug'] = Str::slug($validated['title']);
-        
-        if ($request->hasFile('image')) {
-            // Delete old image if exists
-            if ($project->image) {
-                \Storage::disk('public')->delete($project->image);
-            }
-            
-            $path = $request->file('image')->store('projects', 'public');
-            $validated['image'] = $path;
-        }
+        $validated['slug'] = SlugHelper::generateUniqueSlug(
+            $validated['title'],
+            Project::class,
+            $project->id
+        );
 
-        if (isset($validated['technologies'])) {
-            $validated['technologies'] = json_encode($validated['technologies']);
+        if ($request->hasFile('image')) {
+            if ($project->image) {
+                Storage::disk('public')->delete($project->image);
+            }
+
+            $validated['image'] = $request->file('image')->store('projects', 'public');
         }
 
         $project->update($validated);
@@ -101,9 +94,9 @@ class ProjectController extends Controller
     public function destroy(Project $project)
     {
         if ($project->image) {
-            \Storage::disk('public')->delete($project->image);
+            Storage::disk('public')->delete($project->image);
         }
-        
+
         $project->delete();
 
         return redirect()->route('admin.projects.index')->with('success', 'Project deleted successfully.');

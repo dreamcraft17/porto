@@ -1,0 +1,10 @@
+---
+- name: Porto post-deploy
+  hosts: all
+  gather_facts: false
+
+  tasks:
+    - name: Run post-deploy script
+      ansible.builtin.script: ../scripts/deploy.sh
+      args:
+        chdir: "{{ app_path }}"

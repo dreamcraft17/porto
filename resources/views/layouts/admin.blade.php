@@ -334,6 +334,12 @@
                     <i class="fas fa-award"></i> Certifications
                 </a>
             </li>
+
+            <li class="nav-item">
+                <a class="nav-link {{ request()->routeIs('admin.services.*') ? 'active' : '' }}" href="{{ route('admin.services.index') }}">
+                    <i class="fas fa-concierge-bell"></i> Services
+                </a>
+            </li>
         </ul>
         
         <div class="sidebar-footer p-4">

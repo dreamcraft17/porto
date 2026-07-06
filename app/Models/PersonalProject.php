@@ -28,4 +28,26 @@ class PersonalProject extends Model
         'project_date' => 'date',
         'featured' => 'boolean',
     ];
+
+    protected static function booted(): void
+    {
+        static::saving(function (PersonalProject $project) {
+            if ($project->isDirty('content') && filled($project->content)) {
+                $project->content = clean($project->content);
+            }
+        });
+    }
+
+    public function getImageUrlAttribute(): ?string
+    {
+        if (! $this->image) {
+            return null;
+        }
+
+        if (file_exists(public_path($this->image))) {
+            return asset($this->image);
+        }
+
+        return asset('storage/'.$this->image);
+    }
 }
