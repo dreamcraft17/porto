@@ -8,9 +8,11 @@ Personal portfolio website with a protected admin panel for managing projects, e
 
 **Stack:** Laravel 12, PHP 8.2+, Blade, Vite, SQLite/MySQL
 
+Composer resolves packages as **PHP 8.2** (`config.platform.php`) so `composer install` works on cPanel/CI even if your laptop is PHP 8.3–8.5. Do not bump that platform pin without checking Symfony — v8 needs PHP 8.4.1+.
+
 ## Requirements
 
-- PHP 8.2+
+- PHP 8.2+ (8.3 is fine; lockfile is built for 8.2)
 - Composer
 - Node.js 20+
 - SQLite (local) or MySQL (production)

@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Helpers\SlugHelper;
 use App\Models\Project;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -14,7 +15,7 @@ class ProjectSlugTest extends TestCase
     {
         return Project::create([
             'title' => $title,
-            'slug' => $slug ?? \App\Helpers\SlugHelper::generateUniqueSlug($title, Project::class),
+            'slug' => $slug ?? SlugHelper::generateUniqueSlug($title, Project::class),
             'description' => 'Description',
             'content' => 'Content',
             'project_date' => now()->toDateString(),
