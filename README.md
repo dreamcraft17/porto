@@ -1,5 +1,9 @@
 # Porto — Laravel Portfolio CMS
 
+> **Author:** Dozer
+> **Date:** 2026-09-05
+> **Dikelola / Managed by:** PT. Dozer Napitupulu Technology (DN TECH)
+
 Personal portfolio website with a protected admin panel for managing projects, experience, skills, and contact form submissions.
 
 **Stack:** Laravel 12, PHP 8.2+, Blade, Vite, SQLite/MySQL
@@ -29,7 +33,7 @@ Or use the combined setup script:
 composer setup
 ```
 
-Create the first admin user (registration is disabled by default):
+Create the first admin user (public registration is off by default; CMS routes require `is_admin`):
 
 ```bash
 php artisan tinker
@@ -46,12 +50,15 @@ Visit:
 | Variable | Description |
 |----------|-------------|
 | `ALLOW_ADMIN_REGISTRATION` | Must stay `false` in production |
-| `CONTACT_MAIL_TO` | Email address for contact form submissions |
-| `CONTACT_MAIL_TO_NAME` | Display name for contact recipient |
+| `CONTACT_MAIL_TO` | Inbox for contact form mail; required and non-empty in production |
+| `CONTACT_MAIL_TO_NAME` | Display name for that recipient |
 | `APP_DEBUG` | Must be `false` in production |
+| `APP_ENV` | Use `production` on the live host |
 | `SESSION_ENCRYPT` | Set `true` in production |
+| `SESSION_SECURE_COOKIE` | Set `true` in production (HTTPS) |
+| `SOCIAL_GITHUB_URL` / `SOCIAL_LINKEDIN_URL` / `SOCIAL_TWITTER_URL` / `SOCIAL_EMAIL` | Public profile links on the site |
 
-See `.env.example` for the full list.
+See `.env.example` for the full list. Empty `CONTACT_MAIL_TO` is rejected when `APP_ENV=production`.
 
 ## Development
 
@@ -60,7 +67,10 @@ composer dev          # serve + queue + logs + vite
 composer test         # run PHPUnit
 composer lint         # check code style (Pint)
 composer lint:fix     # fix code style
+composer audit        # fail CI if PHP advisories are found
 ```
+
+CI (`.github/workflows/ci.yml`) runs `composer lint`, `composer audit`, `npm run build`, and `php artisan test`.
 
 ## Deployment
 
@@ -72,7 +82,8 @@ See [SECURITY.md](SECURITY.md) for vulnerability reporting and production checkl
 
 ## Documentation
 
-- [AUDIT.md](AUDIT.md) — Security audit findings
+- [docs/CODE-REVIEW-BUNDLE-2026-09-05.md](docs/CODE-REVIEW-BUNDLE-2026-09-05.md) — Current engineering review
+- [AUDIT.md](AUDIT.md) — 6 July 2026 audit (superseded; see the review bundle)
 - [DEPLOYMENT.md](DEPLOYMENT.md) — Production deploy guide
 - [SECURITY.md](SECURITY.md) — Security policy
 - [docs/STAGING.md](docs/STAGING.md) — Staging environment
@@ -81,14 +92,7 @@ See [SECURITY.md](SECURITY.md) for vulnerability reporting and production checkl
 - [docs/02_SRS_Detailed_Requirements.md](docs/02_SRS_Detailed_Requirements.md)
 - [docs/03_SDD_Design_Architecture.md](docs/03_SDD_Design_Architecture.md)
 
-### Phase 3 additions
-
-- Portfolio homepage refactored into Blade components + Vite assets
-- Personal project page split into components + Vite CSS
-- HTML Purifier (`mews/purifier`) for rich admin content
-- Services displayed on homepage from database
-- Integration tests for admin CRUD
-- `docker-compose.yml`, Ansible playbook, staging workflow
+Local Docker (MySQL + Redis, app on port 8000): `docker compose up -d` — see [docs/INFRASTRUCTURE.md](docs/INFRASTRUCTURE.md).
 
 ## License
 
