@@ -96,4 +96,4 @@ Local Docker (MySQL + Redis, app on port 8000): `docker compose up -d` — see [
 
 ## License
 
-MIT
+Copyright (c) 2026 **PT. Dozer Technology Indonesia**. All rights reserved. See [LICENSE](LICENSE).
