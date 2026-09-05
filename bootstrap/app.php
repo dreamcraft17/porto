@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Middleware\EnsureUserIsAdmin;
+use App\Http\Middleware\SecurityHeaders;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -11,10 +13,17 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        // Tamu akses route auth → ke login admin
+        $middleware->trustProxies(at: '*');
+        $middleware->appendToGroup('web', SecurityHeaders::class);
+        $middleware->alias([
+            'admin' => EnsureUserIsAdmin::class,
+        ]);
         $middleware->redirectGuestsTo(fn () => route('admin.login'));
-        // User sudah login akses halaman guest (login/register) → ke dashboard admin, jangan ke homepage
-        $middleware->redirectUsersTo(fn () => route('admin.dashboard'));
+        $middleware->redirectUsersTo(function () {
+            return auth()->user()?->is_admin
+                ? route('admin.dashboard')
+                : route('home');
+        });
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //

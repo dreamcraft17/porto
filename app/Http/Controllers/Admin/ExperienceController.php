@@ -4,15 +4,15 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Experience;
+use App\Support\BooleanFields;
 use Illuminate\Http\Request;
 
 class ExperienceController extends Controller
 {
-
-    
     public function index()
     {
         $experiences = Experience::orderBy('order')->get();
+
         return view('admin.experiences.index', compact('experiences'));
     }
 
@@ -31,7 +31,7 @@ class ExperienceController extends Controller
             'end_date' => 'nullable|date|after:start_date',
             'order' => 'nullable|integer',
         ]);
-        $validated['current'] = $request->boolean('current');
+        $validated = BooleanFields::merge($request, $validated, ['current']);
 
         Experience::create($validated);
 
@@ -53,7 +53,7 @@ class ExperienceController extends Controller
             'end_date' => 'nullable|date|after:start_date',
             'order' => 'nullable|integer',
         ]);
-        $validated['current'] = $request->boolean('current');
+        $validated = BooleanFields::merge($request, $validated, ['current']);
 
         $experience->update($validated);
 
@@ -63,6 +63,7 @@ class ExperienceController extends Controller
     public function destroy(Experience $experience)
     {
         $experience->delete();
+
         return redirect()->route('admin.experiences.index')->with('success', 'Experience deleted successfully.');
     }
 }

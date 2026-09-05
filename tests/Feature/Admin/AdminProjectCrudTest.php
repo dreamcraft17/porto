@@ -78,4 +78,33 @@ class AdminProjectCrudTest extends TestCase
 
         $this->assertDatabaseMissing('projects', ['id' => $project->id]);
     }
+
+    public function test_unchecking_featured_persists_false(): void
+    {
+        $project = Project::create([
+            'title' => 'Featured Work',
+            'slug' => 'featured-work',
+            'description' => 'Desc',
+            'content' => 'Content',
+            'project_date' => now()->toDateString(),
+            'featured' => true,
+        ]);
+
+        $this->actingAs($this->admin)->put(route('admin.projects.update', $project), [
+            'title' => 'Featured Work',
+            'description' => 'Desc',
+            'content' => 'Content',
+            'project_date' => '2024-02-01',
+        ])->assertRedirect(route('admin.projects.index'));
+
+        $this->assertFalse($project->fresh()->featured);
+    }
+
+    public function test_non_admin_cannot_access_project_admin(): void
+    {
+        $user = User::factory()->notAdmin()->create();
+
+        $this->actingAs($user)->get(route('admin.projects.index'))
+            ->assertForbidden();
+    }
 }

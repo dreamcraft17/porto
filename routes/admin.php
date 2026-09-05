@@ -29,7 +29,7 @@ Route::get('/', function () {
 Route::middleware(['guest'])->group(function () {
     Route::get('/login', [AuthController::class, 'showLogin'])->name('admin.login');
     Route::post('/login', [AuthController::class, 'login'])
-        ->middleware('throttle:5,1');
+        ->middleware('throttle:admin-login');
 
     if (config('app.allow_admin_registration')) {
         Route::get('/register', [AuthController::class, 'showRegister'])->name('admin.register');
@@ -39,7 +39,7 @@ Route::middleware(['guest'])->group(function () {
     }
 });
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'admin'])->group(function () {
     Route::post('/logout', [AuthController::class, 'logout'])->name('admin.logout');
 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');

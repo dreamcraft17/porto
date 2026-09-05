@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
 use App\Models\Certification;
 use Carbon\Carbon;
+use Illuminate\Database\Seeder;
 
 class CertificationSeeder extends Seeder
 {

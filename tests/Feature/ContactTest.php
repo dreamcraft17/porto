@@ -56,6 +56,37 @@ class ContactTest extends TestCase
         $response->assertStatus(422);
     }
 
+    public function test_contact_form_returns_json_validation_errors_without_json_accept_header(): void
+    {
+        $response = $this->call(
+            'POST',
+            '/contact',
+            [],
+            [],
+            [],
+            [
+                'CONTENT_TYPE' => 'application/json',
+                'HTTP_ACCEPT' => '*/*',
+            ],
+            json_encode(['name' => '', 'email' => 'not-an-email', 'subject' => '', 'message' => ''])
+        );
+
+        $response->assertStatus(422);
+        $response->assertJsonValidationErrors(['name', 'email', 'subject', 'message']);
+    }
+
+    public function test_empty_contact_recipient_returns_server_error(): void
+    {
+        Mail::fake();
+        config(['mail.contact.to' => '']);
+
+        $response = $this->postJson('/contact', $this->validPayload());
+
+        $response->assertStatus(500)
+            ->assertJson(['success' => false]);
+        Mail::assertNothingSent();
+    }
+
     public function test_contact_form_is_throttled_after_five_submissions(): void
     {
         Mail::fake();

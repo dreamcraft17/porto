@@ -43,6 +43,15 @@ class AdminServiceCrudTest extends TestCase
             'title' => 'API Integration Updated',
         ]);
 
+        $this->actingAs($admin)->put(route('admin.services.update', $service), [
+            'title' => 'API Integration Updated',
+            'description' => 'Updated description',
+            'icon' => 'fa-plug',
+            'order' => 2,
+        ])->assertRedirect(route('admin.services.index'));
+
+        $this->assertFalse($service->fresh()->active);
+
         $this->actingAs($admin)->delete(route('admin.services.destroy', $service))
             ->assertRedirect(route('admin.services.index'));
 

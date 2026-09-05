@@ -116,7 +116,7 @@ return [
     ],
 
     'contact' => [
-        'to' => env('CONTACT_MAIL_TO', 'hello@example.com'),
+        'to' => env('CONTACT_MAIL_TO'),
         'to_name' => env('CONTACT_MAIL_TO_NAME', 'Portfolio Contact'),
     ],
 

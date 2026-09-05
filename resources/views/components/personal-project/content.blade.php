@@ -48,7 +48,7 @@
                          Project Overview
                      </h3>
                      <div class="content">
-                         {!! $project->content !!}
+                         {!! $project->sanitizedHtml() !!}
                      </div>
                  </div>
                  @endif
@@ -71,7 +71,7 @@
                      @if($project->github_url)
                      <div class="info-item-modern">
                          <div class="info-label-modern">Source Code</div>
-                         <a href="{{ $project->github_url }}" target="_blank" class="info-link-modern">
+                         <a href="{{ $project->github_url }}" target="_blank" rel="noopener noreferrer" class="info-link-modern">
                              <i class="fab fa-github"></i>
                              <span>View Repository</span>
                              <i class="fas fa-arrow-right ms-auto"></i>
@@ -82,7 +82,7 @@
                      @if($project->live_url)
                      <div class="info-item-modern">
                          <div class="info-label-modern">Live Project</div>
-                         <a href="{{ $project->live_url }}" target="_blank" class="info-link-modern">
+                         <a href="{{ $project->live_url }}" target="_blank" rel="noopener noreferrer" class="info-link-modern">
                              <i class="fas fa-globe"></i>
                              <span>Visit Website</span>
                              <i class="fas fa-arrow-right ms-auto"></i>

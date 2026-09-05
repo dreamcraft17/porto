@@ -69,4 +69,21 @@ class AuthTest extends TestCase
         $response->assertSessionHasErrors('email');
         $this->assertGuest();
     }
+
+    public function test_non_admin_user_cannot_login_to_admin_panel(): void
+    {
+        $user = User::factory()->notAdmin()->create([
+            'email' => 'member@example.com',
+            'password' => 'password123',
+        ]);
+
+        $response = $this->from('/admin/login')->post('/admin/login', [
+            'email' => $user->email,
+            'password' => 'password123',
+        ]);
+
+        $response->assertRedirect('/admin/login');
+        $response->assertSessionHasErrors('email');
+        $this->assertGuest();
+    }
 }

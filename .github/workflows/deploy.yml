@@ -71,6 +71,10 @@ jobs:
             **/.env
             **/.env.*
             **/vendor/**
+            **/storage/logs/**
+            **/storage/framework/views/**
+            **/.phpunit.result.cache
+            **/docs/**
 
       - name: Post-deploy commands
         uses: appleboy/ssh-action@v1.2.0

@@ -10,9 +10,9 @@
                 Share the business flow, the users, and the problem you want to solve. I can help turn it into a web or mobile application with a practical technical foundation.
             </p>
             <div class="contact-links">
-                <a href="mailto:dozernapitupulu@gmail.com"><i class="fas fa-envelope me-2"></i>dozernapitupulu@gmail.com</a>
-                <a href="https://github.com/dreamcraft17" target="_blank"><i class="fab fa-github me-2"></i>GitHub</a>
-                <a href="https://www.linkedin.com/in/dozernapitupulu/" target="_blank"><i class="fab fa-linkedin me-2"></i>LinkedIn</a>
+                <a href="mailto:{{ config('app.social.email') }}"><i class="fas fa-envelope me-2"></i>{{ config('app.social.email') }}</a>
+                <a href="{{ config('app.social.github') }}" target="_blank" rel="noopener noreferrer"><i class="fab fa-github me-2"></i>GitHub</a>
+                <a href="{{ config('app.social.linkedin') }}" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin me-2"></i>LinkedIn</a>
             </div>
         </div>
 

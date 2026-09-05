@@ -116,7 +116,7 @@
                         <span class="input-group-text">
                             <i class="fas fa-envelope"></i>
                         </span>
-                        <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}" required autofocus>
+                        <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}" required autofocus autocomplete="username">
                     </div>
                 </div>
                 
@@ -126,7 +126,7 @@
                         <span class="input-group-text">
                             <i class="fas fa-lock"></i>
                         </span>
-                        <input type="password" class="form-control" id="password" name="password" required>
+                        <input type="password" class="form-control" id="password" name="password" required autocomplete="current-password">
                     </div>
                 </div>
                 

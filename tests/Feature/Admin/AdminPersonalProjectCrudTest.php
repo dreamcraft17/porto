@@ -36,4 +36,26 @@ class AdminPersonalProjectCrudTest extends TestCase
         $this->assertStringNotContainsString('<script>', $project->content);
         Storage::disk('public')->assertExists($project->image);
     }
+
+    public function test_unchecking_featured_on_personal_project_persists_false(): void
+    {
+        $admin = User::factory()->create();
+        $project = PersonalProject::create([
+            'title' => 'Side App',
+            'slug' => 'side-app',
+            'description' => 'Personal side project',
+            'content' => '<p>Safe</p>',
+            'project_date' => '2024-03-01',
+            'featured' => true,
+        ]);
+
+        $this->actingAs($admin)->put(route('admin.personal-projects.update', $project), [
+            'title' => 'Side App',
+            'description' => 'Personal side project',
+            'content' => '<p>Safe</p>',
+            'project_date' => '2024-03-01',
+        ])->assertRedirect(route('admin.personal-projects.index'));
+
+        $this->assertFalse($project->fresh()->featured);
+    }
 }

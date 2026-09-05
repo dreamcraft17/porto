@@ -38,6 +38,11 @@ class PersonalProject extends Model
         });
     }
 
+    public function sanitizedHtml(): string
+    {
+        return clean((string) $this->content);
+    }
+
     public function getImageUrlAttribute(): ?string
     {
         if (! $this->image) {

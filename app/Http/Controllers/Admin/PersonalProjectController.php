@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Helpers\SlugHelper;
 use App\Http\Controllers\Controller;
 use App\Models\PersonalProject;
+use App\Support\BooleanFields;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -33,9 +34,9 @@ class PersonalProjectController extends Controller
             'technologies' => 'nullable|array',
             'project_date' => 'required|date',
             'order' => 'nullable|integer',
-            'featured' => 'boolean',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
+        $validated = BooleanFields::merge($request, $validated, ['featured']);
 
         $validated['slug'] = SlugHelper::generateUniqueSlug($validated['title'], PersonalProject::class);
 
@@ -64,9 +65,9 @@ class PersonalProjectController extends Controller
             'technologies' => 'nullable|array',
             'project_date' => 'required|date',
             'order' => 'nullable|integer',
-            'featured' => 'boolean',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
+        $validated = BooleanFields::merge($request, $validated, ['featured']);
 
         $validated['slug'] = SlugHelper::generateUniqueSlug(
             $validated['title'],

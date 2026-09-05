@@ -64,13 +64,13 @@
                             
                             <div class="d-flex gap-2">
                                 @if($project->github_url)
-                                <a href="{{ $project->github_url }}" target="_blank" class="btn btn-outline-dark flex-fill">
+                                <a href="{{ $project->github_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-outline-dark flex-fill">
                                     <i class="fab fa-github me-2"></i>GitHub
                                 </a>
                                 @endif
                                 
                                 @if($project->live_url)
-                                <a href="{{ $project->live_url }}" target="_blank" class="btn btn-primary flex-fill">
+                                <a href="{{ $project->live_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-primary flex-fill">
                                     <i class="fas fa-external-link-alt me-2"></i>Live Demo
                                 </a>
                                 @else

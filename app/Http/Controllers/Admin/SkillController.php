@@ -8,17 +8,17 @@ use Illuminate\Http\Request;
 
 class SkillController extends Controller
 {
-
-    
     public function index()
     {
         $skills = Skill::orderBy('order')->get();
+
         return view('admin.skills.index', compact('skills'));
     }
 
     public function create()
     {
         $categories = ['frontend', 'backend', 'database', 'mobile', 'tools', 'framework', 'language'];
+
         return view('admin.skills.create', compact('categories'));
     }
 
@@ -40,6 +40,7 @@ class SkillController extends Controller
     public function edit(Skill $skill)
     {
         $categories = ['frontend', 'backend', 'database', 'mobile', 'tools', 'framework', 'language'];
+
         return view('admin.skills.edit', compact('skill', 'categories'));
     }
 
@@ -61,6 +62,7 @@ class SkillController extends Controller
     public function destroy(Skill $skill)
     {
         $skill->delete();
+
         return redirect()->route('admin.skills.index')->with('success', 'Skill deleted successfully.');
     }
 }

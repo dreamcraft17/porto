@@ -135,4 +135,11 @@ return [
 
     'allow_admin_registration' => (bool) env('ALLOW_ADMIN_REGISTRATION', false),
 
+    'social' => [
+        'github' => env('SOCIAL_GITHUB_URL', 'https://github.com/dozernapitupulu'),
+        'linkedin' => env('SOCIAL_LINKEDIN_URL', 'https://www.linkedin.com/in/dozernapitupulu/'),
+        'twitter' => env('SOCIAL_TWITTER_URL', 'https://twitter.com/dozernapitupulu'),
+        'email' => env('SOCIAL_EMAIL', 'dozernapitupulu@gmail.com'),
+    ],
+
 ];

@@ -80,7 +80,7 @@
                                 <p class="mb-1"><strong>Issued:</strong> {{ $certification->issued_date->format('M Y') }}</p>
                             @endif
                             @if($certification->url)
-                                <p class="mb-0"><strong>URL:</strong> <a href="{{ $certification->url }}" target="_blank">View Certificate</a></p>
+                                <p class="mb-0"><strong>URL:</strong> <a href="{{ $certification->url }}" target="_blank" rel="noopener noreferrer">View Certificate</a></p>
                             @endif
                         </div>
                     </div>

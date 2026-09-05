@@ -21,14 +21,27 @@ class AuthController extends Controller
             'password' => 'required',
         ]);
 
-        if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
-            $request->session()->regenerate();
-            return redirect()->route('admin.dashboard');
+        if (! Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+            return back()->withErrors([
+                'email' => 'The provided credentials do not match our records.',
+            ])->onlyInput('email');
         }
 
-        return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
-        ]);
+        $user = Auth::user();
+
+        if ($user === null || ! $user->is_admin) {
+            Auth::logout();
+            $request->session()->invalidate();
+            $request->session()->regenerateToken();
+
+            return back()->withErrors([
+                'email' => 'The provided credentials do not match our records.',
+            ])->onlyInput('email');
+        }
+
+        $request->session()->regenerate();
+
+        return redirect()->route('admin.dashboard');
     }
 
     public function showRegister()
@@ -48,11 +61,12 @@ class AuthController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'is_admin' => false,
         ]);
 
         Auth::login($user);
 
-        return redirect()->route('admin.dashboard');
+        return redirect()->route('home');
     }
 
     public function logout(Request $request)

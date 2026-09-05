@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('layout', 'portfolio')
+
 @section('title', 'Dozer Napitupulu - Fullstack Engineer')
 
 @section('styles')

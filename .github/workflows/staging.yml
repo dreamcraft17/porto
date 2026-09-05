@@ -68,6 +68,10 @@ jobs:
             **/.env
             **/.env.*
             **/vendor/**
+            **/storage/logs/**
+            **/storage/framework/views/**
+            **/.phpunit.result.cache
+            **/docs/**
 
       - name: Post-deploy staging
         uses: appleboy/ssh-action@v1.2.0

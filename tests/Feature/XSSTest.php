@@ -31,4 +31,20 @@ class XSSTest extends TestCase
         $response->assertDontSee('alert("XSS")', false);
         $this->assertStringNotContainsString('<script>', $project->fresh()->content);
     }
+
+    public function test_personal_project_strips_javascript_image_sources(): void
+    {
+        $project = PersonalProject::create([
+            'title' => 'Img XSS',
+            'slug' => 'img-xss',
+            'description' => 'Test',
+            'content' => '<p>Safe</p><img src="javascript:alert(1)" alt="x">',
+            'project_date' => now()->toDateString(),
+        ]);
+
+        $html = $project->fresh()->sanitizedHtml();
+
+        $this->assertStringNotContainsString('javascript:', strtolower($html));
+        $this->assertStringContainsString('Safe', $html);
+    }
 }

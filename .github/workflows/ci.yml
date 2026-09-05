@@ -37,7 +37,6 @@ jobs:
 
       - name: Security audit
         run: composer audit
-        continue-on-error: true
 
       - name: Build assets
         run: npm run build

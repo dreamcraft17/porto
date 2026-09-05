@@ -19,7 +19,7 @@ class PortfolioController extends Controller
                 ->where('featured', true)
                 ->take(6)
                 ->get(),
-            'personalProjects' => PersonalProject::orderBy('order', 'asc') // Tambah ini
+            'personalProjects' => PersonalProject::orderBy('order', 'asc')
                 ->where('featured', true)
                 ->take(3)
                 ->get(),
@@ -54,7 +54,7 @@ class PortfolioController extends Controller
         return view('portfolio.project', compact('project', 'otherProjects'));
     }
 
-    public function showPersonalProject($slug) // Tambah method baru
+    public function showPersonalProject($slug)
     {
         $project = PersonalProject::where('slug', $slug)->firstOrFail();
         $otherProjects = PersonalProject::where('id', '!=', $project->id)
@@ -72,7 +72,7 @@ class PortfolioController extends Controller
         return view('portfolio.projects', compact('projects'));
     }
 
-    public function allPersonalProjects() // Tambah method baru
+    public function allPersonalProjects()
     {
         $projects = PersonalProject::orderBy('order', 'asc')->paginate(9);
 

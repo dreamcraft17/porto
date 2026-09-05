@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Service;
+use App\Support\BooleanFields;
 use Illuminate\Http\Request;
 
 class ServiceController extends Controller
@@ -11,6 +12,7 @@ class ServiceController extends Controller
     public function index()
     {
         $services = Service::orderBy('order')->get();
+
         return view('admin.services.index', compact('services'));
     }
 
@@ -28,15 +30,13 @@ class ServiceController extends Controller
             'features' => 'nullable|array',
             'features.*' => 'nullable|string|max:255',
             'order' => 'nullable|integer',
-            'active' => 'boolean',
         ]);
+        $validated = BooleanFields::merge($request, $validated, ['active']);
 
-        // Filter out empty features
         if (isset($validated['features'])) {
-            $validated['features'] = array_filter($validated['features'], function($feature) {
-                return !empty(trim($feature));
-            });
-            $validated['features'] = array_values($validated['features']); // Re-index array
+            $validated['features'] = array_values(array_filter($validated['features'], function ($feature) {
+                return ! empty(trim((string) $feature));
+            }));
         }
 
         Service::create($validated);
@@ -58,15 +58,13 @@ class ServiceController extends Controller
             'features' => 'nullable|array',
             'features.*' => 'nullable|string|max:255',
             'order' => 'nullable|integer',
-            'active' => 'boolean',
         ]);
+        $validated = BooleanFields::merge($request, $validated, ['active']);
 
-        // Filter out empty features
         if (isset($validated['features'])) {
-            $validated['features'] = array_filter($validated['features'], function($feature) {
-                return !empty(trim($feature));
-            });
-            $validated['features'] = array_values($validated['features']); // Re-index array
+            $validated['features'] = array_values(array_filter($validated['features'], function ($feature) {
+                return ! empty(trim((string) $feature));
+            }));
         }
 
         $service->update($validated);
@@ -77,6 +75,7 @@ class ServiceController extends Controller
     public function destroy(Service $service)
     {
         $service->delete();
+
         return redirect()->route('admin.services.index')->with('success', 'Service deleted successfully.');
     }
 }

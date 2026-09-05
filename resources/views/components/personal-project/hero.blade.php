@@ -21,14 +21,14 @@
                  
                  <div class="hero-cta-group">
                      @if($project->github_url)
-                     <a href="{{ $project->github_url }}" target="_blank" class="btn-hero-modern btn-hero-secondary">
+                     <a href="{{ $project->github_url }}" target="_blank" rel="noopener noreferrer" class="btn-hero-modern btn-hero-secondary">
                          <i class="fab fa-github"></i>
                          <span>View on GitHub</span>
                      </a>
                      @endif
                      
                      @if($project->live_url)
-                     <a href="{{ $project->live_url }}" target="_blank" class="btn-hero-modern btn-hero-primary">
+                     <a href="{{ $project->live_url }}" target="_blank" rel="noopener noreferrer" class="btn-hero-modern btn-hero-primary">
                          <i class="fas fa-external-link-alt"></i>
                          <span>Live Demo</span>
                      </a>

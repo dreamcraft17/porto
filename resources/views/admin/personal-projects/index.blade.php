@@ -66,7 +66,7 @@
                     </td>
                     <td>
                         <div class="btn-group btn-group-sm">
-                            <a href="{{ route('personal.project.show', $project->slug) }}" target="_blank" class="btn btn-outline-info" title="View">
+                            <a href="{{ route('personal.project.show', $project->slug) }}" target="_blank" rel="noopener noreferrer" class="btn btn-outline-info" title="View">
                                 <i class="fas fa-eye"></i>
                             </a>
                             <a href="{{ route('admin.personal-projects.edit', $project) }}" class="btn btn-outline-primary">

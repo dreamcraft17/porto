@@ -4,15 +4,15 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Education;
+use App\Support\BooleanFields;
 use Illuminate\Http\Request;
 
 class EducationController extends Controller
 {
-
-    
     public function index()
     {
         $educations = Education::orderBy('order')->get();
+
         return view('admin.education.index', compact('educations'));
     }
 
@@ -29,9 +29,9 @@ class EducationController extends Controller
             'description' => 'nullable|string',
             'start_date' => 'required|date',
             'end_date' => 'nullable|date|after:start_date',
-            'current' => 'boolean',
             'order' => 'nullable|integer',
         ]);
+        $validated = BooleanFields::merge($request, $validated, ['current']);
 
         Education::create($validated);
 
@@ -51,9 +51,9 @@ class EducationController extends Controller
             'description' => 'nullable|string',
             'start_date' => 'required|date',
             'end_date' => 'nullable|date|after:start_date',
-            'current' => 'boolean',
             'order' => 'nullable|integer',
         ]);
+        $validated = BooleanFields::merge($request, $validated, ['current']);
 
         $education->update($validated);
 
@@ -63,6 +63,7 @@ class EducationController extends Controller
     public function destroy(Education $education)
     {
         $education->delete();
+
         return redirect()->route('admin.education.index')->with('success', 'Education deleted successfully.');
     }
 }

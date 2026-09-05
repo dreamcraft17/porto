@@ -169,7 +169,7 @@
                     <!-- Action Buttons -->
                     <div class="d-flex flex-wrap gap-3 mb-5 justify-content-center">
                         @if($project->url)
-                        <a href="{{ $project->url }}" target="_blank" class="btn btn-lg px-5" 
+                        <a href="{{ $project->url }}" target="_blank" rel="noopener noreferrer" class="btn btn-lg px-5" 
                            style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; border-radius: 12px; font-weight: 600; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);"
                            onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 6px 20px rgba(102, 126, 234, 0.4)'"
                            onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(102, 126, 234, 0.3)'">
@@ -178,7 +178,7 @@
                         @endif
                         
                         @if($project->github_url)
-                        <a href="{{ $project->github_url }}" target="_blank" class="btn btn-lg px-5" 
+                        <a href="{{ $project->github_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-lg px-5" 
                            style="background: #24292e; color: white; border: none; border-radius: 12px; font-weight: 600; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);"
                            onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 6px 20px rgba(0, 0, 0, 0.3)'"
                            onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(0, 0, 0, 0.2)'">

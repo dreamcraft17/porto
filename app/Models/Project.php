@@ -28,6 +28,20 @@ class Project extends Model
         'featured' => 'boolean',
     ];
 
+    protected static function booted(): void
+    {
+        static::saving(function (Project $project) {
+            if ($project->isDirty('content') && filled($project->content)) {
+                $project->content = clean($project->content);
+            }
+        });
+    }
+
+    public function sanitizedHtml(): string
+    {
+        return clean((string) $this->content);
+    }
+
     public function getImageUrlAttribute(): ?string
     {
         if (! $this->image) {

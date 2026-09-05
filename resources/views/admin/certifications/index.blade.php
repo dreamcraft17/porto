@@ -40,7 +40,7 @@
                     </td>
                     <td>
                         @if($certification->url)
-                            <a href="{{ $certification->url }}" target="_blank" class="btn btn-sm btn-outline-info">
+                            <a href="{{ $certification->url }}" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-info">
                                 <i class="fas fa-external-link-alt"></i>
                             </a>
                         @else

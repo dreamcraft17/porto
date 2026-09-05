@@ -8,11 +8,10 @@ use Illuminate\Http\Request;
 
 class CertificationController extends Controller
 {
-
-    
     public function index()
     {
         $certifications = Certification::orderBy('order')->get();
+
         return view('admin.certifications.index', compact('certifications'));
     }
 
@@ -59,6 +58,7 @@ class CertificationController extends Controller
     public function destroy(Certification $certification)
     {
         $certification->delete();
+
         return redirect()->route('admin.certifications.index')->with('success', 'Certification deleted successfully.');
     }
 }

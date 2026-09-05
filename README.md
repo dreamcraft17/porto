@@ -33,7 +33,7 @@ Create the first admin user (registration is disabled by default):
 
 ```bash
 php artisan tinker
->>> \App\Models\User::create(['name' => 'Admin', 'email' => 'you@example.com', 'password' => 'your-secure-password']);
+>>> \App\Models\User::create(['name' => 'Admin', 'email' => 'you@example.com', 'password' => 'your-secure-password', 'is_admin' => true]);
 ```
 
 Visit:

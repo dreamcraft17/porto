@@ -1,5 +1,10 @@
 # Audit Project Porto (Laravel 12 Portfolio)
 
+> **Superseded:** 2026-09-05 — findings below are a **6 July 2026** snapshot. Live status is `docs/CODE-REVIEW-BUNDLE-2026-09-05.md`. Open `/admin/register`, missing 404, and SFTP into `public_html` are **fixed** on current `main`.
+>
+> **Author:** Dozer  
+> **Date:** 2026-09-05
+
 > Tanggal audit: 6 Juli 2026  
 > Stack: Laravel 12, PHP 8.2+, Blade, Vite, deploy cPanel via GitHub Actions SFTP
 
