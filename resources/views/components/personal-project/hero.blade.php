@@ -1,50 +1,29 @@
- <!-- Hero Section -->
- <section class="project-hero-modern">
-     <div class="container position-relative">
-         <div class="row align-items-center">
-             <div class="col-lg-7 fade-in-up">
-                 <div class="breadcrumb-modern">
-                     <nav aria-label="breadcrumb">
-                         <ol class="breadcrumb">
-                             <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                             <li class="breadcrumb-item"><a href="{{ route('personal.projects.all') }}">Personal Projects</a></li>
-                             <li class="breadcrumb-item active" aria-current="page">{{ $project->title }}</li>
-                         </ol>
-                     </nav>
-                 </div>
-                 
-                 <h1 class="hero-title-modern">{{ $project->title }}</h1>
-                 
-                 @if($project->description)
-                 <p class="hero-description-modern">{{ $project->description }}</p>
-                 @endif
-                 
-                 <div class="hero-cta-group">
-                     @if($project->github_url)
-                     <a href="{{ $project->github_url }}" target="_blank" rel="noopener noreferrer" class="btn-hero-modern btn-hero-secondary">
-                         <i class="fab fa-github"></i>
-                         <span>View on GitHub</span>
-                     </a>
-                     @endif
-                     
-                     @if($project->live_url)
-                     <a href="{{ $project->live_url }}" target="_blank" rel="noopener noreferrer" class="btn-hero-modern btn-hero-primary">
-                         <i class="fas fa-external-link-alt"></i>
-                         <span>Live Demo</span>
-                     </a>
-                     @endif
-                 </div>
-             </div>
-             
-             @if($project->image)
-             <div class="col-lg-5 mt-5 mt-lg-0 fade-in-up">
-                 <div class="project-image-hero">
-                     <img src="{{ $project->image_url }}"
-                          alt="{{ $project->title }}" 
-                          class="img-fluid">
-                 </div>
-             </div>
-             @endif
-         </div>
-     </div>
- </section>
+<section class="case-hero">
+    <div class="case-hero-grid">
+        <div>
+            <p class="case-kicker">Personal project</p>
+            <h1 class="case-title">{{ $project->title }}</h1>
+            @if($project->description)
+                <p class="case-lead">{{ $project->description }}</p>
+            @endif
+            <div class="case-actions">
+                @if($project->github_url)
+                    <a class="case-btn case-btn-secondary" href="{{ $project->github_url }}" target="_blank" rel="noopener noreferrer">
+                        GitHub <i class="fab fa-github" aria-hidden="true"></i>
+                    </a>
+                @endif
+                @if($project->live_url)
+                    <a class="case-btn case-btn-primary" href="{{ $project->live_url }}" target="_blank" rel="noopener noreferrer">
+                        Live site <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                    </a>
+                @endif
+                <a class="case-btn case-btn-secondary" href="{{ route('personal.projects.all') }}">All personal</a>
+            </div>
+        </div>
+        @if($project->image)
+            <div class="case-cover">
+                <img src="{{ $project->image_url }}" alt="{{ $project->title }}" width="960" height="600" loading="eager" decoding="async">
+            </div>
+        @endif
+    </div>
+</section>

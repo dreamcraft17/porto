@@ -6,13 +6,13 @@
     <title>@yield('title', 'Dozer Napitupulu — Fullstack Engineer')</title>
     
     <!-- Meta tags for SEO and professionalism -->
-    <meta name="description" content="Professional portfolio of Dozer Napitupulu - Fullstack Engineer specializing in .NET, Laravel, and Flutter">
-    <meta name="keywords" content="full stack developer, .NET developer, Laravel, Flutter, web development">
+    <meta name="description" content="Dozer Napitupulu builds Laravel, ASP.NET, and Flutter systems for operations teams—POS, banking modules, dashboards, and integrations.">
+    <meta name="keywords" content="Dozer Napitupulu, fullstack engineer, Laravel developer, ASP.NET, Flutter, Indonesia">
     <meta name="author" content="Dozer Napitupulu">
     
     <!-- Open Graph meta tags for social sharing -->
     <meta property="og:title" content="Dozer Napitupulu — Fullstack Engineer">
-    <meta property="og:description" content="Professional portfolio showcasing projects and skills in web and mobile development">
+    <meta property="og:description" content="Selected work and contact for Dozer Napitupulu — business web apps, mobile workflows, and API integration.">
     <meta property="og:type" content="website">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,7 +21,11 @@
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    @if (trim($__env->yieldContent('layout')) === 'portfolio')
+        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+    @else
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    @endif
 
     @if (trim($__env->yieldContent('layout')) !== 'portfolio')
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">

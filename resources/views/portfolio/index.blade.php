@@ -23,9 +23,11 @@
         @endif
         @include('components.portfolio.sections.contact')
     </main>
+
+    @include('components.portfolio.sections.footer')
 </div>
 @endsection
 
 @section('scripts')
-    @vite(['resources/js/portfolio-contact.js'])
+    @vite(['resources/js/portfolio-contact.js', 'resources/js/portfolio-nav.js'])
 @endsection

@@ -1,0 +1,54 @@
+/**
+ * Porto public portfolio — design tokens (Studio Ledger)
+ * Source: design-tokens.json
+ */
+:root {
+    --page-bg: #ede8df;
+    --surface: #faf8f4;
+    --ink: #0f1820;
+    --muted: #5c6570;
+    --line: #d4cdc2;
+    --accent: #b45309;
+    --accent-hover: #92400e;
+    --navy: #0f1820;
+    --soft: #e8e2d6;
+    --on-dark: #f4f0ea;
+    --on-dark-muted: #b8c0c8;
+    --radius: 4px;
+    --radius-lg: 6px;
+    --shadow: 0 12px 32px rgba(15, 24, 32, 0.08);
+    --shadow-hover: 0 18px 40px rgba(15, 24, 32, 0.11);
+    --font-display: "Syne", system-ui, sans-serif;
+    --font-body: "IBM Plex Sans", system-ui, sans-serif;
+    --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+    --section-y: clamp(56px, 8vw, 96px);
+    --section-x: clamp(24px, 5vw, 76px);
+}
+
+.portfolio-shell {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+}
+
+.portfolio-shell h1,
+.portfolio-shell h2,
+.portfolio-shell h3,
+.portfolio-shell .intro-title,
+.portfolio-shell .section-title,
+.portfolio-shell .history-title,
+.portfolio-shell .contact-title,
+.portfolio-shell .brand-name {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+.portfolio-shell .section-kicker,
+.portfolio-shell .eyebrow,
+.portfolio-shell .work-index,
+.portfolio-shell .timeline-period {
+    font-family: var(--font-mono);
+    font-weight: 500;
+}
