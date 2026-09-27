@@ -12,7 +12,7 @@ Composer resolves packages as **PHP 8.2** (`config.platform.php`) so `composer i
 
 ## Requirements
 
-- PHP 8.2+ (8.3 is fine; lockfile is built for 8.2)
+- PHP 8.2+ (8.3 is fine; lockfile is built for 8.2). **Production (cPanel):** use PHP **8.2 or 8.3** with **`pdo_mysql`** enabled — required for MySQL and default `SESSION_DRIVER=database`.
 - Composer
 - Node.js 20+
 - SQLite (local) or MySQL (production)
@@ -84,6 +84,7 @@ See [SECURITY.md](SECURITY.md) for vulnerability reporting and production checkl
 
 ## Documentation
 
+- [docs/UI-REDESIGN-2026.md](docs/UI-REDESIGN-2026.md) — Public UI (Studio Ledger tokens, case pages)
 - [docs/CODE-REVIEW-BUNDLE-2026-09-05.md](docs/CODE-REVIEW-BUNDLE-2026-09-05.md) — Current engineering review
 - [AUDIT.md](AUDIT.md) — 6 July 2026 audit (superseded; see the review bundle)
 - [DEPLOYMENT.md](DEPLOYMENT.md) — Production deploy guide

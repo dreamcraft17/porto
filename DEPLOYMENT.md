@@ -112,6 +112,8 @@ ssh user@server 'bash -s' < scripts/deploy.sh
 | Issue | Fix |
 |-------|-----|
 | 500 after deploy | Check `storage/logs/laravel.log`, verify `.env` exists |
+| `could not find driver` (MySQL) | Enable **`pdo_mysql`** (and `mysqli`) in cPanel **MultiPHP INI** for the domain’s PHP version; prefer **PHP 8.2 or 8.3** (app targets 8.2 — PHP 8.5 may ship without DB extensions). Verify: `php -m \| grep pdo_mysql` then `php artisan config:clear` |
+| Sessions query fails on boot | Same as above — default `SESSION_DRIVER=database` needs MySQL. Temporary fallback: `SESSION_DRIVER=file` in server `.env` (after `pdo_mysql` is fixed, revert to `database` + `SESSION_ENCRYPT=true`) |
 | Images not loading | Run `php artisan storage:link` |
 | CSS/JS missing | Run `npm run build` before deploy |
 | Migrations fail | Check DB credentials in server `.env` |
