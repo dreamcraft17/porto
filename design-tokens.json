@@ -1,21 +1,23 @@
 {
   "meta": {
     "product": "Porto — Dozer personal portfolio",
-    "style": "ledger-editorial",
-    "updated": "2026-09-27"
+    "style": "dntech-editorial",
+    "updated": "2026-10-26"
   },
   "colors": {
-    "pageBg": "#ede8df",
-    "surface": "#faf8f4",
-    "ink": "#0f1820",
-    "muted": "#5c6570",
-    "line": "#d4cdc2",
-    "accent": "#b45309",
-    "accentHover": "#92400e",
-    "navy": "#0f1820",
-    "soft": "#e8e2d6",
-    "onDark": "#f4f0ea",
-    "onDarkMuted": "#b8c0c8"
+    "pageBg": "#f1f5f9",
+    "surface": "#ffffff",
+    "ink": "#272b32",
+    "muted": "#64748b",
+    "line": "#e2e8f0",
+    "accent": "#1e3a8a",
+    "accentHover": "#1e40af",
+    "secondary": "#0f766e",
+    "highlight": "#f5a55c",
+    "navy": "#1e3a8a",
+    "soft": "#e7edf5",
+    "onDark": "#ffffff",
+    "onDarkMuted": "#cbd5e1"
   },
   "typography": {
     "fontFamily": {
@@ -30,7 +32,7 @@
       "lg": "1.125rem",
       "xl": "1.25rem",
       "2xl": "1.5rem",
-      "hero": "clamp(2.5rem, 5.5vw, 4.5rem)"
+      "hero": "clamp(3rem, 6.7vw, 6.2rem)"
     }
   },
   "spacing": {
@@ -39,8 +41,8 @@
     "grid": 8
   },
   "borders": {
-    "radius": "4px",
-    "radiusLg": "6px",
+    "radius": "10px",
+    "radiusLg": "18px",
     "width": "1px"
   },
   "breakpoints": {

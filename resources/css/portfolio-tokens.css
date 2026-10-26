@@ -1,23 +1,25 @@
 /**
- * Porto public portfolio — design tokens (Studio Ledger)
+ * Porto public portfolio — DN Tech design tokens
  * Source: design-tokens.json
  */
 :root {
-    --page-bg: #ede8df;
-    --surface: #faf8f4;
-    --ink: #0f1820;
-    --muted: #5c6570;
-    --line: #d4cdc2;
-    --accent: #b45309;
-    --accent-hover: #92400e;
-    --navy: #0f1820;
-    --soft: #e8e2d6;
-    --on-dark: #f4f0ea;
-    --on-dark-muted: #b8c0c8;
-    --radius: 4px;
-    --radius-lg: 6px;
-    --shadow: 0 12px 32px rgba(15, 24, 32, 0.08);
-    --shadow-hover: 0 18px 40px rgba(15, 24, 32, 0.11);
+    --page-bg: #f1f5f9;
+    --surface: #ffffff;
+    --ink: #272b32;
+    --muted: #64748b;
+    --line: #e2e8f0;
+    --accent: #1e3a8a;
+    --accent-hover: #1e40af;
+    --secondary: #0f766e;
+    --highlight: #f5a55c;
+    --navy: #1e3a8a;
+    --soft: #e7edf5;
+    --on-dark: #ffffff;
+    --on-dark-muted: #cbd5e1;
+    --radius: 10px;
+    --radius-lg: 18px;
+    --shadow: 0 14px 34px rgba(15, 23, 42, 0.08);
+    --shadow-hover: 0 20px 48px rgba(15, 23, 42, 0.12);
     --font-display: "Syne", system-ui, sans-serif;
     --font-body: "IBM Plex Sans", system-ui, sans-serif;
     --font-mono: "IBM Plex Mono", ui-monospace, monospace;

@@ -8,12 +8,16 @@
         @foreach($projects->take(6) as $project)
         <a class="work-item" href="{{ route('project.show', $project->slug) }}">
             <div class="work-visual">
-                <div class="work-visual-icon">
-                    @php
-                        $icons = ['fa-cash-register', 'fa-mobile-screen-button', 'fa-chart-line', 'fa-users-gear', 'fa-building-columns', 'fa-chart-pie'];
-                    @endphp
-                    <i class="fas {{ $icons[$loop->index % count($icons)] }}"></i>
-                </div>
+                @if(!empty($project->image_url ?? null))
+                    <img class="work-visual-image" src="{{ $project->image_url }}" alt="" loading="lazy" decoding="async">
+                @else
+                    <div class="work-visual-icon">
+                        @php
+                            $icons = ['fa-cash-register', 'fa-mobile-screen-button', 'fa-chart-line', 'fa-users-gear', 'fa-building-columns', 'fa-chart-pie'];
+                        @endphp
+                        <i class="fas {{ $icons[$loop->index % count($icons)] }}"></i>
+                    </div>
+                @endif
                 <div class="work-index">PROJECT {{ str_pad($loop->iteration, 2, '0', STR_PAD_LEFT) }}</div>
             </div>
 

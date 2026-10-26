@@ -1,13 +1,13 @@
 <section id="overview" class="section-wrap intro-section">
     <div>
-        <div class="eyebrow">Dozer · portfolio</div>
-        <h1 class="intro-title">Ship ops-ready web and mobile systems.</h1>
+        <div class="eyebrow">DOZER / FULLSTACK ENGINEER</div>
+        <h1 class="intro-title">I build software that keeps real teams moving.</h1>
         <p class="intro-copy">
-            I design and build line-of-business software—admin panels, APIs, Flutter field apps, and reporting—where the data model and daily user flow matter as much as the UI.
+            Web apps, APIs, mobile workflows, and dashboards for the messy middle of a business—the place where good software saves time every day.
         </p>
         <div class="intro-actions">
-            <a class="action-primary" href="#work">See selected work <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
-            <a class="action-secondary" href="#contact">Send a project brief</a>
+            <a class="action-primary" href="#work">Explore the work <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+            <a class="action-secondary" href="#contact">Start a conversation</a>
         </div>
         <div class="hero-stack" aria-label="Primary stack">
             <span>Laravel</span>
