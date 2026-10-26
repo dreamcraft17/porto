@@ -20,6 +20,8 @@ class PortfolioPublicLayoutTest extends TestCase
         $response->assertSee('site-rail', false);
         $response->assertSee('intro-title', false);
         $response->assertSee('I build software that keeps real teams moving.', false);
+        $response->assertSee('dntech.id', false);
+        $response->assertSee('Managed by', false);
         $response->assertDontSee('navbar-bold', false);
         $response->assertDontSee('footer-bold', false);
         $response->assertDontSee('bootstrap@5.3.0', false);

@@ -55,6 +55,10 @@
                 <a href="mailto:{{ config('app.social.email') }}" aria-label="Email"><i class="fas fa-envelope"></i></a>
             </div>
             <p class="rail-copy">© {{ date('Y') }} Dozer Napitupulu</p>
+            <p class="rail-managed">
+                Website dikelola oleh / Managed by:
+                <a href="https://dntech.id" target="_blank" rel="noopener noreferrer">dntech.id</a>
+            </p>
         </div>
     </aside>
 
@@ -77,6 +81,10 @@
 
         <footer class="site-credit">
             <p>Personal portfolio · Laravel, .NET, Flutter · Bukan situs company DN Tech</p>
+            <p class="site-managed">
+                Website dikelola oleh / Managed by:
+                <a href="https://dntech.id" target="_blank" rel="noopener noreferrer">dntech.id</a>
+            </p>
         </footer>
     </div>
 </div>
