@@ -18,7 +18,7 @@
         <i class="fas fa-bars" aria-hidden="true"></i>
     </button>
 
-    <nav class="head-nav" id="site-nav-panel" data-nav-panel aria-label="Primary navigation">
+    <nav class="head-nav" id="site-nav-panel" data-nav-panel aria-hidden="true" aria-label="Primary navigation">
         <a href="#overview">Start</a>
         <a href="#about">About</a>
         <a href="#work">Work</a>

@@ -5,14 +5,22 @@ function initPortfolioNav() {
         return;
     }
 
-    const close = () => {
-        panel.classList.remove('is-open');
-        toggle.setAttribute('aria-expanded', 'false');
+    const setOpen = (open) => {
+        panel.classList.toggle('is-open', open);
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+        panel.setAttribute('aria-hidden', open ? 'false' : 'true');
+    };
+
+    const close = (restoreFocus = false) => {
+        setOpen(false);
+        if (restoreFocus) {
+            toggle.focus();
+        }
     };
 
     toggle.addEventListener('click', () => {
-        const open = panel.classList.toggle('is-open');
-        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        setOpen(!panel.classList.contains('is-open'));
     });
 
     panel.querySelectorAll('a[href^="#"]').forEach((link) => {
@@ -27,9 +35,11 @@ function initPortfolioNav() {
 
     document.addEventListener('keydown', (event) => {
         if (event.key === 'Escape') {
-            close();
+            close(true);
         }
     });
+
+    setOpen(false);
 }
 
 if (document.readyState === 'loading') {

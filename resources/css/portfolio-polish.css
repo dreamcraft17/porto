@@ -726,3 +726,165 @@ body {
         animation-iteration-count: 1 !important;
     }
 }
+
+/* Layout redesign: move from stacked cards to a bento/editorial composition. */
+@media (min-width: 901px) {
+    .intro-section {
+        grid-template-columns: minmax(0, 7fr) minmax(360px, 5fr);
+        align-items: stretch;
+    }
+
+    .intro-section > div:first-child {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .intro-panel {
+        display: grid;
+        grid-template-rows: minmax(0, 1fr) auto;
+        gap: 18px;
+    }
+
+    .proof-strip {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .capability-section {
+        grid-template-columns: minmax(240px, 0.7fr) minmax(0, 1.3fr);
+        gap: clamp(42px, 8vw, 120px);
+    }
+
+    .capability-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+        border-top: 0;
+    }
+
+    .capability-section .capability-card {
+        display: flex;
+        min-height: 236px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+        padding: 24px;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: var(--surface);
+    }
+
+    .capability-section .capability-card::before {
+        content: "0" counter(capability);
+        position: static;
+        order: -2;
+        color: var(--secondary);
+        font-family: var(--font-mono);
+        font-size: 0.7rem;
+        line-height: 1;
+    }
+
+    .capability-section .capability-card i {
+        order: -1;
+    }
+
+    .capability-section .capability-card h3 {
+        margin: 0;
+    }
+
+    .work-list {
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+        gap: 18px;
+    }
+
+    .work-item {
+        grid-column: span 4;
+        min-height: 100%;
+    }
+
+    .work-item:nth-child(1) {
+        grid-column: span 7;
+        grid-row: span 2;
+    }
+
+    .work-item:nth-child(2),
+    .work-item:nth-child(3) {
+        grid-column: span 5;
+    }
+
+    .work-item:nth-child(4) {
+        grid-column: span 7;
+    }
+
+    .work-item:nth-child(n + 5) {
+        grid-column: span 4;
+    }
+
+    .work-item:nth-child(1) .work-visual {
+        min-height: 220px;
+    }
+
+    .work-item:nth-child(1) .work-title {
+        font-size: clamp(1.35rem, 2vw, 1.8rem);
+    }
+
+    .timeline-list {
+        margin-left: 20px;
+    }
+
+    .timeline-entry {
+        grid-template-columns: 220px minmax(0, 1fr);
+    }
+
+    .case-hero-grid {
+        grid-template-columns: minmax(0, 1fr) minmax(300px, 0.72fr);
+        align-items: center;
+    }
+
+    .case-hero-grid > div:first-child:only-child {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (max-width: 900px) {
+    .capability-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        border-top: 0;
+    }
+
+    .capability-section .capability-card {
+        display: flex;
+        min-height: 210px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 20px;
+        border: 1px solid var(--line);
+        border-radius: 16px;
+    }
+
+    .capability-section .capability-card::before {
+        position: static;
+        order: -2;
+        line-height: 1;
+    }
+
+    .capability-section .capability-card i {
+        order: -1;
+    }
+
+    .capability-section .capability-card h3 {
+        margin: 0;
+    }
+}
+
+@media (max-width: 640px) {
+    .capability-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .capability-section .capability-card {
+        min-height: 0;
+    }
+}

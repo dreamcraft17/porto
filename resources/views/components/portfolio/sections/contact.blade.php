@@ -22,20 +22,20 @@
             <div class="form-row">
                 <div>
                     <label for="name">Full Name</label>
-                    <input type="text" id="name" placeholder="Your name" required>
+                        <input type="text" id="name" name="name" autocomplete="name" placeholder="Your name" required>
                 </div>
                 <div>
                     <label for="email">Email Address</label>
-                    <input type="email" id="email" placeholder="you@example.com" required>
+                        <input type="email" id="email" name="email" autocomplete="email" placeholder="you@example.com" required>
                 </div>
             </div>
             <div>
                 <label for="subject">Subject</label>
-                <input type="text" id="subject" placeholder="Project discussion" required>
+                <input type="text" id="subject" name="subject" autocomplete="off" placeholder="Project discussion" required>
             </div>
             <div>
                 <label for="message">Message</label>
-                <textarea id="message" placeholder="Tell me about your project..." required></textarea>
+                <textarea id="message" name="message" autocomplete="off" placeholder="Tell me about your project..." required></textarea>
             </div>
             <button class="submit-btn" type="submit" data-default-text="Send Message">Send Message</button>
         </form>

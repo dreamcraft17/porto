@@ -68,6 +68,11 @@
                     <a class="case-btn case-btn-secondary" href="{{ route('projects.all') }}">All projects</a>
                 </div>
             </div>
+            @if(!empty($project->image_url ?? null))
+                <div class="case-cover">
+                    <img src="{{ $project->image_url }}" alt="{{ $project->title }}" width="960" height="600" loading="eager" decoding="async">
+                </div>
+            @endif
         </div>
     </section>
 
