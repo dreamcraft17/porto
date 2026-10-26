@@ -1,19 +1,16 @@
-@extends('layouts.app')
+@extends('layouts.portfolio')
 
-@section('layout', 'portfolio')
+@section('title', 'Dozer Napitupulu — Fullstack Engineer')
 
-@section('title', 'Dozer Napitupulu - Fullstack Engineer')
-
-@section('styles')
-    @vite(['resources/css/portfolio-home.css'])
-    @vite(['resources/css/portfolio-polish.css'])
-@endsection
+@push('styles')
+    @vite(['resources/css/portfolio-home.css', 'resources/css/portfolio-polish.css'])
+@endpush
 
 @section('content')
 <div class="portfolio-shell">
-    @include('components.portfolio.header')
+    <x-portfolio.site-header />
 
-    <main class="page-main">
+    <main id="main-content" class="page-main">
         @include('components.portfolio.sections.overview')
         @include('components.portfolio.sections.capabilities')
         @include('components.portfolio.sections.about')
@@ -25,10 +22,10 @@
         @include('components.portfolio.sections.contact')
     </main>
 
-    @include('components.portfolio.sections.footer')
+    <x-portfolio.site-footer />
 </div>
 @endsection
 
-@section('scripts')
+@push('scripts')
     @vite(['resources/js/portfolio-contact.js', 'resources/js/portfolio-nav.js'])
-@endsection
+@endpush

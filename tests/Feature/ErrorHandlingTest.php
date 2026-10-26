@@ -24,7 +24,7 @@ class ErrorHandlingTest extends TestCase
     {
         $response = $this->get('/invalid-url');
 
-        $response->assertSee('Back to Home', false);
+        $response->assertSee('Kembali ke portfolio', false);
         $response->assertSee(url('/'), false);
     }
 }

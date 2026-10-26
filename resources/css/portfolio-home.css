@@ -1,37 +1,4 @@
-@import "./portfolio-tokens.css";
-
-.skip-link {
-    position: absolute;
-    left: -9999px;
-    top: 0.75rem;
-    z-index: 10000;
-    padding: 0.5rem 0.85rem;
-    background: #10243e;
-    color: #fff;
-    border-radius: 6px;
-}
-
-.skip-link:focus {
-    left: 0.75rem;
-}
-
-body {
-    background: var(--page-bg);
-    color: var(--ink);
-}
-
-.navbar-bold,
-.footer-bold {
-    display: none;
-}
-
-main {
-    padding-top: 0 !important;
-}
-
-.portfolio-shell {
-    min-height: 100vh;
-    display: block;
+.portfolio-shell:not(.portfolio-case) {
     background:
         linear-gradient(180deg, var(--page-bg) 0%, #e6e0d6 48%, var(--page-bg) 100%);
     background-image:
@@ -39,10 +6,6 @@ main {
         linear-gradient(90deg, var(--line) 1px, transparent 1px);
     background-size: 48px 48px;
     background-position: -1px -1px;
-}
-
-.page-main {
-    min-width: 0;
 }
 
 .section-wrap {

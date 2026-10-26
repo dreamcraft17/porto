@@ -1,9 +1,3 @@
-@import "./portfolio-tokens.css";
-
-main {
-    padding-top: 0 !important;
-}
-
 .portfolio-case {
     min-height: 100vh;
     background: var(--page-bg);
@@ -63,6 +57,19 @@ main {
 
 .case-crumb span[aria-current] {
     color: var(--ink);
+}
+
+.site-headbar .case-crumb--inline {
+    display: none;
+}
+
+@media (min-width: 900px) {
+    .site-headbar .case-crumb--inline {
+        display: flex;
+        flex: 1 1 auto;
+        min-width: 0;
+        margin: 0 12px;
+    }
 }
 
 .case-hero {

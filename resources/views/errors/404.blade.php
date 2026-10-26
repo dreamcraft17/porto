@@ -1,68 +1,68 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404 — Page Not Found</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>404 — Halaman tidak ditemukan</title>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&family=Syne:wght@700&display=swap" rel="stylesheet">
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+        :root {
+            --page-bg: #f1f5f9;
+            --ink: #272b32;
+            --muted: #64748b;
+            --accent: #1e3a8a;
+            --surface: #ffffff;
+            --line: #e2e8f0;
+        }
+        * { box-sizing: border-box; margin: 0; }
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             min-height: 100vh;
-            display: flex;
+            display: grid;
+            place-items: center;
+            padding: 2rem;
+            font-family: "IBM Plex Sans", system-ui, sans-serif;
+            background: var(--page-bg);
+            color: var(--ink);
+        }
+        .card {
+            max-width: 28rem;
+            padding: 2rem;
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            box-shadow: 0 14px 34px rgba(15, 23, 42, 0.08);
+            text-align: center;
+        }
+        .code {
+            font-family: Syne, system-ui, sans-serif;
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--accent);
+            line-height: 1;
+        }
+        h1 { margin-top: 0.75rem; font-size: 1.35rem; }
+        p { margin: 0.75rem 0 1.5rem; color: var(--muted); line-height: 1.6; }
+        a {
+            display: inline-flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            color: #e2e8f0;
-            padding: 2rem;
-        }
-        .error-card {
-            text-align: center;
-            max-width: 480px;
-        }
-        .error-code {
-            font-size: 6rem;
-            font-weight: 700;
-            line-height: 1;
-            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        h1 {
-            font-size: 1.5rem;
-            margin: 1rem 0 0.75rem;
-            color: #f8fafc;
-        }
-        p {
-            color: #94a3b8;
-            line-height: 1.6;
-            margin-bottom: 2rem;
-        }
-        .btn-home {
-            display: inline-block;
-            padding: 0.75rem 1.5rem;
-            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            min-height: 44px;
+            padding: 0 1.1rem;
+            border-radius: 10px;
+            background: var(--accent);
             color: #fff;
-            text-decoration: none;
-            border-radius: 8px;
             font-weight: 600;
-            transition: transform 0.2s, box-shadow 0.2s;
+            text-decoration: none;
         }
-        .btn-home:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(59, 130, 246, 0.35);
-            color: #fff;
-        }
+        a:hover { background: #1e40af; }
     </style>
 </head>
 <body>
-    <div class="error-card">
-        <div class="error-code">404</div>
-        <h1>Page Not Found</h1>
-        <p>The page you're looking for doesn't exist or may have been moved.</p>
-        <a href="{{ url('/') }}" class="btn-home">← Back to Home</a>
+    <div class="card">
+        <p class="code">404</p>
+        <h1>Halaman tidak ditemukan</h1>
+        <p>Link mungkin sudah pindah atau belum dipublish dari CMS.</p>
+        <a href="{{ url('/') }}">Kembali ke portfolio</a>
     </div>
 </body>
 </html>

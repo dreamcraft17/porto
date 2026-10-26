@@ -27,7 +27,7 @@ class ProductionSecurityTest extends TestCase
         $response->assertOk();
         $response->assertHeader('X-Content-Type-Options', 'nosniff');
         $response->assertHeader('X-Frame-Options', 'SAMEORIGIN');
-        $response->assertSee('Skip to main content', false);
+        $response->assertSee('Lewati ke konten', false);
         $response->assertDontSee('dreamcraft17', false);
     }
 }

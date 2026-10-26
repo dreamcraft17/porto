@@ -1,23 +1,37 @@
-# Deployment Guide — cPanel + GitHub Actions
+# Deployment Guide — VPS Linux + GitHub Actions
 
-## Server Structure
+> **Author:** Dozer  
+> **Date:** 2026-10-26
+
+Production target: **Linux VPS** (Nginx + PHP-FPM 8.2/8.3 + MySQL/MariaDB). Legacy cPanel layout below kept as reference only.
+
+## VPS structure (recommended)
+
+```
+/var/www/porto/                 # Laravel root (deploy target)
+├── public/                     # Nginx document root
+├── storage/
+├── .env                        # Created manually — NOT deployed
+└── vendor/                     # composer install on server
+```
+
+### One-time VPS setup
+
+```bash
+sudo apt update
+sudo apt install -y nginx mariadb-server php8.3-fpm php8.3-mysql php8.3-mbstring php8.3-xml php8.3-curl php8.3-zip php8.3-gd unzip
+# Point Nginx root to /var/www/porto/public; PHP via unix socket
+sudo certbot --nginx -d your-domain.com
+```
+
+Update GitHub Actions `remote_path` in `.github/workflows/deploy.yml` from `/home/dozernap/app` to `/var/www/porto` when cutover completes.
+
+## Legacy cPanel structure (deprecated)
 
 ```
 /home/dozernap/
-├── app/                    # Laravel application (deploy target)
-│   ├── app/
-│   ├── public/             # Web entry point
-│   ├── storage/
-│   ├── .env                # Created manually — NOT deployed
-│   └── vendor/             # Installed via composer on server
-└── public_html/            # Symlink → /home/dozernap/app/public
-```
-
-### One-time cPanel setup
-
-```bash
-cd /home/dozernap
-ln -sfn app/public public_html
+├── app/
+└── public_html/ → app/public
 ```
 
 Create `.env` on the server:
@@ -112,7 +126,7 @@ ssh user@server 'bash -s' < scripts/deploy.sh
 | Issue | Fix |
 |-------|-----|
 | 500 after deploy | Check `storage/logs/laravel.log`, verify `.env` exists |
-| `could not find driver` (MySQL) | Enable **`pdo_mysql`** (and `mysqli`) in cPanel **MultiPHP INI** for the domain’s PHP version; prefer **PHP 8.2 or 8.3** (app targets 8.2 — PHP 8.5 may ship without DB extensions). Verify: `php -m \| grep pdo_mysql` then `php artisan config:clear` |
+| `could not find driver` (MySQL) | Install **`php8.3-mysql`** (or 8.2) on VPS; verify `php -m \| grep pdo_mysql` then `php artisan config:clear`. On cPanel: MultiPHP INI |
 | Sessions query fails on boot | Same as above — default `SESSION_DRIVER=database` needs MySQL. Temporary fallback: `SESSION_DRIVER=file` in server `.env` (after `pdo_mysql` is fixed, revert to `database` + `SESSION_ENCRYPT=true`) |
 | Images not loading | Run `php artisan storage:link` |
 | CSS/JS missing | Run `npm run build` before deploy |

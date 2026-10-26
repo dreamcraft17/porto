@@ -1,0 +1,76 @@
+@import "./portfolio-tokens.css";
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body.portfolio-body {
+    margin: 0;
+    background: var(--page-bg);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+}
+
+.skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0.75rem;
+    z-index: 10000;
+    padding: 0.5rem 0.85rem;
+    background: var(--navy);
+    color: var(--on-dark);
+    border-radius: 6px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.skip-link:focus {
+    left: 0.75rem;
+}
+
+.portfolio-shell {
+    min-height: 100vh;
+    display: block;
+    background-color: var(--page-bg);
+    background-image:
+        linear-gradient(var(--line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size: 48px 48px;
+    background-position: -1px -1px;
+}
+
+.portfolio-shell h1,
+.portfolio-shell h2,
+.portfolio-shell h3,
+.portfolio-shell .intro-title,
+.portfolio-shell .section-title,
+.portfolio-shell .history-title,
+.portfolio-shell .contact-title,
+.portfolio-shell .brand-name,
+.portfolio-shell .case-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+.portfolio-shell .section-kicker,
+.portfolio-shell .eyebrow,
+.portfolio-shell .work-index,
+.portfolio-shell .timeline-period,
+.portfolio-shell .case-kicker {
+    font-family: var(--font-mono);
+    font-weight: 500;
+}
+
+.page-main {
+    min-width: 0;
+}
