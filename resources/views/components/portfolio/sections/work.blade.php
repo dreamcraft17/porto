@@ -1,25 +1,13 @@
-<section id="work" class="section-wrap work-section">
-    <div class="section-head">
+<section id="work" class="block work-section">
+    <div class="block-head">
         <div class="section-kicker">Selected work</div>
         <h2 class="section-title">Selected systems for real business workflows.</h2>
     </div>
 
     <div class="work-list">
-        @foreach($projects->take(6) as $project)
+        @forelse($projects->take(6) as $project)
         <a class="work-item" href="{{ route('project.show', $project->slug) }}">
-            <div class="work-visual">
-                @if(!empty($project->image_url ?? null))
-                    <img class="work-visual-image" src="{{ $project->image_url }}" alt="" loading="lazy" decoding="async">
-                @else
-                    <div class="work-visual-icon">
-                        @php
-                            $icons = ['fa-cash-register', 'fa-mobile-screen-button', 'fa-chart-line', 'fa-users-gear', 'fa-building-columns', 'fa-chart-pie'];
-                        @endphp
-                        <i class="fas {{ $icons[$loop->index % count($icons)] }}"></i>
-                    </div>
-                @endif
-                <div class="work-index">PROJECT {{ str_pad($loop->iteration, 2, '0', STR_PAD_LEFT) }}</div>
-            </div>
+            <span class="work-index">{{ str_pad($loop->iteration, 2, '0', STR_PAD_LEFT) }}</span>
 
             <div class="work-body">
                 <div class="work-meta">
@@ -43,7 +31,11 @@
                 <div class="work-link">View case</div>
             </div>
         </a>
-        @endforeach
+        @empty
+        <div class="case-empty">
+            <p>No featured projects yet. Browse the archive or add entries in the admin CMS.</p>
+        </div>
+        @endforelse
     </div>
 
     <div class="mt-4">

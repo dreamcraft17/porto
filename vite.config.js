@@ -9,6 +9,7 @@ export default defineConfig({
                 'resources/css/app.css',
                 'resources/css/legacy-layout.css',
                 'resources/css/portfolio-base.css',
+                'resources/css/portfolio-public.css',
                 'resources/css/portfolio-home.css',
                 'resources/css/personal-project.css',
                 'resources/css/portfolio-case.css',

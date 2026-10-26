@@ -1,4 +1,4 @@
-<section id="about" class="section-wrap profile-section">
+<section id="about" class="block profile-section">
     <div class="section-head">
         <div class="section-kicker">Profile</div>
         <h2 class="section-title">Fullstack engineer focused on practical business systems.</h2>
@@ -15,7 +15,7 @@
         </div>
 
         <div class="skill-board">
-            @foreach($skills->groupBy('category') as $category => $categorySkills)
+            @forelse($skills->groupBy('category') as $category => $categorySkills)
             <div class="skill-group">
                 <h3>{{ ucfirst($category) }}</h3>
                 <div class="skill-list">
@@ -24,7 +24,32 @@
                     @endforeach
                 </div>
             </div>
-            @endforeach
+            @empty
+            <div class="skill-group">
+                <h3>Backend</h3>
+                <div class="skill-list">
+                    <span>Laravel</span>
+                    <span>ASP.NET MVC</span>
+                    <span>REST APIs</span>
+                </div>
+            </div>
+            <div class="skill-group">
+                <h3>Frontend & mobile</h3>
+                <div class="skill-list">
+                    <span>Blade / React</span>
+                    <span>Flutter</span>
+                    <span>TypeScript</span>
+                </div>
+            </div>
+            <div class="skill-group">
+                <h3>Data</h3>
+                <div class="skill-list">
+                    <span>MySQL</span>
+                    <span>SQL Server</span>
+                    <span>PostgreSQL</span>
+                </div>
+            </div>
+            @endforelse
         </div>
     </div>
 </section>

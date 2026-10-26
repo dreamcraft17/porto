@@ -1,6 +1,6 @@
 @if($certifications->count())
-<section id="certifications" class="section-wrap credentials-section">
-    <div class="section-head">
+<section id="certifications" class="block credentials-section">
+    <div class="block-head">
         <div class="section-kicker">Credentials</div>
         <h2 class="section-title">Certifications for the stack.</h2>
         <p class="section-summary">

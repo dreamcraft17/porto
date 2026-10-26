@@ -1,56 +1,33 @@
 /**
- * Porto public portfolio — DN Tech design tokens
- * Source: design-tokens.json
+ * Porto Phase 4 — rail layout, paper + brutal blocks
  */
 :root {
-    --page-bg: #f1f5f9;
+    --page-bg: #eee8dc;
+    --paper: #faf6ef;
     --surface: #ffffff;
-    --ink: #272b32;
-    --muted: #64748b;
-    --line: #e2e8f0;
-    --accent: #1e3a8a;
-    --accent-hover: #1e40af;
-    --secondary: #0f766e;
-    --highlight: #f5a55c;
-    --navy: #1e3a8a;
-    --soft: #e7edf5;
-    --on-dark: #ffffff;
-    --on-dark-muted: #cbd5e1;
-    --radius: 10px;
-    --radius-lg: 18px;
-    --shadow: 0 14px 34px rgba(15, 23, 42, 0.08);
-    --shadow-hover: 0 20px 48px rgba(15, 23, 42, 0.12);
-    --font-display: "Syne", system-ui, sans-serif;
+    --ink: #121212;
+    --muted: #5c5c5c;
+    --line: #121212;
+    --accent: #0047ff;
+    --accent-soft: #dbeafe;
+    --hot: #ff2d55;
+    --hot-soft: #ffe4ea;
+    --lime: #b8ff3c;
+    --navy: #0047ff;
+    --soft: #f0ebe3;
+    --on-dark: #faf6ef;
+    --on-dark-muted: #c4bdb4;
+    --radius: 0;
+    --radius-sm: 2px;
+    --stroke: 3px solid var(--line);
+    --shadow: 8px 8px 0 var(--line);
+    --shadow-sm: 4px 4px 0 var(--line);
+    --font-display: "Space Grotesk", system-ui, sans-serif;
     --font-body: "IBM Plex Sans", system-ui, sans-serif;
     --font-mono: "IBM Plex Mono", ui-monospace, monospace;
-    --section-y: clamp(56px, 8vw, 96px);
-    --section-x: clamp(24px, 5vw, 76px);
-}
-
-.portfolio-shell {
-    font-family: var(--font-body);
-    font-size: 1rem;
-    line-height: 1.65;
-    -webkit-font-smoothing: antialiased;
-}
-
-.portfolio-shell h1,
-.portfolio-shell h2,
-.portfolio-shell h3,
-.portfolio-shell .intro-title,
-.portfolio-shell .section-title,
-.portfolio-shell .history-title,
-.portfolio-shell .contact-title,
-.portfolio-shell .brand-name {
-    font-family: var(--font-display);
-    font-weight: 700;
-    letter-spacing: -0.02em;
-}
-
-.portfolio-shell .section-kicker,
-.portfolio-shell .eyebrow,
-.portfolio-shell .work-index,
-.portfolio-shell .timeline-period {
-    font-family: var(--font-mono);
-    font-weight: 500;
+    --rail-w: 260px;
+    --content-max: 920px;
+    --section-y: clamp(48px, 8vw, 88px);
+    --section-x: clamp(20px, 4vw, 40px);
+    --focus-ring: 0 0 0 3px var(--accent);
 }

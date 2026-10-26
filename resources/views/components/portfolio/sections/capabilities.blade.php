@@ -1,4 +1,4 @@
-<section id="capabilities" class="section-wrap capability-section">
+<section id="capabilities" class="block capability-section">
     <div class="section-head">
         <div class="section-kicker">Capabilities</div>
         <h2 class="section-title">Development services for internal teams, product workflows, and business platforms.</h2>

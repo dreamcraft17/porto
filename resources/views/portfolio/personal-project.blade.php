@@ -3,26 +3,22 @@
 @section('title', $project->title . ' — Dozer Napitupulu')
 
 @push('styles')
-    @vite(['resources/css/portfolio-case.css', 'resources/css/portfolio-polish.css', 'resources/css/personal-project.css'])
+    @vite(['resources/css/portfolio-public.css'])
 @endpush
 
 @section('content')
-<div class="portfolio-shell portfolio-case">
-    <x-portfolio.site-header
+    <x-portfolio.shell
         :subpage="true"
         :trail="[
             ['label' => 'Personal', 'url' => route('personal.projects.all')],
             ['label' => Str::limit($project->title, 40), 'url' => null],
         ]"
-    />
-
-    <main id="main-content">
-        @include('components.personal-project.hero')
-        @include('components.personal-project.content')
-    </main>
-
-    <x-portfolio.site-footer :subpage="true" />
-</div>
+    >
+        <article class="page-article">
+            @include('components.personal-project.hero')
+            @include('components.personal-project.content')
+        </article>
+    </x-portfolio.shell>
 @endsection
 
 @push('scripts')

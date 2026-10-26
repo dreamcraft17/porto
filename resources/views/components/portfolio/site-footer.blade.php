@@ -17,8 +17,9 @@
         </div>
         <nav class="site-foot-links" aria-label="Footer">
             <a href="{{ $section('work') }}">Projects</a>
-            <a href="{{ $section('experience') }}">Experience</a>
             <a href="{{ route('projects.all') }}">Archive</a>
+            <a href="{{ route('personal.projects.all') }}">Personal</a>
+            <a href="{{ $section('experience') }}">Experience</a>
             <a href="{{ $section('contact') }}">Contact</a>
         </nav>
         <div class="site-foot-social">

@@ -1,6 +1,7 @@
 function initPortfolioNav() {
-    const toggle = document.querySelector('[data-nav-toggle]');
-    const panel = document.querySelector('[data-nav-panel]');
+    const toggle = document.querySelector('[data-rail-toggle]');
+    const panel = document.querySelector('[data-rail-panel]');
+    const overlay = document.querySelector('[data-rail-overlay]');
     if (!toggle || !panel) {
         return;
     }
@@ -8,8 +9,12 @@ function initPortfolioNav() {
     const setOpen = (open) => {
         panel.classList.toggle('is-open', open);
         toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-        toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-        panel.setAttribute('aria-hidden', open ? 'false' : 'true');
+        toggle.setAttribute('aria-label', open ? 'Tutup menu' : 'Buka menu');
+        if (overlay) {
+            overlay.hidden = !open;
+            overlay.classList.toggle('is-visible', open);
+        }
+        document.body.style.overflow = open ? 'hidden' : '';
     };
 
     const close = (restoreFocus = false) => {
@@ -24,14 +29,12 @@ function initPortfolioNav() {
     });
 
     panel.querySelectorAll('a[href^="#"]').forEach((link) => {
-        link.addEventListener('click', close);
+        link.addEventListener('click', () => close());
     });
 
-    document.addEventListener('click', (event) => {
-        if (!panel.contains(event.target) && !toggle.contains(event.target)) {
-            close();
-        }
-    });
+    if (overlay) {
+        overlay.addEventListener('click', () => close(true));
+    }
 
     document.addEventListener('keydown', (event) => {
         if (event.key === 'Escape') {

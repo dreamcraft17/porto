@@ -1,4 +1,4 @@
-<section id="experience" class="section-wrap experience-section">
+<section id="experience" class="block experience-section">
     <div class="history-head">
         <i class="fas fa-briefcase"></i>
         <h2 class="history-title">Professional History</h2>

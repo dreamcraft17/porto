@@ -1,11 +1,15 @@
 @props([
     'subpage' => false,
     'trail' => [],
+    'certifications' => null,
 ])
 
 @php
     $section = fn (string $id) => $subpage ? url('/#'.$id) : '#'.$id;
     $home = url('/');
+    $certCount = $certifications instanceof \Illuminate\Support\Collection
+        ? $certifications->count()
+        : 0;
 @endphp
 
 <header class="site-headbar">
@@ -48,10 +52,11 @@
         <a href="{{ $section('about') }}">About</a>
         <a href="{{ $section('work') }}">Work</a>
         <a href="{{ $section('experience') }}">Timeline</a>
-        @if(isset($certifications) && $certifications->count())
+        @if($certCount > 0)
             <a href="{{ $section('certifications') }}">Proof</a>
         @endif
         <a href="{{ route('projects.all') }}">Archive</a>
+        <a href="{{ route('personal.projects.all') }}">Personal</a>
         <a class="head-cta" href="{{ $section('contact') }}">Email or brief</a>
     </nav>
 </header>

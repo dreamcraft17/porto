@@ -52,7 +52,7 @@
                             </li>
                         @endforeach
                     </ul>
-                    <a class="case-btn case-btn-secondary" href="{{ route('personal.projects.all') }}" style="margin-top:12px;width:100%;justify-content:center;">View all</a>
+                    <a class="case-btn case-btn-secondary case-btn--block" href="{{ route('personal.projects.all') }}">View all</a>
                 </div>
             @endif
         </aside>

@@ -1,5 +1,5 @@
-<section id="contact" class="section-wrap contact-section">
-    <div class="contact-head">
+<section id="contact" class="block contact-section">
+    <div class="block-head">
         <div class="section-kicker">Contact</div>
         <h2 class="section-title contact-title">Need a system, dashboard, mobile workflow, or integration built properly?</h2>
     </div>
@@ -10,9 +10,9 @@
                 Share the business flow, the users, and the problem you want to solve. I can help turn it into a web or mobile application with a practical technical foundation.
             </p>
             <div class="contact-links">
-                <a href="mailto:{{ config('app.social.email') }}"><i class="fas fa-envelope me-2"></i>{{ config('app.social.email') }}</a>
-                <a href="{{ config('app.social.github') }}" target="_blank" rel="noopener noreferrer"><i class="fab fa-github me-2"></i>GitHub</a>
-                <a href="{{ config('app.social.linkedin') }}" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin me-2"></i>LinkedIn</a>
+                <a href="mailto:{{ config('app.social.email') }}"><i class="fas fa-envelope" aria-hidden="true"></i>{{ config('app.social.email') }}</a>
+                <a href="{{ config('app.social.github') }}" target="_blank" rel="noopener noreferrer"><i class="fab fa-github" aria-hidden="true"></i>GitHub</a>
+                <a href="{{ config('app.social.linkedin') }}" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin" aria-hidden="true"></i>LinkedIn</a>
             </div>
         </div>
 

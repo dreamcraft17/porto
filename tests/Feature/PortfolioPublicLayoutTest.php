@@ -17,7 +17,7 @@ class PortfolioPublicLayoutTest extends TestCase
         $response = $this->get('/');
 
         $response->assertOk();
-        $response->assertSee('site-headbar', false);
+        $response->assertSee('site-rail', false);
         $response->assertSee('intro-title', false);
         $response->assertSee('I build software that keeps real teams moving.', false);
         $response->assertDontSee('navbar-bold', false);
@@ -30,7 +30,7 @@ class PortfolioPublicLayoutTest extends TestCase
         $response = $this->get('/projects');
 
         $response->assertOk();
-        $response->assertSee('site-headbar', false);
+        $response->assertSee('site-rail', false);
         $response->assertSee('Systems shipped for teams and clients.', false);
         $response->assertDontSee('navbar-bold', false);
     }
@@ -40,9 +40,11 @@ class PortfolioPublicLayoutTest extends TestCase
         $response = $this->get('/this-route-should-not-exist-porto-test');
 
         $response->assertNotFound();
+        $response->assertSee('site-rail', false);
         $response->assertSee('404', false);
         $response->assertSee('Kembali ke portfolio', false);
         $response->assertDontSee('#8b5cf6', false);
+        $response->assertDontSee('bootstrap@5.3.0', false);
     }
 
     public function test_home_shows_stack_breadth_when_skills_empty(): void
@@ -60,7 +62,7 @@ class PortfolioPublicLayoutTest extends TestCase
         $response = $this->get('/personal-projects');
 
         $response->assertOk();
-        $response->assertSee('site-headbar', false);
+        $response->assertSee('site-rail', false);
         $response->assertDontSee('navbar-bold', false);
     }
 
@@ -77,7 +79,7 @@ class PortfolioPublicLayoutTest extends TestCase
         $response = $this->get('/project/'.$project->slug);
 
         $response->assertOk();
-        $response->assertSee('site-headbar', false);
+        $response->assertSee('site-rail', false);
         $response->assertSee('QA Case Study', false);
         $response->assertDontSee('bootstrap@5.3.0', false);
     }
@@ -95,7 +97,7 @@ class PortfolioPublicLayoutTest extends TestCase
         $response = $this->get('/personal-project/'.$project->slug);
 
         $response->assertOk();
-        $response->assertSee('site-headbar', false);
+        $response->assertSee('site-rail', false);
         $response->assertSee('Side Project QA', false);
     }
 }

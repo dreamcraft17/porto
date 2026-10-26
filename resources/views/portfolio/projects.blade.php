@@ -3,50 +3,42 @@
 @section('title', 'Project archive — Dozer Napitupulu')
 
 @push('styles')
-    @vite(['resources/css/portfolio-case.css', 'resources/css/portfolio-polish.css'])
+    @vite(['resources/css/portfolio-public.css'])
 @endpush
 
 @section('content')
-<div class="portfolio-shell portfolio-case">
-    <x-portfolio.site-header
+    <x-portfolio.shell
         :subpage="true"
         :trail="[
             ['label' => 'Work', 'url' => url('/#work')],
             ['label' => 'All projects', 'url' => null],
         ]"
-    />
+    >
+        <article class="page-article">
+            <p class="case-kicker">Archive</p>
+            <h1 class="section-title">Systems shipped for teams and clients.</h1>
+            <p class="page-lead">Professional project write-ups from cafe POS, banking modules, dashboards, and integrations—not concept mockups.</p>
 
-    <main id="main-content">
-
-    <div class="case-index-hero">
-        <p class="case-kicker">Archive</p>
-        <h1>Systems shipped for teams and clients.</h1>
-        <p>Professional project write-ups from cafe POS, banking modules, dashboards, and integrations—not concept mockups.</p>
-    </div>
-
-    <div class="case-grid">
-        @forelse($projects as $project)
-            <x-portfolio.project-card
-                :project="$project"
-                :url="route('project.show', $project->slug)"
-            />
-        @empty
-            <div class="case-empty">
-                <p>No projects published yet. Check back after the next CMS update.</p>
+            <div class="case-grid">
+                @forelse($projects as $project)
+                    <x-portfolio.project-card
+                        :project="$project"
+                        :url="route('project.show', $project->slug)"
+                    />
+                @empty
+                    <div class="case-empty">
+                        <p>No projects published yet. Check back after the next CMS update.</p>
+                    </div>
+                @endforelse
             </div>
-        @endforelse
-    </div>
 
-    @if($projects->hasPages())
-        <div class="case-pagination">
-            {{ $projects->links('pagination::bootstrap-5') }}
-        </div>
-    @endif
-
-    </main>
-
-    <x-portfolio.site-footer :subpage="true" />
-</div>
+            @if($projects->hasPages())
+                <div class="case-pagination">
+                    {{ $projects->links('vendor.pagination.portfolio') }}
+                </div>
+            @endif
+        </article>
+    </x-portfolio.shell>
 @endsection
 
 @push('scripts')
