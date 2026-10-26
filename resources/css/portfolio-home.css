@@ -22,7 +22,7 @@
     gap: clamp(32px, 5vw, 56px);
     background: var(--surface);
     position: relative;
-    overflow: hidden;
+    overflow: visible;
     border-bottom: 3px solid var(--accent);
 }
 
@@ -977,7 +977,7 @@
 
 /* Visual lift */
 .intro-section .eyebrow {
-    color: #7bd7c9;
+    color: var(--accent);
 }
 
 .intro-actions {

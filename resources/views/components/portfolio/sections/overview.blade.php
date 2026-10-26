@@ -41,14 +41,18 @@
             </div>
             <div class="proof-item">
                 <div class="proof-top">
-                    <span class="proof-value">{{ $skills->count() }}+</span>
+                    <span class="proof-value">{{ $skills->count() > 0 ? $skills->count().'+' : 'Full' }}</span>
                     <span class="proof-icon"><i class="fas fa-code-branch" aria-hidden="true"></i></span>
                 </div>
-                <span class="proof-label">Skills in CMS</span>
+                <span class="proof-label">Stack breadth</span>
                 <span class="proof-note">
-                    @foreach($skills->take(4) as $skill)
-                        {{ $skill->name }}@if(!$loop->last), @endif
-                    @endforeach
+                    @if($skills->count() > 0)
+                        @foreach($skills->take(4) as $skill)
+                            {{ $skill->name }}@if(!$loop->last), @endif
+                        @endforeach
+                    @else
+                        Laravel, ASP.NET, Flutter, SQL, REST — add skills in CMS when ready.
+                    @endif
                 </span>
             </div>
         </div>

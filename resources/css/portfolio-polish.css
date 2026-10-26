@@ -95,13 +95,13 @@ body {
     margin-left: 8px;
     padding-inline: 18px;
     background: var(--accent);
-    color: var(--navy);
+    color: var(--on-dark);
     box-shadow: 4px 4px 0 var(--secondary);
 }
 
 .head-nav .head-cta:hover {
     background: var(--accent-hover);
-    color: var(--navy);
+    color: var(--on-dark);
 }
 
 .head-nav-toggle {
@@ -119,11 +119,11 @@ body {
     border-radius: 24px;
     background: var(--surface);
     box-shadow: var(--shadow);
-    overflow: hidden;
+    overflow: visible;
 }
 
 .intro-section > div:first-child {
-    min-height: 650px;
+    min-height: min(72vh, 680px);
     padding: clamp(34px, 5vw, 78px);
     border: 0;
     background:
@@ -141,11 +141,11 @@ body {
 }
 
 .intro-title {
-    max-width: 10ch;
+    max-width: 13ch;
     margin-bottom: 26px;
     color: var(--ink);
-    font-size: clamp(3rem, 6.6vw, 6.25rem);
-    line-height: 0.9;
+    font-size: clamp(2.35rem, 5.2vw, 4.75rem);
+    line-height: 1.08;
     text-wrap: balance;
 }
 
@@ -173,8 +173,8 @@ body {
 .intro-section .action-primary,
 .case-btn-primary {
     background: var(--accent);
-    border-color: var(--accent);
-    color: var(--navy);
+    border: 1px solid var(--accent);
+    color: var(--on-dark);
     box-shadow: 4px 4px 0 var(--secondary);
 }
 
@@ -200,7 +200,9 @@ body {
 }
 
 .hero-stack {
-    margin-top: 38px;
+    margin-top: 28px;
+    padding-top: 18px;
+    border-top: 1px dashed var(--line);
     border-color: var(--line);
 }
 
@@ -260,7 +262,7 @@ body {
 
 .proof-icon {
     background: var(--accent);
-    color: var(--navy);
+    color: var(--on-dark);
 }
 
 .section-wrap {
@@ -385,7 +387,7 @@ body {
 .work-link {
     border-radius: 999px;
     background: var(--accent);
-    color: var(--navy);
+    color: var(--on-dark);
 }
 
 .history-head {
@@ -422,7 +424,7 @@ body {
 
 .timeline-duration.is-current {
     background: var(--accent);
-    color: var(--navy);
+    color: var(--on-dark);
 }
 
 .contact-section {
@@ -482,7 +484,7 @@ body {
     min-height: 50px;
     border-radius: 999px;
     background: var(--accent);
-    color: var(--navy);
+    color: var(--on-dark);
 }
 
 /* Case studies and archive. */
@@ -529,7 +531,7 @@ body {
     max-width: 14ch;
     color: var(--ink);
     font-size: clamp(2.7rem, 6vw, 5.5rem);
-    line-height: 0.92;
+    line-height: 1.06;
     text-wrap: balance;
 }
 
@@ -570,7 +572,7 @@ body {
     max-width: 15ch;
     color: var(--ink);
     font-size: clamp(2.7rem, 5vw, 5rem);
-    line-height: 0.94;
+    line-height: 1.06;
     text-wrap: balance;
 }
 
@@ -595,7 +597,7 @@ body {
 .case-pagination .page-item.active .page-link {
     border-color: var(--accent);
     background: var(--accent);
-    color: var(--navy);
+    color: var(--on-dark);
 }
 
 .site-foot {
@@ -658,8 +660,9 @@ body {
     }
 
     .intro-title {
-        max-width: 9ch;
-        font-size: clamp(3.1rem, 15vw, 4.6rem);
+        max-width: none;
+        font-size: clamp(2.1rem, 11vw, 3.4rem);
+        line-height: 1.1;
     }
 
     .intro-actions,
