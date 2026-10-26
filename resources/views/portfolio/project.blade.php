@@ -6,6 +6,7 @@
 
 @section('styles')
     @vite(['resources/css/portfolio-case.css'])
+    @vite(['resources/css/portfolio-polish.css'])
 @endsection
 
 @section('content')
