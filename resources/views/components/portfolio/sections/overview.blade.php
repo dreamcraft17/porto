@@ -11,7 +11,7 @@
                 <a class="action-secondary" href="#contact">Start with a brief</a>
             </div>
             <div class="hero-meta">
-                <p class="hero-signal"><span>UI</span><span>API</span><span>DATA</span><span>OPERATIONS</span></p>
+                <p class="hero-signal"><span>POS &amp; retail</span><span>Banking modules</span><span>HR &amp; payroll</span><span>Seller finance</span></p>
                 <div class="hero-stack" aria-label="Primary stack">
                     <span>Laravel</span>
                     <span>ASP.NET</span>

@@ -9,7 +9,7 @@
     --sidebar-text: #c8d0da;
     --sidebar-hover: rgba(255, 255, 255, 0.08);
     --sidebar-active: rgba(13, 148, 136, 0.22);
-    --sidebar-active-text: #5eead4;
+    --sidebar-active-text: #7dd3c7;
     --main-bg: #ece8e1;
     --card-bg: #ffffff;
     --text: #12151a;
@@ -17,6 +17,9 @@
     --primary: #0d9488;
     --primary-hover: #0f766e;
     --border: rgba(18, 21, 26, 0.12);
+    --surface-muted: #f0ede8;
+    --warm: #c2410c;
+    --warm-soft: #ffedd5;
     --sidebar-width: 260px;
 }
 
@@ -28,7 +31,7 @@
 
 body.admin-body,
 body {
-    font-family: var(--font-body), "Plus Jakarta Sans", system-ui, sans-serif;
+    font-family: var(--font-body), system-ui, sans-serif;
     background: var(--main-bg);
     min-height: 100vh;
     color: var(--text);
@@ -36,7 +39,7 @@ body {
 
 .sidebar {
     width: var(--sidebar-width);
-    background: linear-gradient(165deg, #0c1018 0%, #151c28 48%, #111820 100%);
+    background: #0c1018;
     color: var(--sidebar-text);
     position: fixed;
     height: 100vh;
@@ -85,8 +88,7 @@ body {
 }
 
 .navbar-top {
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(10px);
+    background: var(--card-bg);
     padding: 14px 28px;
     position: sticky;
     top: 0;
@@ -103,12 +105,11 @@ body {
     border: 1px solid var(--border);
     height: 100%;
     box-shadow: 0 4px 16px rgba(18, 21, 26, 0.05);
-    transition: box-shadow 0.2s, transform 0.2s;
+    transition: border-color 0.2s;
 }
 
 .stat-card:hover {
-    box-shadow: 0 12px 28px rgba(18, 21, 26, 0.08);
-    transform: translateY(-2px);
+    border-color: rgba(18, 21, 26, 0.2);
 }
 
 .stat-card::before {
@@ -126,6 +127,16 @@ body {
     background: var(--accent-soft);
     color: var(--primary);
     margin-bottom: 12px;
+}
+
+.stat-icon--muted {
+    background: var(--surface-muted, #f0ede8);
+    color: var(--text-muted);
+}
+
+.stat-icon--warm {
+    background: var(--warm-soft, #ffedd5);
+    color: var(--warm, #c2410c);
 }
 
 .table-responsive {
@@ -173,7 +184,7 @@ body {
 }
 
 .sidebar-header h3 {
-    font-family: var(--font-display), "Sora", sans-serif;
+    font-family: var(--font-display), system-ui, sans-serif;
     font-size: 1.1rem;
     font-weight: 600;
     color: #fff;
@@ -270,7 +281,7 @@ body.auth-page {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(165deg, #0c1018 0%, #151c28 50%, #0f766e 120%);
+    background: #0c1018;
     padding: 24px;
 }
 
@@ -288,7 +299,7 @@ body.auth-page {
 }
 
 .auth-page .login-header h3 {
-    font-family: var(--font-display), "Sora", sans-serif;
+    font-family: var(--font-display), system-ui, sans-serif;
     font-weight: 600;
     color: var(--text);
 }

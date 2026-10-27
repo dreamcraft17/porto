@@ -12,7 +12,7 @@
     <div class="row mb-4">
         <div class="col-md-2 col-sm-6 mb-3">
             <div class="stat-card">
-                <div class="stat-icon" style="background: var(--accent-gradient);">
+                <div class="stat-icon">
                     <i class="fas fa-briefcase"></i>
                 </div>
                 <h3 class="fw-bold mb-2">{{ $stats['projects'] }}</h3>
@@ -22,7 +22,7 @@
         
         <div class="col-md-2 col-sm-6 mb-3">
             <div class="stat-card">
-                <div class="stat-icon" style="background: linear-gradient(135deg, var(--neon-purple), var(--neon-pink));">
+                <div class="stat-icon stat-icon--muted">
                     <i class="fas fa-code"></i>
                 </div>
                 <h3 class="fw-bold mb-2">{{ $stats['personal_projects'] }}</h3>
@@ -32,7 +32,7 @@
         
         <div class="col-md-2 col-sm-6 mb-3">
             <div class="stat-card">
-                <div class="stat-icon" style="background: linear-gradient(135deg, var(--neon-cyan), var(--primary-color));">
+                <div class="stat-icon">
                     <i class="fas fa-history"></i>
                 </div>
                 <h3 class="fw-bold mb-2">{{ $stats['experiences'] }}</h3>
@@ -42,7 +42,7 @@
         
         <div class="col-md-2 col-sm-6 mb-3">
             <div class="stat-card">
-                <div class="stat-icon" style="background: linear-gradient(135deg, var(--success-color), #00ff88);">
+                <div class="stat-icon">
                     <i class="fas fa-tools"></i>
                 </div>
                 <h3 class="fw-bold mb-2">{{ $stats['skills'] }}</h3>
@@ -52,7 +52,7 @@
         
         <div class="col-md-2 col-sm-6 mb-3">
             <div class="stat-card">
-                <div class="stat-icon" style="background: linear-gradient(135deg, var(--neon-pink), #ffff00);">
+                <div class="stat-icon stat-icon--warm">
                     <i class="fas fa-graduation-cap"></i>
                 </div>
                 <h3 class="fw-bold mb-2">{{ $stats['education'] }}</h3>
@@ -62,7 +62,7 @@
         
         <div class="col-md-2 col-sm-6 mb-3">
             <div class="stat-card">
-                <div class="stat-icon" style="background: linear-gradient(135deg, var(--neon-purple), #ff69b4);">
+                <div class="stat-icon stat-icon--muted">
                     <i class="fas fa-award"></i>
                 </div>
                 <h3 class="fw-bold mb-2">{{ $stats['certifications'] }}</h3>
