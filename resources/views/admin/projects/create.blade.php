@@ -126,9 +126,9 @@
                     
                     <div class="mb-3">
                         <label for="image" class="form-label">Project Image</label>
-                        @if(isset($project) && $project->image)
+                        @if(isset($project) && $project->image_url)
                             <div class="mb-2">
-                                <img src="{{ asset('storage/' . $project->image) }}" alt="{{ $project->title }}" class="img-fluid rounded" style="max-height: 200px;">
+                                <img src="{{ $project->image_url }}" alt="{{ $project->title }}" class="img-fluid rounded" style="max-height: 200px;">
                             </div>
                         @endif
                         <input type="file" class="form-control" id="image" name="image" accept="image/*">

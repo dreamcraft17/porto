@@ -11,11 +11,6 @@
                  alt=""
                  loading="lazy"
                  decoding="async">
-        @elseif(!empty($project->image))
-            <img src="{{ str_starts_with($project->image, 'http') ? $project->image : asset('storage/' . $project->image) }}"
-                 alt=""
-                 loading="lazy"
-                 decoding="async">
         @else
             <span class="case-kicker">{{ $project->company ?: 'Case study' }}</span>
         @endif

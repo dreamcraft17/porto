@@ -28,6 +28,15 @@ class AdminProjectCrudTest extends TestCase
             ->assertRedirect(route('admin.login'));
     }
 
+    public function test_public_media_route_serves_uploaded_files_without_storage_symlink(): void
+    {
+        Storage::fake('public');
+        Storage::disk('public')->put('projects/cover.txt', 'media fixture');
+
+        $this->get('/media/projects/cover.txt')
+            ->assertOk();
+    }
+
     public function test_admin_can_create_project_with_unique_slug(): void
     {
         Storage::fake('public');

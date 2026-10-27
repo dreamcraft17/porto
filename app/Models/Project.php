@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Storage;
+use App\Support\PublicImage;
 
 class Project extends Model
 {
@@ -45,18 +45,6 @@ class Project extends Model
 
     public function getImageUrlAttribute(): ?string
     {
-        if (! $this->image) {
-            return null;
-        }
-
-        if (filter_var($this->image, FILTER_VALIDATE_URL)) {
-            return $this->image;
-        }
-
-        if (file_exists(public_path($this->image))) {
-            return asset($this->image);
-        }
-
-        return Storage::disk('public')->url($this->image);
+        return PublicImage::url($this->image);
     }
 }
