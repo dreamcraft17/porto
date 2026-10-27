@@ -10,13 +10,15 @@
                 <a class="action-primary" href="#work">Read the work <span aria-hidden="true">↘</span></a>
                 <a class="action-secondary" href="#contact">Start with a brief</a>
             </div>
-            <p class="hero-signal"><span>UI</span><span>API</span><span>DATA</span><span>OPERATIONS</span></p>
-            <div class="hero-stack" aria-label="Primary stack">
-                <span>Laravel</span>
-                <span>ASP.NET</span>
-                <span>Flutter</span>
-                <span>SQL Server / MySQL</span>
-                <span>REST APIs</span>
+            <div class="hero-meta">
+                <p class="hero-signal"><span>UI</span><span>API</span><span>DATA</span><span>OPERATIONS</span></p>
+                <div class="hero-stack" aria-label="Primary stack">
+                    <span>Laravel</span>
+                    <span>ASP.NET</span>
+                    <span>Flutter</span>
+                    <span>SQL Server / MySQL</span>
+                    <span>REST APIs</span>
+                </div>
             </div>
         </div>
         <figure class="hero-avatar">

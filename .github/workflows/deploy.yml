@@ -86,12 +86,22 @@ jobs:
             set -e
             cd /home/dozernap/app
             composer install --no-dev --optimize-autoloader
+
+            # Laravel must be able to write runtime cache, sessions, views, and logs
+            # before any cache/build command runs.
+            mkdir -p storage/framework/cache storage/framework/sessions storage/framework/views storage/logs bootstrap/cache
+            find storage bootstrap/cache -type d -exec chmod 775 {} \;
+            find storage bootstrap/cache -type f -exec chmod 664 {} \;
+
             php artisan migrate --force
             php artisan storage:link --force
             php artisan config:cache
             php artisan route:cache
             php artisan view:cache
-            chmod -R 775 storage bootstrap/cache
+
+            # Keep runtime directories writable after generated cache files are replaced.
+            find storage bootstrap/cache -type d -exec chmod 775 {} \;
+            find storage bootstrap/cache -type f -exec chmod 664 {} \;
 
       - name: Health check
         run: |

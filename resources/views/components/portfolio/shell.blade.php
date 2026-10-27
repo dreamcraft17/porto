@@ -45,8 +45,11 @@
             @endif
             <a href="{{ route('projects.all') }}"><span>→</span> All projects</a>
             <a href="{{ route('personal.projects.all') }}"><span>→</span> Personal</a>
-            <a class="rail-nav-cta" href="{{ $section('contact') }}">Contact</a>
         </nav>
+
+        <div class="rail-cta">
+            <a class="rail-nav-cta" href="{{ $section('contact') }}">Contact</a>
+        </div>
 
         <div class="rail-foot">
             <div class="rail-social">
