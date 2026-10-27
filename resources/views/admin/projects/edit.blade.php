@@ -178,7 +178,7 @@
                         @if($project->image)
                             <div class="mb-3">
                                 <p class="mb-2"><strong>Current Image:</strong></p>
-                                <img src="{{ asset('storage/' . $project->image) }}" 
+                                <img src="{{ $project->image_url }}"
                                      alt="{{ $project->title }}" 
                                      class="image-preview">
                             </div>
@@ -272,7 +272,7 @@
                     previewContainer = document.createElement('div');
                     previewContainer.id = 'imagePreviewContainer';
                     previewContainer.className = 'mb-3';
-                    this.parentNode.insertBefore(previewContainer, this);
+                    document.getElementById('image').parentNode.insertBefore(previewContainer, document.getElementById('image'));
                 }
                 previewContainer.innerHTML = `
                     <p class="mb-2"><strong>New Image Preview:</strong></p>

@@ -135,7 +135,7 @@
 @if(isset($personalProject) && $personalProject->image)
     <div class="mb-3">
         <label>Current Image:</label><br>
-        <img src="{{ asset($personalProject->image) }}" 
+        <img src="{{ $personalProject->image_url }}"
              alt="{{ $personalProject->title }}" 
              style="max-width: 200px; max-height: 200px; object-fit: cover;">
     </div>
@@ -198,5 +198,23 @@
     function removeTech(element) {
         element.parentElement.remove();
     }
+
+    document.getElementById('image').addEventListener('change', function (event) {
+        const file = event.target.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = function (loadEvent) {
+            let preview = document.getElementById('imagePreview');
+            if (!preview) {
+                preview = document.createElement('div');
+                preview.id = 'imagePreview';
+                preview.className = 'mb-3';
+                document.getElementById('image').parentNode.insertBefore(preview, document.getElementById('image'));
+            }
+            preview.innerHTML = `<img src="${loadEvent.target.result}" alt="Selected image preview" style="max-width: 200px; max-height: 200px; object-fit: cover;">`;
+        };
+        reader.readAsDataURL(file);
+    });
 </script>
 @endsection

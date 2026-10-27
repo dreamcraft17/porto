@@ -22,6 +22,10 @@
         $filteredLines[] = $line;
     }
     $cleanContent = trim(implode("\n", $filteredLines));
+    $contentHasMarkup = $cleanContent !== strip_tags($cleanContent);
+    $renderedContent = $contentHasMarkup
+        ? clean($cleanContent)
+        : nl2br(e($cleanContent));
 @endphp
 
     <x-portfolio.shell
@@ -90,7 +94,7 @@
                         @if($cleanContent !== '')
                             <div class="case-panel">
                                 <h2>Overview</h2>
-                                <div class="case-prose">{!! nl2br(e($cleanContent)) !!}</div>
+                                <div class="case-prose">{!! $renderedContent !!}</div>
                             </div>
                         @endif
                     </div>

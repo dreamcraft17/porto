@@ -30,7 +30,7 @@
                     <td>{{ $project->order }}</td>
                     <td>
     @if($project->image)
-        <img src="{{ asset($project->image) }}" 
+        <img src="{{ $project->image_url }}"
              alt="{{ $project->title }}" 
              style="width: 50px; height: 50px; object-fit: cover; border-radius: 5px;">
     @else

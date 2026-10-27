@@ -201,7 +201,7 @@
                     preview = document.createElement('div');
                     preview.id = 'imagePreview';
                     preview.className = 'mb-2';
-                    e.target.parentNode.insertBefore(preview, e.target);
+                    document.getElementById('image').parentNode.insertBefore(preview, document.getElementById('image'));
                 }
                 preview.innerHTML = `<img src="${e.target.result}" class="img-fluid rounded" style="max-height: 200px;">`;
             }

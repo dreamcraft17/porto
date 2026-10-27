@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Project extends Model
 {
@@ -48,10 +49,14 @@ class Project extends Model
             return null;
         }
 
+        if (filter_var($this->image, FILTER_VALIDATE_URL)) {
+            return $this->image;
+        }
+
         if (file_exists(public_path($this->image))) {
             return asset($this->image);
         }
 
-        return asset('storage/'.$this->image);
+        return Storage::disk('public')->url($this->image);
     }
 }

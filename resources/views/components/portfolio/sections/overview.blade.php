@@ -1,15 +1,16 @@
 <section id="overview" class="block block--hero intro-section">
     <div class="hero-grid">
         <div>
-            <p class="eyebrow">Dozer · Fullstack engineer</p>
-            <h1 class="intro-title">I build software that keeps real teams moving.</h1>
+            <p class="eyebrow">Dozer · Software for business operations</p>
+            <h1 class="intro-title">I build the software behind everyday operations.</h1>
             <p class="intro-copy">
-                Web apps, APIs, mobile workflows, and dashboards for the messy middle of a business—the place where good software saves time every day.
+                From cafe POS and banking modules to internal HR and seller finance, I work across the layers that make a workflow hold together: interface, API, data, and the people using it.
             </p>
             <div class="intro-actions">
-                <a class="action-primary" href="#work">See selected work</a>
-                <a class="action-secondary" href="#contact">Send a brief</a>
+                <a class="action-primary" href="#work">Read the work <span aria-hidden="true">↘</span></a>
+                <a class="action-secondary" href="#contact">Start with a brief</a>
             </div>
+            <p class="hero-signal"><span>UI</span><span>API</span><span>DATA</span><span>OPERATIONS</span></p>
             <div class="hero-stack" aria-label="Primary stack">
                 <span>Laravel</span>
                 <span>ASP.NET</span>
@@ -23,38 +24,30 @@
         </figure>
     </div>
 
-    <div class="stat-row" aria-label="Portfolio summary">
+    <div class="stat-row" aria-label="How the work is shaped">
         <div class="proof-item">
             <div class="proof-top">
-                <span class="proof-value">5+</span>
-                <span class="proof-icon"><i class="fas fa-briefcase" aria-hidden="true"></i></span>
+                <span class="proof-value">01</span>
+                <span class="proof-icon">↗</span>
             </div>
-            <span class="proof-label">Years in production</span>
-            <span class="proof-note">Cafe POS, banking modules, internal HR, seller finance.</span>
+            <span class="proof-label">Start with the workflow</span>
+            <span class="proof-note">Who uses it, where it breaks, and what should happen next.</span>
         </div>
         <div class="proof-item">
             <div class="proof-top">
-                <span class="proof-value">20+</span>
-                <span class="proof-icon"><i class="fas fa-diagram-project" aria-hidden="true"></i></span>
+                <span class="proof-value">02</span>
+                <span class="proof-icon">↗</span>
             </div>
-            <span class="proof-label">Shipped projects</span>
-            <span class="proof-note">Dashboards, mobile ops, integrations, CMS-backed sites.</span>
+            <span class="proof-label">Connect the moving parts</span>
+            <span class="proof-note">A usable screen is only useful when the API and data agree.</span>
         </div>
         <div class="proof-item">
             <div class="proof-top">
-                <span class="proof-value">{{ $skills->count() > 0 ? $skills->count().'+' : 'Full' }}</span>
-                <span class="proof-icon"><i class="fas fa-code-branch" aria-hidden="true"></i></span>
+                <span class="proof-value">03</span>
+                <span class="proof-icon">↗</span>
             </div>
-            <span class="proof-label">Stack breadth</span>
-            <span class="proof-note">
-                @if($skills->count() > 0)
-                    @foreach($skills->take(4) as $skill)
-                        {{ $skill->name }}@if(!$loop->last), @endif
-                    @endforeach
-                @else
-                    Laravel, ASP.NET, Flutter, SQL, REST — add skills in CMS when ready.
-                @endif
-            </span>
+            <span class="proof-label">Make it maintainable</span>
+            <span class="proof-note">Clear ownership, predictable data, and a handoff your team can use.</span>
         </div>
     </div>
 </section>

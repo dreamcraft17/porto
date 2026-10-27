@@ -19,7 +19,7 @@ class PortfolioPublicLayoutTest extends TestCase
         $response->assertOk();
         $response->assertSee('site-rail', false);
         $response->assertSee('intro-title', false);
-        $response->assertSee('I build software that keeps real teams moving.', false);
+        $response->assertSee('I build the software behind everyday operations.', false);
         $response->assertSee('dntech.id', false);
         $response->assertSee('Managed by', false);
         $response->assertDontSee('navbar-bold', false);
@@ -54,8 +54,8 @@ class PortfolioPublicLayoutTest extends TestCase
         $response = $this->get('/');
 
         $response->assertOk();
-        $response->assertSee('Stack breadth', false);
-        $response->assertSee('proof-value">Full<', false);
+        $response->assertSee('Start with the workflow', false);
+        $response->assertSee('proof-value">01<', false);
         $response->assertDontSee('proof-value">0+<', false);
     }
 
@@ -83,6 +83,7 @@ class PortfolioPublicLayoutTest extends TestCase
         $response->assertOk();
         $response->assertSee('site-rail', false);
         $response->assertSee('QA Case Study', false);
+        $response->assertSee('<p>Body</p>', false);
         $response->assertDontSee('bootstrap@5.3.0', false);
     }
 

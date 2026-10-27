@@ -1,7 +1,7 @@
 <section id="experience" class="block experience-section">
     <div class="history-head">
         <i class="fas fa-briefcase"></i>
-        <h2 class="history-title">Professional History</h2>
+        <h2 class="history-title">Where the work has been tested.</h2>
     </div>
 
     <div class="timeline-list">

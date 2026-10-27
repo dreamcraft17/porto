@@ -1,7 +1,7 @@
 <section id="work" class="block work-section">
     <div class="block-head">
-        <div class="section-kicker">Selected work</div>
-        <h2 class="section-title">Selected systems for real business workflows.</h2>
+        <div class="section-kicker">The work</div>
+        <h2 class="section-title">A few systems built around the work people actually have to do.</h2>
     </div>
 
     <div class="work-list">
@@ -28,17 +28,17 @@
                     @endforeach
                 </div>
                 @endif
-                <div class="work-link">View case</div>
+                <div class="work-link">Open case ↗</div>
             </div>
         </a>
         @empty
         <div class="case-empty">
-            <p>No featured projects yet. Browse the archive or add entries in the admin CMS.</p>
+            <p>The case list is being updated. Browse the archive for the full record.</p>
         </div>
         @endforelse
     </div>
 
     <div class="mt-4">
-        <a class="action-secondary" href="{{ route('projects.all') }}">Browse all projects</a>
+        <a class="action-secondary" href="{{ route('projects.all') }}">Open the full archive ↗</a>
     </div>
 </section>

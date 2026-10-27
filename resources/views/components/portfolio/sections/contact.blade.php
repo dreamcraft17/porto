@@ -1,13 +1,13 @@
 <section id="contact" class="block contact-section">
     <div class="block-head">
-        <div class="section-kicker">Contact</div>
-        <h2 class="section-title contact-title">Need a system, dashboard, mobile workflow, or integration built properly?</h2>
+        <div class="section-kicker">Start a conversation</div>
+        <h2 class="section-title contact-title">Have a workflow that is too important to keep patching?</h2>
     </div>
 
     <div class="contact-grid">
         <div class="contact-card">
             <p class="contact-note">
-                Share the business flow, the users, and the problem you want to solve. I can help turn it into a web or mobile application with a practical technical foundation.
+                Send the context, the people involved, and the part that keeps getting stuck. We can work out whether the right answer is a new system, a better flow, or a smaller fix.
             </p>
             <div class="contact-links">
                 <a href="mailto:{{ config('app.social.email') }}"><i class="fas fa-envelope" aria-hidden="true"></i>{{ config('app.social.email') }}</a>
@@ -21,23 +21,23 @@
             <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
             <div class="form-row">
                 <div>
-                    <label for="name">Full Name</label>
-                        <input type="text" id="name" name="name" autocomplete="name" placeholder="Your name" required>
+                    <label for="name">Your name</label>
+                        <input type="text" id="name" name="name" autocomplete="name" placeholder="How should I call you?" required>
                 </div>
                 <div>
-                    <label for="email">Email Address</label>
-                        <input type="email" id="email" name="email" autocomplete="email" placeholder="you@example.com" required>
+                    <label for="email">Work email</label>
+                        <input type="email" id="email" name="email" autocomplete="email" placeholder="you@company.com" required>
                 </div>
             </div>
             <div>
-                <label for="subject">Subject</label>
-                <input type="text" id="subject" name="subject" autocomplete="off" placeholder="Project discussion" required>
+                <label for="subject">What needs fixing?</label>
+                <input type="text" id="subject" name="subject" autocomplete="off" placeholder="Payroll, reporting, mobile workflow..." required>
             </div>
             <div>
-                <label for="message">Message</label>
-                <textarea id="message" name="message" autocomplete="off" placeholder="Tell me about your project..." required></textarea>
+                <label for="message">A little context</label>
+                <textarea id="message" name="message" autocomplete="off" placeholder="What happens today, and what should happen instead?" required></textarea>
             </div>
-            <button class="submit-btn" type="submit" data-default-text="Send Message">Send Message</button>
+            <button class="submit-btn" type="submit" data-default-text="Send the brief">Send the brief</button>
         </form>
     </div>
 </section>

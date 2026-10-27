@@ -1,7 +1,7 @@
 <section id="capabilities" class="block capability-section">
     <div class="section-head">
-        <div class="section-kicker">Capabilities</div>
-        <h2 class="section-title">Development services for internal teams, product workflows, and business platforms.</h2>
+        <div class="section-kicker">What I ship</div>
+        <h2 class="section-title">Software that turns a manual handoff into a working system.</h2>
     </div>
 
     <div class="capability-grid">
