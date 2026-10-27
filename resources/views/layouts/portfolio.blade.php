@@ -7,7 +7,7 @@
 
     <meta name="description" content="@yield('meta_description', 'Dozer Napitupulu builds Laravel, ASP.NET, and Flutter systems for operations teams—POS, banking modules, dashboards, and integrations.')">
     <meta name="author" content="Dozer Napitupulu">
-    <meta name="theme-color" content="#eee8dc">
+    <meta name="theme-color" content="#0c1018">
 
     <meta property="og:title" content="@yield('og_title', 'Dozer Napitupulu — Fullstack Engineer')">
     <meta property="og:description" content="@yield('meta_description', 'Selected work and contact for Dozer Napitupulu — business web apps, mobile workflows, and API integration.')">
@@ -15,7 +15,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Sora:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     @vite(['resources/css/portfolio-base.css'])

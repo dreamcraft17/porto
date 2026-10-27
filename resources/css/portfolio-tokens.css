@@ -1,36 +1,41 @@
 /**
- * Porto Phase 4 — rail layout, paper + brutal blocks
+ * Porto design system v3 — Obsidian & Linen
+ * Author: Dozer
  */
 :root {
-    --page-bg: #eee8dc;
-    --paper: #faf6ef;
+    --page-bg: #ece8e1;
+    --canvas-bg: #f7f5f1;
+    --paper: #ffffff;
     --surface: #ffffff;
-    --ink: #121212;
-    --muted: #5c5c5c;
-    --line: #121212;
-    --accent: #0047ff;
-    --accent-soft: #dbeafe;
-    --hot: #ff2d55;
-    --hot-soft: #ffe4ea;
-    --lime: #b8ff3c;
-    --navy: #0047ff;
-    --soft: #f0ebe3;
-    --on-dark: #faf6ef;
-    --on-dark-muted: #c4bdb4;
-    --radius: 0;
-    --radius-sm: 2px;
-    --stroke: 3px solid var(--line);
-    --shadow: 8px 8px 0 var(--line);
-    --shadow-sm: 4px 4px 0 var(--line);
-    --font-display: "Space Grotesk", system-ui, sans-serif;
-    --font-body: "IBM Plex Sans", system-ui, sans-serif;
+    --surface-muted: #f0ede8;
+    --ink: #12151a;
+    --muted: #5c6470;
+    --line: rgba(18, 21, 26, 0.12);
+    --line-strong: rgba(18, 21, 26, 0.22);
+    --accent: #0d9488;
+    --accent-hover: #0f766e;
+    --accent-soft: #ccfbf1;
+    --accent-glow: rgba(13, 148, 136, 0.35);
+    --warm: #ea580c;
+    --warm-soft: #ffedd5;
+    --violet-soft: #ede9fe;
+    --on-dark: #f4f6f8;
+    --on-dark-muted: #9aa3af;
+    --rail-bg: linear-gradient(165deg, #0c1018 0%, #151c28 48%, #111820 100%);
+    --radius-sm: 8px;
+    --radius: 14px;
+    --radius-lg: 20px;
+    --radius-pill: 999px;
+    --shadow-sm: 0 1px 2px rgba(18, 21, 26, 0.06), 0 4px 12px rgba(18, 21, 26, 0.04);
+    --shadow: 0 8px 24px rgba(18, 21, 26, 0.08), 0 2px 6px rgba(18, 21, 26, 0.04);
+    --shadow-lg: 0 24px 48px rgba(18, 21, 26, 0.12);
+    --font-display: "Sora", system-ui, sans-serif;
+    --font-body: "Plus Jakarta Sans", system-ui, sans-serif;
     --font-mono: "IBM Plex Mono", ui-monospace, monospace;
-    --rail-w: 260px;
-    --content-max: 920px;
-    --section-y: clamp(48px, 8vw, 88px);
+    --rail-w: 272px;
+    --content-max: 940px;
+    --section-y: clamp(56px, 9vw, 96px);
     --section-x: clamp(20px, 4vw, 40px);
-    --focus-ring: 0 0 0 3px var(--accent);
-    /* 8pt spacing scale (UI design system) */
     --space-1: 4px;
     --space-2: 8px;
     --space-3: 12px;
@@ -40,6 +45,14 @@
     --space-8: 32px;
     --space-10: 40px;
     --space-12: 48px;
-    --space-hero-gap: clamp(32px, 5vw, 48px);
-    --eyebrow: #8f1d3a;
+    --space-hero-gap: clamp(36px, 5vw, 56px);
+    --eyebrow: #0f766e;
+    --stroke: 1px solid var(--line);
+    --shadow-brutal: var(--shadow-sm);
+    /* legacy aliases (v2 class names) */
+    --hot: var(--warm);
+    --hot-soft: var(--warm-soft);
+    --lime: #99f6e4;
+    --soft: var(--surface-muted);
+    --navy: var(--accent);
 }

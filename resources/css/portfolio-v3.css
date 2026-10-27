@@ -1,0 +1,464 @@
+/**
+ * Porto v3 — Obsidian & Linen (full reskin, all public portfolio pages)
+ * Author: Dozer
+ */
+.portfolio-shell--v3 {
+    background: var(--page-bg);
+}
+
+/* —— Dark rail —— */
+.portfolio-shell--v3 .site-rail {
+    padding: var(--space-8) var(--space-5);
+    border-right: 1px solid rgba(255, 255, 255, 0.06);
+    background: var(--rail-bg);
+    color: var(--on-dark);
+    box-shadow: 8px 0 32px rgba(0, 0, 0, 0.08);
+}
+
+.portfolio-shell--v3 .rail-logo {
+    color: var(--on-dark);
+    margin-bottom: var(--space-8);
+}
+
+.portfolio-shell--v3 .rail-logo-mark {
+    width: 52px;
+    height: 52px;
+    border: none;
+    border-radius: var(--radius);
+    background: linear-gradient(135deg, #14b8a6 0%, #0d9488 45%, #0f766e 100%);
+    color: #fff;
+    box-shadow: 0 8px 20px var(--accent-glow);
+    font-size: 1.35rem;
+}
+
+.portfolio-shell--v3 .rail-logo-text small {
+    color: var(--on-dark-muted);
+}
+
+.portfolio-shell--v3 .rail-trail {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--on-dark-muted);
+}
+
+.portfolio-shell--v3 .rail-trail a {
+    color: #5eead4;
+}
+
+.portfolio-shell--v3 .rail-nav a {
+    border-radius: var(--radius-sm);
+    color: var(--on-dark-muted);
+    font-size: 0.92rem;
+    padding: 10px 12px;
+}
+
+.portfolio-shell--v3 .rail-nav a span:first-child {
+    color: rgba(255, 255, 255, 0.35);
+}
+
+.portfolio-shell--v3 .rail-nav a:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: transparent;
+    color: #fff;
+    transform: translateX(3px);
+}
+
+.portfolio-shell--v3 .rail-nav-cta {
+    border: none !important;
+    border-radius: var(--radius-pill);
+    box-shadow: 0 4px 16px var(--accent-glow);
+    transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+}
+
+.portfolio-shell--v3 .rail-nav-cta:hover {
+    background: #14b8a6 !important;
+    color: #fff !important;
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px var(--accent-glow);
+}
+
+.portfolio-shell--v3 .rail-foot {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.portfolio-shell--v3 .rail-social a {
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: var(--radius-sm);
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--on-dark);
+    box-shadow: none;
+}
+
+.portfolio-shell--v3 .rail-social a:hover {
+    background: rgba(20, 184, 166, 0.25);
+    color: #fff;
+}
+
+.portfolio-shell--v3 .rail-copy,
+.portfolio-shell--v3 .rail-managed {
+    color: var(--on-dark-muted);
+}
+
+.portfolio-shell--v3 .rail-managed a {
+    color: #5eead4;
+}
+
+/* —— Canvas —— */
+.portfolio-shell--v3 .site-canvas {
+    background: var(--canvas-bg);
+}
+
+.portfolio-shell--v3 .site-mobile-bar {
+    background: rgba(247, 245, 241, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+}
+
+.portfolio-shell--v3 .site-rail-toggle {
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow-sm);
+}
+
+.portfolio-shell--v3 .site-credit {
+    border-top: 1px solid var(--line);
+    background: var(--surface-muted);
+}
+
+/* —— Sections —— */
+.portfolio-shell--v3 .block {
+    border-bottom: 1px solid var(--line);
+}
+
+.portfolio-shell--v3 .intro-section {
+    border-bottom: none;
+}
+
+.portfolio-shell--v3 .section-kicker,
+.portfolio-shell--v3 .eyebrow,
+.portfolio-shell--v3 .case-kicker {
+    color: var(--eyebrow);
+    border-left: 3px solid var(--accent);
+    padding-left: var(--space-3);
+    letter-spacing: 0.12em;
+}
+
+.portfolio-shell--v3 .section-title,
+.portfolio-shell--v3 .intro-title {
+    color: var(--ink);
+}
+
+/* —— Buttons —— */
+.portfolio-shell--v3 .action-primary,
+.portfolio-shell--v3 .case-btn-primary,
+.portfolio-shell--v3 .submit-btn {
+    border: none;
+    border-radius: var(--radius-pill);
+    background: linear-gradient(135deg, #0d9488, #0f766e);
+    box-shadow: 0 4px 14px var(--accent-glow);
+}
+
+.portfolio-shell--v3 .action-primary:hover,
+.portfolio-shell--v3 .case-btn-primary:hover,
+.portfolio-shell--v3 .submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px var(--accent-glow);
+}
+
+.portfolio-shell--v3 .action-secondary,
+.portfolio-shell--v3 .case-btn-secondary {
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-pill);
+    background: var(--paper);
+    box-shadow: var(--shadow-sm);
+}
+
+.portfolio-shell--v3 .action-secondary:hover,
+.portfolio-shell--v3 .case-btn-secondary:hover {
+    background: var(--accent-soft);
+    border-color: var(--accent);
+    color: var(--accent-hover);
+}
+
+/* —— Hero —— */
+.portfolio-shell--v3 .hero-avatar {
+    border: none;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    background: var(--violet-soft);
+}
+
+.portfolio-shell--v3 .hero-stack span {
+    border: 1px solid var(--line);
+    border-radius: var(--radius-pill);
+    background: var(--paper);
+    box-shadow: none;
+    font-size: 0.72rem;
+    padding: 6px 12px;
+}
+
+.portfolio-shell--v3 .hero-signal span:not(:last-child)::after {
+    color: var(--accent);
+}
+
+/* —— Proof cards —— */
+.portfolio-shell--v3 .proof-item {
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.portfolio-shell--v3 .proof-item:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow);
+}
+
+.portfolio-shell--v3 .proof-value {
+    color: var(--accent);
+}
+
+.portfolio-shell--v3 .proof-icon {
+    width: 36px;
+    height: 36px;
+    display: grid;
+    place-items: center;
+    border-radius: var(--radius-sm);
+    background: var(--accent-soft);
+}
+
+/* —— Capability —— */
+.portfolio-shell--v3 .capability-card {
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.portfolio-shell--v3 .capability-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow);
+}
+
+.portfolio-shell--v3 .capability-card:nth-child(3n + 2) {
+    background: var(--accent-soft);
+}
+
+.portfolio-shell--v3 .capability-card:nth-child(3n) {
+    background: var(--violet-soft);
+}
+
+/* —— About / skills —— */
+.portfolio-shell--v3 .profile-note {
+    border-left: 4px solid var(--warm);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    background: var(--warm-soft);
+}
+
+.portfolio-shell--v3 .skill-group {
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+}
+
+.portfolio-shell--v3 .skill-list span {
+    border: 1px solid var(--line);
+    border-radius: var(--radius-pill);
+    background: var(--accent-soft);
+    color: var(--accent-hover);
+    font-weight: 600;
+}
+
+/* —— Work list —— */
+.portfolio-shell--v3 .work-list {
+    gap: var(--space-3);
+    border: none;
+    background: transparent;
+    box-shadow: none;
+}
+
+.portfolio-shell--v3 .work-item {
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    border-bottom: 1px solid var(--line);
+    background: var(--paper);
+    box-shadow: var(--shadow-sm);
+    transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+}
+
+.portfolio-shell--v3 .work-item:hover {
+    background: var(--paper);
+    border-color: var(--accent);
+    box-shadow: var(--shadow);
+    transform: translateY(-2px);
+}
+
+.portfolio-shell--v3 .work-index {
+    color: var(--accent);
+}
+
+.portfolio-shell--v3 .tech-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    justify-content: flex-end;
+    margin-bottom: 8px;
+}
+
+.portfolio-shell--v3 .tech-list span {
+    padding: 3px 8px;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--line);
+    font-size: 0.65rem;
+    background: var(--surface-muted);
+}
+
+/* —— Timeline —— */
+.portfolio-shell--v3 .timeline-list {
+    gap: var(--space-3);
+    border: none;
+    box-shadow: none;
+}
+
+.portfolio-shell--v3 .timeline-entry {
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    border-bottom: 1px solid var(--line);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+}
+
+.portfolio-shell--v3 .timeline-date {
+    border-right: 1px solid var(--line);
+    background: var(--surface-muted);
+}
+
+.portfolio-shell--v3 .timeline-duration,
+.portfolio-shell--v3 .timeline-current,
+.portfolio-shell--v3 .timeline-stack span {
+    border: 1px solid var(--line);
+    border-radius: var(--radius-pill);
+}
+
+.portfolio-shell--v3 .timeline-duration.is-current {
+    background: var(--warm-soft);
+    color: var(--warm);
+    border-color: rgba(234, 88, 12, 0.35);
+}
+
+.portfolio-shell--v3 .timeline-current {
+    background: var(--accent-soft);
+    color: var(--accent-hover);
+}
+
+/* —— Credentials —— */
+.portfolio-shell--v3 .credential-list {
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+}
+
+.portfolio-shell--v3 .credential-row {
+    border-bottom: 1px solid var(--line);
+}
+
+.portfolio-shell--v3 .credential-badge {
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--line);
+    background: var(--accent-soft);
+}
+
+/* —— Contact —— */
+.portfolio-shell--v3 .contact-card,
+.portfolio-shell--v3 .contact-form {
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+}
+
+.portfolio-shell--v3 .contact-form input,
+.portfolio-shell--v3 .contact-form textarea {
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    background: var(--canvas-bg);
+}
+
+.portfolio-shell--v3 .contact-form input:focus,
+.portfolio-shell--v3 .contact-form textarea:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.2);
+    outline: none;
+}
+
+/* —— Case / archive pages —— */
+.portfolio-shell--v3 .case-card {
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+}
+
+.portfolio-shell--v3 .case-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+.portfolio-shell--v3 .case-tech span {
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--line);
+    background: var(--accent-soft);
+}
+
+.portfolio-shell--v3 .case-cover {
+    border: none;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+}
+
+.portfolio-shell--v3 .case-panel {
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+}
+
+.portfolio-shell--v3 .case-meta span {
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--line);
+    background: var(--surface-muted);
+}
+
+.portfolio-shell--v3 .case-empty,
+.portfolio-shell--v3 .page-error {
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+    background: var(--paper);
+}
+
+.portfolio-shell--v3 .page-error-code {
+    color: var(--accent);
+}
+
+.portfolio-shell--v3 .portfolio-pagination a,
+.portfolio-shell--v3 .portfolio-pagination span {
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--line);
+    box-shadow: none;
+}
+
+.portfolio-shell--v3 .portfolio-pagination span[aria-current="page"] {
+    background: var(--accent);
+    border-color: var(--accent);
+}
+
+.portfolio-shell--v3 table.acc-grid thead th,
+.portfolio-shell--v3 .case-dlg-table th {
+    background: var(--surface-muted);
+}
+
+@media (max-width: 960px) {
+    .portfolio-shell--v3 .site-rail {
+        box-shadow: var(--shadow-lg);
+    }
+}

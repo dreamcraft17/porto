@@ -16,8 +16,19 @@ body.portfolio-body {
     color: var(--ink);
     font-family: var(--font-body);
     font-size: 1rem;
-    line-height: 1.6;
+    line-height: 1.65;
     -webkit-font-smoothing: antialiased;
+}
+
+body.portfolio-body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background:
+        radial-gradient(ellipse 80% 50% at 70% -10%, rgba(13, 148, 136, 0.12), transparent 55%),
+        radial-gradient(ellipse 60% 40% at 10% 100%, rgba(234, 88, 12, 0.06), transparent 50%);
 }
 
 .skip-link {
@@ -25,17 +36,22 @@ body.portfolio-body {
     left: -9999px;
     top: 0.75rem;
     z-index: 10000;
-    padding: 0.5rem 0.85rem;
-    background: var(--hot);
-    color: var(--ink);
-    border: var(--stroke);
-    box-shadow: var(--shadow-sm);
+    padding: 0.55rem 1rem;
+    background: var(--accent);
+    color: #fff;
+    border-radius: var(--radius-pill);
+    box-shadow: var(--shadow);
     font-weight: 700;
     text-decoration: none;
 }
 
 .skip-link:focus {
     left: 0.75rem;
+}
+
+.portfolio-shell {
+    position: relative;
+    z-index: 1;
 }
 
 .portfolio-shell h1,
@@ -47,19 +63,19 @@ body.portfolio-body {
 .portfolio-shell .contact-title,
 .portfolio-shell .case-title {
     font-family: var(--font-display);
-    font-weight: 700;
-    letter-spacing: -0.03em;
-    line-height: 1.05;
+    font-weight: 600;
+    letter-spacing: -0.035em;
+    line-height: 1.08;
 }
 
 .portfolio-shell .section-kicker,
 .portfolio-shell .eyebrow,
 .portfolio-shell .case-kicker {
     font-family: var(--font-mono);
-    font-weight: 600;
-    letter-spacing: 0.12em;
+    font-weight: 500;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
-    font-size: 0.7rem;
+    font-size: 0.68rem;
 }
 
 .page-main {

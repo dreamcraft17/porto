@@ -1,4 +1,6 @@
-/* Porto Phase 4 — left rail + brutal paper UI */
+@import "./portfolio-v3.css";
+
+/* Porto public layout (structure + fallbacks) */
 
 .portfolio-shell {
     min-height: 100vh;
@@ -649,9 +651,10 @@
 .work-list {
     display: flex;
     flex-direction: column;
-    border: var(--stroke);
-    background: var(--surface);
-    box-shadow: var(--shadow);
+    gap: var(--space-3);
+    border: none;
+    background: transparent;
+    box-shadow: none;
 }
 
 .work-item {

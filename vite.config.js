@@ -14,6 +14,7 @@ export default defineConfig({
                 'resources/css/personal-project.css',
                 'resources/css/portfolio-case.css',
                 'resources/css/portfolio-polish.css',
+                'resources/css/admin-panel.css',
                 'resources/js/app.js',
                 'resources/js/portfolio-contact.js',
                 'resources/js/portfolio-nav.js',
