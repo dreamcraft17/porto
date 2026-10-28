@@ -21,5 +21,5 @@
 @endsection
 
 @push('scripts')
-    @vite(['resources/js/portfolio-contact.js', 'resources/js/portfolio-nav.js'])
+    @vite(['resources/js/portfolio-contact.js', 'resources/js/portfolio-nav.js', 'resources/js/portfolio-epic.js'])
 @endpush

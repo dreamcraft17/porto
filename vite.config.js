@@ -18,6 +18,7 @@ export default defineConfig({
                 'resources/js/app.js',
                 'resources/js/portfolio-contact.js',
                 'resources/js/portfolio-nav.js',
+                'resources/js/portfolio-epic.js',
             ],
             refresh: true,
         }),

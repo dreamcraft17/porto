@@ -1,5 +1,5 @@
-<section id="contact" class="block contact-section">
-    <div class="block-head">
+<section id="contact" class="block contact-section epic-section">
+    <div class="block-head epic-reveal">
         <div class="section-kicker">Start a conversation</div>
         <h2 class="section-title contact-title">Have a workflow that is too important to keep patching?</h2>
     </div>

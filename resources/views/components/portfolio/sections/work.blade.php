@@ -1,5 +1,5 @@
-<section id="work" class="block work-section">
-    <div class="block-head">
+<section id="work" class="block work-section epic-section">
+    <div class="block-head epic-reveal">
         <div class="section-kicker">The work</div>
         <h2 class="section-title">A few systems built around the work people actually have to do.</h2>
     </div>

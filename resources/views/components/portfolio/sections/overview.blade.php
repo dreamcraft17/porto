@@ -1,16 +1,19 @@
-<section id="overview" class="block block--hero intro-section">
+<section id="overview" class="block block--hero intro-section scene scene-hero" data-scene="hero" aria-label="Introduction">
+    <div class="layer depth-0" data-depth="0" aria-hidden="true"></div>
+    <div class="layer depth-1" data-depth="1" aria-hidden="true"></div>
+
     <div class="hero-grid">
-        <div>
-            <p class="eyebrow">Dozer · Software for business operations</p>
+        <div class="epic-copy" data-depth="4">
+            <p class="eyebrow epic-reveal">Dozer · Software for business operations</p>
             <h1 class="intro-title">I build the software behind everyday operations.</h1>
-            <p class="intro-copy">
+            <p class="intro-copy epic-reveal">
                 From cafe POS and banking modules to internal HR and seller finance, I work across the layers that make a workflow hold together: interface, API, data, and the people using it.
             </p>
-            <div class="intro-actions">
+            <div class="intro-actions epic-reveal">
                 <a class="action-primary" href="#work">Read the work <span aria-hidden="true">↘</span></a>
                 <a class="action-secondary" href="#contact">Start with a brief</a>
             </div>
-            <div class="hero-meta">
+            <div class="hero-meta epic-reveal">
                 <p class="hero-signal"><span>POS &amp; retail</span><span>Banking modules</span><span>HR &amp; payroll</span><span>Seller finance</span></p>
                 <div class="hero-stack" aria-label="Primary stack">
                     <span>Laravel</span>
@@ -21,12 +24,12 @@
                 </div>
             </div>
         </div>
-        <figure class="hero-avatar">
+        <figure class="hero-avatar float-loop" data-depth="3">
             <img src="{{ asset('images/profile/dozer.png') }}" alt="Portrait of Dozer Napitupulu" width="400" height="400" loading="eager" decoding="async">
         </figure>
     </div>
 
-    <div class="stat-row" aria-label="How the work is shaped">
+    <div class="stat-row epic-stagger epic-reveal" aria-label="How the work is shaped">
         <div class="proof-item">
             <div class="proof-top">
                 <span class="proof-value">01</span>

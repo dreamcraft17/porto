@@ -19,6 +19,8 @@ class PortfolioPublicLayoutTest extends TestCase
         $response->assertOk();
         $response->assertSee('site-rail', false);
         $response->assertSee('portfolio-shell--v3', false);
+        $response->assertSee('scene-hero', false);
+        $response->assertSee('portfolio-shell--epic', false);
         $response->assertSee('intro-title', false);
         $response->assertSee('I build the software behind everyday operations.', false);
         $response->assertSee('dntech.id', false);
@@ -35,6 +37,7 @@ class PortfolioPublicLayoutTest extends TestCase
         $response->assertOk();
         $response->assertSee('site-rail', false);
         $response->assertSee('portfolio-shell--v3', false);
+        $response->assertSee('portfolio-shell--epic', false);
         $response->assertSee('Systems shipped for teams and clients.', false);
         $response->assertDontSee('navbar-bold', false);
     }
@@ -46,6 +49,7 @@ class PortfolioPublicLayoutTest extends TestCase
         $response->assertNotFound();
         $response->assertSee('site-rail', false);
         $response->assertSee('portfolio-shell--v3', false);
+        $response->assertSee('portfolio-shell--epic', false);
         $response->assertSee('404', false);
         $response->assertSee('Kembali ke portfolio', false);
         $response->assertDontSee('#8b5cf6', false);
@@ -69,6 +73,7 @@ class PortfolioPublicLayoutTest extends TestCase
         $response->assertOk();
         $response->assertSee('site-rail', false);
         $response->assertSee('portfolio-shell--v3', false);
+        $response->assertSee('portfolio-shell--epic', false);
         $response->assertDontSee('navbar-bold', false);
     }
 
@@ -87,6 +92,7 @@ class PortfolioPublicLayoutTest extends TestCase
         $response->assertOk();
         $response->assertSee('site-rail', false);
         $response->assertSee('portfolio-shell--v3', false);
+        $response->assertSee('portfolio-shell--epic', false);
         $response->assertSee('QA Case Study', false);
         $response->assertSee('<p>Body</p>', false);
         $response->assertDontSee('bootstrap@5.3.0', false);
@@ -107,6 +113,7 @@ class PortfolioPublicLayoutTest extends TestCase
         $response->assertOk();
         $response->assertSee('site-rail', false);
         $response->assertSee('portfolio-shell--v3', false);
+        $response->assertSee('portfolio-shell--epic', false);
         $response->assertSee('Side Project QA', false);
     }
 }

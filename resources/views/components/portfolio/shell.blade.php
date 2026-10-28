@@ -12,7 +12,7 @@
         : 0;
 @endphp
 
-<div class="portfolio-shell portfolio-shell--v3">
+<div class="portfolio-shell portfolio-shell--v3 portfolio-shell--epic">
     <aside class="site-rail" id="site-rail-panel" data-rail-panel aria-label="Site navigation">
         <a class="rail-logo" href="{{ $home }}">
             <span class="rail-logo-mark">D</span>

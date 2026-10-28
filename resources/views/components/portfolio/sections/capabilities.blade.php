@@ -1,5 +1,5 @@
-<section id="capabilities" class="block capability-section">
-    <div class="section-head">
+<section id="capabilities" class="block capability-section epic-section">
+    <div class="section-head epic-reveal">
         <div class="section-kicker">What I ship</div>
         <h2 class="section-title">Software that turns a manual handoff into a working system.</h2>
     </div>
