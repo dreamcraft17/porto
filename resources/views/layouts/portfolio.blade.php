@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'Dozer Napitupulu — Fullstack Engineer')</title>
     @include('partials.favicon')
+    @include('partials.analytics')
 
     <meta name="description" content="@yield('meta_description', 'Dozer Napitupulu builds Laravel, ASP.NET, and Flutter systems for operations teams—POS, banking modules, dashboards, and integrations.')">
     <meta name="author" content="Dozer Napitupulu">

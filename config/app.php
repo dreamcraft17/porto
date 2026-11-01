@@ -142,4 +142,6 @@ return [
         'email' => env('SOCIAL_EMAIL', 'dozernapitupulu@gmail.com'),
     ],
 
+    'analytics_id' => env('GA_MEASUREMENT_ID', 'G-1CZNSGP2WF'),
+
 ];
