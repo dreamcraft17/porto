@@ -5,7 +5,6 @@ namespace Database\Seeders;
 use App\Models\Education;
 use App\Models\Experience;
 use App\Models\Project;
-use App\Models\Skill;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
@@ -13,42 +12,7 @@ class PortfolioSeeder extends Seeder
 {
     public function run()
     {
-        // Skills - Based on CV
-        $skills = [
-            // Backend
-            ['name' => 'ASP.NET MVC', 'category' => 'backend', 'proficiency' => 90, 'order' => 1],
-            ['name' => 'PHP (Laravel)', 'category' => 'backend', 'proficiency' => 85, 'order' => 2],
-            ['name' => 'C#', 'category' => 'backend', 'proficiency' => 88, 'order' => 3],
-            ['name' => 'Python', 'category' => 'backend', 'proficiency' => 75, 'order' => 4],
-            ['name' => 'C++', 'category' => 'backend', 'proficiency' => 70, 'order' => 5],
-
-            // Frontend
-            ['name' => 'HTML5', 'category' => 'frontend', 'proficiency' => 95, 'order' => 1],
-            ['name' => 'CSS', 'category' => 'frontend', 'proficiency' => 90, 'order' => 2],
-            ['name' => 'JavaScript', 'category' => 'frontend', 'proficiency' => 88, 'order' => 3],
-            ['name' => 'jQuery', 'category' => 'frontend', 'proficiency' => 85, 'order' => 4],
-            ['name' => 'Bootstrap', 'category' => 'frontend', 'proficiency' => 90, 'order' => 5],
-            ['name' => 'Ajax', 'category' => 'frontend', 'proficiency' => 80, 'order' => 6],
-
-            // Mobile
-            ['name' => 'Flutter', 'category' => 'mobile', 'proficiency' => 85, 'order' => 1],
-            ['name' => 'Kotlin (Android)', 'category' => 'mobile', 'proficiency' => 75, 'order' => 2],
-
-            // Database
-            ['name' => 'MySQL', 'category' => 'database', 'proficiency' => 90, 'order' => 1],
-            ['name' => 'SQL Server', 'category' => 'database', 'proficiency' => 88, 'order' => 2],
-
-            // Tools
-            ['name' => 'Visual Studio Code', 'category' => 'tools', 'proficiency' => 95, 'order' => 1],
-            ['name' => 'Visual Studio', 'category' => 'tools', 'proficiency' => 90, 'order' => 2],
-            ['name' => 'phpMyAdmin', 'category' => 'tools', 'proficiency' => 85, 'order' => 3],
-            ['name' => 'Figma', 'category' => 'tools', 'proficiency' => 80, 'order' => 4],
-            ['name' => 'Git', 'category' => 'tools', 'proficiency' => 85, 'order' => 5],
-        ];
-
-        foreach ($skills as $skill) {
-            Skill::create($skill);
-        }
+        // Skills live in SkillSeeder
 
         // Experiences - Based on CV
         $experiences = [

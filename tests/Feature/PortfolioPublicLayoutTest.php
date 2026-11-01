@@ -21,7 +21,7 @@ class PortfolioPublicLayoutTest extends TestCase
         $response->assertSee('portfolio-shell--minimal', false);
         $response->assertDontSee('portfolio-shell--split', false);
         $response->assertSee('intro-section', false);
-        $response->assertSee('Capabilities', false);
+        $response->assertSee('id="services"', false);
         $response->assertSee('family=IBM+Plex+Sans', false);
         $response->assertDontSee('family=Syne', false);
         $response->assertSee('/build/assets/portfolio-nav-', false);

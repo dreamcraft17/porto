@@ -22,6 +22,7 @@
             <button type="button" class="site-nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="site-nav">Menu</button>
 
             <nav class="site-nav" id="site-nav" data-nav-panel aria-label="Primary">
+                <a href="{{ $section('services') }}">Services</a>
                 <a href="{{ $section('work') }}">Work</a>
                 <a href="{{ $section('experience') }}">Experience</a>
                 <a href="{{ route('projects.all') }}" @if(request()->routeIs('projects.all', 'project.show')) aria-current="page" @endif>Projects</a>
