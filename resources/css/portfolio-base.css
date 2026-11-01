@@ -11,6 +11,10 @@ html {
     scroll-padding-top: 88px;
 }
 
+html:has(.portfolio-shell--split) {
+    scroll-padding-top: 32px;
+}
+
 @media (prefers-reduced-motion: reduce) {
     html {
         scroll-behavior: auto;

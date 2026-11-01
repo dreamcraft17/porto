@@ -17,8 +17,8 @@ class PortfolioPublicLayoutTest extends TestCase
         $response = $this->get('/');
 
         $response->assertOk();
-        $response->assertSee('site-header', false);
-        $response->assertSee('portfolio-shell--minimal', false);
+        $response->assertSee('split-aside', false);
+        $response->assertSee('portfolio-shell--split', false);
         $response->assertSee('intro-section', false);
         $response->assertSee('Capabilities', false);
         $response->assertSee('family=IBM+Plex+Sans', false);

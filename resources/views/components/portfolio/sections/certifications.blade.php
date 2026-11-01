@@ -1,12 +1,6 @@
 @if($certifications->count())
-<section id="certifications" class="block credentials-section">
-    <div class="section-head">
-        <p class="section-label">Credentials</p>
-        <h2 class="section-title">Certifications for the stack.</h2>
-        <p class="section-summary">
-            Focused learning across cloud fundamentals, web development, networking, and algorithm foundations.
-        </p>
-    </div>
+<section id="certifications" class="split-section" aria-labelledby="certifications-heading">
+    <h2 class="split-heading" id="certifications-heading">Credentials</h2>
 
     <ul class="credential-list">
         @foreach($certifications as $certification)

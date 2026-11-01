@@ -1,36 +1,36 @@
-<section id="work" class="block work-section">
-    <div class="section-head section-head--split">
-        <div>
-            <p class="section-label">Selected work</p>
-            <h2 class="section-title">Systems built around the work people actually have to do.</h2>
-        </div>
-        <a class="link-arrow" href="{{ route('projects.all') }}">All projects →</a>
-    </div>
+<section id="work" class="split-section" aria-labelledby="work-heading">
+    <h2 class="split-heading" id="work-heading">Work</h2>
 
     @if($projects->isNotEmpty())
-        <ol class="work-list">
+        <ol class="entry-list">
             @foreach($projects->take(6) as $project)
                 @php
-                    $techs = is_array($project->technologies) ? array_slice($project->technologies, 0, 4) : [];
+                    $techs = is_array($project->technologies) ? array_slice($project->technologies, 0, 5) : [];
                 @endphp
-                <li>
-                    <a class="work-row" href="{{ route('project.show', $project->slug) }}">
-                        <span class="work-index">{{ str_pad($loop->iteration, 2, '0', STR_PAD_LEFT) }}</span>
-                        <div class="work-main">
-                            <h3 class="work-title">{{ $project->title }}</h3>
-                            <p class="work-desc">{{ Str::limit($project->description, 150) }}</p>
-                            @if(count($techs))
-                                <p class="work-tech">{{ implode(' · ', $techs) }}</p>
-                            @endif
-                        </div>
-                        <div class="work-meta">
+                <li class="entry entry--project">
+                    <div class="entry-thumb">
+                        @if(!empty($project->image_url))
+                            <img src="{{ $project->image_url }}" alt="" width="200" height="125" loading="lazy" decoding="async">
+                        @else
                             <span>{{ $project->company ?: 'Project' }}</span>
-                            @if($project->project_date)
-                                <span>{{ \Carbon\Carbon::parse($project->project_date)->format('M Y') }}</span>
-                            @endif
-                        </div>
-                        <span class="work-arrow" aria-hidden="true">→</span>
-                    </a>
+                        @endif
+                    </div>
+                    <div class="entry-body">
+                        <h3 class="entry-title">
+                            <a class="entry-link" href="{{ route('project.show', $project->slug) }}">{{ $project->title }} <span aria-hidden="true">↗</span></a>
+                        </h3>
+                        <p class="entry-meta">
+                            {{ $project->company ?: 'Project' }}@if($project->project_date) · {{ \Carbon\Carbon::parse($project->project_date)->format('Y') }}@endif
+                        </p>
+                        <p class="entry-desc">{{ Str::limit($project->description, 160) }}</p>
+                        @if(count($techs))
+                            <ul class="tag-list" aria-label="Technologies used">
+                                @foreach($techs as $tech)
+                                    <li>{{ $tech }}</li>
+                                @endforeach
+                            </ul>
+                        @endif
+                    </div>
                 </li>
             @endforeach
         </ol>
@@ -39,4 +39,6 @@
             <p>The case list is being updated. Browse the archive for the full record.</p>
         </div>
     @endif
+
+    <a class="link-arrow section-more" href="{{ route('projects.all') }}">View full project archive →</a>
 </section>
