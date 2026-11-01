@@ -83,12 +83,31 @@
             {{ $slot }}
         </main>
 
-        <footer class="site-credit">
-            <p>Personal portfolio · Laravel, .NET, Flutter · Bukan situs company DN Tech</p>
-            <p class="site-managed">
-                Website dikelola oleh / Managed by:
-                <a href="https://dntech.id" target="_blank" rel="noopener noreferrer">dntech.id</a>
-            </p>
+        <footer class="site-footer">
+            <div class="site-footer-inner">
+                <div class="site-footer-brand">
+                    <strong>Dozer Napitupulu</strong>
+                    <p>Fullstack engineer — Laravel, .NET &amp; Flutter.</p>
+                </div>
+
+                <nav class="site-footer-nav" aria-label="Footer">
+                    <a href="{{ $section('work') }}">Work</a>
+                    <a href="{{ $section('experience') }}">History</a>
+                    <a href="{{ route('projects.all') }}">Projects</a>
+                    <a href="{{ $section('contact') }}">Contact</a>
+                </nav>
+
+                <div class="site-footer-social">
+                    <a href="{{ config('app.social.github') }}" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="{{ config('app.social.linkedin') }}" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="mailto:{{ config('app.social.email') }}" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+
+            <div class="site-footer-base">
+                <p>© {{ date('Y') }} Dozer Napitupulu. All rights reserved.</p>
+                <a href="#main-content" class="site-footer-top">Back to top ↑</a>
+            </div>
         </footer>
     </div>
 </div>

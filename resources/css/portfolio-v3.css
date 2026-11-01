@@ -128,9 +128,9 @@
     box-shadow: var(--shadow-sm);
 }
 
-.portfolio-shell--v3 .site-credit {
+.portfolio-shell--v3 .site-footer {
     border-top: 1px solid var(--line);
-    background: var(--surface-muted);
+    background: var(--canvas-bg);
 }
 
 /* —— Sections —— */
