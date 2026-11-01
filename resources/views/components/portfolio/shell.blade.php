@@ -15,8 +15,7 @@
     <header class="site-header" data-site-header>
         <div class="site-header-inner">
             <a class="site-brand" href="{{ $home }}">
-                <strong>Dozer Napitupulu</strong>
-                <span>Fullstack engineer</span>
+                <img src="{{ asset('images/brand/dn-logo.png') }}" alt="Dozer Napitupulu" width="170" height="32" decoding="async">
             </a>
 
             <button type="button" class="site-nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="site-nav">Menu</button>

@@ -60,21 +60,15 @@
 }
 
 .site-brand {
-    display: flex;
-    align-items: baseline;
-    gap: var(--space-3);
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
     text-decoration: none;
 }
 
-.site-brand strong {
-    font-size: 1rem;
-    font-weight: 600;
-    letter-spacing: -0.01em;
-}
-
-.site-brand span {
-    font-size: 0.875rem;
-    color: var(--subtle);
+.site-brand img {
+    width: auto;
+    height: 32px;
 }
 
 .site-nav {
@@ -121,8 +115,8 @@
 }
 
 @media (max-width: 860px) {
-    .site-brand span {
-        display: none;
+    .site-brand img {
+        height: 28px;
     }
 
     .site-header.has-js .site-nav-toggle {
