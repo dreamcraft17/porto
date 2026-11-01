@@ -54,7 +54,7 @@
                     <p class="section-label">Next step</p>
                     <h2 class="next-step-title" id="next-step-title">Working on a similar system?</h2>
                 </div>
-                <a class="btn btn-primary" href="{{ url('/#contact') }}">Send a brief</a>
+                <a class="btn btn-light" href="{{ url('/#contact') }}">Send a brief</a>
             </section>
         @endif
     </main>

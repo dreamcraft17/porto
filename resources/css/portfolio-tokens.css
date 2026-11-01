@@ -61,21 +61,23 @@
     --navy: var(--accent);
 }
 
-/* Public site theme — neutral/minimal (admin keeps the :root set above) */
+/* Public site theme — navy + white, after early dntech V2 (admin keeps the :root set above) */
 .portfolio-body {
     --page-bg: #ffffff;
     --canvas-bg: #ffffff;
     --paper: #ffffff;
     --surface: #ffffff;
-    --surface-muted: #f4f4f5;
-    --ink: #18181b;
-    --muted: #52525b;
-    --subtle: #71717a;
-    --line: #e4e4e7;
-    --line-strong: #d4d4d8;
+    --surface-muted: #f3f4f6;
+    --ink: #111827;
+    --muted: #4b5563;
+    --subtle: #6b7280;
+    --line: #e5e7eb;
+    --line-strong: #d1d5db;
     --accent: #1e3a8a;
     --accent-hover: #1e40af;
-    --accent-soft: #eef2fb;
+    --accent-soft: #dbeafe;
+    --on-dark: #ffffff;
+    --on-dark-muted: #cbd5e1;
     --success-bg: #ecfdf3;
     --success-ink: #166534;
     --error-bg: #fef2f2;
