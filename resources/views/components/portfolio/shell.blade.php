@@ -2,30 +2,41 @@
     'subpage' => false,
     'trail' => [],
     'certifications' => null,
+    'cta' => null,
 ])
 
 @php
     $section = fn (string $id) => $subpage ? url('/#'.$id) : '#'.$id;
     $home = url('/');
-    $certCount = $certifications instanceof \Illuminate\Support\Collection
-        ? $certifications->count()
-        : 0;
+    $showCta = $cta ?? $subpage;
 @endphp
 
-<div class="portfolio-shell portfolio-shell--v3 portfolio-shell--studio">
-    <aside class="site-rail" id="site-rail-panel" data-rail-panel aria-label="Site navigation">
-        <a class="rail-logo" href="{{ $home }}">
-            <span class="rail-logo-mark">D</span>
-            <span class="rail-logo-text">
-                <strong>Dozer</strong>
-                <small>Fullstack</small>
-            </span>
-        </a>
+<div class="portfolio-shell portfolio-shell--minimal" id="top">
+    <header class="site-header" data-site-header>
+        <div class="site-header-inner">
+            <a class="site-brand" href="{{ $home }}">
+                <strong>Dozer Napitupulu</strong>
+                <span>Fullstack engineer</span>
+            </a>
 
+            <button type="button" class="site-nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="site-nav">Menu</button>
+
+            <nav class="site-nav" id="site-nav" data-nav-panel aria-label="Primary">
+                <a href="{{ $section('work') }}">Work</a>
+                <a href="{{ $section('experience') }}">Experience</a>
+                <a href="{{ route('projects.all') }}" @if(request()->routeIs('projects.all', 'project.show')) aria-current="page" @endif>Projects</a>
+                <a href="{{ route('personal.projects.all') }}" @if(request()->routeIs('personal.projects.all', 'personal.project.show')) aria-current="page" @endif>Personal</a>
+                <a class="site-nav-cta" href="{{ $section('contact') }}">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content" class="page-main">
         @if(count($trail))
-            <nav class="rail-trail" aria-label="Breadcrumb">
-                @foreach($trail as $index => $item)
-                    @if($index > 0)<span class="rail-trail-sep">→</span>@endif
+            <nav class="page-trail" aria-label="Breadcrumb">
+                <a href="{{ $home }}">Home</a>
+                @foreach($trail as $item)
+                    <span aria-hidden="true">/</span>
                     @if(!empty($item['url']))
                         <a href="{{ $item['url'] }}">{{ $item['label'] }}</a>
                     @else
@@ -35,79 +46,28 @@
             </nav>
         @endif
 
-        <nav class="rail-nav" aria-label="Primary">
-            <a href="{{ $section('overview') }}"><span>01</span> Start</a>
-            <a href="{{ $section('capabilities') }}"><span>02</span> Capabilities</a>
-            <a href="{{ $section('about') }}"><span>03</span> Profile</a>
-            <a href="{{ $section('work') }}"><span>04</span> Work</a>
-            <a href="{{ $section('experience') }}"><span>05</span> History</a>
-            @if($certCount > 0)
-                <a href="{{ $section('certifications') }}"><span>06</span> Credentials</a>
-            @endif
-            <a href="{{ route('projects.all') }}"><span>→</span> All projects</a>
-            <a href="{{ route('personal.projects.all') }}"><span>→</span> Personal</a>
-        </nav>
+        {{ $slot }}
 
-        <div class="rail-cta">
-            <a class="rail-nav-cta" href="{{ $section('contact') }}">Contact</a>
-        </div>
-
-        <div class="rail-foot">
-            <div class="rail-social">
-                <a href="{{ config('app.social.github') }}" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                <a href="{{ config('app.social.linkedin') }}" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                <a href="mailto:{{ config('app.social.email') }}" aria-label="Email"><i class="fas fa-envelope"></i></a>
-            </div>
-            <p class="rail-copy">© {{ date('Y') }} Dozer Napitupulu</p>
-            <p class="rail-managed">
-                Website dikelola oleh / Managed by:
-                <a href="https://dntech.id" target="_blank" rel="noopener noreferrer">dntech.id</a>
-            </p>
-        </div>
-    </aside>
-
-    <div class="site-canvas">
-        <header class="site-mobile-bar">
-            <a class="rail-logo rail-logo--compact" href="{{ $home }}">
-                <span class="rail-logo-mark">D</span>
-                <strong>Dozer</strong>
-            </a>
-            <button type="button" class="site-rail-toggle" data-rail-toggle aria-expanded="false" aria-controls="site-rail-panel" aria-label="Menu">
-                <span></span><span></span>
-            </button>
-        </header>
-
-        <div class="site-rail-overlay" data-rail-overlay hidden></div>
-
-        <main id="main-content" class="page-main">
-            {{ $slot }}
-        </main>
-
-        <footer class="site-footer">
-            <div class="site-footer-inner">
-                <div class="site-footer-brand">
-                    <strong>Dozer Napitupulu</strong>
-                    <p>Fullstack engineer — Laravel, .NET &amp; Flutter.</p>
+        @if($showCta)
+            <section class="block next-step" aria-labelledby="next-step-title">
+                <div>
+                    <p class="section-label">Next step</p>
+                    <h2 class="next-step-title" id="next-step-title">Working on a similar system?</h2>
                 </div>
+                <a class="btn btn-primary" href="{{ url('/#contact') }}">Send a brief</a>
+            </section>
+        @endif
+    </main>
 
-                <nav class="site-footer-nav" aria-label="Footer">
-                    <a href="{{ $section('work') }}">Work</a>
-                    <a href="{{ $section('experience') }}">History</a>
-                    <a href="{{ route('projects.all') }}">Projects</a>
-                    <a href="{{ $section('contact') }}">Contact</a>
-                </nav>
-
-                <div class="site-footer-social">
-                    <a href="{{ config('app.social.github') }}" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                    <a href="{{ config('app.social.linkedin') }}" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="mailto:{{ config('app.social.email') }}" aria-label="Email"><i class="fas fa-envelope"></i></a>
-                </div>
-            </div>
-
-            <div class="site-footer-base">
-                <p>© {{ date('Y') }} Dozer Napitupulu. All rights reserved.</p>
-                <a href="#main-content" class="site-footer-top">Back to top ↑</a>
-            </div>
-        </footer>
-    </div>
+    <footer class="site-footer">
+        <div class="site-footer-inner">
+            <p>© {{ date('Y') }} Dozer Napitupulu</p>
+            <nav class="site-footer-links" aria-label="Elsewhere">
+                <a href="mailto:{{ config('app.social.email') }}">Email</a>
+                <a href="{{ config('app.social.github') }}" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a href="{{ config('app.social.linkedin') }}" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            </nav>
+            <a class="site-footer-top" href="#top">Back to top ↑</a>
+        </div>
+    </footer>
 </div>

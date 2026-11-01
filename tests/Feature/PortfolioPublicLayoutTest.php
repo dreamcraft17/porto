@@ -12,26 +12,27 @@ class PortfolioPublicLayoutTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_home_uses_portfolio_shell_without_legacy_navbar(): void
+    public function test_home_uses_top_bar_shell_without_legacy_navbar(): void
     {
         $response = $this->get('/');
 
         $response->assertOk();
-        $response->assertSee('site-rail', false);
-        $response->assertSee('portfolio-shell--v3', false);
-        $response->assertSee('portfolio-shell--studio', false);
+        $response->assertSee('site-header', false);
+        $response->assertSee('portfolio-shell--minimal', false);
         $response->assertSee('intro-section', false);
         $response->assertSee('Capabilities', false);
-        $response->assertSee('family=Syne', false);
+        $response->assertSee('family=IBM+Plex+Sans', false);
+        $response->assertDontSee('family=Syne', false);
         $response->assertSee('/build/assets/portfolio-nav-', false);
         $response->assertSee('intro-title', false);
         $response->assertSee('I build the software behind everyday operations.', false);
-        $response->assertSee('dntech.id', false);
-        $response->assertSee('Managed by', false);
+        $response->assertDontSee('Managed by', false);
+        $response->assertDontSee('site-rail', false);
         $response->assertDontSee('navbar-bold', false);
         $response->assertDontSee('footer-bold', false);
         $response->assertDontSee('bootstrap@5.3.0', false);
         $response->assertDontSee('portfolio-shell--epic', false);
+        $response->assertDontSee('portfolio-shell--studio', false);
         $response->assertDontSee('portfolio-epic.js', false);
     }
 
@@ -40,9 +41,8 @@ class PortfolioPublicLayoutTest extends TestCase
         $response = $this->get('/projects');
 
         $response->assertOk();
-        $response->assertSee('site-rail', false);
-        $response->assertSee('portfolio-shell--v3', false);
-        $response->assertSee('portfolio-shell--studio', false);
+        $response->assertSee('site-header', false);
+        $response->assertSee('portfolio-shell--minimal', false);
         $response->assertSee('Systems shipped for teams and clients.', false);
         $response->assertDontSee('navbar-bold', false);
     }
@@ -52,11 +52,11 @@ class PortfolioPublicLayoutTest extends TestCase
         $response = $this->get('/this-route-should-not-exist-porto-test');
 
         $response->assertNotFound();
-        $response->assertSee('site-rail', false);
-        $response->assertSee('portfolio-shell--v3', false);
-        $response->assertSee('portfolio-shell--studio', false);
+        $response->assertSee('site-header', false);
+        $response->assertSee('portfolio-shell--minimal', false);
         $response->assertSee('404', false);
         $response->assertSee('Kembali ke portfolio', false);
+        $response->assertDontSee('Working on a similar system?', false);
         $response->assertDontSee('#8b5cf6', false);
         $response->assertDontSee('bootstrap@5.3.0', false);
     }
@@ -76,9 +76,8 @@ class PortfolioPublicLayoutTest extends TestCase
         $response = $this->get('/personal-projects');
 
         $response->assertOk();
-        $response->assertSee('site-rail', false);
-        $response->assertSee('portfolio-shell--v3', false);
-        $response->assertSee('portfolio-shell--studio', false);
+        $response->assertSee('site-header', false);
+        $response->assertSee('portfolio-shell--minimal', false);
         $response->assertDontSee('navbar-bold', false);
     }
 
@@ -95,11 +94,11 @@ class PortfolioPublicLayoutTest extends TestCase
         $response = $this->get('/project/'.$project->slug);
 
         $response->assertOk();
-        $response->assertSee('site-rail', false);
-        $response->assertSee('portfolio-shell--v3', false);
-        $response->assertSee('portfolio-shell--studio', false);
+        $response->assertSee('site-header', false);
+        $response->assertSee('portfolio-shell--minimal', false);
         $response->assertSee('QA Case Study', false);
         $response->assertSee('<p>Body</p>', false);
+        $response->assertSee('Working on a similar system?', false);
         $response->assertDontSee('bootstrap@5.3.0', false);
     }
 
@@ -116,9 +115,8 @@ class PortfolioPublicLayoutTest extends TestCase
         $response = $this->get('/personal-project/'.$project->slug);
 
         $response->assertOk();
-        $response->assertSee('site-rail', false);
-        $response->assertSee('portfolio-shell--v3', false);
-        $response->assertSee('portfolio-shell--studio', false);
+        $response->assertSee('site-header', false);
+        $response->assertSee('portfolio-shell--minimal', false);
         $response->assertSee('Side Project QA', false);
     }
 }

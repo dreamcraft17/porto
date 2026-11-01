@@ -14,9 +14,11 @@
         ]"
     >
         <article class="page-article">
-            <p class="case-kicker">Side builds</p>
-            <h1 class="section-title">Experiments and open repos.</h1>
-            <p class="page-lead">Learning spikes, tools I dogfood, and repos that are safe to share publicly.</p>
+            <header class="page-head">
+                <p class="section-label">Side builds</p>
+                <h1 class="page-title">Experiments and open repos.</h1>
+                <p class="page-lead">Learning spikes, tools I dogfood, and repos that are safe to share publicly.</p>
+            </header>
 
             <div class="case-grid">
                 @forelse($projects as $project)

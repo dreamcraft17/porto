@@ -1,23 +1,23 @@
-function initPortfolioNav() {
-    const toggle = document.querySelector('[data-rail-toggle]');
-    const panel = document.querySelector('[data-rail-panel]');
-    const overlay = document.querySelector('[data-rail-overlay]');
-    if (!toggle || !panel) {
+function initSiteNav() {
+    const header = document.querySelector('[data-site-header]');
+    const toggle = document.querySelector('[data-nav-toggle]');
+    const panel = document.querySelector('[data-nav-panel]');
+    if (!header || !toggle || !panel) {
         return;
     }
+
+    header.classList.add('has-js');
 
     const setOpen = (open) => {
         panel.classList.toggle('is-open', open);
         toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-        toggle.setAttribute('aria-label', open ? 'Tutup menu' : 'Buka menu');
-        if (overlay) {
-            overlay.hidden = !open;
-            overlay.classList.toggle('is-visible', open);
-        }
-        document.body.style.overflow = open ? 'hidden' : '';
+        toggle.textContent = open ? 'Close' : 'Menu';
     };
 
     const close = (restoreFocus = false) => {
+        if (!panel.classList.contains('is-open')) {
+            return;
+        }
         setOpen(false);
         if (restoreFocus) {
             toggle.focus();
@@ -28,13 +28,9 @@ function initPortfolioNav() {
         setOpen(!panel.classList.contains('is-open'));
     });
 
-    panel.querySelectorAll('a[href^="#"]').forEach((link) => {
+    panel.querySelectorAll('a').forEach((link) => {
         link.addEventListener('click', () => close());
     });
-
-    if (overlay) {
-        overlay.addEventListener('click', () => close(true));
-    }
 
     document.addEventListener('keydown', (event) => {
         if (event.key === 'Escape') {
@@ -42,21 +38,26 @@ function initPortfolioNav() {
         }
     });
 
-    setOpen(false);
+    document.addEventListener('click', (event) => {
+        if (!header.contains(event.target)) {
+            close();
+        }
+    });
+
+    window.matchMedia('(min-width: 861px)').addEventListener('change', (event) => {
+        if (event.matches) {
+            close();
+        }
+    });
 }
 
-function initRailScrollSpy() {
-    const panel = document.querySelector('[data-rail-panel]');
+function initScrollSpy() {
+    const panel = document.querySelector('[data-nav-panel]');
     if (!panel || !document.getElementById('overview')) {
         return;
     }
 
-    const links = [...panel.querySelectorAll('.rail-nav a[href^="#"]')];
-    if (!links.length) {
-        return;
-    }
-
-    const sections = links
+    const sections = [...panel.querySelectorAll('a[href^="#"]')]
         .map((link) => {
             const id = link.getAttribute('href')?.slice(1);
             const section = id ? document.getElementById(id) : null;
@@ -69,7 +70,7 @@ function initRailScrollSpy() {
     }
 
     const setActive = (activeLink) => {
-        links.forEach((link) => {
+        sections.forEach(({ link }) => {
             const isActive = link === activeLink;
             link.classList.toggle('is-active', isActive);
             if (isActive) {
@@ -89,9 +90,7 @@ function initRailScrollSpy() {
                 return;
             }
             const match = sections.find(({ section }) => section === visible[0].target);
-            if (match) {
-                setActive(match.link);
-            }
+            setActive(match ? match.link : null);
         },
         {
             root: null,
@@ -101,12 +100,11 @@ function initRailScrollSpy() {
     );
 
     sections.forEach(({ section }) => observer.observe(section));
-    setActive(links[0]);
 }
 
 function initPortfolioChrome() {
-    initPortfolioNav();
-    initRailScrollSpy();
+    initSiteNav();
+    initScrollSpy();
 }
 
 if (document.readyState === 'loading') {

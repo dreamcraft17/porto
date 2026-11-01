@@ -1,6 +1,6 @@
 <section id="about" class="block profile-section">
     <div class="section-head">
-        <div class="section-kicker">Profile</div>
+        <p class="section-label">Profile</p>
         <h2 class="section-title">Fullstack engineer focused on practical business systems.</h2>
     </div>
 
@@ -14,42 +14,26 @@
             </p>
         </div>
 
-        <div class="skill-board">
+        <dl class="skill-board">
             @forelse($skills->groupBy('category') as $category => $categorySkills)
-            <div class="skill-group">
-                <h3>{{ ucfirst($category) }}</h3>
-                <div class="skill-list">
-                    @foreach($categorySkills->take(8) as $skill)
-                    <span>{{ $skill->name }}</span>
-                    @endforeach
+                <div class="skill-group">
+                    <dt>{{ ucfirst($category) }}</dt>
+                    <dd>{{ $categorySkills->take(8)->pluck('name')->implode(', ') }}</dd>
                 </div>
-            </div>
             @empty
-            <div class="skill-group">
-                <h3>Backend</h3>
-                <div class="skill-list">
-                    <span>Laravel</span>
-                    <span>ASP.NET MVC</span>
-                    <span>REST APIs</span>
+                <div class="skill-group">
+                    <dt>Backend</dt>
+                    <dd>Laravel, ASP.NET MVC, REST APIs</dd>
                 </div>
-            </div>
-            <div class="skill-group">
-                <h3>Frontend & mobile</h3>
-                <div class="skill-list">
-                    <span>Blade / React</span>
-                    <span>Flutter</span>
-                    <span>TypeScript</span>
+                <div class="skill-group">
+                    <dt>Frontend &amp; mobile</dt>
+                    <dd>Blade / React, Flutter, TypeScript</dd>
                 </div>
-            </div>
-            <div class="skill-group">
-                <h3>Data</h3>
-                <div class="skill-list">
-                    <span>MySQL</span>
-                    <span>SQL Server</span>
-                    <span>PostgreSQL</span>
+                <div class="skill-group">
+                    <dt>Data</dt>
+                    <dd>MySQL, SQL Server, PostgreSQL</dd>
                 </div>
-            </div>
             @endforelse
-        </div>
+        </dl>
     </div>
 </section>

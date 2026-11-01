@@ -15,9 +15,11 @@
         ]"
     >
         <article class="page-article">
-            <p class="case-kicker">Archive</p>
-            <h1 class="section-title">Systems shipped for teams and clients.</h1>
-            <p class="page-lead">Professional project write-ups from cafe POS, banking modules, dashboards, and integrations—not concept mockups.</p>
+            <header class="page-head">
+                <p class="section-label">Archive</p>
+                <h1 class="page-title">Systems shipped for teams and clients.</h1>
+                <p class="page-lead">Professional project write-ups from cafe POS, banking modules, dashboards, and integrations—not concept mockups.</p>
+            </header>
 
             <div class="case-grid">
                 @forelse($projects as $project)

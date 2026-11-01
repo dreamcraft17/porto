@@ -60,3 +60,33 @@
     --soft: var(--surface-muted);
     --navy: var(--accent);
 }
+
+/* Public site theme — neutral/minimal (admin keeps the :root set above) */
+.portfolio-body {
+    --page-bg: #ffffff;
+    --canvas-bg: #ffffff;
+    --paper: #ffffff;
+    --surface: #ffffff;
+    --surface-muted: #f4f4f5;
+    --ink: #18181b;
+    --muted: #52525b;
+    --subtle: #71717a;
+    --line: #e4e4e7;
+    --line-strong: #d4d4d8;
+    --accent: #1e3a8a;
+    --accent-hover: #1e40af;
+    --accent-soft: #eef2fb;
+    --success-bg: #ecfdf3;
+    --success-ink: #166534;
+    --error-bg: #fef2f2;
+    --error-ink: #991b1b;
+    --font-display: "IBM Plex Sans", system-ui, sans-serif;
+    --radius-sm: 6px;
+    --radius: 8px;
+    --radius-lg: 12px;
+    --shadow: 0 8px 24px rgba(24, 24, 27, 0.08);
+    --content-max: 1120px;
+    --header-h: 64px;
+    --section-y: clamp(64px, 9vw, 112px);
+    --section-x: clamp(20px, 5vw, 48px);
+}

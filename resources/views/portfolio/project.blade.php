@@ -36,107 +36,82 @@
         ]"
     >
         <article class="page-article">
-            <section class="case-hero">
-                <div class="case-hero-grid">
-                    <div>
-                        <p class="case-kicker">{{ $project->company ?: 'Case study' }}</p>
-                        <h1 class="case-title">{{ $project->title }}</h1>
-                        @if($project->description)
-                            <p class="case-lead">{{ $project->description }}</p>
+            <header class="case-hero">
+                <p class="section-label">{{ $project->company ?: 'Case study' }}</p>
+                <h1 class="case-title">{{ $project->title }}</h1>
+                @if($project->description)
+                    <p class="case-lead">{{ $project->description }}</p>
+                @endif
+                @if($project->url || $project->github_url)
+                    <div class="case-actions">
+                        @if($project->url)
+                            <a class="btn btn-primary" href="{{ $project->url }}" target="_blank" rel="noopener noreferrer">Live demo ↗</a>
                         @endif
-                        <div class="case-meta">
-                            @if($project->project_date)
-                                <span>{{ \Carbon\Carbon::parse($project->project_date)->format('M Y') }}</span>
-                            @endif
-                            @if($project->role)
-                                <span>{{ $project->role }}</span>
-                            @endif
-                            @foreach($techs as $tech)
-                                <span>{{ $tech }}</span>
-                            @endforeach
-                        </div>
-                        <div class="case-actions">
-                            @if($project->url)
-                                <a class="case-btn case-btn-primary" href="{{ $project->url }}" target="_blank" rel="noopener noreferrer">
-                                    Live demo <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i>
-                                </a>
-                            @endif
-                            @if($project->github_url)
-                                <a class="case-btn case-btn-secondary" href="{{ $project->github_url }}" target="_blank" rel="noopener noreferrer">
-                                    Source <i class="fab fa-github" aria-hidden="true"></i>
-                                </a>
-                            @endif
-                            <a class="case-btn case-btn-secondary" href="{{ route('projects.all') }}">All projects</a>
-                        </div>
+                        @if($project->github_url)
+                            <a class="btn btn-secondary" href="{{ $project->github_url }}" target="_blank" rel="noopener noreferrer">Source code ↗</a>
+                        @endif
                     </div>
-                    @if(!empty($project->image_url ?? null))
-                        <div class="case-cover">
-                            <img src="{{ $project->image_url }}" alt="{{ $project->title }}" width="960" height="600" loading="eager" decoding="async">
-                        </div>
+                @endif
+            </header>
+
+            @if(!empty($project->image_url ?? null))
+                <figure class="case-cover">
+                    <img src="{{ $project->image_url }}" alt="{{ $project->title }}" width="960" height="600" loading="eager" decoding="async">
+                </figure>
+            @endif
+
+            <div class="case-layout">
+                <div class="case-main">
+                    @if($cleanContent !== '')
+                        <div class="case-prose">{!! $renderedContent !!}</div>
+                    @else
+                        <p class="case-lead">A full write-up for this project is not published yet.</p>
                     @endif
                 </div>
-            </section>
 
-            <div class="case-body">
-                <div class="case-layout">
-                    <div>
+                <aside class="case-sidebar" aria-label="Project details">
+                    <dl class="case-facts">
+                        @if($project->company)
+                            <div>
+                                <dt>Company</dt>
+                                <dd>{{ $project->company }}</dd>
+                            </div>
+                        @endif
+                        @if($project->role)
+                            <div>
+                                <dt>Role</dt>
+                                <dd>{{ $project->role }}</dd>
+                            </div>
+                        @endif
+                        @if($project->project_date)
+                            <div>
+                                <dt>Date</dt>
+                                <dd>{{ \Carbon\Carbon::parse($project->project_date)->format('F Y') }}</dd>
+                            </div>
+                        @endif
                         @if(count($techs))
-                            <div class="case-panel">
-                                <h2>Stack</h2>
-                                <div class="case-tech">
-                                    @foreach($techs as $tech)
-                                        <span>{{ $tech }}</span>
-                                    @endforeach
-                                </div>
+                            <div>
+                                <dt>Stack</dt>
+                                <dd>{{ implode(', ', $techs) }}</dd>
                             </div>
                         @endif
+                    </dl>
 
-                        @if($cleanContent !== '')
-                            <div class="case-panel">
-                                <h2>Overview</h2>
-                                <div class="case-prose">{!! $renderedContent !!}</div>
-                            </div>
-                        @endif
-                    </div>
-
-                    <aside class="case-sidebar">
-                        <div class="case-panel">
-                            <h3>Details</h3>
-                            @if($project->company)
-                                <div class="case-info-row">
-                                    <div class="case-info-label">Company</div>
-                                    <div class="case-info-value">{{ $project->company }}</div>
-                                </div>
-                            @endif
-                            @if($project->role)
-                                <div class="case-info-row">
-                                    <div class="case-info-label">Role</div>
-                                    <div class="case-info-value">{{ $project->role }}</div>
-                                </div>
-                            @endif
-                            @if($project->project_date)
-                                <div class="case-info-row">
-                                    <div class="case-info-label">Date</div>
-                                    <div class="case-info-value">{{ \Carbon\Carbon::parse($project->project_date)->format('F Y') }}</div>
-                                </div>
-                            @endif
+                    @if($otherProjects->count() > 0)
+                        <div class="case-more">
+                            <h2 class="section-label">More projects</h2>
+                            <ul class="case-more-list">
+                                @foreach($otherProjects as $otherProject)
+                                    <li>
+                                        <a href="{{ route('project.show', $otherProject->slug) }}">{{ $otherProject->title }}</a>
+                                        <p>{{ Str::limit($otherProject->description, 72) }}</p>
+                                    </li>
+                                @endforeach
+                            </ul>
+                            <a class="link-arrow" href="{{ route('projects.all') }}">All projects →</a>
                         </div>
-
-                        @if($otherProjects->count() > 0)
-                            <div class="case-panel">
-                                <h3>More cases</h3>
-                                <ul class="case-more-list">
-                                    @foreach($otherProjects as $otherProject)
-                                        <li>
-                                            <a href="{{ route('project.show', $otherProject->slug) }}">{{ $otherProject->title }}</a>
-                                            <p>{{ Str::limit($otherProject->description, 72) }}</p>
-                                        </li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
-                    </aside>
-                </div>
+                    @endif
+                </aside>
             </div>
         </article>
     </x-portfolio.shell>

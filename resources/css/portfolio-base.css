@@ -8,6 +8,13 @@
 
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: 88px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
 }
 
 body.portfolio-body {
@@ -43,30 +50,14 @@ body.portfolio-body {
     z-index: 1;
 }
 
-.portfolio-shell h1,
-.portfolio-shell h2,
-.portfolio-shell h3,
-.portfolio-shell .intro-title,
-.portfolio-shell .section-title,
-.portfolio-shell .history-title,
-.portfolio-shell .contact-title,
-.portfolio-shell .case-title {
+.portfolio-shell :is(h1, h2, h3) {
     font-family: var(--font-display);
     font-weight: 600;
-    letter-spacing: -0.035em;
-    line-height: 1.08;
-}
-
-.portfolio-shell .section-kicker,
-.portfolio-shell .eyebrow,
-.portfolio-shell .case-kicker {
-    font-family: var(--font-mono);
-    font-weight: 500;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    font-size: 0.68rem;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
 }
 
 .page-main {
     min-width: 0;
 }
+
