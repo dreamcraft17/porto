@@ -1,7 +1,8 @@
-<section id="capabilities" class="split-section" aria-labelledby="capabilities-heading">
-    <h2 class="split-heading" id="capabilities-heading">Capabilities</h2>
-
-    <p class="split-lead">Software that turns a manual handoff into a working system.</p>
+<section id="capabilities" class="block capability-section">
+    <div class="section-head">
+        <p class="section-label">Capabilities</p>
+        <h2 class="section-title">Software that turns a manual handoff into a working system.</h2>
+    </div>
 
     <div class="capability-grid">
         @forelse($services as $service)
