@@ -1,7 +1,7 @@
 # Porto — Laravel Portfolio CMS
 
 > **Author:** Dozer
-> **Date:** 2026-09-05
+> **Date:** 2026-11-01
 > **Dikelola / Managed by:** PT. Dozer Napitupulu Technology (DN TECH)
 
 Personal portfolio website with a protected admin panel for managing projects, experience, skills, and contact form submissions.

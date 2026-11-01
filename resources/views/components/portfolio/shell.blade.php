@@ -12,7 +12,7 @@
         : 0;
 @endphp
 
-<div class="portfolio-shell portfolio-shell--v3 portfolio-shell--epic">
+<div class="portfolio-shell portfolio-shell--v3 portfolio-shell--studio">
     <aside class="site-rail" id="site-rail-panel" data-rail-panel aria-label="Site navigation">
         <a class="rail-logo" href="{{ $home }}">
             <span class="rail-logo-mark">D</span>
@@ -37,11 +37,12 @@
 
         <nav class="rail-nav" aria-label="Primary">
             <a href="{{ $section('overview') }}"><span>01</span> Start</a>
-            <a href="{{ $section('about') }}"><span>02</span> Profile</a>
-            <a href="{{ $section('work') }}"><span>03</span> Work</a>
-            <a href="{{ $section('experience') }}"><span>04</span> History</a>
+            <a href="{{ $section('capabilities') }}"><span>02</span> Capabilities</a>
+            <a href="{{ $section('about') }}"><span>03</span> Profile</a>
+            <a href="{{ $section('work') }}"><span>04</span> Work</a>
+            <a href="{{ $section('experience') }}"><span>05</span> History</a>
             @if($certCount > 0)
-                <a href="{{ $section('certifications') }}"><span>05</span> Credentials</a>
+                <a href="{{ $section('certifications') }}"><span>06</span> Credentials</a>
             @endif
             <a href="{{ route('projects.all') }}"><span>→</span> All projects</a>
             <a href="{{ route('personal.projects.all') }}"><span>→</span> Personal</a>

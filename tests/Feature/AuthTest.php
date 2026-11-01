@@ -37,6 +37,16 @@ class AuthTest extends TestCase
         $response->assertDontSee('Register here', false);
     }
 
+    public function test_admin_login_page_uses_studio_ledger_branding(): void
+    {
+        $response = $this->get('/admin/login');
+
+        $response->assertOk();
+        $response->assertSee('auth-brand-icon', false);
+        $response->assertSee('family=Syne', false);
+        $response->assertSee('/build/assets/admin-panel-', false);
+    }
+
     public function test_admin_can_login_with_valid_credentials(): void
     {
         $user = User::factory()->create([

@@ -1,41 +1,45 @@
 /**
- * Porto design system v3 — Obsidian & Linen
+ * Porto design system — Studio Ledger (dntech-editorial)
+ * SSOT: design-tokens.json
  * Author: Dozer
  */
 :root {
-    --page-bg: #ece8e1;
-    --canvas-bg: #f7f5f1;
+    --page-bg: #f1f5f9;
+    --canvas-bg: #ffffff;
     --paper: #ffffff;
     --surface: #ffffff;
-    --surface-muted: #f0ede8;
-    --ink: #12151a;
-    --muted: #5c6470;
-    --line: rgba(18, 21, 26, 0.12);
-    --line-strong: rgba(18, 21, 26, 0.22);
-    --accent: #0d9488;
-    --accent-hover: #0f766e;
-    --accent-soft: #ccfbf1;
-    --warm: #c2410c;
+    --surface-muted: #e7edf5;
+    --stone-soft: #e2e8f0;
+    --ink: #272b32;
+    --muted: #64748b;
+    --line: #e2e8f0;
+    --line-strong: #cbd5e1;
+    --accent: #1e3a8a;
+    --accent-hover: #1e40af;
+    --accent-soft: #dbeafe;
+    --secondary: #0f766e;
+    --warm: #b45309;
     --warm-soft: #ffedd5;
-    --stone-soft: #e8e4dc;
-    --on-dark: #f4f6f8;
-    --on-dark-muted: #9aa3af;
-    --on-dark-link: #7dd3c7;
-    --rail-bg: #0c1018;
+    --highlight: #f5a55c;
+    --on-dark: #ffffff;
+    --on-dark-muted: #cbd5e1;
+    --on-dark-link: #93c5fd;
+    --rail-bg: #ffffff;
+    --rail-ink: #272b32;
     --radius-sm: 8px;
-    --radius: 14px;
-    --radius-lg: 20px;
+    --radius: 10px;
+    --radius-lg: 18px;
     --radius-pill: 999px;
-    --shadow-sm: 0 1px 2px rgba(18, 21, 26, 0.06), 0 4px 12px rgba(18, 21, 26, 0.04);
-    --shadow: 0 8px 24px rgba(18, 21, 26, 0.08), 0 2px 6px rgba(18, 21, 26, 0.04);
-    --shadow-lg: 0 24px 48px rgba(18, 21, 26, 0.12);
-    --font-display: "Space Grotesk", system-ui, sans-serif;
+    --shadow-sm: 0 1px 2px rgba(39, 43, 50, 0.06), 0 2px 8px rgba(39, 43, 50, 0.04);
+    --shadow: 0 8px 24px rgba(39, 43, 50, 0.08), 0 2px 6px rgba(39, 43, 50, 0.04);
+    --shadow-lg: 0 20px 40px rgba(39, 43, 50, 0.1);
+    --font-display: "Syne", system-ui, sans-serif;
     --font-body: "IBM Plex Sans", system-ui, sans-serif;
     --font-mono: "IBM Plex Mono", ui-monospace, monospace;
     --rail-w: 272px;
-    --content-max: 940px;
-    --section-y: clamp(56px, 9vw, 96px);
-    --section-x: clamp(20px, 4vw, 40px);
+    --content-max: 960px;
+    --section-y: clamp(56px, 8vw, 96px);
+    --section-x: clamp(24px, 5vw, 76px);
     --space-1: 4px;
     --space-2: 8px;
     --space-3: 12px;
@@ -46,13 +50,13 @@
     --space-10: 40px;
     --space-12: 48px;
     --space-hero-gap: clamp(36px, 5vw, 56px);
-    --eyebrow: #0f766e;
+    --eyebrow: #1e40af;
     --stroke: 1px solid var(--line);
     --shadow-brutal: var(--shadow-sm);
-    /* legacy aliases (v2 class names) */
+    /* legacy aliases */
     --hot: var(--warm);
     --hot-soft: var(--warm-soft);
-    --lime: #99f6e4;
+    --lime: var(--accent-soft);
     --soft: var(--surface-muted);
     --navy: var(--accent);
 }
