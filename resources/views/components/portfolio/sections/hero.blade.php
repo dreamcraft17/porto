@@ -1,7 +1,7 @@
 <section id="overview" class="hero intro-section" aria-label="Introduction">
     <div class="hero-inner">
         <div class="hero-copy">
-            <p class="hero-meta">Fullstack engineer · Laravel, ASP.NET, Flutter</p>
+            <p class="hero-meta">Fullstack Software Engineer · Technical Consultant </p>
             <h1 class="intro-title">I build the software behind everyday operations.</h1>
             <p class="hero-lead">
                 From cafe POS and banking modules to internal HR and seller finance, I work across the layers that make a workflow hold together: interface, API, data, and the people using it.
