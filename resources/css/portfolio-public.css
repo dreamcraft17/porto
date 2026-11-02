@@ -955,7 +955,10 @@
 }
 
 .site-footer-support {
+    margin: 0;
+    padding: 0 var(--page-gutter) var(--space-5);
     color: var(--on-dark-muted);
+    text-align: center;
 }
 
 .site-footer-links {

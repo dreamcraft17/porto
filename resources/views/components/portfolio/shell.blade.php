@@ -62,7 +62,6 @@
     <footer class="site-footer">
         <div class="site-footer-inner">
             <p>© {{ date('Y') }} Dozer Napitupulu</p>
-            <p class="site-footer-support">Website supported and managed by: <a href="https://www.dntech.id" target="_blank" rel="noopener noreferrer">Dn Tech (www.dntech.id)</a></p>
             <nav class="site-footer-links" aria-label="Elsewhere">
                 <a href="mailto:{{ config('app.social.email') }}">Email</a>
                 <a href="{{ config('app.social.github') }}" target="_blank" rel="noopener noreferrer">GitHub</a>
@@ -70,5 +69,6 @@
             </nav>
             <a class="site-footer-top" href="#top">Back to top ↑</a>
         </div>
+        <p class="site-footer-support">Website supported and managed by: Dn Tech (<a href="https://www.dntech.id" target="_blank" rel="noopener noreferrer">www.dntech.id</a>)</p>
     </footer>
 </div>
