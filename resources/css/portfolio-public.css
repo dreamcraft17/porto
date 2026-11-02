@@ -954,6 +954,10 @@
     margin: 0;
 }
 
+.site-footer-support {
+    color: var(--on-dark-muted);
+}
+
 .site-footer-links {
     display: flex;
     flex-wrap: wrap;
