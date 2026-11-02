@@ -61,14 +61,22 @@
 
     <footer class="site-footer">
         <div class="site-footer-inner">
-            <p>© {{ date('Y') }} Dozer Napitupulu</p>
+            <div class="site-footer-brand">
+                <span class="site-footer-eyebrow">Portfolio</span>
+                <strong>Dozer Napitupulu</strong>
+                <span>Fullstack engineer · Laravel, .NET, Flutter</span>
+            </div>
             <nav class="site-footer-links" aria-label="Elsewhere">
                 <a href="mailto:{{ config('app.social.email') }}">Email</a>
                 <a href="{{ config('app.social.github') }}" target="_blank" rel="noopener noreferrer">GitHub</a>
                 <a href="{{ config('app.social.linkedin') }}" target="_blank" rel="noopener noreferrer">LinkedIn</a>
             </nav>
-            <a class="site-footer-top" href="#top">Back to top ↑</a>
+            <a class="site-footer-top" href="#top">Back to top <span aria-hidden="true">↑</span></a>
         </div>
-        <p class="site-footer-support">Website supported and managed by: Dn Tech (<a href="https://www.dntech.id" target="_blank" rel="noopener noreferrer">www.dntech.id</a>)</p>
+        <div class="site-footer-bottom">
+            <p>© {{ date('Y') }} Dozer Napitupulu</p>
+            <p class="site-footer-support">Website supported and managed by: Dn Tech (<a href="https://www.dntech.id" target="_blank" rel="noopener noreferrer">www.dntech.id</a>)</p>
+            <span class="site-footer-status"><i aria-hidden="true"></i> Available for selected work</span>
+        </div>
     </footer>
 </div>

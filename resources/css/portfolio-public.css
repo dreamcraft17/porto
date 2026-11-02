@@ -942,21 +942,58 @@
 }
 
 .site-footer-inner {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) auto auto;
     align-items: center;
-    gap: var(--space-3) var(--space-6);
-    padding-block: var(--space-8);
+    gap: var(--space-6);
+    padding-block: clamp(32px, 5vw, 52px) var(--space-7);
     font-size: 0.875rem;
+}
+
+.site-footer-brand {
+    display: grid;
+    gap: 4px;
+}
+
+.site-footer-brand strong {
+    color: var(--on-dark);
+    font-size: 1.05rem;
+    letter-spacing: -0.02em;
+}
+
+.site-footer-brand > span:last-child {
+    color: var(--on-dark-muted);
+    font-size: 0.78rem;
+}
+
+.site-footer-eyebrow {
+    color: var(--on-dark-muted);
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
 }
 
 .site-footer-inner p {
     margin: 0;
 }
 
+.site-footer-bottom {
+    display: grid;
+    grid-template-columns: 1fr minmax(0, 1.5fr) 1fr;
+    align-items: center;
+    gap: var(--space-4);
+    border-top: 1px solid color-mix(in srgb, var(--on-dark) 14%, transparent);
+    padding-block: var(--space-5);
+    font-size: 0.75rem;
+}
+
+.site-footer-bottom > p:first-child {
+    margin: 0;
+}
+
 .site-footer-support {
     margin: 0;
-    padding: 0 var(--page-gutter) var(--space-5);
     color: var(--on-dark-muted);
     text-align: center;
 }
@@ -982,7 +1019,24 @@
 }
 
 .site-footer-top {
-    margin-left: auto;
+    justify-self: end;
+    color: var(--on-dark) !important;
+    font-weight: 700;
+}
+
+.site-footer-status {
+    justify-self: end;
+    color: var(--on-dark-muted);
+    text-align: right;
+}
+
+.site-footer-status i {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    margin-right: 6px;
+    border-radius: 50%;
+    background: #83d7a4;
 }
 
 /* —— Archive pages —— */
@@ -1383,8 +1437,29 @@
         display: none;
     }
 
+    .site-footer-inner {
+        grid-template-columns: minmax(0, 1fr);
+        align-items: start;
+        gap: var(--space-4);
+    }
+
+    .site-footer-links {
+        gap: var(--space-4);
+    }
+
     .site-footer-top {
-        margin-left: 0;
+        justify-self: start;
+    }
+
+    .site-footer-bottom {
+        grid-template-columns: minmax(0, 1fr);
+        gap: var(--space-2);
+        text-align: center;
+    }
+
+    .site-footer-status {
+        justify-self: center;
+        text-align: center;
     }
 
     .site-footer a {
