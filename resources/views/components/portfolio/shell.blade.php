@@ -73,10 +73,12 @@
             </nav>
             <a class="site-footer-top" href="#top">Back to top <span aria-hidden="true">↑</span></a>
         </div>
-        <div class="site-footer-bottom">
-            <p>© {{ date('Y') }} Dozer Napitupulu</p>
-            <p class="site-footer-support">Website supported and managed by: Dn Tech (<a href="https://www.dntech.id" target="_blank" rel="noopener noreferrer">www.dntech.id</a>)</p>
-            <span class="site-footer-status"><i aria-hidden="true"></i> Available for selected work</span>
+        <div class="site-footer-bottom-wrap">
+            <div class="site-footer-bottom">
+                <p>© {{ date('Y') }} Dozer Napitupulu</p>
+                <p class="site-footer-support">Website supported and managed by: Dn Tech (<a href="https://www.dntech.id" target="_blank" rel="noopener noreferrer">www.dntech.id</a>)</p>
+                <span class="site-footer-status"><i aria-hidden="true"></i> Available for selected work</span>
+            </div>
         </div>
     </footer>
 </div>
