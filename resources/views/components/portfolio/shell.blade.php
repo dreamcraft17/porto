@@ -61,24 +61,56 @@
 
     <footer class="site-footer">
         <div class="site-footer-inner">
-            <div class="site-footer-primary">
-                <nav class="site-footer-links" aria-label="Contact and profiles">
-                    <a href="{{ $section('contact') }}">Send a brief</a>
-                    <a href="mailto:{{ config('app.social.email') }}">Email</a>
-                    <a href="{{ config('app.social.github') }}" target="_blank" rel="noopener noreferrer">GitHub</a>
-                    <a href="{{ config('app.social.linkedin') }}" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                </nav>
-                <a class="site-footer-top" href="#top">Back to top</a>
+            <div class="site-footer-grid">
+                <div class="site-footer-brand">
+                    <a class="site-footer-brand-link" href="{{ $home }}">
+                        <img src="{{ asset('images/brand/dn-logo.png') }}" alt="" width="170" height="32" decoding="async">
+                        <span class="site-footer-brand-name">Dozer Napitupulu</span>
+                    </a>
+                    <p class="site-footer-tagline">
+                        Personal portfolio for ops software—POS, banking modules, HR tools, and the APIs behind them. Not the DN Tech company profile.
+                    </p>
+                </div>
+
+                <div class="site-footer-col">
+                    <p class="site-footer-col-title">Portfolio</p>
+                    <nav class="site-footer-col-links" aria-label="Portfolio sections">
+                        <a href="{{ $section('services') }}">Services</a>
+                        <a href="{{ $section('work') }}">Work</a>
+                        <a href="{{ $section('experience') }}">Experience</a>
+                        <a href="{{ route('projects.all') }}">All projects</a>
+                        <a href="{{ route('personal.projects.all') }}">Personal builds</a>
+                    </nav>
+                </div>
+
+                <div class="site-footer-col">
+                    <p class="site-footer-col-title">Connect</p>
+                    <nav class="site-footer-col-links" aria-label="Contact">
+                        <a href="{{ $section('contact') }}">Send a brief</a>
+                        <a href="mailto:{{ config('app.social.email') }}">{{ config('app.social.email') }}</a>
+                        <a href="{{ config('app.social.github') }}" target="_blank" rel="noopener noreferrer">GitHub</a>
+                        <a href="{{ config('app.social.linkedin') }}" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                    </nav>
+                </div>
+
+                <div class="site-footer-col">
+                    <p class="site-footer-col-title">Site</p>
+                    <nav class="site-footer-col-links" aria-label="Site">
+                        <a href="{{ $section('about') }}">About</a>
+                        <a href="{{ $section('contact') }}">Contact</a>
+                        <a href="https://dntech.id" target="_blank" rel="noopener noreferrer">DN Tech (hosting)</a>
+                    </nav>
+                </div>
             </div>
-            <div class="site-footer-meta">
-                <p class="site-footer-legal">
-                    © {{ date('Y') }} Dozer Napitupulu · Personal portfolio, not the DN Tech company site.
-                </p>
-                <p class="site-footer-ops">
-                    Hosted and maintained by
-                    <a href="https://dntech.id" target="_blank" rel="noopener noreferrer">DN Tech</a>.
-                </p>
+
+            <div class="site-footer-bottom">
+                <span>© {{ date('Y') }} Dozer Napitupulu. All rights reserved.</span>
+                <span class="site-footer-bottom-note">Laravel · .NET · Flutter · Indonesia</span>
             </div>
         </div>
+
+        <a class="site-footer-scroll" href="#top" aria-label="Back to top">
+            <span aria-hidden="true">↑</span>
+        </a>
     </footer>
 </div>
