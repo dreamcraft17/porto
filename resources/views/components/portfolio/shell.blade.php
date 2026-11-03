@@ -71,7 +71,7 @@
                         Personal portfolio for ops software—POS, banking modules, HR tools, and the APIs behind them.
                     </p>
                     <p class="site-footer-tagline">
-                        Managed by DN Tech (<a href="https://dntech.id" target="_blank" rel="noopener noreferrer">DN Tech (hosting)</a>)
+                        Managed by <a href="https://dntech.id" target="_blank" rel="noopener noreferrer">DN Tech</a>
                     </p>
                 </div>
 
