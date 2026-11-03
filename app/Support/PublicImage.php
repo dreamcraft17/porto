@@ -2,6 +2,7 @@
 
 namespace App\Support;
 
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
 
 final class PublicImage
@@ -24,15 +25,58 @@ final class PublicImage
             return $path;
         }
 
-        if (file_exists(public_path($path))) {
-            return asset($path);
-        }
-
         $normalized = self::normalize($path);
 
-        return Storage::disk('public')->exists($normalized)
-            ? '/media/'.self::encodePath($normalized)
-            : null;
+        if ($normalized === '') {
+            return null;
+        }
+
+        foreach (self::publicAssetCandidates($normalized) as $candidate) {
+            if (file_exists(public_path($candidate))) {
+                return asset(self::encodePath($candidate));
+            }
+        }
+
+        if (! Storage::disk('public')->exists($normalized)) {
+            return null;
+        }
+
+        if (self::publicStorageSymlinkAvailable($normalized)) {
+            return asset('storage/'.self::encodePath($normalized));
+        }
+
+        if (Route::has('media.show')) {
+            return route('media.show', ['path' => $normalized], false);
+        }
+
+        return '/media/'.self::encodePath($normalized);
+    }
+
+    /**
+     * @return list<string>
+     */
+    private static function publicAssetCandidates(string $normalized): array
+    {
+        if (str_contains($normalized, '/')) {
+            return [$normalized];
+        }
+
+        return [
+            'images/projects/'.$normalized,
+            'images/'.$normalized,
+            $normalized,
+        ];
+    }
+
+    private static function publicStorageSymlinkAvailable(string $normalized): bool
+    {
+        $link = public_path('storage');
+
+        if (is_link($link)) {
+            return true;
+        }
+
+        return file_exists(public_path('storage/'.$normalized));
     }
 
     public static function encodePath(string $path): string

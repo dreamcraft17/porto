@@ -34,7 +34,7 @@ class PersonalProjectController extends Controller
             'technologies' => 'nullable|array',
             'project_date' => 'required|date',
             'order' => 'nullable|integer',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:5120',
         ]);
         $validated = BooleanFields::merge($request, $validated, ['featured']);
 
@@ -65,7 +65,7 @@ class PersonalProjectController extends Controller
             'technologies' => 'nullable|array',
             'project_date' => 'required|date',
             'order' => 'nullable|integer',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:5120',
         ]);
         $validated = BooleanFields::merge($request, $validated, ['featured']);
 

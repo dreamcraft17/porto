@@ -175,7 +175,7 @@
                     
                     <div class="mb-3">
                         <label for="image" class="form-label">Project Image</label>
-                        @if($project->image)
+                        @if($project->image_url)
                             <div class="mb-3">
                                 <p class="mb-2"><strong>Current Image:</strong></p>
                                 <img src="{{ $project->image_url }}"

@@ -30,7 +30,7 @@
                 <tr>
                     <td>{{ $project->order }}</td>
                     <td>
-                        @if($project->image)
+                        @if($project->image_url)
                             <img src="{{ $project->image_url }}" alt="{{ $project->title }}" style="width: 50px; height: 50px; object-fit: cover; border-radius: 5px;">
                         @else
                             <div style="width: 50px; height: 50px; background: #f0f0f0; border-radius: 5px; display: flex; align-items: center; justify-content: center;">

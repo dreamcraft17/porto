@@ -71,6 +71,7 @@ jobs:
             **/.env
             **/.env.*
             **/vendor/**
+            **/storage/app/public/**
             **/storage/logs/**
             **/storage/framework/views/**
             **/.phpunit.result.cache
@@ -89,7 +90,7 @@ jobs:
 
             # Laravel must be able to write runtime cache, sessions, views, and logs
             # before any cache/build command runs.
-            mkdir -p storage/framework/cache storage/framework/sessions storage/framework/views storage/logs bootstrap/cache
+            mkdir -p storage/app/public/projects storage/framework/cache storage/framework/sessions storage/framework/views storage/logs bootstrap/cache
             find storage bootstrap/cache -type d -exec chmod 775 {} \;
             find storage bootstrap/cache -type f -exec chmod 664 {} \;
 
