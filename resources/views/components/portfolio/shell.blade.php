@@ -68,7 +68,13 @@
                         <span class="site-footer-brand-name">Dozer Napitupulu</span>
                     </a>
                     <p class="site-footer-tagline">
-                        Personal portfolio for ops software—POS, banking modules, HR tools, and the APIs behind them. Not the DN Tech company profile.
+                        Personal portfolio for ops software—POS, banking modules, HR tools, and the APIs behind them.
+                    </p>
+                    <p class="site-footer-tagline">
+                        Managed by DN Tech.
+                    </p>
+                    <p class="site-footer-tagline">
+                        <a href="https://dntech.id" target="_blank" rel="noopener noreferrer">DN Tech (hosting)</a>
                     </p>
                 </div>
 
@@ -98,14 +104,13 @@
                     <nav class="site-footer-col-links" aria-label="Site">
                         <a href="{{ $section('about') }}">About</a>
                         <a href="{{ $section('contact') }}">Contact</a>
-                        <a href="https://dntech.id" target="_blank" rel="noopener noreferrer">DN Tech (hosting)</a>
                     </nav>
                 </div>
             </div>
 
             <div class="site-footer-bottom">
                 <span>© {{ date('Y') }} Dozer Napitupulu. All rights reserved.</span>
-                <span class="site-footer-bottom-note">Laravel · .NET · Flutter · Indonesia</span>
+                <span class="site-footer-bottom-note">Full Stack · Software Engineering · Tech consulting · Indonesia</span>
             </div>
         </div>
 
