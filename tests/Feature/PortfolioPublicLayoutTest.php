@@ -67,9 +67,9 @@ class PortfolioPublicLayoutTest extends TestCase
         $response = $this->get('/');
 
         $response->assertOk();
-        $response->assertSee('Start with the workflow', false);
-        $response->assertSee('proof-value">01<', false);
-        $response->assertDontSee('proof-value">0+<', false);
+        $response->assertSee('skill-board', false);
+        $response->assertSee('Backend', false);
+        $response->assertSee('hero-domains', false);
     }
 
     public function test_personal_projects_archive_uses_portfolio_shell(): void

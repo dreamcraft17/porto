@@ -4,7 +4,7 @@
             <p class="section-label">Contact</p>
             <h2 class="section-title">Have a workflow that is too important to keep patching?</h2>
             <p class="contact-note">
-                Send the context, the people involved, and the part that keeps getting stuck. We can work out whether the right answer is a new system, a better flow, or a smaller fix.
+                Send the context, the people involved, and the part that keeps getting stuck. I’ll reply with whether it sounds like a new build, a flow fix, or something smaller.
             </p>
             <p class="contact-direct">
                 Prefer email?

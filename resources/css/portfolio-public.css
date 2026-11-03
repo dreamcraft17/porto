@@ -341,8 +341,9 @@
 /* —— Hero (full-bleed navy) —— */
 .hero {
     background-color: var(--accent);
+    /* Flat scrim keeps headline readable over the photo—no decorative side fade */
     background-image:
-        linear-gradient(90deg, rgba(8, 24, 92, 0.45) 0%, rgba(8, 24, 92, 0) 65%),
+        linear-gradient(rgba(17, 24, 39, 0.72), rgba(17, 24, 39, 0.72)),
         url("/hero_bg.png");
     background-position: center;
     background-repeat: no-repeat;
@@ -589,12 +590,7 @@
     left: 1.3125rem;
     width: 2px;
     border-radius: 2px;
-    background: linear-gradient(
-        180deg,
-        var(--accent) 0%,
-        var(--accent-soft) 28%,
-        var(--line) 100%
-    );
+    background: var(--line);
 }
 
 .roadmap-entry {
@@ -638,7 +634,6 @@
     border-color: var(--accent);
     background: var(--accent);
     color: var(--on-dark);
-    box-shadow: 0 0 0 4px var(--accent-soft);
 }
 
 .roadmap-card {
@@ -651,9 +646,9 @@
 }
 
 .roadmap-entry.is-current .roadmap-card {
-    border-color: rgba(30, 58, 138, 0.35);
-    background: linear-gradient(180deg, var(--surface) 0%, var(--accent-soft) 220%);
-    box-shadow: var(--shadow-sm);
+    border-color: var(--line-strong);
+    border-left: 3px solid var(--accent);
+    background: var(--surface);
 }
 
 @media (hover: hover) {

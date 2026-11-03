@@ -36,22 +36,4 @@
             @endforelse
         </dl>
     </div>
-
-    <ol class="approach-list" aria-label="How the work is shaped">
-        <li class="proof-item">
-            <span class="proof-value">01</span>
-            <h3 class="proof-label">Start with the workflow</h3>
-            <p class="proof-note">Who uses it, where it breaks, and what should happen next.</p>
-        </li>
-        <li class="proof-item">
-            <span class="proof-value">02</span>
-            <h3 class="proof-label">Connect the moving parts</h3>
-            <p class="proof-note">A usable screen is only useful when the API and data agree.</p>
-        </li>
-        <li class="proof-item">
-            <span class="proof-value">03</span>
-            <h3 class="proof-label">Make it maintainable</h3>
-            <p class="proof-note">Clear ownership, predictable data, and a handoff your team can use.</p>
-        </li>
-    </ol>
 </section>

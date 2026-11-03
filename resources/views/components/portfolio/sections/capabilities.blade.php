@@ -1,7 +1,7 @@
 <section id="services" class="block capability-section">
     <div class="section-head">
         <p class="section-label">Services</p>
-        <h2 class="section-title">Software that turns a manual handoff into a working system.</h2>
+        <h2 class="section-title">Web, mobile, and integrations for teams running day-to-day ops.</h2>
     </div>
 
     <div class="capability-grid">

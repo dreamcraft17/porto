@@ -1,12 +1,11 @@
 <section id="experience" class="block experience-section">
     <div class="section-head">
         <p class="section-label">Experience</p>
-        <h2 class="section-title">Roles where I owned delivery—not just tickets.</h2>
-        <p class="section-lead">Newest first. When the employer stays the same, the timeline groups progression without repeating the company banner.</p>
+        <h2 class="section-title">Employers and roles—newest first.</h2>
+        <p class="section-lead">Most roles are ops software—POS, banking modules, HR tools, and the APIs and data behind them.</p>
     </div>
 
     @php
-        $techCatalog = collect(['Laravel', 'Next.js', 'NestJS', 'FastAPI', 'ASP.NET MVC', 'Flutter', 'Kotlin', 'MySQL', 'PostgreSQL', 'SQL Server', 'RESTful APIs', 'Dashboards']);
         $previousCompany = null;
     @endphp
 
@@ -40,10 +39,6 @@
                     ->filter()
                     ->values();
                 $useBullets = $descriptionLines->count() >= 2;
-
-                $experienceTags = $techCatalog
-                    ->filter(fn ($tag) => Str::contains(strtolower($rawDescription), strtolower($tag)))
-                    ->take(4);
             @endphp
             <li class="roadmap-entry {{ $experience->current ? 'is-current' : '' }}{{ $sameEmployer ? ' is-continued' : '' }}">
                 <div class="roadmap-marker" aria-hidden="true">
@@ -66,13 +61,13 @@
                                 <p class="roadmap-company">{{ $company }}</p>
                             @elseif($sameEmployer)
                                 <p class="roadmap-company roadmap-company--continued">
-                                    <span class="roadmap-company-label">Same organisation</span>
+                                    <span class="roadmap-company-label">Same company</span>
                                     <span class="roadmap-company-name">{{ $company }}</span>
                                 </p>
                             @endif
                         </div>
                         @if($experience->current)
-                            <span class="roadmap-badge">Current role</span>
+                            <span class="roadmap-badge">Current</span>
                         @endif
                     </header>
 
@@ -86,14 +81,6 @@
                         </ul>
                     @elseif($rawDescription !== '')
                         <p class="roadmap-desc">{{ Str::limit($rawDescription, 220) }}</p>
-                    @endif
-
-                    @if($experienceTags->isNotEmpty())
-                        <ul class="tag-list tag-list--compact" aria-label="Technologies referenced in this role">
-                            @foreach($experienceTags as $tag)
-                                <li>{{ $tag }}</li>
-                            @endforeach
-                        </ul>
                     @endif
                 </article>
             </li>
