@@ -206,42 +206,21 @@ function initSectionReveals() {
 }
 
 function initWorkCascade() {
-    if (prefersReduced || isCoarse) {
-        return;
-    }
-
-    const cards = gsap.utils.toArray('.work-grid .work-card');
-    if (cards.length < 2) {
-        return;
-    }
-
-    cards.forEach((card) => {
-        gsap.from(card, {
-            y: 48,
-            opacity: 0,
-            duration: 0.7,
-            ease: 'power2.out',
-            scrollTrigger: {
-                trigger: card,
-                start: 'top 88%',
-                toggleActions: 'play none none none',
-            },
-        });
-    });
+    // CSS data-reveal-stagger already handles enter — avoid GSAP opacity:0 that can stick
 }
 
 function initExperienceScrub() {
-    if (prefersReduced) {
+    if (prefersReduced || isCoarse) {
         return;
     }
 
     const entries = gsap.utils.toArray('.roadmap-entry');
     entries.forEach((entry) => {
         gsap.from(entry, {
-            x: isCoarse ? 0 : -24,
-            opacity: 0,
+            x: -24,
             duration: 0.55,
             ease: 'power2.out',
+            clearProps: 'transform',
             scrollTrigger: {
                 trigger: entry,
                 start: 'top 90%',
@@ -271,13 +250,30 @@ function init() {
         return;
     }
 
-    initHeroScene();
-    initSectionReveals();
-    initWorkCascade();
-    initExperienceScrub();
-    shell.classList.add('epic-ready');
+    try {
+        // Attach reveals BEFORE hiding, then mark ready so CSS can hide unread items
+        initSectionReveals();
+        shell.classList.add('epic-ready');
+        initHeroScene();
+        initWorkCascade();
+        initExperienceScrub();
+        ScrollTrigger.refresh();
 
-    ScrollTrigger.refresh();
+        // Anything already in (or near) the viewport — force visible now
+        requestAnimationFrame(() => {
+            document.querySelectorAll('[data-reveal], [data-reveal-stagger], [data-clip-birth]').forEach((el) => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight * 0.95 && rect.bottom > 0) {
+                    el.classList.add('is-in');
+                }
+            });
+        });
+    } catch (err) {
+        console.error('[porto-epic] init failed, showing static content', err);
+        shell.classList.remove('epic-ready');
+        showStatic();
+        ScrollTrigger.getAll().forEach((t) => t.kill());
+    }
 }
 
 if (document.readyState === 'loading') {
