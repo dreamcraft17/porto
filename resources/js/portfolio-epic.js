@@ -197,7 +197,8 @@ function initSectionReveals() {
                 }
             });
         },
-        { rootMargin: '0px 0px -12% 0px', threshold: 0.12 },
+        // threshold 0: any overlap reveals. Tall blocks never reach a ratio threshold on short viewports.
+        { rootMargin: '0px 0px -8% 0px', threshold: 0 },
     );
 
     document.querySelectorAll('[data-reveal], [data-reveal-stagger], [data-clip-birth]').forEach((el) => {
