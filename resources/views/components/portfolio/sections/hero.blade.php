@@ -11,7 +11,6 @@
     id="overview"
     class="scene scene--hero hero intro-section"
     data-scene="hero"
-    style="--scene-height: 220vh"
     aria-label="Introduction"
 >
     {{-- DEPTH 0 — far background --}}
@@ -71,6 +70,7 @@
                     width="400"
                     height="400"
                     loading="eager"
+                    fetchpriority="high"
                     decoding="async"
                 >
             </figure>

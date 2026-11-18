@@ -1,8 +1,11 @@
 /**
- * Porto design system — Studio Ledger (dntech-editorial)
- * SSOT: design-tokens.json
+ * Porto design system
+ * Mirror: design-tokens.json (keys `admin` = :root, `public` = .portfolio-body).
+ * Change a value here → update the JSON in the same commit.
  * Author: Dozer
  */
+
+/* Admin theme (Studio Ledger) — admin panel, login, register. Also the fallback for public. */
 :root {
     --page-bg: #f1f5f9;
     --canvas-bg: #ffffff;
@@ -61,7 +64,7 @@
     --navy: var(--accent);
 }
 
-/* Public site theme — navy + white, after early dntech V2 (admin keeps the :root set above) */
+/* Public theme — every public route (body.portfolio-body). Overrides the admin set above. */
 .portfolio-body {
     --page-bg: #ffffff;
     --canvas-bg: #ffffff;

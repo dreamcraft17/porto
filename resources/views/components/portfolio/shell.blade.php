@@ -83,6 +83,7 @@
                         <a href="{{ $section('experience') }}">Experience</a>
                         <a href="{{ route('projects.all') }}">All projects</a>
                         <a href="{{ route('personal.projects.all') }}">Personal builds</a>
+                        <a href="{{ $section('about') }}">About</a>
                     </nav>
                 </div>
 
@@ -93,14 +94,6 @@
                         <a href="mailto:{{ config('app.social.email') }}">{{ config('app.social.email') }}</a>
                         <a href="{{ config('app.social.github') }}" target="_blank" rel="noopener noreferrer">GitHub</a>
                         <a href="{{ config('app.social.linkedin') }}" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                    </nav>
-                </div>
-
-                <div class="site-footer-col">
-                    <p class="site-footer-col-title">Site</p>
-                    <nav class="site-footer-col-links" aria-label="Site">
-                        <a href="{{ $section('about') }}">About</a>
-                        <a href="{{ $section('contact') }}">Contact</a>
                     </nav>
                 </div>
             </div>

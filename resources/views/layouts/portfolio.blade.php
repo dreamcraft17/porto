@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,13 +18,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    {{-- Font Awesome is pushed only by pages that render icons (home services, personal projects). --}}
 
     @vite(['resources/css/portfolio-base.css'])
     @stack('styles')
 </head>
 <body class="portfolio-body">
-    <a class="skip-link" href="#main-content">Lewati ke konten</a>
+    <a class="skip-link" href="#main-content">Skip to content</a>
     @yield('content')
     @stack('scripts')
 </body>

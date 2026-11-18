@@ -84,7 +84,7 @@ See [SECURITY.md](SECURITY.md) for vulnerability reporting and production checkl
 
 ## Documentation
 
-- [docs/UI-REDESIGN-2026.md](docs/UI-REDESIGN-2026.md) — Public UI (Studio Ledger tokens, case pages)
+- [docs/UI-REDESIGN-2026.md](docs/UI-REDESIGN-2026.md) — Public + admin design system, current state and history
 - [docs/CODE-REVIEW-BUNDLE-2026-09-05.md](docs/CODE-REVIEW-BUNDLE-2026-09-05.md) — Current engineering review
 - [AUDIT.md](AUDIT.md) — 6 July 2026 audit (superseded; see the review bundle)
 - [DEPLOYMENT.md](DEPLOYMENT.md) — Production deploy guide

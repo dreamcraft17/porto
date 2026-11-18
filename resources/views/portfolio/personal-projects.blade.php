@@ -3,6 +3,7 @@
 @section('title', 'Personal projects — Dozer Napitupulu')
 
 @push('styles')
+    @include('partials.icons')
     @vite(['resources/css/portfolio-public.css'])
 @endpush
 

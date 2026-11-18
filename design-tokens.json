@@ -1,54 +1,115 @@
 {
   "meta": {
     "product": "Porto — Dozer personal portfolio",
-    "style": "dntech-editorial",
-    "updated": "2026-11-01"
+    "author": "Dozer",
+    "updated": "2026-11-18",
+    "source": "resources/css/portfolio-tokens.css",
+    "note": "Two themes share one variable set. `public` = .portfolio-body (all public routes). `admin` = :root defaults (admin panel, login, register). Keep this file and portfolio-tokens.css in sync."
   },
-  "colors": {
-    "pageBg": "#f1f5f9",
-    "surface": "#ffffff",
-    "ink": "#272b32",
-    "muted": "#64748b",
-    "line": "#e2e8f0",
-    "accent": "#1e3a8a",
-    "accentHover": "#1e40af",
-    "secondary": "#0f766e",
-    "highlight": "#f5a55c",
-    "navy": "#1e3a8a",
-    "soft": "#e7edf5",
-    "onDark": "#ffffff",
-    "onDarkMuted": "#cbd5e1"
-  },
-  "typography": {
-    "fontFamily": {
-      "display": "Syne, system-ui, sans-serif",
-      "body": "IBM Plex Sans, system-ui, sans-serif",
-      "mono": "IBM Plex Mono, ui-monospace, monospace"
+  "public": {
+    "selector": ".portfolio-body",
+    "colors": {
+      "pageBg": "#ffffff",
+      "surface": "#ffffff",
+      "surfaceMuted": "#f3f4f6",
+      "ink": "#111827",
+      "muted": "#4b5563",
+      "subtle": "#6b7280",
+      "line": "#e5e7eb",
+      "lineStrong": "#d1d5db",
+      "accent": "#1e3a8a",
+      "accentHover": "#1e40af",
+      "accentSoft": "#dbeafe",
+      "onDark": "#ffffff",
+      "onDarkMuted": "#cbd5e1",
+      "successBg": "#ecfdf3",
+      "successInk": "#166534",
+      "errorBg": "#fef2f2",
+      "errorInk": "#991b1b"
     },
-    "fontSize": {
-      "xs": "0.75rem",
-      "sm": "0.875rem",
-      "base": "1rem",
-      "lg": "1.125rem",
-      "xl": "1.25rem",
-      "2xl": "1.5rem",
-      "hero": "clamp(3rem, 6.7vw, 6.2rem)"
+    "typography": {
+      "fontFamily": {
+        "display": "IBM Plex Sans, system-ui, sans-serif",
+        "body": "IBM Plex Sans, system-ui, sans-serif",
+        "mono": "IBM Plex Mono, ui-monospace, monospace"
+      },
+      "fontSize": {
+        "xs": "0.75rem",
+        "sm": "0.875rem",
+        "h3": "1.125rem",
+        "lead": "clamp(1.0625rem, 1rem + 0.3vw, 1.1875rem)",
+        "h2": "clamp(1.75rem, 1.3rem + 1.6vw, 2.5rem)",
+        "hero": "clamp(2.5rem, 1.6rem + 3.6vw, 4.25rem)"
+      }
+    },
+    "spacing": {
+      "sectionY": "clamp(64px, 9vw, 112px)",
+      "sectionX": "clamp(20px, 5vw, 48px)",
+      "contentMax": "1120px",
+      "headerH": "64px",
+      "grid": 4
+    },
+    "borders": {
+      "radiusSm": "6px",
+      "radius": "8px",
+      "radiusLg": "12px",
+      "radiusPill": "999px",
+      "width": "1px"
+    },
+    "breakpoints": {
+      "mobile": "max-width: 600px",
+      "tablet": "640px – 959px",
+      "navCollapse": "max-width: 860px"
+    },
+    "motion": {
+      "epicScope": "home (/) only — portfolio-epic.css + portfolio-epic.js (GSAP ScrollTrigger)",
+      "revealEase": "cubic-bezier(0.22, 1, 0.36, 1)",
+      "reducedMotion": "all GSAP killed, content shown static"
     }
   },
-  "spacing": {
-    "sectionY": "clamp(56px, 8vw, 96px)",
-    "sectionX": "clamp(24px, 5vw, 76px)",
-    "grid": 8
-  },
-  "borders": {
-    "radius": "10px",
-    "radiusLg": "18px",
-    "width": "1px"
-  },
-  "breakpoints": {
-    "sm": "480px",
-    "md": "640px",
-    "lg": "900px",
-    "xl": "1100px"
+  "admin": {
+    "selector": ":root",
+    "colors": {
+      "pageBg": "#f1f5f9",
+      "surface": "#ffffff",
+      "surfaceMuted": "#e7edf5",
+      "ink": "#272b32",
+      "muted": "#64748b",
+      "line": "#e2e8f0",
+      "lineStrong": "#cbd5e1",
+      "accent": "#1e3a8a",
+      "accentHover": "#1e40af",
+      "accentSoft": "#dbeafe",
+      "secondary": "#0f766e",
+      "warm": "#b45309",
+      "warmSoft": "#ffedd5",
+      "highlight": "#f5a55c",
+      "onDark": "#ffffff",
+      "onDarkMuted": "#cbd5e1"
+    },
+    "typography": {
+      "fontFamily": {
+        "display": "Syne, system-ui, sans-serif",
+        "body": "IBM Plex Sans, system-ui, sans-serif",
+        "mono": "IBM Plex Mono, ui-monospace, monospace"
+      }
+    },
+    "spacing": {
+      "sectionY": "clamp(56px, 8vw, 96px)",
+      "sectionX": "clamp(24px, 5vw, 76px)",
+      "contentMax": "960px",
+      "grid": 4
+    },
+    "borders": {
+      "radiusSm": "8px",
+      "radius": "10px",
+      "radiusLg": "18px",
+      "radiusPill": "999px",
+      "width": "1px"
+    },
+    "breakpoints": {
+      "mobile": "max-width: 768px",
+      "desktop": "min-width: 769px"
+    }
   }
 }

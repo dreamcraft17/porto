@@ -206,10 +206,11 @@
     display: inline-block;
 }
 
+/* Unlit words stay readable (≥ 4.5:1 on the hero scrim); lighting only adds emphasis. */
 .word-light .word {
     display: inline;
-    color: rgba(203, 213, 225, 0.35);
-    transition: color 0.01ms;
+    color: rgba(203, 213, 225, 0.78);
+    transition: color 180ms ease-out;
 }
 
 .word-light .word.is-lit {

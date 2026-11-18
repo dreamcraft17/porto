@@ -33,7 +33,7 @@ class PortfolioPublicLayoutTest extends TestCase
         $response->assertDontSee('site-rail', false);
         $response->assertDontSee('navbar-bold', false);
         $response->assertDontSee('footer-bold', false);
-        $response->assertDontSee('bootstrap@5.3.0', false);
+        $response->assertDontSee('npm/bootstrap@', false);
         $response->assertDontSee('portfolio-shell--studio', false);
     }
 
@@ -56,10 +56,10 @@ class PortfolioPublicLayoutTest extends TestCase
         $response->assertSee('site-header', false);
         $response->assertSee('portfolio-shell--minimal', false);
         $response->assertSee('404', false);
-        $response->assertSee('Kembali ke portfolio', false);
+        $response->assertSee('Back to portfolio', false);
         $response->assertDontSee('Working on a similar system?', false);
         $response->assertDontSee('#8b5cf6', false);
-        $response->assertDontSee('bootstrap@5.3.0', false);
+        $response->assertDontSee('npm/bootstrap@', false);
     }
 
     public function test_home_shows_stack_breadth_when_skills_empty(): void
@@ -100,7 +100,7 @@ class PortfolioPublicLayoutTest extends TestCase
         $response->assertSee('QA Case Study', false);
         $response->assertSee('<p>Body</p>', false);
         $response->assertSee('Working on a similar system?', false);
-        $response->assertDontSee('bootstrap@5.3.0', false);
+        $response->assertDontSee('npm/bootstrap@', false);
     }
 
     public function test_personal_project_detail_uses_portfolio_shell(): void

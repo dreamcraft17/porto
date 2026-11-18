@@ -3,6 +3,7 @@
 @section('title', 'Dozer Napitupulu — Fullstack Engineer')
 
 @push('styles')
+    @include('partials.icons')
     @vite(['resources/css/portfolio-public.css', 'resources/css/portfolio-epic.css'])
 @endpush
 
