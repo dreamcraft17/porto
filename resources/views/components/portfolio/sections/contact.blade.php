@@ -1,6 +1,6 @@
-<section id="contact" class="block contact-section">
+<section id="contact" class="block contact-section" data-scene="contact">
     <div class="contact-grid">
-        <div>
+        <div data-reveal data-clip-birth>
             <p class="section-label">Contact</p>
             <h2 class="section-title">Have a workflow that is too important to keep patching?</h2>
             <p class="contact-note">
@@ -12,7 +12,7 @@
             </p>
         </div>
 
-        <form class="contact-form" id="contactForm">
+        <form class="contact-form" id="contactForm" data-reveal>
             @csrf
             <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
             <div class="form-row">

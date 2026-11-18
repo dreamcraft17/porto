@@ -1,11 +1,11 @@
-<section id="about" class="block profile-section">
-    <div class="section-head">
+<section id="about" class="block profile-section" data-scene="about">
+    <div class="section-head" data-reveal data-clip-birth>
         <p class="section-label">About</p>
         <h2 class="section-title">Fullstack engineer focused on practical business systems.</h2>
     </div>
 
     <div class="about-grid">
-        <div class="about-copy">
+        <div class="about-copy" data-reveal>
             <p>
                 I work across backend, frontend, mobile, and database layers, with experience supporting real company operations in cafe systems, banking modules, internal employee tools, reporting, and product development workflows.
             </p>
@@ -14,7 +14,7 @@
             </p>
         </div>
 
-        <dl class="skill-board">
+        <dl class="skill-board" data-reveal-stagger>
             @forelse($skills->groupBy('category') as $category => $categorySkills)
                 <div class="skill-group">
                     <dt>{{ ucfirst($category) }}</dt>

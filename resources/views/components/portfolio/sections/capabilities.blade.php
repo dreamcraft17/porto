@@ -1,10 +1,10 @@
-<section id="services" class="block capability-section">
-    <div class="section-head">
+<section id="services" class="block capability-section" data-scene="services">
+    <div class="section-head" data-reveal data-clip-birth>
         <p class="section-label">Services</p>
         <h2 class="section-title">Web, mobile, and integrations for teams running day-to-day ops.</h2>
     </div>
 
-    <div class="capability-grid">
+    <div class="capability-grid" data-reveal-stagger>
         @forelse($services as $service)
             <article class="capability-item">
                 <span class="capability-icon" aria-hidden="true"><i class="fas {{ $service->icon ?: 'fa-layer-group' }}"></i></span>

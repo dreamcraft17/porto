@@ -1,5 +1,5 @@
-<section id="experience" class="block experience-section">
-    <div class="section-head">
+<section id="experience" class="block experience-section" data-scene="experience">
+    <div class="section-head" data-reveal data-clip-birth>
         <p class="section-label">Experience</p>
         <h2 class="section-title">Employers and roles—newest first.</h2>
         <p class="section-lead">Most roles are ops software—POS, banking modules, HR tools, and the APIs and data behind them.</p>

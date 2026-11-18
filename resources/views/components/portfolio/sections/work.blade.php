@@ -1,5 +1,5 @@
-<section id="work" class="block work-section">
-    <div class="section-head section-head--split">
+<section id="work" class="block work-section" data-scene="work">
+    <div class="section-head section-head--split" data-reveal data-clip-birth>
         <div>
             <p class="section-label">Selected work</p>
             <h2 class="section-title">Systems built around the work people actually have to do.</h2>
@@ -8,7 +8,7 @@
     </div>
 
     @if($projects->isNotEmpty())
-        <ul class="work-grid">
+        <ul class="work-grid" data-reveal-stagger>
             @foreach($projects->take(6) as $project)
                 @php
                     $techs = is_array($project->technologies) ? array_slice($project->technologies, 0, 4) : [];
