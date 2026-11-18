@@ -25,16 +25,16 @@ class PortfolioPublicLayoutTest extends TestCase
         $response->assertSee('family=IBM+Plex+Sans', false);
         $response->assertDontSee('family=Syne', false);
         $response->assertSee('/build/assets/portfolio-nav-', false);
+        $response->assertSee('/build/assets/portfolio-epic-', false);
+        $response->assertSee('data-scene="hero"', false);
+        $response->assertSee('data-depth="3"', false);
         $response->assertSee('intro-title', false);
         $response->assertSee('I build the software behind everyday operations.', false);
-        $response->assertDontSee('Managed by', false);
         $response->assertDontSee('site-rail', false);
         $response->assertDontSee('navbar-bold', false);
         $response->assertDontSee('footer-bold', false);
         $response->assertDontSee('bootstrap@5.3.0', false);
-        $response->assertDontSee('portfolio-shell--epic', false);
         $response->assertDontSee('portfolio-shell--studio', false);
-        $response->assertDontSee('portfolio-epic.js', false);
     }
 
     public function test_project_archive_uses_unified_header(): void
